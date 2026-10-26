@@ -17,7 +17,7 @@ export const PT_MARKUP: Record<string, string> = {
   "One urna, two elections": "Uma urna, duas eleições",
   "The result without the sections that stayed open": "O resultado sem as seções que ficaram abertas",
   "How this was built": "Como isto foi feito",
-  "{0} won the runoff with {1} after losing round 1 by {2} votes. Voting was extended from 17:00 to 19:00 by a court order three minutes after polls closed.": "{0} venceu o segundo turno com {1} depois de perder o primeiro turno por {2} votos. A votação foi prorrogada das 17h às 19h por uma decisão judicial três minutos após o fim da votação.",
+  "{0} won the runoff with {1} after losing round 1 by {2} votes. Voting was extended from 17:00 to 19:00 by a court order issued minutes after polls closed.": "{0} venceu o segundo turno com {1} depois de perder o primeiro turno por {2} votos. A votação foi prorrogada das 17h às 19h por uma decisão judicial publicada minutos após o fim da votação.",
   "{0} had {1} of valid votes. Lula had {2}. The gap was {3} votes.": "{0} teve {1} dos votos válidos. Lula teve {2}. A diferença foi de {3} votos.",
   "The map shows every municipality in Brazil. Red means Lula was ahead there, blue means Flávio was ahead. The darker the color, the bigger the lead.": "O mapa mostra todos os municípios do Brasil. Vermelho: Lula estava à frente. Azul: Flávio estava à frente. Quanto mais forte a cor, maior a vantagem.",
   "A <b>valid vote</b> is a vote for a candidate. Blank and null votes do not count toward the percentages.": "<b>Voto válido</b> é o voto dado a um candidato. Votos brancos e nulos não entram nos percentuais.",

@@ -2,171 +2,201 @@
  {
   "d": "2026-10-04",
   "t": "",
-  "txt": "Round 1. Flávio Bolsonaro 47.03% (56,104,503), Lula 45.16% (53,879,538). Gap 1.87 pp.",
-  "src": "https://www.poder360.com.br/poder-eleicoes-2026/com-lula-brasil-tem-1a-virada-de-resultado-do-1o-para-o-2o-turno/",
+  "txt": "Round 1. Flávio Bolsonaro 47.03% (56,104,503), Lula 45.16% (53,879,538). Gap 1.87 points.",
+  "note": null,
+  "src": "https://dadosabertos.tse.jus.br/dataset/resultados-2026-boletim-de-urna",
+  "key": false,
   "txt_pt": "1º turno. Flávio Bolsonaro 47,03% (56.104.503), Lula 45,16% (53.879.538). Diferença de 1,87 ponto.",
   "note_pt": null
  },
  {
   "d": "2026-10-25",
-  "t": "morning",
-  "txt": "Bus failures in 8 states (BA, SP, PI, SE, PA, AL, RJ, PB). Salvador runs with under half of its planned fleet. Federal Police opens an inquiry in Sergipe about buses held in garages.",
+  "t": "",
+  "txt": "During voting, bus failures in 8 states (BA, SP, PI, SE, PA, AL, RJ, PB), says the Ministry of Justice. Salvador runs with under half of its planned fleet. The Federal Police opens an inquiry in Sergipe about buses held in garages.",
+  "note": "Rádio Senado says at least 7 states, without PB. Rio de Janeiro's state security office says it had no records of bus shortages.",
   "src": "https://agenciabrasil.ebc.com.br/radioagencia-nacional/politica/audio/2026-10/ministerio-da-justica-identifica-falhas-no-transporte-em-8-estados",
-  "note": "Some outlets say 7 states, without PB. RJ state security says Rio had no shortage.",
-  "txt_pt": "Falhas no transporte em 8 estados (BA, SP, PI, SE, PA, AL, RJ, PB). Salvador opera com menos da metade da frota prevista. A Polícia Federal abre inquérito em Sergipe sobre ônibus retidos em garagens.",
-  "note_pt": "Alguns veículos falam em 7 estados, sem a PB. A segurança pública do RJ diz que não faltou ônibus no Rio."
+  "key": false,
+  "txt_pt": "Durante a votação, falhas no transporte em 8 estados (BA, SP, PI, SE, PA, AL, RJ, PB), segundo o Ministério da Justiça. Salvador opera com menos da metade da frota prevista. A Polícia Federal abre inquérito em Sergipe sobre ônibus retidos em garagens.",
+  "note_pt": "A Rádio Senado fala em pelo menos 7 estados, sem a PB. A segurança pública do Rio diz não ter registro de falta de ônibus."
  },
  {
   "d": "2026-10-25",
   "t": "13:22",
-  "txt": "PT campaign asks for more voting time, about bus shortages in Bahia.",
+  "txt": "The PT campaign asks the TSE for more voting time in Salvador, Feira de Santana and Lauro de Freitas (Bahia), because of bus shortages.",
+  "note": "Time reported only by Poder360.",
   "src": "https://www.poder360.com.br/poder-eleicoes-2026/leia-a-cronologia-da-ampliacao-do-horario-de-votacao-no-2o-turno/",
-  "txt_pt": "A campanha do PT pede mais tempo de votação, por falta de ônibus na Bahia.",
-  "note_pt": null
+  "key": false,
+  "txt_pt": "A campanha do PT pede ao TSE mais tempo de votação em Salvador, Feira de Santana e Lauro de Freitas (BA), por falta de ônibus.",
+  "note_pt": "Horário informado só pelo Poder360."
  },
  {
   "d": "2026-10-25",
   "t": "15:42",
-  "txt": "PT widens its request to all states.",
-  "src": "https://www.poder360.com.br/poder-eleicoes-2026/leia-a-cronologia-da-ampliacao-do-horario-de-votacao-no-2o-turno/",
-  "txt_pt": "O PT amplia o pedido para todos os estados.",
-  "note_pt": null
+  "txt": "The PT widens its TSE request to nine more states: PI, PB, PR, PA, RJ, SP, AL, PE and RR.",
+  "note": "Time reported only by Poder360. Its chronology says \"all states\"; its own detailed article and Estadão list nine.",
+  "src": "https://www.poder360.com.br/poder-eleicoes-2026/artistas-pro-lula-e-pt-pressionaram-por-extensao-do-horario-da-votacao/",
+  "key": false,
+  "txt_pt": "O PT amplia o pedido ao TSE para mais nove estados: PI, PB, PR, PA, RJ, SP, AL, PE e RR.",
+  "note_pt": "Horário informado só pelo Poder360. A cronologia dele diz \"todos os estados\"; a matéria detalhada do próprio Poder360 e o Estadão listam nove."
  },
  {
   "d": "2026-10-25",
   "t": "15:50",
-  "txt": "Flávio campaign asks for more time in 19 cities of SP, PR and SC (rain, floods, power cuts), and asks TSE to hold presidential results until those close.",
-  "src": "https://www.poder360.com.br/poder-eleicoes-2026/leia-a-cronologia-da-ampliacao-do-horario-de-votacao-no-2o-turno/",
-  "txt_pt": "A campanha de Flávio pede mais tempo em 19 cidades de SP, PR e SC (chuva, alagamentos, falta de luz) e que o TSE segure o resultado presidencial até lá.",
-  "note_pt": null
+  "txt": "Flávio Bolsonaro's campaign asks the TSE for more time in 17 cities of SP, PR and SC (rain, floods, road closures, power cuts), and asks it to hold the presidential results until those cities close.",
+  "note": "Poder360 gives 15:50 and 19 cities; CNN Brasil gives 16:40; CartaCapital and ND Mais give 17 cities.",
+  "src": "https://www.cartacapital.com.br/politica/lula-e-flavio-bolsonaro-pedem-ao-tse-prorrogacao-da-votacao-ate-as-19h/",
+  "key": false,
+  "txt_pt": "A campanha de Flávio Bolsonaro pede ao TSE mais tempo em 17 cidades de SP, PR e SC (chuva, alagamentos, bloqueio de estradas, falta de luz) e que o resultado presidencial só seja divulgado depois.",
+  "note_pt": "O Poder360 dá 15h50 e 19 cidades; a CNN Brasil dá 16h40; CartaCapital e ND Mais dão 17 cidades."
  },
  {
   "d": "2026-10-25",
   "t": "16:22",
-  "txt": "PT goes to the STF and asks for a national extension.",
-  "src": "https://www.poder360.com.br/poder-eleicoes-2026/leia-a-cronologia-da-ampliacao-do-horario-de-votacao-no-2o-turno/",
-  "note": "Zanin's order says 16:23.",
-  "txt_pt": "O PT vai ao STF e pede prorrogação nacional.",
-  "note_pt": "A decisão de Zanin cita 16h23."
+  "txt": "The PT goes to the STF (Reclamação 101.673) and asks for a national extension.",
+  "note": "The decision says the case reached the STF at 16:32:49. The 16:22 filing time comes from Poder360; CNN Brasil says about 16:20.",
+  "src": "https://noticias-stf-wp-prd.s3.sa-east-1.amazonaws.com/wp-content/uploads/wpallimport/uploads/2026/10/25183103/liminar-urgente.pdf",
+  "key": false,
+  "txt_pt": "O PT vai ao STF (Reclamação 101.673) e pede prorrogação nacional.",
+  "note_pt": "A decisão diz que o caso chegou ao STF às 16h32min49. O horário de 16h22 do pedido é do Poder360; a CNN Brasil fala em cerca de 16h20."
  },
  {
   "d": "2026-10-25",
   "t": "16:33",
   "txt": "Minister Cristiano Zanin is drawn as rapporteur.",
-  "src": "https://www.poder360.com.br/poder-eleicoes-2026/leia-a-cronologia-da-ampliacao-do-horario-de-votacao-no-2o-turno/",
+  "note": "Time reported only by Poder360; it agrees with the decision's 16:32:49.",
+  "src": "https://www.poder360.com.br/poder-eleicoes-2026/zanin-prorroga-votacao-do-2o-turno-ate-19h/",
+  "key": false,
   "txt_pt": "O ministro Cristiano Zanin é sorteado relator.",
-  "note_pt": null
+  "note_pt": "Horário informado só pelo Poder360; coincide com o 16h32min49 da decisão."
  },
  {
   "d": "2026-10-25",
   "t": "17:00",
-  "txt": "Legal closing time. Most urnas close. TSE starts the count.",
-  "src": "https://www.poder360.com.br/poder-eleicoes-2026/leia-a-cronologia-da-ampliacao-do-horario-de-votacao-no-2o-turno/",
+  "txt": "Legal closing time. Most urnas close. The TSE starts the count.",
+  "note": "TRE-SP's president said more than 80% of São Paulo's sections had closed when the extension came.",
+  "src": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/em-sp-80-das-urnas-estavam-encerradas-quando-votacao-foi-prorrogada",
   "key": true,
   "txt_pt": "Horário legal de encerramento. A maioria das urnas fecha. O TSE começa a apuração.",
-  "note_pt": null
+  "note_pt": "O presidente do TRE-SP disse que mais de 80% das seções de São Paulo já estavam encerradas quando veio a prorrogação."
  },
  {
   "d": "2026-10-25",
   "t": "17:03",
-  "txt": "Zanin orders voting to continue until 19:00 in all sections. TSE must carry it out.",
-  "src": "https://www.poder360.com.br/poder-eleicoes-2026/leia-a-cronologia-da-ampliacao-do-horario-de-votacao-no-2o-turno/",
+  "txt": "Zanin orders voting to continue until 19:00 \"in all sections of all of Brazil\", with the TSE to carry it out.",
+  "note": "17:03 is when Poder360 says the decision became public; the STF file is time-stamped 17:01.",
+  "src": "https://noticias-stf-wp-prd.s3.sa-east-1.amazonaws.com/wp-content/uploads/wpallimport/uploads/2026/10/25183103/liminar-urgente.pdf",
   "key": true,
-  "txt_pt": "Zanin manda a votação continuar até 19h em todas as seções. O TSE deve cumprir.",
-  "note_pt": null
+  "txt_pt": "Zanin manda a votação continuar até 19h \"em todas as seções de todo o Brasil\", cabendo ao TSE dar cumprimento.",
+  "note_pt": "17h03 é quando o Poder360 diz que a decisão se tornou pública; o arquivo do STF tem horário de 17h01."
  },
  {
   "d": "2026-10-25",
   "t": "17:06",
-  "txt": "TSE stops the count and the release of results at 0.25% of urnas (1,225 of 499,248 sections).",
-  "src": "https://soubrasilia.com/zanin-tse-prorrogacao-so-secoes-abertas-df-urnas-fechadas-17h-25-outubro-2026/",
+  "txt": "The TSE stops the count and the release of results at 0.25% of urnas (1,225 of 499,248 sections), mostly from abroad.",
+  "note": null,
+  "src": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-retoma-contagem-de-votos-em-todo-o-pais",
   "key": true,
-  "txt_pt": "O TSE suspende a apuração e a divulgação com 0,25% das urnas (1.225 de 499.248 seções).",
+  "txt_pt": "O TSE suspende a apuração e a divulgação com 0,25% das urnas (1.225 de 499.248 seções), a maioria do exterior.",
   "note_pt": null
  },
  {
   "d": "2026-10-25",
-  "t": "17:00+",
-  "txt": "Zanin limits the extension to sections with urnas still open. TSE president Nunes Marques applies the same reading. Closed urnas do not reopen.",
-  "src": "https://www.canalrural.com.br/politica/eleicoes/apos-stf-prorrogar-votacao-nunes-marques-orienta-que-medida-seja-aplicada-apenas-as-secoes-ainda-abertas/",
-  "note": "Correio Braziliense reports a whole-country scope.",
-  "txt_pt": "Zanin limita a prorrogação às seções com urna ainda aberta. O presidente do TSE, Nunes Marques, aplica a mesma leitura. Urnas encerradas não reabrem.",
-  "note_pt": "O Correio Braziliense noticia alcance nacional."
- },
- {
-  "d": "2026-10-25",
   "t": "17:00",
-  "txt": "TRE-DF closes all urnas in the Federal District at 17:00. It says no official notice arrived.",
-  "src": "https://soubrasilia.com/zanin-tse-prorrogacao-so-secoes-abertas-df-urnas-fechadas-17h-25-outubro-2026/",
-  "txt_pt": "O TRE-DF encerra todas as urnas do Distrito Federal às 17h. Diz que não recebeu aviso oficial.",
+  "txt": "The TRE-DF closes all urnas in the Federal District at 17:00. It tells its zones about the extension at 17:10, after they had closed; at 17:40 it says no official notice has arrived.",
+  "note": null,
+  "src": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/no-df-urnas-fecham-antes-de-informacao-sobre-prorrogacao-chegar",
+  "key": false,
+  "txt_pt": "O TRE-DF encerra todas as urnas do Distrito Federal às 17h. Avisa as zonas sobre a prorrogação às 17h10, depois do encerramento; às 17h40 diz que nenhum aviso oficial chegou.",
   "note_pt": null
  },
  {
   "d": "2026-10-25",
   "t": "17:20",
-  "txt": "TSE announces the suspension of the count.",
-  "src": "https://www.poder360.com.br/poder-eleicoes-2026/leia-a-cronologia-da-ampliacao-do-horario-de-votacao-no-2o-turno/",
+  "txt": "The TSE announces the suspension of the count.",
+  "note": "Time reported only by Poder360.",
+  "src": "https://agenciabrasil.ebc.com.br/radioagencia-nacional/justica/audio/2026-10/totalizacao-de-votos-e-suspensa-em-todo-o-pais-pelo-tse",
+  "key": false,
   "txt_pt": "O TSE anuncia a suspensão da apuração.",
-  "note_pt": null
+  "note_pt": "Horário informado só pelo Poder360."
  },
  {
   "d": "2026-10-25",
   "t": "17:49",
-  "txt": "TSE notifies the sections that are not yet closed. Only these can use the extension.",
-  "src": "https://www.poder360.com.br/poder-eleicoes-2026/leia-a-cronologia-da-ampliacao-do-horario-de-votacao-no-2o-turno/",
+  "txt": "The TSE notifies the sections that are not yet closed. Only these can use the extension.",
+  "note": "Time reported only by Poder360; CNN Brasil says about 18:00.",
+  "src": "https://www.poder360.com.br/poder-eleicoes-2026/tse-avisou-secoes-sobre-prorrogacao-as-17h49/",
   "key": true,
   "txt_pt": "O TSE avisa as seções ainda não encerradas. Só elas podem usar a prorrogação.",
-  "note_pt": null
+  "note_pt": "Horário informado só pelo Poder360; a CNN Brasil fala em cerca de 18h."
  },
  {
   "d": "2026-10-25",
-  "t": "17:51",
-  "txt": "São Paulo, FAM university: 7 of 33 urnas still open, gates reopen. In Rio (Flamengo) and Belo Horizonte, late voters are turned away.",
-  "src": "https://www.correiodamanha.com.br/politica/2026/10/329718-saiba-quais-secoes-eleitorais-continuaram-abertas-apos-as-17h-e-onde-votacao-foi-encerrada.html",
-  "txt_pt": "São Paulo, centro universitário FAM: 7 de 33 urnas ainda abertas, portões reabrem. No Rio (Flamengo) e em Belo Horizonte, eleitores atrasados são mandados embora.",
+  "t": "~18:00",
+  "txt": "Zanin clarifies that the extension applies only where urnas were not yet closed, and that votes in closed urnas count. TSE president Nunes Marques tells the regional courts that only sections still open continue until 19:00. Closed urnas do not reopen.",
+  "note": "The clarification file is time-stamped 17:57; Agência Brasil reports it at 18:08; the STF published it at 18:28.",
+  "src": "https://noticias-stf-wp-prd.s3.sa-east-1.amazonaws.com/wp-content/uploads/wpallimport/uploads/2026/10/25183217/esclarecimento.pdf",
+  "key": false,
+  "txt_pt": "Zanin esclarece que a prorrogação vale só onde as urnas não tinham sido encerradas e que os votos das urnas encerradas contam. O presidente do TSE, Nunes Marques, orienta os TREs: só as seções ainda abertas seguem até 19h. Urnas encerradas não reabrem.",
+  "note_pt": "O arquivo do esclarecimento tem horário de 17h57; a Agência Brasil noticia às 18h08; o STF publica às 18h28."
+ },
+ {
+  "d": "2026-10-25",
+  "t": "",
+  "txt": "After 17:00: in Rio (Flamengo) at least 7 late voters are turned away; in Belo Horizonte a voter finds the section closed at 17:45; in São Paulo some sections stay open until 19:00, but few voters come (3 or 4 at one section).",
+  "note": null,
+  "src": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/prorrogacao-da-votacao-teve-baixa-procura-e-frustracao-de-eleitores",
+  "key": false,
+  "txt_pt": "Depois das 17h: no Rio (Flamengo) pelo menos 7 eleitores atrasados são mandados embora; em Belo Horizonte um eleitor encontra a seção fechada às 17h45; em São Paulo algumas seções ficam abertas até 19h, mas aparecem poucos eleitores (3 ou 4 numa seção).",
   "note_pt": null
  },
  {
   "d": "2026-10-25",
   "t": "19:00",
-  "txt": "Extended voting ends. The count starts again. Lula leads first.",
-  "src": "https://www.poder360.com.br/poder-eleicoes-2026/leia-a-cronologia-da-ampliacao-do-horario-de-votacao-no-2o-turno/",
+  "txt": "Extended voting ends. The count starts again. Lula leads at first.",
+  "note": null,
+  "src": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-retoma-contagem-de-votos-em-todo-o-pais",
   "key": true,
   "txt_pt": "Fim da votação prorrogada. A apuração recomeça. Lula lidera no início.",
   "note_pt": null
  },
  {
   "d": "2026-10-25",
-  "t": "19:45",
-  "txt": "Flávio takes the lead with about 13% to 14% counted.",
-  "src": "https://www.terra.com.br/ao-vivo/noticias/eleicoes/eleicoes-2026-confira-como-foi-a-apuracao-do-2-turno,c1edbcf56b98dcf79864578a36a476336470wsfv.html",
-  "note": "13.35% or 13.98%, by source.",
-  "txt_pt": "Flávio assume a liderança com cerca de 13% a 14% apurado.",
-  "note_pt": "13,35% ou 13,98%, conforme a fonte."
+  "t": "19:46",
+  "txt": "Flávio takes the lead with about 14% of sections counted (13.98%).",
+  "note": "Terra's live blog gives 19:45 at 13.35%.",
+  "src": "https://br.investing.com/news/politics-news/flavio-ultrapassa-lula-e-tem-5003-contra-4997-com-1398-das-secoes-apuradas-mostra-tse-2101954",
+  "key": false,
+  "txt_pt": "Flávio assume a liderança com cerca de 14% das seções apuradas (13,98%).",
+  "note_pt": "O ao vivo do Terra dá 19h45 com 13,35%."
  },
  {
   "d": "2026-10-25",
-  "t": "20:28",
-  "txt": "Lula takes the lead again near 46% counted and keeps it.",
-  "src": "https://www.terra.com.br/ao-vivo/noticias/eleicoes/eleicoes-2026-confira-como-foi-a-apuracao-do-2-turno,c1edbcf56b98dcf79864578a36a476336470wsfv.html",
-  "txt_pt": "Lula volta à frente perto de 46% apurado e não perde mais a liderança.",
-  "note_pt": null
+  "t": "~20:25",
+  "txt": "Lula takes the lead again with just under half counted (47% to 48%) and keeps it.",
+  "note": "Bloomberg Línea: Lula ahead at 48.42% counted (20:26). Terra: ahead at 47.24% (20:25).",
+  "src": "https://www.bloomberglinea.com.br/brasil/ao-vivo-brasil-vota-no-2-turno-para-escolher-entre-lula-e-flavio-bolsonaro-como-presidente/",
+  "key": false,
+  "txt_pt": "Lula volta à frente com pouco menos da metade apurada (47% a 48%) e não perde mais a liderança.",
+  "note_pt": "Bloomberg Línea: Lula à frente com 48,42% apurado (20h26). Terra: à frente com 47,24% (20h25)."
  },
  {
   "d": "2026-10-25",
   "t": "23:38",
-  "txt": "100% counted. Lula 51.79% (64,256,232), Flávio 48.21% (59,826,041). First turnaround from round 1 to round 2 since 1989.",
-  "src": "https://www.poder360.com.br/poder-eleicoes-2026/com-lula-brasil-tem-1a-virada-de-resultado-do-1o-para-o-2o-turno/",
+  "txt": "100% counted. Lula 51.79% (64,256,232), Flávio 48.21% (59,826,041). It is the first time since direct elections returned in 1989 that the round-1 runner-up wins the runoff; all 7 earlier runoffs went to the round-1 leader.",
+  "note": "23:38 is Poder360's time for 100%. TSE president Nunes Marques announced the result at 23:24.",
+  "src": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/lula-e-reeleito-presidente-do-brasil-em-virada-historica",
   "key": true,
-  "txt_pt": "100% apurado. Lula 51,79% (64.256.232), Flávio 48,21% (59.826.041). Primeira virada do 1º para o 2º turno desde 1989.",
-  "note_pt": null
+  "txt_pt": "100% apurado. Lula 51,79% (64.256.232), Flávio 48,21% (59.826.041). É a primeira vez desde a volta das eleições diretas, em 1989, que o segundo colocado do 1º turno vence o 2º turno; os 7 segundos turnos anteriores foram vencidos pelo líder do 1º turno.",
+  "note_pt": "23h38 é o horário do Poder360 para 100%. O presidente do TSE, Nunes Marques, anunciou o resultado às 23h24."
  },
  {
   "d": "2026-10-25",
-  "t": "night",
-  "txt": "Flávio does not accept the result and says he will ask the TSE to annul it. He cites the mid-vote rule change. His own campaign had also asked for an extension.",
-  "src": "https://www.infomoney.com.br/politica/flavio-nao-reconhece-resultado-da-eleicao-e-diz-que-pedira-anulacao-ao-tse/",
-  "txt_pt": "Flávio não reconhece o resultado e diz que pedirá a anulação ao TSE. Cita a mudança de regra durante a votação. A própria campanha dele também tinha pedido prorrogação.",
+  "t": "",
+  "txt": "Night: Flávio does not accept the result and says he will ask for the election to be annulled, citing the rule change during voting. His own campaign had also asked for an extension.",
+  "note": null,
+  "src": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/flavio-nao-reconhece-vitoria-de-lula-e-tentara-anulacao-do-pleito",
+  "key": false,
+  "txt_pt": "À noite: Flávio não reconhece o resultado e diz que pedirá a anulação da eleição, citando a mudança de regra durante a votação. A própria campanha dele também tinha pedido prorrogação.",
   "note_pt": null
  }
 ]
