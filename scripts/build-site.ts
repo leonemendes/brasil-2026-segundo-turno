@@ -17,6 +17,7 @@ for (const id of TABLES) {
 
 const page = readFileSync("ds/index.html", "utf8");
 const shim = readFileSync("site-src/dash-shim.js", "utf8");
+const analytics = readFileSync("site-src/analytics.js", "utf8");
 const links = TABLES.map((id) => `<li><span>${id}</span> <a href="data/${id}.csv" download>CSV</a> <a href="data/${id}.json" download>JSON</a></li>`).join("");
 
 const html = `<!doctype html>
@@ -55,6 +56,7 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
 </style>
 <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
 <script>window.DASH_DATASETS = ${JSON.stringify(DATASETS)};</script>
+<script>${analytics}</script>
 <script>${shim}</script>
 </head>
 <body>
