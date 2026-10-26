@@ -1,8 +1,8 @@
 import { readFileSync, writeFileSync, mkdirSync, copyFileSync, existsSync } from "node:fs";
 
 const REPO = "https://github.com/leonemendes/brasil-2026-segundo-turno";
-const DATASETS = ["national", "states", "municipalities", "abroad", "close_curves", "late_sections", "timeline", "extension", "urna_log_examples", "vote_sources", "r1_candidates", "map_municipalities", "map_states", "map_world"];
-const TABLES = ["national", "states", "municipalities", "abroad", "close_curves", "late_sections", "timeline", "extension", "vote_sources", "r1_candidates"];
+const DATASETS = ["national", "states", "municipalities", "abroad", "close_curves", "late_sections", "timeline", "extension", "urna_log_examples", "vote_sources", "r1_candidates", "late_votes_states", "late_votes_minutes", "map_municipalities", "map_states", "map_world"];
+const TABLES = ["national", "states", "municipalities", "abroad", "close_curves", "late_sections", "timeline", "extension", "vote_sources", "r1_candidates", "late_votes_states", "late_votes_minutes"];
 const OUT = process.argv[2] ?? "public";
 
 mkdirSync(`${OUT}/data`, { recursive: true });

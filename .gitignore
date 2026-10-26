@@ -14,3 +14,4 @@ ds/i18n-keys.json
 *.log
 .vercel
 .DS_Store
+.claude/
