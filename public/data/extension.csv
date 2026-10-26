@@ -1,2 +1,2 @@
-status,sections_open_after_1749,voters_in_those_sections,lula_in_those_sections,flavio_in_those_sections,sections_queue_1_to_49,margin,turnout,margin_without_late_sections
-waiting_for_tse_file,,,,,,4430191,128236074,
+status,method,urnas_open_after_1745,urnas_open_after_1749,urnas_with_late_vote,votes_after_17,queue,after_pause,votes_after_1749,margin,turnout,margin_min_without_late,margin_max_without_late
+measured,urna logs,7352,7290,3348,5048,905,4143,2449,4430191,128236074,4425143,4435239

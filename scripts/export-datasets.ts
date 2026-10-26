@@ -159,3 +159,49 @@ const sources = [...r1area.entries()].map(([uf, a]) => {
   return { uf, area: uf === "br" ? "Brazil" : UF_NAMES[uf], gain_lula: gainL, gain_flavio: gainF, gain_total: gainL + gainF, from_other_candidates: a.O, from_turnout: turnout, from_fewer_blank_null: blankNull };
 }).sort((x, y) => (x.uf === "br" ? -1 : y.uf === "br" ? 1 : y.gain_total - x.gain_total));
 save("vote_sources", sources);
+
+const lateRows = existsSync("data/late-votes.ndjson") ? readFileSync("data/late-votes.ndjson", "utf8").trim().split("\n").filter(Boolean).map((l) => JSON.parse(l)).filter((r) => !r.error) : [];
+if (lateRows.length) {
+  const AFTER_1749 = 17 * 60 + 49, AFTER_1745 = 17 * 60 + 45;
+  const st = new Map<string, any>(), lateMun = new Map<string, { urnas: number; votes: number }>();
+  const minutes = new Map<number, { queue: number; after_pause: number }>();
+  const tot = { urnas_open_after_1745: 0, urnas_open_after_1749: 0, urnas_with_late_vote: 0, votes_after_17: 0, queue: 0, after_pause: 0, votes_after_1749: 0 };
+  for (const r of lateRows) {
+    const s = st.get(r.uf) ?? { uf: r.uf, state: UF_NAMES[r.uf], urnas_open_after_1745: 0, urnas_open_after_1749: 0, urnas_with_late_vote: 0, votes_after_17: 0, queue: 0, after_pause: 0, votes_after_1749: 0 };
+    for (const a of [s, tot]) {
+      if (r.close_bsb >= AFTER_1745) a.urnas_open_after_1745++;
+      if (r.close_bsb >= AFTER_1749) a.urnas_open_after_1749++;
+      if (r.after_17 > 0) a.urnas_with_late_vote++;
+      a.votes_after_17 += r.after_17; a.queue += r.queue; a.after_pause += r.after_gap; a.votes_after_1749 += r.after_1749;
+    }
+    st.set(r.uf, s);
+    const m = lateMun.get(r.mun) ?? { urnas: 0, votes: 0 };
+    if (r.close_bsb >= AFTER_1749) m.urnas++;
+    m.votes += r.after_17;
+    lateMun.set(r.mun, m);
+    (r.late_minutes as number[]).forEach((t, i) => {
+      const bin = Math.min(125, Math.floor(t / 5) * 5);
+      const b = minutes.get(bin) ?? { queue: 0, after_pause: 0 };
+      if (i < r.queue) b.queue++; else b.after_pause++;
+      minutes.set(bin, b);
+    });
+  }
+  if (tot.queue + tot.after_pause !== tot.votes_after_17) throw new Error("late votes do not add up");
+  save("late_votes_states", [...st.values()].sort((a, b) => b.votes_after_17 - a.votes_after_17));
+  save("late_votes_minutes", [...minutes.entries()].sort((a, b) => a[0] - b[0]).map(([minute, v]) => ({ minute_after_17: minute, ...v })));
+  const brR2 = JSON.parse(readFileSync("data/r2-uf.json", "utf8")).br, M = brR2.c13 - brR2.c22;
+  save("extension", [{ status: "measured", method: "urna logs", ...tot, margin: M, turnout: brR2.comp, margin_min_without_late: M - tot.votes_after_17, margin_max_without_late: M + tot.votes_after_17 }]);
+
+  const ibgeOfMun = new Map<string, string>();
+  for (const a of JSON.parse(readFileSync("data/mun-cm.json", "utf8")).abr) for (const m of a.mu) ibgeOfMun.set(m.cd, m.cdi);
+  const lateByIbge = new Map([...lateMun.entries()].map(([cd, v]) => [ibgeOfMun.get(cd), v]));
+  const munFile = JSON.parse(readFileSync(`${OUT}/municipalities.json`, "utf8"));
+  for (const r of munFile) { const v = lateByIbge.get(r.ibge); r.sections_late = v ? v.urnas : 0; r.voters_late_sections = null; r.late_votes = v ? v.votes : 0; }
+  save("municipalities", munFile);
+  const stFile = JSON.parse(readFileSync(`${OUT}/states.json`, "utf8"));
+  for (const r of stFile) { const v = st.get(r.uf); r.late_2026_r2 = v ? v.urnas_open_after_1749 : 0; r.sections_2026_r2 = null; }
+  save("states", stFile);
+  const ls = JSON.parse(readFileSync(`${OUT}/late_sections.json`, "utf8")).filter((r: any) => r.election !== "2026 runoff");
+  save("late_sections", [...ls, { election: "2026 runoff", sections: null, closed_1_to_49_min_late: null, closed_49_min_or_more_late: tot.urnas_open_after_1749 }]);
+  console.log("late votes:", JSON.stringify(tot));
+}

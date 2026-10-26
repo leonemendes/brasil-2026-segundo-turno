@@ -4,8 +4,8 @@ const file = process.argv[2];
 let html = await Bun.file(file).text();
 const body = html.slice(html.indexOf('<div class="bz">'), html.indexOf("<script>"));
 const blocks = new Set<string>();
-for (const tag of ["h1", "h2", "h3", "p", "li", "button"])
-  for (const m of body.matchAll(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)</${tag}>`, "g"))) blocks.add(m[1].trim());
+for (const tag of ["h1", "h2", "h3", "p", "li", "button", "th"])
+  for (const m of body.matchAll(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)</${tag}>`, "g"))) if (!(tag === "th" && m[1].includes("<button"))) blocks.add(m[1].trim());
 for (const m of body.matchAll(/<span class="bz-k">([\s\S]*?)<\/span>/g)) blocks.add(m[1].trim());
 for (const m of body.matchAll(/<div class="bz-ctrlrow"><span>([^<]+)<\/span>/g)) blocks.add(m[1].trim());
 

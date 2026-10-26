@@ -1,1 +1,1 @@
-[{"status":"waiting_for_tse_file","sections_open_after_1749":null,"voters_in_those_sections":null,"lula_in_those_sections":null,"flavio_in_those_sections":null,"sections_queue_1_to_49":null,"margin":4430191,"turnout":128236074,"margin_without_late_sections":null}]
+[{"status":"measured","method":"urna logs","urnas_open_after_1745":7352,"urnas_open_after_1749":7290,"urnas_with_late_vote":3348,"votes_after_17":5048,"queue":905,"after_pause":4143,"votes_after_1749":2449,"margin":4430191,"turnout":128236074,"margin_min_without_late":4425143,"margin_max_without_late":4435239}]
