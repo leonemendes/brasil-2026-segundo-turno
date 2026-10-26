@@ -73,3 +73,34 @@ ${page}
 `;
 writeFileSync(`${OUT}/index.html`, html);
 console.log(`site: ${OUT}/index.html (${html.length} bytes), ${DATASETS.length} datasets, ${TABLES.length} CSV files`);
+
+const { createHash } = await import("node:crypto");
+const D3 = "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js";
+const d3buf = Buffer.from(await (await fetch(D3)).arrayBuffer());
+const d3sri = "sha384-" + createHash("sha384").update(d3buf).digest("base64");
+let final = readFileSync(`${OUT}/index.html`, "utf8").replace(`<script src="${D3}"></script>`, `<script src="${D3}" integrity="${d3sri}" crossorigin="anonymous"></script>`);
+writeFileSync(`${OUT}/index.html`, final);
+const hashes = [...final.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => `'sha256-${createHash("sha256").update(m[1]).digest("base64")}'`);
+const csp = [
+  "default-src 'self'",
+  `script-src 'self' https://cdn.jsdelivr.net https://eu-assets.i.posthog.com ${hashes.join(" ")}`,
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src https://fonts.gstatic.com",
+  "img-src 'self' data:",
+  "connect-src 'self' https://eu.i.posthog.com https://eu-assets.i.posthog.com",
+  "object-src 'none'", "base-uri 'none'", "form-action 'none'", "frame-ancestors 'none'", "upgrade-insecure-requests",
+].join("; ");
+const vercel = {
+  $schema: "https://openapi.vercel.sh/vercel.json", framework: null, installCommand: "", buildCommand: "", outputDirectory: "public",
+  headers: [{ source: "/(.*)", headers: [
+    { key: "Content-Security-Policy", value: csp },
+    { key: "X-Content-Type-Options", value: "nosniff" },
+    { key: "X-Frame-Options", value: "DENY" },
+    { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+    { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
+    { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+    { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+  ] }],
+};
+writeFileSync("vercel.json", JSON.stringify(vercel, null, 2) + "\n");
+console.log(`security: ${hashes.length} inline script hashes, d3 SRI ${d3sri.slice(0, 20)}…`);
