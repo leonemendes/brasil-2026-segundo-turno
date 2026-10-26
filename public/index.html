@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -174,7 +174,7 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
 
 <div class="bz">
   <div class="bz-head" id="top">
-    <div class="bz-lang bz-seg" role="group" aria-label="Language"><button data-lang="en" aria-pressed="true">EN</button><button data-lang="pt" aria-pressed="false">PT</button></div>
+    <div class="bz-lang bz-seg" role="group" aria-label="Language"><button data-lang="en" aria-pressed="false">EN</button><button data-lang="pt" aria-pressed="true">PT</button></div>
     <h1>Brazil 2026 runoff: who won where, and what the extra two hours changed</h1>
     <p class="bz-muted" id="takeaway"><span class="bz-v" data-source="national_shares" data-field="left_name" data-where="key=r2">—</span> won the runoff with <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=r2" data-fmt="pct">—</span> after losing round 1 by <span class="bz-v" data-source="national_shares" data-field="margin_abs" data-where="key=r1" data-fmt="int">—</span> votes. Voting was extended from 17:00 to 19:00 by a court order three minutes after polls closed.</p>
   </div>
@@ -946,7 +946,7 @@ function redraw() {
 }
 
 dash.onData(() => {
-  if (!langSet) { langSet = true; const p = dash.params().lang; applyLang(p ?? ((navigator.language || "").toLowerCase().startsWith("pt") ? "pt" : "en")); }
+  if (!langSet) { langSet = true; const p = dash.params().lang; applyLang(p ?? "pt"); }
   S.colors = themeColors();
   bindValues();
   if (!prepare()) return;

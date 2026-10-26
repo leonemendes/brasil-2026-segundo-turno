@@ -20,7 +20,7 @@ const shim = readFileSync("site-src/dash-shim.js", "utf8");
 const links = TABLES.map((id) => `<li><span>${id}</span> <a href="data/${id}.csv" download>CSV</a> <a href="data/${id}.json" download>JSON</a></li>`).join("");
 
 const html = `<!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
