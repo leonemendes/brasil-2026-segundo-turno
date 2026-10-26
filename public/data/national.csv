@@ -1,0 +1,9 @@
+election,key,left_name,right_name,left,right,valid
+"2018 runoff, abroad",abroad_y2018,Haddad,Jair Bolsonaro,53730,131671,185401
+"2022 runoff, abroad",abroad_y2022,Lula,Jair Bolsonaro,152905,145264,298169
+"2026 round 1, abroad",abroad_r1,Lula,Flávio Bolsonaro,157387,143900,331005
+"2026 runoff, abroad",abroad_r2,Lula,Flávio Bolsonaro,200154,171497,371651
+2018 runoff,y2018,Haddad,Jair Bolsonaro,47040906,57797847,104838753
+2022 runoff,y2022,Lula,Jair Bolsonaro,60345999,58206354,118552353
+2026 round 1,r1,Lula,Flávio Bolsonaro,53879538,56104503,119306034
+2026 runoff,r2,Lula,Flávio Bolsonaro,64256232,59826041,124082273

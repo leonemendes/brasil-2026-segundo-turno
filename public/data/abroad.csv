@@ -1,0 +1,187 @@
+code,city,city_pt,country,iso,region,x,y,r1_lula,r1_flavio,r1_valid,r2_lula,r2_flavio,y2018_haddad,y2018_bolsonaro,y2022_lula,y2022_bolsonaro
+29254,Abidjan,Abidjã,Côte d'Ivoire,384,Africa,489,306,24,13,44,31,22,17,10,26,15
+29262,Abu Dhabi,Abu Dhabi,United Arab Emirates,784,Asia,649.2,252.3,512,659,1355,643,772,138,539,404,593
+99198,Abuja,Abuja,Nigeria,566,Africa,520.3,295.7,,,,0,0,,,,
+29270,Accra,Accra,Ghana,288,Africa,499.5,305.4,8,2,13,8,5,9,5,14,4
+99325,Addis Ababa,Adis Abeba,Ethiopia,231,Africa,606.3,295.9,,,,0,0,,,,
+30457,Amsterdam,Amsterdã,Netherlands,528,Europe,513.4,162.2,4624,1081,6274,5578,1383,1047,900,4511,1242
+29289,Amman,Amã,Jordan,400,Asia,598.6,230,675,59,787,725,76,231,119,407,125
+29297,Ankara,Ancara,Turkey,792,Asia,590.2,205,24,7,37,29,8,7,8,20,8
+29300,Algiers,Argel,Algeria,012,Africa,508.4,215.1,27,3,31,23,3,0,0,,
+29319,Artigas,Artigas,Uruguay,858,Americas,345,406.8,104,227,367,113,261,83,319,125,292
+29327,Asunción,Assunção,Paraguay,600,Americas,342,391.5,250,740,1062,325,862,213,881,317,920
+39241,Astana,Astana,Kazakhstan,398,Asia,696.1,166.6,,,,0,0,0,0,,
+29335,Athens,Atenas,Greece,300,Europe,565.1,211.2,196,230,494,255,311,99,276,193,242
+39080,Atlanta,Atlanta,United States,840,Americas,268.4,224.5,1221,3276,4905,1673,3927,393,2906,1180,3373
+99171,Baghdad,Bagdá,Iraq,368,Asia,621.7,225.8,,,,0,0,,,,
+39128,Baku,Baku,Azerbaijan,031,Asia,636.9,203.4,,,,0,0,,,,
+99350,Bamako,Bamako,Mali,466,Africa,478,285.9,,,,0,0,0,0,,
+29343,Bangkok,Bangkok,Thailand,764,Asia,775.8,282.7,40,51,99,56,60,21,53,47,50
+29351,Barcelona,Barcelona,Spain,724,Europe,506,200.2,3692,995,5046,4821,1416,939,806,3246,1053
+99473,Manama,Barein,Bahrain,048,Asia,638.8,247.1,17,27,47,11,28,,,11,25
+29360,Beirut,Beirute,Lebanon,422,Asia,597.4,224,2538,1138,3901,2736,1276,941,1041,1591,1099
+29378,Belgrade,Belgrado,Serbia,688,Europe,556.1,188.9,30,13,48,35,13,16,10,36,12
+38881,Belmopan,Belmopan,Belize,084,Americas,256.4,272.9,,,,0,0,0,0,,
+29386,Berlin,Berlim,Germany,276,Europe,536.8,161.6,6504,925,8020,7452,1125,1832,768,6206,1011
+29394,Bissau,Bissau,Guinea-Bissau,624,Africa,457.2,288,17,17,37,19,22,13,14,20,25
+29408,Bogotá,Bogotá,Colombia,170,Americas,296.7,307.8,245,252,527,281,283,180,284,380,293
+29416,Boston,Boston,United States,840,Americas,305,197,3919,11228,16097,5402,13605,1827,11786,3508,10960
+39209,Bratislava,Bratislava,Slovakia,703,Europe,547,177.3,35,13,58,47,14,15,26,43,19
+39187,Brazzaville,Brazzaville,Republic of the Congo,178,Africa,541.8,332.4,,,,0,0,0,0,,
+29424,Bridgetown,Bridgetown,Barbados,052,Americas,336.4,284.6,,,,0,0,0,0,,
+29432,Brussels,Bruxelas,Belgium,056,Europe,511.9,167.7,2516,1959,4975,3064,2154,746,1049,2115,1444
+29440,Bucharest,Bucareste,Romania,642,Europe,571.6,190.1,31,22,62,40,25,7,14,38,19
+29459,Budapest,Budapeste,Hungary,348,Europe,552.3,179.6,331,93,465,355,117,54,56,481,83
+29467,Buenos Aires,Buenos Aires,Argentina,032,Americas,339.8,419.6,3507,1449,5311,4184,1778,1566,1365,4373,2240
+29475,Cayenne,Caiena,French Guiana (France),250,Americas,356.4,307.2,484,518,1085,599,563,551,950,598,722
+29483,Cairo,Cairo,Egypt,818,Africa,585.7,235.8,46,12,64,60,16,20,24,46,23
+29491,Canberra,Camberra,Australia,036,Oceania,909.3,421.7,1478,805,2594,1856,997,283,539,1264,709
+30651,Guangzhou,Cantão,China,156,Asia,810.8,256.1,48,35,92,67,46,5,82,27,61
+29505,Caracas,Caracas,Venezuela,862,Americas,316.4,291.9,128,125,262,106,136,67,360,0,6
+99384,Castries,Castries,Saint Lucia,662,Americas,332.6,282,,,,0,0,,,,
+29513,Chicago,Chicago,United States,840,Americas,259.5,198.6,1485,953,2694,2059,1166,528,1216,1586,1251
+29521,Chuy,Chuy,Uruguay,858,Americas,353.3,416.8,,,,0,0,4,10,,
+29530,Cape Town,Cidade do Cabo,South Africa,710,Africa,550.6,417.5,90,58,160,107,61,50,64,100,62
+29556,Ciudad del Este,Ciudad Del Este,Paraguay,600,Americas,350.1,392.3,202,2239,2504,251,2709,193,2196,238,2719
+29564,Ciudad Guayana,Ciudad Guayana,Venezuela,862,Americas,328.1,297.8,,,,0,0,4,32,0,0
+99210,Cobija,Cobija,Bolivia,068,Americas,311.3,351.1,,,,0,0,,,,
+29572,Cochabamba,Cochabamba,Bolivia,068,Americas,318.4,368.9,57,119,185,62,124,23,97,101,169
+30929,Colombo,Colombo,Sri Lanka,144,Asia,719.2,301.7,,,,0,0,0,0,,
+38903,Conakry,Conacri,Guinea,324,Africa,462.7,294.2,,,,0,0,0,0,,
+29580,Concepción,Concepción,Paraguay,600,Americas,342.4,386.2,2,32,35,3,28,0,40,3,32
+29599,Copenhagen,Copenhague,Denmark,208,Europe,534.5,149.7,1166,195,1477,1383,243,420,190,1047,198
+38920,Cotonou,Cotonou,Benin,204,Africa,506.6,303.2,,,,0,0,0,0,,
+29602,Córdoba,Córdoba,Argentina,032,Americas,323.9,409.9,182,159,367,209,176,152,157,180,161
+29610,Dakar,Dacar,Senegal,686,Africa,452.1,280.1,51,24,79,59,22,24,32,39,28
+29629,Dhaka,Dacca,Bangladesh,050,Asia,748.1,254.2,,,,0,0,,,,
+29637,Damascus,Damasco,Syria,760,Asia,599.6,225.2,97,7,108,106,11,0,0,,
+38962,Dar es Salaam,Dar Es Salaam,Tanzania,834,Africa,607.6,339.4,11,5,16,11,6,7,6,6,2
+29653,Doha,Doha,Qatar,634,Asia,641.4,249.8,147,173,357,159,195,39,160,151,221
+29661,Dublin,Dublin,Ireland,372,Europe,482.8,158.5,6025,1559,8299,7194,1776,510,437,6023,1339
+29645,Dili,Díli,Timor-Leste,626,Asia,844.6,344.3,16,27,46,18,33,11,27,22,37
+99503,Edinburgh,Edimburgo,United Kingdom,826,Europe,491.2,148.7,488,139,677,658,176,,,,
+29670,Encarnación,Encarnación,Paraguay,600,Americas,346.7,397.6,14,122,141,19,121,18,93,16,121
+29688,Stockholm,Estocolmo,Sweden,752,Europe,549.6,135.3,1770,505,2540,2127,591,666,421,1785,542
+30961,Faro,Faro,Portugal,620,Europe,478.2,214.3,1097,1305,2670,1464,1629,227,564,934,862
+29696,Frankfurt,Frankfurt,Germany,276,Europe,523.8,170.4,3657,1320,5500,4572,1593,1327,1276,3647,1453
+30669,Gaborone,Gaborone,Botswana,072,Africa,571.1,389.8,,,,0,0,0,0,,
+29700,Geneva,Genebra,Switzerland,756,Europe,516.9,184.1,2298,2226,5066,3041,2584,1077,1846,2320,2279
+29718,Georgetown,Georgetown,Guyana,328,Americas,340.4,302,7,43,53,8,47,8,47,8,58
+98000,Guatemala City,Guatemala,Guatemala,320,Americas,251.6,280.3,33,67,118,43,76,20,103,35,108
+29742,Hamamatsu,Hamamatsu,Japan,392,Asia,878,221.5,884,4698,6485,1226,5484,399,4677,841,4916
+29750,Hanoi,Hanói,Vietnam,704,Asia,790.5,262.2,13,14,29,15,17,10,7,13,6
+29769,Harare,Harare,Zimbabwe,716,Africa,585.2,370.2,,,,0,0,0,0,,
+30902,Hartford,Hartford,United States,840,Americas,300.5,199,557,1207,1895,807,1529,141,831,525,933
+29777,Havana,Havana,Cuba,192,Americas,273.9,256.2,36,1,38,43,1,19,7,32,0
+29785,Helsinki,Helsinque,Finland,246,Europe,568.4,131.8,475,155,693,550,185,180,154,444,163
+29793,Hong Kong,Hong Kong,China,156,Asia,813.3,258.5,99,105,244,127,133,54,225,80,95
+29807,Houston,Houston,United States,840,Americas,238.3,236.6,1265,2586,4325,1744,2982,615,2663,1458,2748
+29815,Yaoundé,Iaundê,Cameroon,120,Africa,531.6,310.1,,,,0,0,0,0,,
+38989,Yerevan,Ierevan,Armenia,051,Asia,622.2,204.2,,,,0,0,0,0,,
+29823,Iquitos,Iquitos,Peru,604,Americas,299,331,,,,0,0,0,0,,
+29831,Islamabad,Islamabade,Pakistan,586,Asia,700.5,224.7,,,,0,0,0,0,,
+39306,Istanbul,Istambul,Turkey,792,Asia,579.5,201.5,90,30,127,98,29,35,55,76,44
+29840,Jakarta,Jacarta,Indonesia,360,Asia,793.2,337.8,8,19,31,15,23,9,16,15,32
+29173,Kathmandu,Katmandu,Nepal,524,Asia,734.2,242.7,1,11,13,1,12,8,12,2,13
+29858,Kyiv,Kiev,Ukraine,804,Europe,583.8,169.2,4,19,23,3,16,7,17,,
+99430,Kingston,Kingston-Jamaica,Jamaica,388,Americas,289.2,270.8,4,14,19,5,11,3,17,11,10
+29874,Kinshasa,Kinshasa,DR Congo,180,Africa,541.9,332.9,,,,0,0,6,13,1,9
+29882,Kuwait City,Kuaite,Kuwait,414,Asia,631.7,237.7,54,12,73,62,17,21,26,10,29
+29890,Kuala Lumpur,Kuala Lumpur,Malaysia,458,Asia,779.1,312.1,44,27,82,41,44,20,34,32,26
+29904,La Paz,La Paz,Bolivia,068,Americas,313,366.4,98,106,224,117,115,69,146,74,126
+29912,Lagos,Lagos,Nigeria,566,Africa,509.3,302.8,26,6,32,32,5,14,8,21,4
+29939,Libreville,Libreville,Gabon,266,Africa,526,319.6,,,,0,0,0,0,,
+99341,Lilongwe,Lilongue,Malawi,454,Africa,592.7,359.3,,,,0,0,0,0,,
+29947,Lima,Lima,Peru,604,Americas,288.6,354,248,380,730,297,424,151,429,314,430
+29955,Lisbon,Lisboa,Portugal,620,Europe,474.9,208.9,14948,10548,27940,19420,12894,2473,4475,12872,7085
+39160,Ljubljana,Liubliana,Slovenia,705,Europe,539.8,184.6,61,25,98,67,28,15,14,52,21
+29963,Lomé,Lomé,Togo,768,Africa,503.3,303.9,,,,0,0,0,0,,
+29971,London,Londres,United Kingdom,826,Europe,499.6,165.3,8152,5227,14475,10310,6173,3268,5227,9064,6004
+29980,Los Angeles,Los Angeles,United States,840,Americas,175.5,223.6,2131,1994,4493,2939,2402,721,1846,1955,2014
+29998,Luanda,Luanda,Angola,024,Africa,536.3,345.1,147,101,264,167,118,67,91,124,99
+99287,Lusaka,Lusaca,Zambia,894,Africa,577.7,363.3,,,,0,0,2,15,13,1
+30066,Madrid,Madri,Spain,724,Europe,489.8,203.4,3571,2343,6555,4472,2873,1416,2109,3078,2410
+39263,Malabo,Malabo,Equatorial Guinea,226,Africa,524.1,310.4,,,,0,0,0,0,,
+30082,Manila,Manila,Philippines,608,Asia,832,280.4,26,33,62,27,39,8,38,22,34
+30074,Managua,Manágua,Nicaragua,558,Americas,263.3,287.3,33,35,69,30,39,23,36,34,38
+30090,Maputo,Maputo,Mozambique,508,Africa,589.4,393.6,89,113,214,108,117,106,179,140,166
+99511,Marseille,Marselha,France,250,Europe,514.7,193.9,715,104,868,929,112,,,,
+39102,Muscat,Mascate,Oman,512,Asia,660.3,254.8,12,20,36,10,22,4,32,14,32
+39004,Mendoza,Mendoza,Argentina,032,Americas,311.1,414.4,49,55,112,62,58,36,68,56,88
+30104,Mexico City,Mexico,Mexico,484,Americas,227.9,266.7,585,589,1285,699,658,305,674,633,696
+30112,Miami,Miami,United States,840,Americas,279.9,248.5,2260,8914,12021,3201,10504,1028,10441,3058,13187
+30120,Milan,Milão,Italy,380,Europe,525.2,186.6,3593,2908,7165,4723,3545,1517,2851,3371,3044
+30147,Montevideo,Montevidéu,Uruguay,858,Americas,345.9,420.5,686,465,1264,766,532,453,660,745,540
+30155,Montreal,Montreal,Canada,124,Americas,298.1,186.5,3823,1456,5889,4747,1857,1759,1879,3871,1741
+30163,Moscow,Moscou,Russia,643,Europe,603.2,149.4,49,25,81,60,33,26,17,46,23
+30171,Mumbai,Mumbai,India,356,Asia,700,267.7,5,1,11,8,1,0,0,11,4
+30180,Munich,Munique,Germany,276,Europe,531.8,177.4,3364,1287,5289,4525,1656,1428,1566,3534,1559
+30198,Nagoya,Nagóia,Japan,392,Asia,875.7,220.1,2022,11480,15425,2877,13284,912,10538,2117,12704
+30201,Nairobi,Nairóbi,Kenya,404,Africa,601.1,324.3,26,17,46,29,16,19,16,35,25
+99180,Nassau,Nassau,Bahamas,044,Americas,287.7,250.6,6,10,19,6,14,4,16,9,14
+39322,Nicosia,Nicosia,Cyprus,196,Europe,591.6,220,24,20,58,29,25,9,13,15,9
+30210,New Delhi,Nova Delhi,India,356,Asia,711.9,240,24,26,50,25,23,14,16,23,14
+30228,New York,Nova York,United States,840,Americas,296.9,202.5,4570,4684,9892,6307,5730,2105,6811,5331,6068
+99490,Orlando,Orlando,United States,840,Americas,276.7,240.3,1332,6981,8868,1885,8042,,,,
+30244,Oslo,Oslo,Norway,578,Europe,529.5,132.9,592,198,884,820,248,249,210,628,197
+30252,Ottawa,Ottawa,Canada,124,Americas,292.2,186.8,794,395,1361,961,475,242,348,680,381
+30260,Panama City,Panama,Panama,591,Americas,281.8,296,236,336,658,267,429,90,471,252,392
+30279,Paramaribo,Paramaribo,Suriname,740,Americas,348.5,304.7,121,366,540,172,386,122,390,131,354
+30287,Paris,Paris,France,250,Europe,506.4,174.8,8054,1654,10342,9747,1927,2953,1299,7885,1622
+30295,Paso de los Libres,Paso Los Libres,Argentina,032,Americas,343.3,404.7,2,3,5,4,3,0,0,,
+30309,Pedro Juan Caballero,Pedro Juan Caballero,Paraguay,600,Americas,347.1,383.7,59,219,295,80,246,62,184,98,260
+30317,Beijing,Pequim,China,156,Asia,819.5,205.1,104,22,134,126,22,29,27,47,23
+30325,Port of Spain,Port Of Spain,Trinidad and Tobago,780,Americas,331.2,291.4,4,10,19,9,12,4,27,16,15
+30341,Porto,Porto,Portugal,620,Europe,476.3,201,10356,7559,19731,13435,8910,1674,3151,9450,5134
+30333,Port-au-Prince,Porto Príncipe,Haiti,332,Americas,301.5,269.1,5,0,5,6,2,9,17,2,3
+30350,Prague,Praga,Czechia,203,Europe,539.6,170.5,279,70,397,304,86,71,67,286,73
+30368,Praia,Praia,Cape Verde,132,Africa,435.5,279.5,39,20,70,48,29,24,8,40,22
+30376,Pretoria,Pretória,South Africa,710,Africa,577.4,393,62,172,259,79,195,50,206,83,207
+99155,Puerto Iguazú,Puerto Iguazú,Argentina,032,Americas,350.2,392.5,7,15,22,7,13,0,0,5,0
+99236,Puerto Quijarro,Puerto Quijarro,Bolivia,068,Americas,341.5,370,,,,0,0,0,0,,
+99295,Pyongyang,Pyongyang,North Korea,408,Asia,845.1,207.9,,,,0,0,,,,
+30392,Quito,Quito,Ecuador,218,Americas,284.6,321.2,130,171,328,158,185,95,245,115,255
+30406,Rabat,Rabat,Morocco,504,Africa,481.2,223.6,30,6,42,31,6,16,6,38,8
+30414,Ramallah,Ramallah,Palestine,275,Asia,596.6,230.1,1078,46,1158,1000,46,467,51,584,61
+30422,Riyadh,Riade,Saudi Arabia,682,Asia,628.1,251.5,52,22,84,49,31,14,22,38,18
+30430,Río Branco,Rio Branco,Uruguay,858,Americas,353.5,413.5,7,9,21,8,12,7,10,13,9
+30449,Rome,Roma,Italy,380,Europe,534.3,198.6,2555,1478,4434,3198,1738,1296,1755,2449,1648
+99147,St. John's,Saint Johns,Antigua and Barbuda,028,Americas,330.3,273.3,,,,0,0,,,,
+30465,Salto del Guairá,Salto Del Guairá,Paraguay,600,Americas,350.9,388,19,496,525,25,576,14,285,29,549
+30473,Santa Cruz de la Sierra,Santa Cruz de La Sierra,Bolivia,068,Americas,326.6,370,194,1162,1429,230,1236,130,1026,138,870
+99279,Santa Elena de Uairén,Santa Elena de Uairén,Venezuela,862,Americas,332.3,308.1,,,,0,0,,,,
+30481,Santiago,Santiago,Chile,152,Americas,306.1,416.1,928,809,1971,1100,946,431,923,905,922
+30988,Sarajevo,Sarajevo,Bosnia and Herzegovina,070,Europe,550.5,192,,,,0,0,0,0,,
+30538,Seoul,Seul,South Korea,410,Asia,848.5,212.5,123,72,216,148,82,20,38,126,70
+29548,Singapore,Singapura,Singapore,702,Asia,784.9,317,190,92,348,213,121,59,164,230,131
+99333,Saint-Georges-de-l'Oyapock,St Georges de Loyapock,French Guiana (France),250,Americas,357.8,310.1,,,,0,0,,,,
+30562,Sydney,Sydney,Australia,036,Oceania,915,417.4,3084,1774,5536,4161,2468,718,1351,3057,1863
+30490,Santo Domingo,São Domingos,Dominican Republic,214,Americas,308.1,269.4,65,106,189,90,118,49,167,80,138
+30503,San Francisco,São Francisco,United States,840,Americas,164,211.9,2176,1323,3782,2941,1571,1068,1734,2447,1568
+30511,San José,São José,Costa Rica,188,Americas,269.2,293.4,173,159,370,180,186,70,188,166,200
+30520,San Salvador,São Salvador,El Salvador,222,Americas,255.1,282.9,23,48,77,26,49,15,60,27,44
+39225,São Tomé,São Tomé,São Tomé and Príncipe,678,Africa,518.5,319.8,,,,0,0,0,0,,
+30546,Sofia,Sófia,Bulgaria,100,Europe,564,195.9,34,8,47,40,13,0,0,24,7
+30570,Taipei,Taipé,Taiwan,158,Asia,833.6,250.6,77,107,219,94,130,38,178,101,132
+99317,Tallinn,Talin,Estonia,233,Europe,567.9,134.8,142,19,190,160,33,26,12,156,23
+99104,Tbilisi,Tbilisi,Georgia,268,Asia,622.9,199.2,,,,0,0,0,0,,
+30597,Tehran,Teerã,Iran,364,Asia,641,218.5,14,11,25,16,11,7,22,8,9
+30600,Tegucigalpa,Tegucigalpa,Honduras,340,Americas,260.7,281.9,17,34,59,20,44,26,52,29,47
+30619,Tel Aviv,Tel Aviv,Israel,376,Asia,595.5,229.6,92,523,704,166,699,115,391,353,405
+99139,Tirana,Tirana,Albania,008,Europe,554.4,200.4,,,,0,0,,,,
+30686,Tripoli,Trípoli,Libya,434,Africa,536.2,227.1,2,0,2,0,0,0,0,,
+30708,Tunis,Tunis,Tunisia,788,Africa,527.9,214.9,12,9,22,16,7,9,14,8,4
+30627,Tokyo,Tóquio,Japan,392,Asia,883.4,218.5,2328,8423,12408,2995,9770,1417,11863,2454,10020
+39284,Ouagadougou,Uagadugu,Burkina Faso,854,Africa,495.8,286.6,,,,0,0,0,0,,
+39063,Vancouver,Vancouver,Canada,124,Americas,162.1,173.4,3221,1873,5712,4109,2194,637,1286,3442,1980
+30740,Warsaw,Varsóvia,Poland,616,Europe,557.7,162.7,183,65,282,268,89,39,38,212,68
+30767,Vienna,Viena,Austria,040,Europe,544.9,177.1,979,311,1471,1178,393,466,371,960,379
+30783,Washington,Washington,United States,840,Americas,288.6,208.3,2419,1858,4706,3065,2260,1191,2703,2552,2494
+30805,Wellington,Wellington,New Zealand,554,Oceania,979.7,440.9,234,64,332,418,101,128,179,389,164
+30821,Windhoek,Windhoek,Namibia,516,Africa,546.9,383.7,6,5,13,8,4,7,11,4,31
+30848,Shanghai,Xangai,China,156,Asia,833.4,232.2,116,41,182,182,66,48,151,125,62
+99376,Yangon,Yangon,Myanmar,104,Asia,764,274,,,,0,0,0,0,,
+39020,Zagreb,Zagreb,Croatia,191,Europe,543.9,185.4,29,17,48,31,26,5,8,26,15
+30864,Zurich,Zurique,Switzerland,756,Europe,523.4,180,2896,2299,5790,4048,2835,1835,2948,3189,2762
+30635,Toronto,Toronto,Canada,124,Americas,282.1,192.8,4670,3319,8698,5959,3975,1581,3845,5188,4111
+99244,Rivera,Rivera,Uruguay,858,Americas,347.5,408.3,,,,0,0,,,,

@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brasil 2026: segundo turno</title>
+<meta name="description" content="Who won where in Brazil's 2026 presidential runoff, compared with round 1, 2022 and 2018, and what the 17:00 to 19:00 voting extension changed. Built from official TSE data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap">
+<style>
+:root {
+  --font-anthropic-sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif; --font-anthropic-serif: "Source Serif 4", Georgia, serif;
+  --color-bg: #f7f7f5; --color-panel: #ffffff; --color-fg: #16181a; --color-fg-muted: #5c6166; --color-border-line: #e1e3e0; --color-warn: #a86a00;
+  --cds-gap-xs: 4px; --cds-gap-sm: 8px; --cds-gap-md: 16px; --cds-gap-lg: 24px; --cds-gap-xl: 40px;
+  --cds-pad-xs: 4px; --cds-pad-sm: 8px; --cds-pad-md: 12px; --cds-pad-lg: 18px;
+  --cds-radius: 8px; --cds-font-size-caption: 0.8rem; --cds-font-size-body: 0.95rem; --cds-font-size-heading: 1.15rem; --cds-font-size-title: 1.9rem; --cds-font-weight-medium: 600;
+  --cds-chart-grid: #ecedea; --cds-chart-axis: #b9bdb8; --cds-chart-reference: #9aa09b; --cds-chart-muted: #a9aeaa;
+  --cds-surface-popover: #ffffff; --cds-border: #dfe1de; --cds-shadow-popover: 0 8px 24px rgba(0,0,0,.12); --cds-text-secondary: #5c6166; --cds-dur-slow: 240ms;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --color-bg: #0f1112; --color-panel: #181b1c; --color-fg: #eef0ee; --color-fg-muted: #9aa19c; --color-border-line: #2a2f2d; --color-warn: #eda100;
+  --cds-chart-grid: #262b29; --cds-chart-axis: #444b47; --cds-chart-reference: #6c736e; --cds-chart-muted: #59605b;
+  --cds-surface-popover: #1f2324; --cds-border: #333937; --cds-shadow-popover: 0 8px 24px rgba(0,0,0,.5); --cds-text-secondary: #9aa19c;
+  color-scheme: dark;
+} }
+[hidden] { display: none !important }
+html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-family: var(--font-anthropic-sans) }
+#dash-root { max-width: 1400px; margin: 0 auto; padding: 24px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px)) }
+.site-foot { max-width: 1400px; margin: 0 auto; padding: 24px max(16px, env(safe-area-inset-right, 0px)) 48px max(16px, env(safe-area-inset-left, 0px)); border-top: 1px solid var(--color-border-line); font-size: 0.85rem; color: var(--color-fg-muted); display: grid; gap: 10px }
+.site-foot ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px }
+.site-foot a { color: var(--color-fg) }
+.site-foot li span { font-family: ui-monospace, Menlo, monospace; font-size: 0.8rem }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script>window.DASH_DATASETS = ["national","states","municipalities","abroad","close_curves","late_sections","timeline","extension","urna_log_examples","map_municipalities","map_states","map_world"];</script>
+<script>(() => {
+  const DATASETS = window.DASH_DATASETS;
+  const store = new Map();
+  const calcs = [];
+  const listeners = [];
+  let params = {};
+  try { const p = new URLSearchParams(location.search).get("lang"); if (p) params.lang = p; } catch {}
+
+  const notify = () => { for (const fn of listeners) { try { fn(); } catch (e) { console.error(e); } } };
+  const runCalcs = () => {
+    for (const c of calcs) {
+      const inputs = c.inputs.map((id) => store.get(id));
+      if (inputs.every((d) => d && d.status === "ok")) {
+        try { store.set(c.id, { status: "ok", data: c.fn(...inputs.map((d) => d.data)) }); }
+        catch (e) { console.error("calc", c.id, e); store.set(c.id, { status: "error", data: [], message: String(e) }); }
+      }
+    }
+  };
+
+  window.dash = {
+    data: (id) => store.get(id) ?? { status: "loading", data: [] },
+    calc: (id, def) => { calcs.push({ id, inputs: def.inputs, fn: def.fn }); runCalcs(); },
+    onData: (fn) => { listeners.push(fn); fn(); },
+    params: () => ({ ...params }),
+    setParams: (p) => { params = { ...params, ...p }; try { const u = new URL(location.href); if (p.lang) u.searchParams.set("lang", p.lang); history.replaceState(null, "", u); } catch {} notify(); },
+    resetParams: () => { params = {}; notify(); },
+    setLink: (name) => { try { history.replaceState(null, "", "#" + name); } catch {} },
+    colors: ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#6250d6", "#e34948"],
+    refresh: () => {},
+    loader: () => {},
+  };
+
+  for (const id of DATASETS) {
+    store.set(id, { status: "loading", data: [] });
+    fetch(`data/${id}.json`).then((r) => r.json()).then((rows) => {
+      store.set(id, { status: "ok", data: rows });
+      runCalcs();
+      notify();
+    }).catch((e) => { store.set(id, { status: "error", data: [], message: String(e) }); notify(); });
+  }
+  let t;
+  window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(notify, 150); });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", notify);
+})();
+</script>
+</head>
+<body>
+<div id="dash-root">
+<style>
+.bz { display: grid; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); color: var(--color-fg) }
+.bz h1, .bz h2, .bz h3 { margin: 0; text-wrap: balance; font-weight: var(--cds-font-weight-medium) }
+.bz h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.15 }
+.bz h2 { font-size: var(--cds-font-size-heading) }
+.bz h3 { font-size: var(--cds-font-size-body) }
+.bz p { margin: 0; max-width: 68ch; line-height: 1.55 }
+.bz-muted { color: var(--color-fg-muted) }
+.bz-cap { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted) }
+.bz-num { font-variant-numeric: tabular-nums }
+.bz-head { display: grid; gap: var(--cds-gap-sm) }
+.bz-lang { justify-self: end }
+.bz-tabs { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); border-bottom: 1px solid var(--color-border-line) }
+.bz-tabs button, .bz-seg button { font: inherit; font-size: var(--cds-font-size-body); color: var(--color-fg-muted); background: none; border: 0; padding: var(--cds-pad-sm) var(--cds-pad-md); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px }
+.bz-tabs button[aria-selected="true"] { color: var(--color-fg); border-bottom-color: var(--color-fg) }
+.bz-seg { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs) }
+.bz-seg button { border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); margin: 0; padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption) }
+.bz-seg button[aria-pressed="true"] { color: var(--color-bg); background: var(--color-fg); border-color: var(--color-fg) }
+.bz-seg button:disabled { opacity: .45; cursor: not-allowed }
+.bz button:focus-visible, .bz select:focus-visible, .bz input:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px }
+.bz-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: grid; gap: var(--cds-gap-sm); align-content: start; min-width: 0 }
+.bz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: var(--cds-gap-md) }
+.bz-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: var(--cds-gap-md) }
+.bz-big { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.1; font-variant-numeric: tabular-nums }
+.bz-story { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--cds-gap-xl); align-items: start }
+.bz-read { display: grid; gap: 0 }
+.bz-step { min-height: 62vh; display: grid; align-content: center; gap: var(--cds-gap-sm); padding-block: var(--cds-pad-lg); opacity: .45; transition: opacity var(--cds-dur-slow) }
+.bz-step.bz-on { opacity: 1 }
+.bz-step:last-child { min-height: 60vh }
+.bz-step .bz-k { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .06em }
+.bz-term { border-bottom: 1px dotted var(--color-fg-muted) }
+.bz-def { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); border-left: 2px solid var(--color-border-line); padding-left: var(--cds-pad-sm) }
+.bz-stick { position: sticky; top: var(--cds-pad-md); display: grid; gap: var(--cds-gap-sm) }
+.bz-vis { position: relative; background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; min-height: 320px }
+.bz-vis canvas { display: block; width: 100%; touch-action: manipulation }
+.bz-vis.bz-fit { min-height: 0 }
+.bz-ext { padding: var(--cds-pad-lg) }
+.bz-cities { display: grid; gap: 2px; min-width: 0 }
+.bz-cityrow { display: grid; grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr) 2.2rem; gap: var(--cds-gap-sm); align-items: center; font: inherit; font-size: var(--cds-font-size-caption); color: var(--color-fg); background: none; border: 0; padding: 2px 0; text-align: left; cursor: pointer }
+.bz-cityrow:hover { background: var(--cds-chart-grid) }
+.bz-vis path.bz-country { cursor: pointer }
+.bz-vis path.bz-country:hover { stroke: var(--color-fg); stroke-width: 1.2px; vector-effect: non-scaling-stroke }
+.bz-cityrow > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.bz-citybar { position: relative; height: 12px; background: linear-gradient(var(--cds-chart-reference), var(--cds-chart-reference)) center / 1px 100% no-repeat }
+.bz-cityrow .bz-num { text-align: right; color: var(--color-fg-muted) }
+.bz-vis svg { display: block; width: 100% }
+.bz-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); line-height: 1.45; min-width: 190px; max-width: 250px; z-index: 2 }
+.bz-tip .bz-t { color: var(--cds-text-secondary) }
+.bz-tip .bz-r { display: flex; justify-content: space-between; gap: var(--cds-gap-md); font-variant-numeric: tabular-nums }
+.bz-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs) var(--cds-gap-md); align-items: center; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted) }
+.bz-ramp { display: grid; gap: 2px; min-width: 200px; flex: 0 1 260px }
+.bz-ramp canvas { width: 100%; height: 8px; border-radius: 2px }
+.bz-ramp div { display: flex; justify-content: space-between }
+.bz-howto { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted) }
+.bz-pending { display: inline-flex; align-items: center; gap: var(--cds-gap-xs); font-size: var(--cds-font-size-caption); color: var(--color-warn) }
+.bz-pending::before { content: ""; width: .375rem; height: .375rem; border-radius: 50%; background: var(--color-warn) }
+.bz-explore { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: var(--cds-gap-md); align-items: start }
+.bz-ctrl { display: grid; gap: var(--cds-gap-sm) }
+.bz-ctrlrow { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); align-items: center }
+.bz-ctrlrow > span { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); min-width: 4.5rem }
+.bz select, .bz input[type="search"] { font: inherit; font-size: var(--cds-font-size-caption); color: var(--color-fg); background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-xs) var(--cds-pad-sm); min-width: 0 }
+.bz-chip { font: inherit; font-size: var(--cds-font-size-caption); border: 1px solid var(--color-border-line); background: var(--color-panel); color: var(--color-fg); border-radius: 999px; padding: 2px 10px; cursor: pointer }
+.bz-tbl { max-height: 520px; overflow: auto; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-panel) }
+.bz-tbl table { border-collapse: collapse; width: 100%; font-size: var(--cds-font-size-caption); min-width: 720px }
+.bz-tbl th, .bz-tbl td { padding: 6px 10px; text-align: right; border-bottom: 1px solid var(--color-border-line); white-space: nowrap; font-variant-numeric: tabular-nums }
+.bz-tbl th:first-child, .bz-tbl td:first-child { text-align: left }
+.bz-tbl th { position: sticky; top: 0; background: var(--color-panel); color: var(--color-fg-muted); font-weight: var(--cds-font-weight-medium); z-index: 1 }
+.bz-tbl th button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer }
+.bz-tbl tbody tr { cursor: pointer }
+.bz-tbl tbody tr:hover, .bz-tbl tbody tr.bz-sel { background: var(--cds-chart-grid) }
+.bz-tl { list-style: none; margin: 0; padding: 0; display: grid }
+.bz-tl li { display: grid; grid-template-columns: 4.2rem 12px minmax(0, 1fr); gap: var(--cds-gap-sm); padding-bottom: var(--cds-pad-md); position: relative }
+.bz-tl li::before { content: ""; position: absolute; left: calc(4.2rem + var(--cds-gap-sm) + 5px); top: 12px; bottom: 0; width: 1px; background: var(--color-border-line) }
+.bz-tl li:last-child::before { display: none }
+.bz-tl .bz-time { text-align: right; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); font-variant-numeric: tabular-nums; padding-top: 2px }
+.bz-tl .bz-dot { width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--color-fg-muted); background: var(--color-panel); margin-top: 5px; z-index: 1 }
+.bz-tl li.bz-key .bz-dot { background: var(--color-fg); border-color: var(--color-fg) }
+.bz-tl li.bz-key .bz-time { color: var(--color-fg) }
+.bz-tl .bz-ev { font-size: var(--cds-font-size-body); line-height: 1.45 }
+.bz-tl .bz-note { display: block; font-size: var(--cds-font-size-caption); color: var(--color-warn) }
+.bz-tl a { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted) }
+.bz-tl .bz-day { display: block; grid-column: 1 / -1; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .06em; padding: 0 0 var(--cds-pad-sm) 0 }
+.bz-tl .bz-day::before { display: none }
+.bz-method ul { margin: 0; padding-left: 1.1rem; display: grid; gap: var(--cds-gap-xs); max-width: 76ch; line-height: 1.5 }
+.bz-method a { color: inherit }
+[data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow) }
+@media (max-width: 860px) { .bz-story { grid-template-columns: minmax(0, 1fr) } .bz-stick { top: 0; z-index: 3; background: var(--color-bg); padding-bottom: var(--cds-pad-sm) } .bz-step { min-height: 55vh } .bz-explore { grid-template-columns: minmax(0, 1fr) } }
+@media (prefers-reduced-motion: reduce) { .bz-step { transition: none } }
+</style>
+
+<div class="bz">
+  <div class="bz-head" id="top">
+    <div class="bz-lang bz-seg" role="group" aria-label="Language"><button data-lang="en" aria-pressed="true">EN</button><button data-lang="pt" aria-pressed="false">PT</button></div>
+    <h1>Brazil 2026 runoff: who won where, and what the extra two hours changed</h1>
+    <p class="bz-muted" id="takeaway"><span class="bz-v" data-source="national_shares" data-field="left_name" data-where="key=r2">—</span> won the runoff with <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=r2" data-fmt="pct">—</span> after losing round 1 by <span class="bz-v" data-source="national_shares" data-field="margin_abs" data-where="key=r1" data-fmt="int">—</span> votes. Voting was extended from 17:00 to 19:00 by a court order three minutes after polls closed.</p>
+  </div>
+
+  <div class="bz-tabs" role="tablist" aria-label="Pages">
+    <button role="tab" id="tab-story" data-page="story" aria-selected="true">Story</button>
+    <button role="tab" id="tab-explore" data-page="explore" aria-selected="false">Explore the map</button>
+    <button role="tab" id="tab-day" data-page="day" aria-selected="false">25 October, 17:00 to 19:00</button>
+    <button role="tab" id="tab-method" data-page="method" aria-selected="false">Method</button>
+  </div>
+
+  <section id="story" class="bz-page">
+    <div class="bz-story">
+      <div class="bz-read" data-read>
+        <div class="bz-step bz-on" data-read-step data-view="br:r1" id="ch-round1">
+          <span class="bz-k">1 · Round 1, 4 October</span>
+          <h2>Flávio Bolsonaro finished first</h2>
+          <p><span class="bz-v" data-source="national_shares" data-field="right_name" data-where="key=r1">—</span> had <span class="bz-v" data-source="national_shares" data-field="right_pct" data-where="key=r1" data-fmt="pct">—</span> of valid votes. Lula had <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=r1" data-fmt="pct">—</span>. The gap was <span class="bz-v" data-source="national_shares" data-field="margin_abs" data-where="key=r1" data-fmt="int">—</span> votes.</p>
+          <p>The map shows every municipality in Brazil. Red means Lula was ahead there, blue means Flávio was ahead. The darker the color, the bigger the lead.</p>
+          <p class="bz-def">A <b>valid vote</b> is a vote for a candidate. Blank and null votes do not count toward the percentages.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="br:r2" id="ch-runoff">
+          <span class="bz-k">2 · Runoff, 25 October</span>
+          <h2>Lula won the runoff</h2>
+          <p>Lula had <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=r2" data-fmt="pct">—</span> and Flávio <span class="bz-v" data-source="national_shares" data-field="right_pct" data-where="key=r2" data-fmt="pct">—</span>. Lula won by <span class="bz-v" data-source="national_shares" data-field="margin_abs" data-where="key=r2" data-fmt="int">—</span> votes. This is the first time since 1989 that the candidate who came second in round 1 won the runoff.</p>
+          <p>The pattern is familiar: the North-East is red, the South and the Centre-West are blue. The difference is in how deep the colors are.</p>
+          <p class="bz-cap" id="loadNote"></p>
+        </div>
+        <div class="bz-step" data-read-step data-view="br:sw" id="ch-moved">
+          <span class="bz-k">3 · What moved</span>
+          <h2>Almost every municipality moved toward Lula</h2>
+          <p>This map shows the change between the two rounds. Red means Lula's share went up, blue means Flávio's went up. Most of the country is red: Lula gained more votes than Flávio almost everywhere.</p>
+          <p>Lula gained <span class="bz-v" data-source="swing_summary" data-field="lula_gain" data-fmt="int">—</span> votes from round 1. Flávio gained <span class="bz-v" data-source="swing_summary" data-field="flavio_gain" data-fmt="int">—</span>. These votes came from people who chose other candidates in round 1, and from changes in turnout.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="bars" id="ch-states">
+          <span class="bz-k">4 · State by state</span>
+          <h2>Where the <span class="bz-v" data-source="swing_summary" data-field="total_change" data-fmt="int">—</span> vote turnaround came from</h2>
+          <p>Each bar is the change in the gap between the two candidates, from round 1 to the runoff. <span class="bz-v" data-source="swing_summary" data-field="top4">—</span> gave <span class="bz-v" data-source="swing_summary" data-field="top4_pct" data-fmt="pct0">—</span> of it. Big states move the total the most, even with small changes in share.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="br:s22" id="ch-2022">
+          <span class="bz-k">5 · Compared with 2022</span>
+          <h2>Close to 2022 nationally, with local shifts</h2>
+          <p>In the 2022 runoff Lula beat Jair Bolsonaro with <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=y2022" data-fmt="pct">—</span>. In 2026 he had <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=r2" data-fmt="pct">—</span> against Jair's son. The map shows where the PT share went up (red) or down (blue) since 2022.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="br:s18" id="ch-2018">
+          <span class="bz-k">6 · Compared with 2018</span>
+          <h2>A very different map from 2018</h2>
+          <p>In 2018 Jair Bolsonaro beat Fernando Haddad (PT) with <span class="bz-v" data-source="national_shares" data-field="right_pct" data-where="key=y2018" data-fmt="pct">—</span>. Haddad had <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=y2018" data-fmt="pct">—</span>. Since then the PT gained ground in most of the country, mostly in the South-East and North.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="world:r2" id="ch-abroad">
+          <span class="bz-k">7 · Brazilians abroad</span>
+          <h2>Abroad, the biggest change of all</h2>
+          <p>Brazilians abroad vote at consulates and embassies in cities around the world. In 2018 Haddad had only <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=abroad_y2018" data-fmt="pct">—</span> there. In this runoff Lula had <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=abroad_r2" data-fmt="pct">—</span> of <span class="bz-v" data-source="national_shares" data-field="valid" data-where="key=abroad_r2" data-fmt="int">—</span> valid votes.</p>
+          <p>Each country is colored by the result of the Brazilians who voted there. The list shows the biggest voting cities.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="curves" id="ch-close">
+          <span class="bz-k">8 · The extension</span>
+          <h2>In a normal runoff, nearly every urna closes on time</h2>
+          <p>Brazil votes in <b class="bz-term">sections</b>: one room, one electronic voting machine (<b class="bz-term">urna</b>), a few hundred voters. When a section closes, its urna prints a <b class="bz-term">boletim de urna</b> with the result and the exact open and close times.</p>
+          <p class="bz-def">The law lets every voter who is <b>in line at 17:00</b> vote, so many urnas close a few minutes late. In the 2022 runoff only <span class="bz-v" data-source="late_rates" data-field="very_late" data-where="election=2022 runoff" data-fmt="int">—</span> of <span class="bz-v" data-source="late_rates" data-field="sections" data-where="election=2022 runoff" data-fmt="int">—</span> sections were still open 49 minutes after the close.</p>
+          <p>On 25 October an STF order at 17:03 extended voting to 19:00. The TSE told the sections still open at 17:49. Sections that had closed did not reopen.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="lanes" id="ch-lanes">
+          <span class="bz-k">9 · Queue or court order</span>
+          <h2>A late close does not mean late votes</h2>
+          <p>The urna also keeps a log with the time of every vote. Each dot here is one real vote from one urna in Cruzeiro do Sul, Acre. The bar is the moment it closed.</p>
+          <p>Top: round 1. People in line at 17:00 kept voting with no break, then the urna closed. That is a <b>queue</b>, and it is legal in every election.</p>
+          <p>Bottom: the same urna in the runoff. The last vote was before 17:00. The urna stayed open until 19:00, and <b>nobody came</b>. Its close time says "late", but it had no late votes. Only votes after a pause are votes the court order made possible.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="ext" id="ch-without">
+          <span class="bz-k">10 · Without the late sections</span>
+          <h2>Could the extension change the result?</h2>
+          <p>Lula's margin was <span class="bz-v" data-source="extension_view" data-field="margin" data-fmt="int">—</span> votes, <span class="bz-v" data-source="extension_view" data-field="margin_pct_of_turnout" data-fmt="pct">—</span> of everyone who voted. To reverse it, the extension would have to add millions of votes, all for Lula.</p>
+          <p id="extText"></p>
+        </div>
+      </div>
+      <div class="bz-stick">
+        <div class="bz-vis" id="storyVis" data-source="municipalities map_municipalities map_states map_world abroad state_change close_curves urna_log_examples extension_view"><canvas id="storyCanvas" aria-label="Map"></canvas><svg id="storySvg" hidden></svg><div id="storyExt" class="bz-ext" hidden></div><div class="bz-tip" id="storyTip" hidden></div></div>
+        <div class="bz-legend" id="storyLegend"></div>
+        <p class="bz-howto" id="storyHow"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="explore" class="bz-page" hidden>
+    <div class="bz-ctrl">
+      <div class="bz-ctrlrow"><span>Area</span><div class="bz-seg" id="exArea"><button data-area="br" aria-pressed="true">Brazil</button><button data-area="world" aria-pressed="false">Rest of the world</button></div>
+        <div class="bz-seg" id="exRegion" hidden><button data-region="World" aria-pressed="true">World</button><button data-region="Europe" aria-pressed="false">Europe</button><button data-region="Americas" aria-pressed="false">Americas</button><button data-region="Africa" aria-pressed="false">Africa</button><button data-region="Asia" aria-pressed="false">Middle East and Asia</button><button data-region="Oceania" aria-pressed="false">Oceania</button></div>
+        <select id="exState" aria-label="State" data-source="state_change"></select>
+        <input id="exSearch" type="search" list="exMunList" placeholder="Find a municipality" aria-label="Find a municipality" data-source="municipalities"><datalist id="exMunList"></datalist>
+        <button class="bz-chip" id="exClear" hidden>Clear selection ×</button></div>
+      <div class="bz-ctrlrow"><span>Show</span><div class="bz-seg" id="exMode">
+        <button data-mode="r2" aria-pressed="true">2026 runoff</button><button data-mode="r1" aria-pressed="false">2026 round 1</button><button data-mode="y22" aria-pressed="false">2022 runoff</button><button data-mode="y18" aria-pressed="false">2018 runoff</button>
+        <button data-mode="sw" aria-pressed="false">Change since round 1</button><button data-mode="s22" aria-pressed="false">Change since 2022</button><button data-mode="s18" aria-pressed="false">Change since 2018</button><button data-mode="ext" aria-pressed="false">Open after 17:49</button></div></div>
+    </div>
+    <div class="bz-explore">
+      <div class="bz-ctrl">
+        <div class="bz-vis" id="exVis" data-source="municipalities map_municipalities map_states map_world abroad"><canvas id="exCanvas" aria-label="Map"></canvas><svg id="exSvg" hidden></svg><div class="bz-tip" id="exTip" hidden></div></div>
+        <div class="bz-legend" id="exLegend"></div>
+        <p class="bz-howto" id="exHow"></p>
+      </div>
+      <div class="bz-card" id="exDetail" data-source="municipalities abroad state_change national_shares"></div>
+    </div>
+    <div class="bz-card">
+      <h2 id="tbl-states">States, all elections</h2>
+      <p class="bz-cap">Select a row to zoom the map to that state. Select a header to sort. Shares are of the two candidates' votes, except round 1, which is of all valid votes.</p>
+      <div class="bz-tbl"><table id="stateTable" data-source="state_change" data-row-key="uf"><thead><tr>
+        <th data-field="state" aria-sort="none"><button>State</button></th>
+        <th data-field="y2018_pt_pct" aria-sort="none"><button>2018 Haddad</button></th>
+        <th data-field="y2022_lula_pct" aria-sort="none"><button>2022 Lula</button></th>
+        <th data-field="r1_lula_pct" aria-sort="none"><button>2026 R1 Lula</button></th>
+        <th data-field="r1_flavio_pct" aria-sort="none"><button>2026 R1 Flávio</button></th>
+        <th data-field="r2_lula_pct" aria-sort="none"><button>2026 runoff Lula</button></th>
+        <th data-field="shift_vs_r1" aria-sort="none"><button>Shift since R1</button></th>
+        <th data-field="margin_change" aria-sort="descending"><button>Gap change (votes)</button></th>
+        <th data-field="late_2022" aria-sort="none"><button>Open 49+ min, 2022</button></th>
+        <th data-field="late_2026_r2" aria-sort="none"><button>Open 49+ min, 2026</button></th>
+      </tr></thead><tbody></tbody></table></div>
+    </div>
+  </section>
+
+  <section id="day" class="bz-page" hidden>
+    <div class="bz-grid">
+      <div class="bz-card" id="card-timeline">
+        <h2>Timeline, Brasília time</h2>
+        <p class="bz-cap">Filled dots are the moments that decided which urnas could stay open.</p>
+        <ol class="bz-tl" id="timeline" data-source="timeline"></ol>
+      </div>
+      <div class="bz-ctrl" style="align-content:start">
+        <div class="bz-card" id="card-curves">
+          <h2>Share of sections still open after the official close</h2>
+          <p class="bz-cap">One line per election. Log scale: each grid line is ten times smaller than the one above.</p>
+          <div class="bz-vis" id="curvesVis" data-source="close_curves" style="min-height:300px"><svg id="curvesSvg"></svg><div class="bz-tip" id="curvesTip" hidden></div></div>
+          <div class="bz-legend" id="curvesLegend"></div>
+        </div>
+        <div class="bz-card" id="card-late">
+          <h2>Sections open 49 minutes or more after the close</h2>
+          <div class="bz-tiles" id="lateTiles" data-source="late_rates"></div>
+        </div>
+        <div class="bz-card" id="card-lanes">
+          <h2>One urna, two elections</h2>
+          <p class="bz-cap">Real urna log, Cruzeiro do Sul (AC), zone 4, section 479. Each dot is a vote, the bar is the close.</p>
+          <div class="bz-vis" id="lanesVis" data-source="urna_log_examples" style="min-height:160px"><svg id="lanesSvg"></svg></div>
+        </div>
+        <div class="bz-card" id="card-extension">
+          <h2>The result without the sections that stayed open</h2>
+          <div id="extCards" data-source="extension_view"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="method" class="bz-page bz-method" hidden>
+    <div class="bz-card">
+      <h2>How this was built</h2>
+      <ul>
+        <li><b>Round 1, 2018 and 2022:</b> the TSE "boletim de urna" open-data files. One row per section and candidate, with the urna's open and close times. The totals match the official results exactly.</li>
+        <li><b>2026 runoff:</b> the TSE results service. National and state totals match the official result (Lula 64,256,232, Flávio 59,826,041). Municipal files are fetched slowly to respect the TSE's rate limit, so the map fills in over the day.</li>
+        <li><b>Close time:</b> urnas record local time. Each municipality's official close is its usual opening hour plus 9 hours (8:00 to 17:00). In 2022 and 2026 that is 17:00 Brasília time everywhere; in 2018 it was 17:00 local time.</li>
+        <li><b>"Open 49+ minutes":</b> the urna closed at 17:49 Brasília or later. 17:49 is when the TSE told sections still open about the extension.</li>
+        <li><b>Queue or court order:</b> the urna log has a time for every vote, but not the candidate. Votes that continue after 17:00 with less than 5 minutes between them are the 17:00 queue. Votes after a pause of 5 minutes or more are new arrivals that only the extension allowed.</li>
+        <li><b>Abroad:</b> the TSE gives each overseas city a code and a Portuguese name only. The city positions on the world map were added by hand and are approximate. All vote numbers are the TSE's.</li>
+        <li><b>Map shapes:</b> IBGE municipal boundaries (tbrugz/geodata-br), simplified; world countries from Natural Earth (world-atlas). A few very new municipalities have no shape.</li>
+        <li><b>What is still pending:</b> the TSE publishes the 2026 runoff boletim de urna file (with every urna's close time) about one day after the vote, and the urna logs about three days after. Those parts of the page show as pending until then.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<script>
+const N = (v) => (v == null || v === "" ? null : Number(v));
+/*I18N*/const PT_MARKUP = {"Brazil 2026 runoff: who won where, and what the extra two hours changed":"Segundo turno de 2026: quem venceu onde, e o que as duas horas extras mudaram","Flávio Bolsonaro finished first":"Flávio Bolsonaro terminou em primeiro","Lula won the runoff":"Lula venceu o segundo turno","Almost every municipality moved toward Lula":"Quase todos os municípios se moveram em direção a Lula","Where the <span class=\"bz-v\" data-source=\"swing_summary\" data-field=\"total_change\" data-fmt=\"int\">—</span> vote turnaround came from":"De onde veio a virada de <span class=\"bz-v\" data-source=\"swing_summary\" data-field=\"total_change\" data-fmt=\"int\">—</span> votos","Close to 2022 nationally, with local shifts":"Perto de 2022 no país, com mudanças locais","A very different map from 2018":"Um mapa muito diferente do de 2018","Abroad, the biggest change of all":"No exterior, a maior mudança de todas","In a normal runoff, nearly every urna closes on time":"Num segundo turno normal, quase toda urna fecha na hora","A late close does not mean late votes":"Fechar tarde não significa votos tardios","Could the extension change the result?":"A prorrogação poderia mudar o resultado?","States, all elections":"Estados, todas as eleições","Timeline, Brasília time":"Linha do tempo, horário de Brasília","Share of sections still open after the official close":"Parcela de seções ainda abertas após o horário oficial","Sections open 49 minutes or more after the close":"Seções abertas 49 minutos ou mais após o encerramento","One urna, two elections":"Uma urna, duas eleições","The result without the sections that stayed open":"O resultado sem as seções que ficaram abertas","How this was built":"Como isto foi feito","<span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_name\" data-where=\"key=r2\">—</span> won the runoff with <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=r2\" data-fmt=\"pct\">—</span> after losing round 1 by <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"margin_abs\" data-where=\"key=r1\" data-fmt=\"int\">—</span> votes. Voting was extended from 17:00 to 19:00 by a court order three minutes after polls closed.":"<span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_name\" data-where=\"key=r2\">—</span> venceu o segundo turno com <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=r2\" data-fmt=\"pct\">—</span> depois de perder o primeiro turno por <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"margin_abs\" data-where=\"key=r1\" data-fmt=\"int\">—</span> votos. A votação foi prorrogada das 17h às 19h por uma decisão judicial três minutos após o fim da votação.","<span class=\"bz-v\" data-source=\"national_shares\" data-field=\"right_name\" data-where=\"key=r1\">—</span> had <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"right_pct\" data-where=\"key=r1\" data-fmt=\"pct\">—</span> of valid votes. Lula had <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=r1\" data-fmt=\"pct\">—</span>. The gap was <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"margin_abs\" data-where=\"key=r1\" data-fmt=\"int\">—</span> votes.":"<span class=\"bz-v\" data-source=\"national_shares\" data-field=\"right_name\" data-where=\"key=r1\">—</span> teve <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"right_pct\" data-where=\"key=r1\" data-fmt=\"pct\">—</span> dos votos válidos. Lula teve <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=r1\" data-fmt=\"pct\">—</span>. A diferença foi de <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"margin_abs\" data-where=\"key=r1\" data-fmt=\"int\">—</span> votos.","The map shows every municipality in Brazil. Red means Lula was ahead there, blue means Flávio was ahead. The darker the color, the bigger the lead.":"O mapa mostra todos os municípios do Brasil. Vermelho: Lula estava à frente. Azul: Flávio estava à frente. Quanto mais forte a cor, maior a vantagem.","A <b>valid vote</b> is a vote for a candidate. Blank and null votes do not count toward the percentages.":"<b>Voto válido</b> é o voto dado a um candidato. Votos brancos e nulos não entram nos percentuais.","Lula had <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=r2\" data-fmt=\"pct\">—</span> and Flávio <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"right_pct\" data-where=\"key=r2\" data-fmt=\"pct\">—</span>. Lula won by <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"margin_abs\" data-where=\"key=r2\" data-fmt=\"int\">—</span> votes. This is the first time since 1989 that the candidate who came second in round 1 won the runoff.":"Lula teve <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=r2\" data-fmt=\"pct\">—</span> e Flávio <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"right_pct\" data-where=\"key=r2\" data-fmt=\"pct\">—</span>. Lula venceu por <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"margin_abs\" data-where=\"key=r2\" data-fmt=\"int\">—</span> votos. É a primeira vez desde 1989 que o segundo colocado do primeiro turno vence o segundo turno.","The pattern is familiar: the North-East is red, the South and the Centre-West are blue. The difference is in how deep the colors are.":"O padrão é conhecido: o Nordeste é vermelho, o Sul e o Centro-Oeste são azuis. A diferença está na intensidade das cores.","This map shows the change between the two rounds. Red means Lula's share went up, blue means Flávio's went up. Most of the country is red: Lula gained more votes than Flávio almost everywhere.":"Este mapa mostra a mudança entre os dois turnos. Vermelho: a parcela de Lula subiu. Azul: a de Flávio subiu. Quase todo o país está vermelho: Lula ganhou mais votos que Flávio em quase todo lugar.","Lula gained <span class=\"bz-v\" data-source=\"swing_summary\" data-field=\"lula_gain\" data-fmt=\"int\">—</span> votes from round 1. Flávio gained <span class=\"bz-v\" data-source=\"swing_summary\" data-field=\"flavio_gain\" data-fmt=\"int\">—</span>. These votes came from people who chose other candidates in round 1, and from changes in turnout.":"Lula ganhou <span class=\"bz-v\" data-source=\"swing_summary\" data-field=\"lula_gain\" data-fmt=\"int\">—</span> votos em relação ao primeiro turno. Flávio ganhou <span class=\"bz-v\" data-source=\"swing_summary\" data-field=\"flavio_gain\" data-fmt=\"int\">—</span>. Esses votos vieram de eleitores de outros candidatos no primeiro turno e de mudanças no comparecimento.","Each bar is the change in the gap between the two candidates, from round 1 to the runoff. <span class=\"bz-v\" data-source=\"swing_summary\" data-field=\"top4\">—</span> gave <span class=\"bz-v\" data-source=\"swing_summary\" data-field=\"top4_pct\" data-fmt=\"pct0\">—</span> of it. Big states move the total the most, even with small changes in share.":"Cada barra é a mudança na diferença entre os dois candidatos, do primeiro para o segundo turno. <span class=\"bz-v\" data-source=\"swing_summary\" data-field=\"top4\">—</span> deram <span class=\"bz-v\" data-source=\"swing_summary\" data-field=\"top4_pct\" data-fmt=\"pct0\">—</span> dela. Estados grandes movem mais o total, mesmo com pequenas mudanças percentuais.","In the 2022 runoff Lula beat Jair Bolsonaro with <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=y2022\" data-fmt=\"pct\">—</span>. In 2026 he had <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=r2\" data-fmt=\"pct\">—</span> against Jair's son. The map shows where the PT share went up (red) or down (blue) since 2022.":"No segundo turno de 2022, Lula venceu Jair Bolsonaro com <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=y2022\" data-fmt=\"pct\">—</span>. Em 2026 teve <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=r2\" data-fmt=\"pct\">—</span> contra o filho de Jair. O mapa mostra onde a votação do PT subiu (vermelho) ou caiu (azul) desde 2022.","In 2018 Jair Bolsonaro beat Fernando Haddad (PT) with <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"right_pct\" data-where=\"key=y2018\" data-fmt=\"pct\">—</span>. Haddad had <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=y2018\" data-fmt=\"pct\">—</span>. Since then the PT gained ground in most of the country, mostly in the South-East and North.":"Em 2018, Jair Bolsonaro venceu Fernando Haddad (PT) com <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"right_pct\" data-where=\"key=y2018\" data-fmt=\"pct\">—</span>. Haddad teve <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=y2018\" data-fmt=\"pct\">—</span>. Desde então o PT avançou na maior parte do país, sobretudo no Sudeste e no Norte.","Brazilians abroad vote at consulates and embassies in cities around the world. In 2018 Haddad had only <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=abroad_y2018\" data-fmt=\"pct\">—</span> there. In this runoff Lula had <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=abroad_r2\" data-fmt=\"pct\">—</span> of <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"valid\" data-where=\"key=abroad_r2\" data-fmt=\"int\">—</span> valid votes.":"Brasileiros no exterior votam em consulados e embaixadas em cidades do mundo todo. Em 2018, Haddad teve só <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=abroad_y2018\" data-fmt=\"pct\">—</span> lá. Neste segundo turno, Lula teve <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"left_pct\" data-where=\"key=abroad_r2\" data-fmt=\"pct\">—</span> de <span class=\"bz-v\" data-source=\"national_shares\" data-field=\"valid\" data-where=\"key=abroad_r2\" data-fmt=\"int\">—</span> votos válidos.","Each country is colored by the result of the Brazilians who voted there. The list shows the biggest voting cities.":"Cada país tem a cor do resultado dos brasileiros que votaram nele. A lista mostra as cidades com mais votos.","Brazil votes in <b class=\"bz-term\">sections</b>: one room, one electronic voting machine (<b class=\"bz-term\">urna</b>), a few hundred voters. When a section closes, its urna prints a <b class=\"bz-term\">boletim de urna</b> with the result and the exact open and close times.":"O Brasil vota em <b class=\"bz-term\">seções</b>: uma sala, uma <b class=\"bz-term\">urna</b> eletrônica, algumas centenas de eleitores. Quando a seção encerra, a urna imprime o <b class=\"bz-term\">boletim de urna</b>, com o resultado e os horários exatos de abertura e de encerramento.","The law lets every voter who is <b>in line at 17:00</b> vote, so many urnas close a few minutes late. In the 2022 runoff only <span class=\"bz-v\" data-source=\"late_rates\" data-field=\"very_late\" data-where=\"election=2022 runoff\" data-fmt=\"int\">—</span> of <span class=\"bz-v\" data-source=\"late_rates\" data-field=\"sections\" data-where=\"election=2022 runoff\" data-fmt=\"int\">—</span> sections were still open 49 minutes after the close.":"A lei garante o voto a todo eleitor que está <b>na fila às 17h</b>, por isso muitas urnas fecham alguns minutos depois. No segundo turno de 2022, só <span class=\"bz-v\" data-source=\"late_rates\" data-field=\"very_late\" data-where=\"election=2022 runoff\" data-fmt=\"int\">—</span> de <span class=\"bz-v\" data-source=\"late_rates\" data-field=\"sections\" data-where=\"election=2022 runoff\" data-fmt=\"int\">—</span> seções ainda estavam abertas 49 minutos após o horário.","On 25 October an STF order at 17:03 extended voting to 19:00. The TSE told the sections still open at 17:49. Sections that had closed did not reopen.":"Em 25 de outubro, uma decisão do STF às 17h03 prorrogou a votação até as 19h. O TSE avisou as seções ainda abertas às 17h49. Seções já encerradas não reabriram.","The urna also keeps a log with the time of every vote. Each dot here is one real vote from one urna in Cruzeiro do Sul, Acre. The bar is the moment it closed.":"A urna também guarda um log com o horário de cada voto. Cada ponto aqui é um voto real de uma urna de Cruzeiro do Sul, no Acre. A barra é o momento do encerramento.","Top: round 1. People in line at 17:00 kept voting with no break, then the urna closed. That is a <b>queue</b>, and it is legal in every election.":"Em cima: primeiro turno. Quem estava na fila às 17h continuou votando sem pausa, e então a urna fechou. Isso é <b>fila</b>, e é legal em toda eleição.","Bottom: the same urna in the runoff. The last vote was before 17:00. The urna stayed open until 19:00, and <b>nobody came</b>. Its close time says \"late\", but it had no late votes. Only votes after a pause are votes the court order made possible.":"Embaixo: a mesma urna no segundo turno. O último voto foi antes das 17h. A urna ficou aberta até as 19h e <b>ninguém apareceu</b>. O horário de encerramento diz \"tarde\", mas não houve votos tardios. Só votos depois de uma pausa são votos que a decisão judicial tornou possíveis.","Lula's margin was <span class=\"bz-v\" data-source=\"extension_view\" data-field=\"margin\" data-fmt=\"int\">—</span> votes, <span class=\"bz-v\" data-source=\"extension_view\" data-field=\"margin_pct_of_turnout\" data-fmt=\"pct\">—</span> of everyone who voted. To reverse it, the extension would have to add millions of votes, all for Lula.":"A vantagem de Lula foi de <span class=\"bz-v\" data-source=\"extension_view\" data-field=\"margin\" data-fmt=\"int\">—</span> votos, <span class=\"bz-v\" data-source=\"extension_view\" data-field=\"margin_pct_of_turnout\" data-fmt=\"pct\">—</span> de todos que votaram. Para inverter o resultado, a prorrogação teria de acrescentar milhões de votos, todos para Lula.","Select a row to zoom the map to that state. Select a header to sort. Shares are of the two candidates' votes, except round 1, which is of all valid votes.":"Clique numa linha para aproximar o mapa daquele estado. Clique num título para ordenar. Os percentuais são dos votos nos dois candidatos, exceto no primeiro turno, que usa todos os votos válidos.","Filled dots are the moments that decided which urnas could stay open.":"Os pontos cheios são os momentos que decidiram quais urnas puderam ficar abertas.","One line per election. Log scale: each grid line is ten times smaller than the one above.":"Uma linha por eleição. Escala logarítmica: cada linha de grade é dez vezes menor que a de cima.","Real urna log, Cruzeiro do Sul (AC), zone 4, section 479. Each dot is a vote, the bar is the close.":"Log real de urna, Cruzeiro do Sul (AC), zona 4, seção 479. Cada ponto é um voto, a barra é o encerramento.","<b>Round 1, 2018 and 2022:</b> the TSE \"boletim de urna\" open-data files. One row per section and candidate, with the urna's open and close times. The totals match the official results exactly.":"<b>Primeiro turno, 2018 e 2022:</b> arquivos de dados abertos de \"boletim de urna\" do TSE. Uma linha por seção e candidato, com os horários de abertura e encerramento da urna. Os totais batem exatamente com os resultados oficiais.","<b>2026 runoff:</b> the TSE results service. National and state totals match the official result (Lula 64,256,232, Flávio 59,826,041). Municipal files are fetched slowly to respect the TSE's rate limit, so the map fills in over the day.":"<b>Segundo turno de 2026:</b> serviço de resultados do TSE. Os totais nacionais e estaduais batem com o resultado oficial (Lula 64.256.232, Flávio 59.826.041). Os arquivos municipais são baixados devagar para respeitar o limite de acesso do TSE, então o mapa se completa ao longo do dia.","<b>Close time:</b> urnas record local time. Each municipality's official close is its usual opening hour plus 9 hours (8:00 to 17:00). In 2022 and 2026 that is 17:00 Brasília time everywhere; in 2018 it was 17:00 local time.":"<b>Horário de encerramento:</b> as urnas registram o horário local. O encerramento oficial de cada município é o seu horário habitual de abertura mais 9 horas (8h às 17h). Em 2022 e 2026 isso é 17h de Brasília em todo o país; em 2018 era 17h no horário local.","<b>\"Open 49+ minutes\":</b> the urna closed at 17:49 Brasília or later. 17:49 is when the TSE told sections still open about the extension.":"<b>\"Aberta 49+ minutos\":</b> a urna encerrou às 17h49 de Brasília ou depois. 17h49 é quando o TSE avisou as seções ainda abertas sobre a prorrogação.","<b>Queue or court order:</b> the urna log has a time for every vote, but not the candidate. Votes that continue after 17:00 with less than 5 minutes between them are the 17:00 queue. Votes after a pause of 5 minutes or more are new arrivals that only the extension allowed.":"<b>Fila ou decisão judicial:</b> o log da urna tem o horário de cada voto, mas não o candidato. Votos que seguem depois das 17h com menos de 5 minutos entre eles são a fila das 17h. Votos depois de uma pausa de 5 minutos ou mais são eleitores novos, que só a prorrogação permitiu.","<b>Abroad:</b> the TSE gives each overseas city a code and a Portuguese name only. The city positions on the world map were added by hand and are approximate. All vote numbers are the TSE's.":"<b>Exterior:</b> o TSE dá a cada cidade no exterior só um código e um nome em português. O país e a posição de cada cidade foram acrescentados à mão e são aproximados. Todos os números de votos são do TSE.","<b>Map shapes:</b> IBGE municipal boundaries (tbrugz/geodata-br), simplified; world countries from Natural Earth (world-atlas). A few very new municipalities have no shape.":"<b>Formas do mapa:</b> limites municipais do IBGE (tbrugz/geodata-br), simplificados; países do Natural Earth (world-atlas). Alguns municípios muito novos não têm forma.","<b>What is still pending:</b> the TSE publishes the 2026 runoff boletim de urna file (with every urna's close time) about one day after the vote, and the urna logs about three days after. Those parts of the page show as pending until then.":"<b>O que ainda falta:</b> o TSE publica o arquivo de boletins de urna do segundo turno de 2026 (com o horário de encerramento de cada urna) cerca de um dia após a votação, e os logs das urnas cerca de três dias depois. Essas partes da página aparecem como pendentes até lá.","Story":"História","Explore the map":"Explore o mapa","25 October, 17:00 to 19:00":"25 de outubro, 17h às 19h","Method":"Método","Brazil":"Brasil","Rest of the world":"Resto do mundo","World":"Mundo","Europe":"Europa","Americas":"Américas","Africa":"África","Middle East and Asia":"Oriente Médio e Ásia","Oceania":"Oceania","Clear selection ×":"Limpar seleção ×","2026 runoff":"2º turno 2026","2026 round 1":"1º turno 2026","2022 runoff":"2º turno 2022","2018 runoff":"2º turno 2018","Change since round 1":"Mudança desde o 1º turno","Change since 2022":"Mudança desde 2022","Change since 2018":"Mudança desde 2018","Open after 17:49":"Abertas após 17h49","State":"Estado","2018 Haddad":"Haddad 2018","2022 Lula":"Lula 2022","2026 R1 Lula":"Lula 1º turno 2026","2026 R1 Flávio":"Flávio 1º turno 2026","2026 runoff Lula":"Lula 2º turno 2026","Shift since R1":"Variação desde o 1º turno","Gap change (votes)":"Mudança na diferença (votos)","Open 49+ min, 2022":"Abertas 49+ min, 2022","Open 49+ min, 2026":"Abertas 49+ min, 2026","1 · Round 1, 4 October":"1 · Primeiro turno, 4 de outubro","2 · Runoff, 25 October":"2 · Segundo turno, 25 de outubro","3 · What moved":"3 · O que mudou","4 · State by state":"4 · Estado por estado","5 · Compared with 2022":"5 · Comparado com 2022","6 · Compared with 2018":"6 · Comparado com 2018","7 · Brazilians abroad":"7 · Brasileiros no exterior","8 · The extension":"8 · A prorrogação","9 · Queue or court order":"9 · Fila ou decisão judicial","10 · Without the late sections":"10 · Sem as seções tardias","Area":"Área","Show":"Mostrar"};
+const PT_JS = {"2018":"2018","2022":"2022","2026":"2026","2026 round 1":"1º turno 2026","2026 runoff":"2º turno 2026","2022 runoff":"2º turno 2022","2018 runoff":"2º turno 2018","Change since round 1":"Mudança desde o 1º turno","Change since 2022":"Mudança desde 2022","Change since 2018":"Mudança desde 2018","Open after 17:49":"Abertas após 17h49","toward Lula":"para Lula","toward Flávio":"para Flávio","more PT":"mais PT","more Bolsonaro":"mais Bolsonaro","Lula minus Flávio, as a share of all valid votes.":"Lula menos Flávio, como parcela de todos os votos válidos.","Lula's lead over Flávio, in points of the two-candidate vote.":"Vantagem de Lula sobre Flávio, em pontos dos votos nos dois candidatos.","Lula's lead over Jair Bolsonaro in 2022.":"Vantagem de Lula sobre Jair Bolsonaro em 2022.","Haddad's (PT) lead over Jair Bolsonaro in 2018.":"Vantagem de Haddad (PT) sobre Jair Bolsonaro em 2018.","Change in Lula's share of the two-candidate vote, round 1 to runoff, in points.":"Mudança na parcela de Lula nos votos dos dois candidatos, do 1º para o 2º turno, em pontos.","Change in the PT share of the two-candidate vote, 2022 runoff to 2026 runoff.":"Mudança na parcela do PT nos votos dos dois candidatos, do 2º turno de 2022 ao de 2026.","Change in the PT share of the two-candidate vote, 2018 runoff to 2026 runoff.":"Mudança na parcela do PT nos votos dos dois candidatos, do 2º turno de 2018 ao de 2026.","Number of sections whose urna closed at 17:49 Brasília or later.":"Número de seções cuja urna encerrou às 17h49 de Brasília ou depois.","Gray: no data":"Cinza: sem dados","sections":"seções","pts":"pts","even":"empate","How to read: ":"Como ler: "," Hover or tap a municipality for its numbers.":" Passe o mouse ou toque num município para ver os números.","How to read: each country is colored by Lula's lead among Brazilians who voted there, all its consulate cities added up. Hover a country for its cities. Explore the map has a zoom for each region.":"Como ler: cada país tem a cor da vantagem de Lula entre os brasileiros que votaram lá, somando todas as cidades com consulado. Passe o mouse num país para ver as cidades. Em Explore o mapa há zoom por região.","How to read: a red bar means the gap moved toward Lula in that state. Longer bar, more votes.":"Como ler: barra vermelha significa que a diferença se moveu para Lula naquele estado. Barra maior, mais votos.","How to read: at 0 every urna is still open (100%). The line falls as urnas close. A line far to the right means many urnas stayed open late.":"Como ler: no 0 todas as urnas ainda estão abertas (100%). A linha cai conforme as urnas fecham. Linha mais à direita significa muitas urnas abertas até tarde.","How to read: orange dots are votes after 17:00. A continuous run of dots is a queue; dots after a gap would be new voters.":"Como ler: pontos laranja são votos depois das 17h. Uma sequência contínua é fila; pontos depois de um intervalo seriam eleitores novos.","How to read: the margin is fixed; the panel fills in when the TSE publishes every runoff urna's close time.":"Como ler: a vantagem é fixa; o painel se completa quando o TSE publicar o horário de encerramento de cada urna do 2º turno.","Faded: municipal runoff result not loaded yet, so the area shows its state's result (":"Esmaecido: resultado municipal do 2º turno ainda não carregado; a área mostra o resultado do estado (","Gap change since round 1":"Mudança na diferença desde o 1º turno"," Hover or tap a state for its numbers.":" Passe o mouse ou toque num estado para ver os números."," Hover a municipality for its numbers; click it for its own chart.":" Passe o mouse num município para ver os números; clique para ver o gráfico dele."," Click a state to zoom in and see its municipalities.":" Clique num estado para aproximar e ver os municípios.","Sources differ: ":"As fontes divergem: ","source":"fonte"," voting city":" cidade de votação"," voting cities":" cidades de votação","Votes at this city's consulate. PT candidate's share of the two-candidate vote in each election.":"Votos no consulado desta cidade. Parcela do candidato do PT nos votos dos dois candidatos em cada eleição."," municipalities).":" municípios).","Diamonds: countries too small for this map (":"Losangos: países pequenos demais para este mapa (","Biggest voting cities abroad, by votes. Bar: Lula's lead (red) or Flávio's (blue), in points.":"Cidades do exterior com mais votos. Barra: vantagem de Lula (vermelho) ou de Flávio (azul), em pontos.","2018 Haddad / Bolsonaro":"2018 Haddad / Bolsonaro","2022 Lula / Bolsonaro":"2022 Lula / Bolsonaro","2026 R1 Lula / Flávio":"2026 1º turno Lula / Flávio","2026 runoff Lula / Flávio":"2026 2º turno Lula / Flávio","not loaded yet":"ainda não carregado","Sections open after 17:49":"Seções abertas após 17h49","Voting city":"Cidade de votação","Voting cities":"Cidades de votação","more":"mais","min after close, still open":"min após o encerramento, ainda abertas","minutes after the official close":"minutos após o horário oficial","Runoff margin":"Vantagem no 2º turno","Lula minus Flávio, in votes.":"Lula menos Flávio, em votos.","Waiting for the TSE file":"Aguardando o arquivo do TSE","The TSE publishes every runoff urna's close time about one day after the vote. Then this panel shows how many sections stayed open after 17:49, their voters, and the result without them.":"O TSE publica o horário de encerramento de cada urna do 2º turno cerca de um dia após a votação. Então este painel mostra quantas seções ficaram abertas após 17h49, seus eleitores e o resultado sem elas.","Lula in those sections":"Lula nessas seções","Share of the two-candidate vote.":"Parcela dos votos nos dois candidatos.","Margin without them":"Vantagem sem elas","If every one of those sections is removed, with all its votes.":"Se todas essas seções forem retiradas, com todos os seus votos.","The count of sections that stayed open after 17:49 appears here when the TSE publishes the runoff boletim de urna file.":"O número de seções que ficaram abertas após 17h49 aparece aqui quando o TSE publicar o arquivo de boletins de urna do 2º turno.","Round 1, 4 October: queue at 17:00":"1º turno, 4 de outubro: fila às 17h","Runoff, 25 October: open, but nobody came":"2º turno, 25 de outubro: aberta, mas ninguém veio","Brazilians abroad":"Brasileiros no exterior","Brazil":"Brasil","PT candidate's share of the two-candidate vote in each election. Select a state or a municipality for its own numbers.":"Parcela do candidato do PT nos votos dos dois candidatos em cada eleição. Escolha um estado ou município para ver os números dele.","PT candidate's share of the two-candidate vote in each election. Select a municipality on the map for its own numbers.":"Parcela do candidato do PT nos votos dos dois candidatos em cada eleição. Escolha um município no mapa para ver os números dele.","Above the dashed line the PT candidate won; below it the Bolsonaro candidate won. 2026 R1 here uses only the two runoff candidates' votes.":"Acima da linha tracejada o candidato do PT venceu; abaixo, o candidato Bolsonaro venceu. Aqui o 1º turno de 2026 usa só os votos dos dois candidatos do 2º turno.","pending":"pendente","All states":"Todos os estados","Not available for cities abroad":"Não disponível para o exterior","Available when the TSE publishes runoff close times":"Disponível quando o TSE publicar os horários de encerramento do 2º turno","Find a municipality":"Encontre um município","Waiting for the TSE file ":"Aguardando o arquivo do TSE ","2026 runoff line: waiting for the TSE file":"Linha do 2º turno 2026: aguardando o arquivo do TSE","2026 R1":"2026 1ºT","of":"de"};/*END_I18N*/
+let LANG = "en", DEC = ".";
+const LOC = { en: d3.formatLocale({ decimal: ".", thousands: ",", grouping: [3], currency: ["$", ""] }).format(","), pt: d3.formatLocale({ decimal: ",", thousands: ".", grouping: [3], currency: ["R$", ""] }).format(",") };
+const tr = (t) => (LANG === "pt" && PT_JS[t] != null ? PT_JS[t] : t);
+const cityName = (a) => (LANG === "pt" && a.city_pt ? a.city_pt : a.city);
+const fmtInt = (v) => LOC[LANG](v), fmtSigned = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + fmtInt(Math.abs(v));
+const FMT = { pct: (v) => v.toFixed(2).replace(".", DEC) + "%", pct1: (v) => v.toFixed(1).replace(".", DEC) + "%", pct0: (v) => Math.round(v) + "%", int: (v) => fmtInt(v), signed: fmtSigned, pp: (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(1).replace(".", DEC) + " pp" };
+const two = (a, b) => (a == null || b == null || a + b === 0 ? null : (100 * a) / (a + b));
+const r2 = (v) => (v == null ? null : Math.round(v * 100) / 100);
+
+dash.calc("national_shares", {
+  inputs: ["national"],
+  title: "Shares and margins per election",
+  description: "Each candidate's share of the votes used for that election (two candidates in a runoff, all valid votes in round 1), and the gap in votes.",
+  fn: (national) => national.map((r) => {
+    const left = Number(r.left), right = Number(r.right), base = r.key.endsWith("r1") ? Number(r.valid) : left + right;
+    return { key: r.key, election: r.election, left_name: r.left_name, right_name: r.right_name, left, right, valid: Number(r.valid), left_pct: Math.round((10000 * left) / base) / 100, right_pct: Math.round((10000 * right) / base) / 100, margin: left - right, margin_abs: Math.abs(left - right) };
+  }),
+});
+
+dash.calc("state_change", {
+  inputs: ["states"],
+  title: "State results and changes",
+  description: "Per state: shares in each election, Lula's shift in the two-candidate share since round 1, and the change in the vote gap.",
+  fn: (states) => states.map((s) => {
+    const n = (v) => (v == null || v === "" ? null : Number(v));
+    const p = (a, b) => (a == null || b == null || a + b === 0 ? null : Math.round((10000 * a) / (a + b)) / 100);
+    const r1L = n(s.r1_lula), r1F = n(s.r1_flavio), r2L = n(s.r2_lula), r2F = n(s.r2_flavio);
+    return {
+      uf: s.uf, state: s.state,
+      y2018_pt_pct: p(n(s.y2018_haddad), n(s.y2018_bolsonaro)), y2022_lula_pct: p(n(s.y2022_lula), n(s.y2022_bolsonaro)),
+      r1_lula_pct: Math.round((10000 * r1L) / n(s.r1_valid)) / 100, r1_flavio_pct: Math.round((10000 * r1F) / n(s.r1_valid)) / 100,
+      r2_lula_pct: p(r2L, r2F), shift_vs_r1: r2L == null ? null : Math.round(100 * (p(r2L, r2F) - p(r1L, r1F))) / 100,
+      margin_change: r2L == null ? null : (r2L - r2F) - (r1L - r1F), lula_gain: r2L == null ? null : r2L - r1L, flavio_gain: r2F == null ? null : r2F - r1F,
+      late_2022: n(s.late_2022), sections_2022: n(s.sections_2022), late_2026_r2: n(s.late_2026_r2), sections_2026_r2: n(s.sections_2026_r2),
+    };
+  }),
+});
+
+dash.calc("swing_summary", {
+  inputs: ["state_change"],
+  title: "Turnaround, round 1 to runoff",
+  description: "Total change in the Lula minus Flávio gap over all states, the votes each candidate gained, and the four states that moved it most.",
+  fn: (state_change) => {
+    const rows = state_change.filter((s) => s.margin_change != null).sort((a, b) => b.margin_change - a.margin_change);
+    const total = rows.reduce((a, s) => a + s.margin_change, 0), top = rows.slice(0, 4);
+    return [{ total_change: total, lula_gain: rows.reduce((a, s) => a + s.lula_gain, 0), flavio_gain: rows.reduce((a, s) => a + s.flavio_gain, 0), top4: top.map((s) => s.state).join(", "), top4_pct: Math.round((100 * top.reduce((a, s) => a + s.margin_change, 0)) / total) }];
+  },
+});
+
+dash.calc("late_rates", {
+  inputs: ["late_sections"],
+  title: "Sections open 49+ minutes late",
+  description: "Per election, how many sections closed 49 minutes or more after the official close, and their share of all sections.",
+  fn: (late_sections) => late_sections.map((r) => ({ election: r.election, sections: Number(r.sections), very_late: Number(r.closed_49_min_or_more_late), very_late_pct: Math.round((10000 * Number(r.closed_49_min_or_more_late)) / Number(r.sections)) / 100 })),
+});
+
+dash.calc("extension_view", {
+  inputs: ["extension"],
+  title: "Extension measurement",
+  description: "The runoff margin compared with turnout, and, once the TSE file is out, the sections open after 17:49 and the result without them.",
+  fn: (extension) => extension.map((e) => {
+    const n = (v) => (v == null || v === "" ? null : Number(v));
+    const lula = n(e.lula_in_those_sections), flavio = n(e.flavio_in_those_sections);
+    return { status: e.status, margin: n(e.margin), turnout: n(e.turnout), margin_pct_of_turnout: Math.round((10000 * n(e.margin)) / n(e.turnout)) / 100, sections: n(e.sections_open_after_1749), voters: n(e.voters_in_those_sections), lula_pct_in_late: lula == null ? null : Math.round((10000 * lula) / (lula + flavio)) / 100, margin_without: n(e.margin_without_late_sections) };
+  }),
+});
+
+const S = { prepared: false, mun: new Map(), shapes: [], states: [], borders: null, world: [], abroad: [], colors: null, storyView: "br:r1", exArea: "br", exRegion: "World", exCity: null, exMode: "r2", exState: null, exMun: null, sortKey: "margin_change", sortDir: -1, page: "story" };
+window.bzState = S;
+
+function rows(id) { const d = dash.data(id); return d.status === "ok" ? d.data : null; }
+const colorCanvas = document.createElement("canvas"); colorCanvas.width = colorCanvas.height = 1;
+function resolveColor(c, under) {
+  const el = document.createElement("span"); el.style.color = c; document.querySelector(".bz").appendChild(el); const css = getComputedStyle(el).color; el.remove();
+  const g = colorCanvas.getContext("2d", { willReadFrequently: true }); g.clearRect(0, 0, 1, 1);
+  if (under) { g.fillStyle = under; g.fillRect(0, 0, 1, 1); }
+  g.fillStyle = css; g.fillRect(0, 0, 1, 1);
+  const [r, gr, b] = g.getImageData(0, 0, 1, 1).data; return `rgb(${r}, ${gr}, ${b})`;
+}
+function themeColors() {
+  const list = dash.colors.map((c) => resolveColor(c));
+  const hue = (c) => { const h = d3.hsl(c).h; return isNaN(h) ? 999 : h; };
+  const red = list.slice().sort((a, b) => Math.min(Math.abs(hue(a) - 0), Math.abs(hue(a) - 360)) - Math.min(Math.abs(hue(b) - 0), Math.abs(hue(b) - 360)))[0];
+  const blue = list.slice().sort((a, b) => Math.abs(hue(a) - 215) - Math.abs(hue(b) - 215))[0];
+  const panel = resolveColor("var(--color-panel)"), mid = d3.interpolateRgb(panel, resolveColor("var(--color-fg-muted)", panel))(0.22), muted = resolveColor("var(--cds-chart-muted)", panel), fg = resolveColor("var(--color-fg)"), fgm = resolveColor("var(--color-fg-muted)"), warn = resolveColor("var(--color-warn)");
+  return { red, blue, mid, muted, panel, fg, fgm, warn, list };
+}
+
+function bindValues() {
+  document.querySelectorAll(".bz .bz-v").forEach((el) => {
+    const d = rows(el.dataset.source);
+    if (!d) { el.textContent = "—"; return; }
+    const where = el.dataset.where ? Object.fromEntries(el.dataset.where.split("&").map((kv) => kv.split("=").map(decodeURIComponent))) : null;
+    const row = where ? d.find((r) => Object.entries(where).every(([k, v]) => String(r[k]) === v)) : d[0];
+    const v = row ? row[el.dataset.field] : null;
+    el.textContent = v == null ? "—" : el.dataset.fmt ? FMT[el.dataset.fmt](Number(v)) : String(v);
+  });
+}
+
+function prepare() {
+  if (S.prepared) return true;
+  const shapes = rows("map_municipalities"), st = rows("map_states"), world = rows("map_world");
+  if (!shapes || !st || !world) return false;
+  S.shapes = shapes.map((r) => ({ ibge: String(r.ibge), p: new Path2D(r.path) }));
+  S.states = st.filter((r) => r.uf !== "borders").map((r) => ({ uf: r.uf, p: new Path2D(r.path), x: N(r.x), y: N(r.y), box: [N(r.x0), N(r.y0), N(r.x1), N(r.y1)] }));
+  S.borders = new Path2D(st.find((r) => r.uf === "borders").path);
+  S.world = world.map((r) => ({ iso: String(r.iso), country: r.country, path: r.path }));
+  S.prepared = true;
+  return true;
+}
+function indexData() {
+  const m = rows("municipalities");
+  if (m && S.mun.size !== m.length) {
+    S.mun = new Map(m.map((r) => [String(r.ibge), r]));
+    const dl = document.getElementById("exMunList");
+    dl.replaceChildren(...m.map((r) => { const o = document.createElement("option"); o.value = `${r.name} (${String(r.uf).toUpperCase()})`; return o; }));
+  }
+  const a = rows("abroad");
+  if (a) S.abroad = a;
+}
+
+const MODE = {
+  r1: { title: "2026 round 1", left: "Lula", right: "Flávio", kind: "div", max: 60, val: (r) => (N(r.r1_valid) ? (100 * (N(r.r1_lula) - N(r.r1_flavio))) / N(r.r1_valid) : null), how: "Lula minus Flávio, as a share of all valid votes." },
+  r2: { title: "2026 runoff", left: "Lula", right: "Flávio", kind: "div", max: 60, val: (r) => { const s = two(N(r.r2_lula), N(r.r2_flavio)); return s == null ? null : 2 * s - 100; }, how: "Lula's lead over Flávio, in points of the two-candidate vote." },
+  y22: { title: "2022 runoff", left: "Lula", right: "Jair Bolsonaro", kind: "div", max: 60, val: (r) => { const s = two(N(r.y2022_lula), N(r.y2022_bolsonaro)); return s == null ? null : 2 * s - 100; }, how: "Lula's lead over Jair Bolsonaro in 2022." },
+  y18: { title: "2018 runoff", left: "Haddad", right: "Jair Bolsonaro", kind: "div", max: 60, val: (r) => { const s = two(N(r.y2018_haddad), N(r.y2018_bolsonaro)); return s == null ? null : 2 * s - 100; }, how: "Haddad's (PT) lead over Jair Bolsonaro in 2018." },
+  sw: { title: "Change since round 1", left: "toward Lula", right: "toward Flávio", kind: "chg", max: 8, val: (r) => { const a = two(N(r.r2_lula), N(r.r2_flavio)), b = two(N(r.r1_lula), N(r.r1_flavio)); return a == null || b == null ? null : a - b; }, how: "Change in Lula's share of the two-candidate vote, round 1 to runoff, in points." },
+  s22: { title: "Change since 2022", left: "more PT", right: "more Bolsonaro", kind: "chg", max: 10, val: (r) => { const a = two(N(r.r2_lula), N(r.r2_flavio)), b = two(N(r.y2022_lula), N(r.y2022_bolsonaro)); return a == null || b == null ? null : a - b; }, how: "Change in the PT share of the two-candidate vote, 2022 runoff to 2026 runoff." },
+  s18: { title: "Change since 2018", left: "more PT", right: "more Bolsonaro", kind: "chg", max: 30, val: (r) => { const a = two(N(r.r2_lula), N(r.r2_flavio)), b = two(N(r.y2018_haddad), N(r.y2018_bolsonaro)); return a == null || b == null ? null : a - b; }, how: "Change in the PT share of the two-candidate vote, 2018 runoff to 2026 runoff." },
+  ext: { title: "Open after 17:49", kind: "seq", max: 10, val: (r) => N(r.sections_late), how: "Number of sections whose urna closed at 17:49 Brasília or later." },
+};
+function scaleFor(mode, maxOverride) {
+  const C = S.colors, m = { ...MODE[mode], max: maxOverride ?? MODE[mode].max };
+  if (m.kind === "seq") { const ip = d3.interpolateRgb(C.mid, C.warn); return d3.scaleThreshold([1, 2, 4, 8], [0.12, 0.35, 0.55, 0.78, 1].map(ip)); }
+  const ip = d3.piecewise(d3.interpolateRgb, [C.blue, d3.interpolateRgb(C.blue, C.mid)(0.55), C.mid, d3.interpolateRgb(C.red, C.mid)(0.55), C.red]);
+  const steps = 9, colors = d3.range(steps).map((i) => ip(i / (steps - 1)));
+  return d3.scaleQuantize([-m.max, m.max], colors);
+}
+function legend(el, mode, maxOverride) {
+  const m = { ...MODE[mode], max: maxOverride ?? MODE[mode].max }, sc = scaleFor(mode, maxOverride);
+  el.replaceChildren();
+  const ramp = document.createElement("div"); ramp.className = "bz-ramp";
+  const cv = document.createElement("canvas"); cv.width = 260; cv.height = 8; const g = cv.getContext("2d");
+  for (let x = 0; x < 260; x++) { g.fillStyle = m.kind === "seq" ? sc((x / 260) * m.max) : sc(((x / 260) * 2 - 1) * m.max); g.fillRect(x, 0, 1, 8); }
+  const ends = document.createElement("div");
+  const labels = m.kind === "seq" ? ["0", `${m.max}+ ${tr("sections")}`] : m.kind === "chg" ? [`${m.max} ${tr("pts")} ${tr(m.right)}`, `${m.max} ${tr("pts")} ${tr(m.left)}`] : [`${tr(m.right)} +${m.max}`, `${tr(m.left)} +${m.max}`];
+  ends.replaceChildren(...labels.map((t) => { const s = document.createElement("span"); s.textContent = t; return s; }));
+  ramp.append(cv, ends); el.appendChild(ramp);
+  const sw = document.createElement("span"); sw.textContent = tr("Gray: no data"); el.appendChild(sw);
+}
+
+function drawBrazil(canvas, mode, box, highlight) {
+  const w = canvas.clientWidth || canvas.parentElement.clientWidth, dpr = window.devicePixelRatio || 1;
+  const [x0, y0, x1, y1] = box ?? [0, 0, 1000, 1000], bw = x1 - x0, bh = y1 - y0, h = Math.round(Math.min(w * (bh / bw), 640));
+  canvas.style.height = h + "px"; canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+  const k = Math.min(w / bw, h / bh) * dpr, tx = (canvas.width - bw * k) / 2 - x0 * k, ty = (canvas.height - bh * k) / 2 - y0 * k;
+  const g = canvas.getContext("2d"); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, canvas.width, canvas.height); g.setTransform(k, 0, 0, k, tx, ty);
+  const sc = scaleFor(mode), f = MODE[mode].val, fb = stateFallback(mode), fade = (c) => d3.interpolateRgb(c, S.colors.mid)(0.6);
+  let faded = 0;
+  for (const s of S.shapes) {
+    const r = S.mun.get(s.ibge); let v = r ? f(r) : null, col;
+    if (v == null && r && fb.get(r.uf) != null) { col = fade(sc(fb.get(r.uf))); faded++; }
+    else col = v == null ? S.colors.mid : sc(v);
+    g.fillStyle = col; g.fill(s.p);
+  }
+  canvas._hatched = faded;
+  g.lineWidth = (0.35 * dpr) / k; g.strokeStyle = S.colors.panel; g.globalAlpha = 0.55;
+  for (const s of S.shapes) g.stroke(s.p);
+  g.globalAlpha = 1;
+  g.lineWidth = (1.3 * dpr) / k; g.strokeStyle = S.colors.panel; g.lineJoin = "miter"; g.stroke(S.borders);
+  if (highlight) { const s = S.shapes.find((q) => q.ibge === highlight); if (s) { g.lineWidth = 2.5 / k * dpr; g.strokeStyle = S.colors.fg; g.stroke(s.p); } }
+  const pick = document.createElement("canvas"); pick.width = canvas.width; pick.height = canvas.height;
+  const pg = pick.getContext("2d", { willReadFrequently: true }); pg.setTransform(k, 0, 0, k, tx, ty);
+  const level = box ? "mun" : "state";
+  if (level === "mun") S.shapes.forEach((s, i) => { pg.fillStyle = `rgb(${(i + 1) & 255},${((i + 1) >> 8) & 255},1)`; pg.fill(s.p); });
+  else S.states.forEach((s, i) => { pg.fillStyle = `rgb(${i + 1},0,2)`; pg.fill(s.p); });
+  canvas._pick = { pg, dpr, level };
+}
+function pickAt(canvas, ev) {
+  const r = canvas.getBoundingClientRect(), P = canvas._pick; if (!P) return null;
+  const px = P.pg.getImageData(Math.floor((ev.clientX - r.left) * P.dpr), Math.floor((ev.clientY - r.top) * P.dpr), 1, 1).data;
+  if (px[3] < 255) return null;
+  if (px[2] === 2) { const st = S.states[px[0] - 1]; return st ? { kind: "state", id: st.uf } : null; }
+  if (px[2] !== 1) return null;
+  const i = px[0] + (px[1] << 8) - 1; return S.shapes[i] ? { kind: "mun", id: S.shapes[i].ibge } : null;
+}
+
+function stateFallback(mode) {
+  const out = new Map(), st = rows("states");
+  if (!st || !["r2", "sw", "s22", "s18"].includes(mode)) return out;
+  for (const s of st) {
+    const a = two(N(s.r2_lula), N(s.r2_flavio)); if (a == null) continue;
+    const b = mode === "sw" ? two(N(s.r1_lula), N(s.r1_flavio)) : mode === "s22" ? two(N(s.y2022_lula), N(s.y2022_bolsonaro)) : mode === "s18" ? two(N(s.y2018_haddad), N(s.y2018_bolsonaro)) : null;
+    out.set(s.uf, mode === "r2" ? 2 * a - 100 : b == null ? null : a - b);
+  }
+  return out;
+}
+function hatchPattern(g) {
+  const t = document.createElement("canvas"); t.width = t.height = 8; const c = t.getContext("2d");
+  c.strokeStyle = S.colors.panel; c.globalAlpha = 0.55; c.lineWidth = 2; c.beginPath(); c.moveTo(-2, 10); c.lineTo(10, -2); c.moveTo(-2, 2); c.lineTo(2, -2); c.moveTo(6, 10); c.lineTo(10, 6); c.stroke();
+  const p = g.createPattern(t, "repeat"), m = g.getTransform();
+  p.setTransform(new DOMMatrix().scale(1 / m.a, 1 / m.d).translate(-m.e, -m.f));
+  return p;
+}
+function hatchNote(el, canvas) {
+  if (!canvas._hatched) return;
+  const sp = document.createElement("span");
+  sp.innerHTML = '<span style="display:inline-block;width:14px;height:10px;vertical-align:middle;margin-right:6px;border-radius:2px;background:var(--color-fg-muted);opacity:.35"></span>';
+  sp.append(tr("Faded: municipal runoff result not loaded yet, so the area shows its state's result (") + fmtInt(canvas._hatched) + tr(" municipalities)."));
+  el.appendChild(sp);
+}
+const WORLD_MAX = 40;
+function cityPoints(mode) {
+  const m = MODE[mode];
+  return S.abroad.map((a) => ({ a, v: m.val(a), size: N(a.r2_lula) != null ? N(a.r2_lula) + N(a.r2_flavio) : N(a.r1_valid) ?? 0 })).filter((d) => d.size > 0).sort((p, q) => q.size - p.size);
+}
+function regionBox(region) {
+  if (!region || region === "World") return [0, 0, 1000, 500];
+  const pts = S.abroad.filter((a) => a.region === region);
+  let [x0, x1] = d3.extent(pts, (a) => N(a.x)), [y0, y1] = d3.extent(pts, (a) => N(a.y));
+  const pad = 30; x0 -= pad; x1 += pad; y0 -= pad; y1 += pad;
+  let w = x1 - x0, h = y1 - y0;
+  if (w / h < 2) { const nw = h * 2; x0 -= (nw - w) / 2; w = nw; } else { const nh = w / 2; y0 -= (nh - h) / 2; h = nh; }
+  return [x0, y0, w, h];
+}
+const SUM_FIELDS = ["r1_lula", "r1_flavio", "r1_valid", "r2_lula", "r2_flavio", "y2018_haddad", "y2018_bolsonaro", "y2022_lula", "y2022_bolsonaro"];
+function countryRows() {
+  const by = new Map();
+  for (const a of S.abroad) {
+    const c = by.get(a.iso) ?? { iso: a.iso, country: a.country, cities: [], x: N(a.x), y: N(a.y) };
+    c.cities.push(a);
+    for (const f of SUM_FIELDS) { const v = N(a[f]); if (v != null) c[f] = (c[f] ?? 0) + v; }
+    by.set(a.iso, c);
+  }
+  return by;
+}
+function drawWorld(svgEl, mode, region) {
+  const svg = d3.select(svgEl), box = regionBox(region), k = 1000 / box[2];
+  svg.attr("viewBox", box.join(" ")).attr("width", "100%").attr("role", "img").attr("aria-label", "World map: result of Brazilians abroad by country");
+  svg.selectAll("*").remove();
+  const land = d3.interpolateRgb(S.colors.panel, S.colors.fgm)(0.16), sc = scaleFor(mode, WORLD_MAX), m = MODE[mode], by = countryRows();
+  const fillOf = (c) => { if (!c) return land; const v = m.val(c); return v == null ? S.colors.mid : sc(v); };
+  svg.append("g").selectAll("path").data(S.world).join("path").attr("class", (d) => (by.has(d.iso) ? "bz-country" : null)).attr("d", (d) => d.path)
+    .attr("fill", (d) => fillOf(by.get(d.iso))).attr("stroke", S.colors.panel).attr("stroke-width", 0.7 / k);
+  const shown = new Set(S.world.map((w) => w.iso)), tiny = [...by.values()].filter((c) => !shown.has(c.iso));
+  const sz = 4.5 / Math.sqrt(k);
+  svg.append("g").selectAll("path").data(tiny).join("path").attr("class", "bz-country").attr("d", (c) => `M${c.x},${c.y - sz}L${c.x + sz},${c.y}L${c.x},${c.y + sz}L${c.x - sz},${c.y}Z`)
+    .attr("fill", (c) => fillOf(c)).attr("stroke", S.colors.fg).attr("stroke-width", 0.6 / k);
+  svgEl._byIso = by;
+  svgEl._tiny = tiny.filter((c) => (c.r2_lula ?? 0) + (c.r2_flavio ?? 0) > 0).map((c) => c.country);
+  return svg;
+}
+function countryTip(c) {
+  const row = (k, v) => `<div class="bz-r"><span>${k}</span><span>${v}</span></div>`;
+  const esc = (t) => String(t).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]);
+  let h = tipHtmlMun({ ...c, city: c.country, country: null, name: undefined, uf: undefined });
+  const cities = c.cities.slice().sort((a, b) => ((N(b.r2_lula) ?? 0) + (N(b.r2_flavio) ?? 0)) - ((N(a.r2_lula) ?? 0) + (N(a.r2_flavio) ?? 0)));
+  h += `<div class="bz-t" style="margin-top:4px">${tr(cities.length === 1 ? "Voting city" : "Voting cities")}</div>`;
+  for (const a of cities.slice(0, 6)) { const s2 = two(N(a.r2_lula), N(a.r2_flavio)); h += row(esc(cityName(a)), s2 == null ? "–" : `Lula ${s2.toFixed(0).replace(".", DEC)}%`); }
+  if (cities.length > 6) h += `<div class="bz-t">+${cities.length - 6} ${tr("more")}</div>`;
+  return h;
+}
+function worldTinyNote(el, svgEl) {
+  if (!svgEl._tiny?.length) return;
+  const sp = document.createElement("span"); sp.textContent = tr("Diamonds: countries too small for this map (") + svgEl._tiny.join(", ") + ").";
+  el.appendChild(sp);
+}
+function cityBars(el, mode, onPick) {
+  const pts = cityPoints(mode).slice(0, 12), sc = scaleFor(mode, WORLD_MAX);
+  const wrap = document.createElement("div"); wrap.className = "bz-cities";
+  const head = document.createElement("p"); head.className = "bz-cap"; head.textContent = tr("Biggest voting cities abroad, by votes. Bar: Lula's lead (red) or Flávio's (blue), in points.");
+  wrap.appendChild(head);
+  const max = d3.max(pts, (d) => Math.abs(d.v ?? 0)) || 1;
+  for (const d of pts) {
+    const row = document.createElement("button"); row.className = "bz-cityrow"; row.type = "button";
+    const name = document.createElement("span"); name.textContent = cityName(d.a);
+    const bar = document.createElement("span"); bar.className = "bz-citybar";
+    const fill = document.createElement("span"); const v = d.v ?? 0, wpc = (50 * Math.abs(v)) / max;
+    fill.style.cssText = `position:absolute;top:2px;bottom:2px;border-radius:3px;background:${sc(v)};${v >= 0 ? "left:50%" : "right:50%"};width:${wpc}%`;
+    bar.appendChild(fill);
+    const val = document.createElement("span"); val.className = "bz-num"; val.textContent = d.v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(0).replace(".", DEC);
+    row.append(name, bar, val);
+    if (onPick) row.addEventListener("click", () => onPick(d.a.code));
+    wrap.appendChild(row);
+  }
+  el.appendChild(wrap);
+}
+function tipHtmlMun(r) {
+  const row = (k, v) => `<div class="bz-r"><span>${k}</span><span>${v}</span></div>`;
+  const sh = (a, b) => { const s = two(N(a), N(b)); return s == null ? "–" : `${s.toFixed(1).replace(".", DEC)}% / ${(100 - s).toFixed(1).replace(".", DEC)}%`; };
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  let h = `<div class="bz-t">${esc(r.name ?? cityName(r))}${r.uf ? " · " + esc(String(r.uf).toUpperCase()) : r.country ? " · " + esc(r.country) : ""}</div>`;
+  h += row(tr("2018 Haddad / Bolsonaro"), sh(r.y2018_haddad, r.y2018_bolsonaro));
+  h += row(tr("2022 Lula / Bolsonaro"), sh(r.y2022_lula, r.y2022_bolsonaro));
+  h += row(tr("2026 R1 Lula / Flávio"), N(r.r1_valid) ? `${((100 * N(r.r1_lula)) / N(r.r1_valid)).toFixed(1).replace(".", DEC)}% / ${((100 * N(r.r1_flavio)) / N(r.r1_valid)).toFixed(1).replace(".", DEC)}%` : "–");
+  h += row(tr("2026 runoff Lula / Flávio"), N(r.r2_lula) == null ? tr("not loaded yet") : sh(r.r2_lula, r.r2_flavio));
+  if (N(r.sections_late) != null) h += row(tr("Sections open after 17:49"), fmtInt(N(r.sections_late)));
+  return h;
+}
+function placeTip(tip, box, ev) {
+  const b = box.getBoundingClientRect(); let x = ev.clientX - b.left + 14, y = ev.clientY - b.top + 14;
+  if (x + 260 > b.width) x = Math.max(4, ev.clientX - b.left - 264); if (y + 150 > b.height) y = Math.max(4, ev.clientY - b.top - 154);
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+
+function drawSwingBars(svgEl) {
+  const sc = rows("state_change"); if (!sc) return;
+  const data = sc.filter((s) => s.margin_change != null).sort((a, b) => b.margin_change - a.margin_change);
+  const w = Math.max(320, svgEl.parentElement.clientWidth), rh = 19, m = { l: 128, r: 70, t: 22, b: 8 }, h = m.t + m.b + data.length * rh;
+  const svg = d3.select(svgEl).attr("viewBox", `0 0 ${w} ${h}`).attr("width", "100%").attr("role", "img").attr("aria-label", "Change in vote gap by state");
+  svg.selectAll("*").remove();
+  const x = d3.scaleLinear([Math.min(0, d3.min(data, (d) => d.margin_change)), d3.max(data, (d) => d.margin_change)], [m.l, w - m.r]).nice();
+  svg.append("g").selectAll("line").data(x.ticks(4)).join("line").attr("x1", (d) => x(d)).attr("x2", (d) => x(d)).attr("y1", m.t - 4).attr("y2", h - m.b).attr("stroke", "var(--cds-chart-grid)");
+  svg.append("g").selectAll("text").data(x.ticks(4)).join("text").attr("x", (d) => x(d)).attr("y", m.t - 8).attr("text-anchor", "middle").attr("fill", "var(--color-fg-muted)").attr("font-size", 11).text((d) => d3.format("~s")(d));
+  const g = svg.append("g").selectAll("g").data(data).join("g").attr("transform", (d, i) => `translate(0,${m.t + i * rh})`);
+  g.append("text").attr("x", m.l - 8).attr("y", rh / 2 + 4).attr("text-anchor", "end").attr("fill", "var(--color-fg)").attr("font-size", 11.5).text((d) => d.state);
+  g.append("rect").attr("x", (d) => x(Math.min(0, d.margin_change))).attr("y", 3).attr("height", rh - 6).attr("rx", 3).attr("width", (d) => Math.max(1, Math.abs(x(d.margin_change) - x(0)))).attr("fill", (d) => (d.margin_change >= 0 ? S.colors.red : S.colors.blue));
+  g.append("text").attr("x", (d) => x(Math.max(0, d.margin_change)) + 5).attr("y", rh / 2 + 4).attr("fill", "var(--color-fg-muted)").attr("font-size", 11).text((d) => fmtSigned(d.margin_change));
+}
+
+function drawCurves(svgEl, tipEl) {
+  const cc = rows("close_curves"); if (!cc) return;
+  const names = ["2018 runoff", "2022 runoff", "2026 round 1", "2026 runoff"];
+  const series = names.map((n, i) => ({ name: n, color: i === 3 ? S.colors.red : i === 2 ? S.colors.list[2] : i === 1 ? S.colors.fgm : S.colors.list[6 % S.colors.list.length], pts: cc.filter((r) => r.election === n).map((r) => [N(r.minute), Math.max(N(r.still_open), 0.00001), N(r.sections_open)]) })).filter((s) => s.pts.length);
+  const w = Math.max(320, svgEl.parentElement.clientWidth), h = 290, m = { l: 46, r: 14, t: 18, b: 34 };
+  const x = d3.scaleLinear([-30, 180], [m.l, w - m.r]), y = d3.scaleLog([0.00001, 1], [h - m.b, m.t]).clamp(true);
+  const svg = d3.select(svgEl).attr("viewBox", `0 0 ${w} ${h}`).attr("width", "100%").attr("role", "img").attr("aria-label", "Share of sections still open by minutes after close");
+  svg.selectAll("*").remove();
+  [1, 0.1, 0.01, 0.001, 0.0001, 0.00001].forEach((v) => { svg.append("line").attr("x1", m.l).attr("x2", w - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", "var(--cds-chart-grid)"); svg.append("text").attr("x", m.l - 6).attr("y", y(v) + 4).attr("text-anchor", "end").attr("fill", "var(--color-fg-muted)").attr("font-size", 10.5).text(v >= 0.01 ? Math.round(v * 100) + "%" : +(v * 100).toPrecision(1) + "%"); });
+  for (const [t, lab] of [[0, "17:00"], [49, "17:49"], [120, "19:00"]]) { svg.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", m.t).attr("y2", h - m.b).attr("stroke", "var(--cds-chart-reference)").attr("stroke-dasharray", "3 3"); svg.append("text").attr("x", x(t) + 4).attr("y", m.t + 2).attr("fill", "var(--color-fg-muted)").attr("font-size", 10.5).text(lab); }
+  [-30, 0, 30, 60, 90, 120, 150, 180].forEach((t) => svg.append("text").attr("x", x(t)).attr("y", h - m.b + 16).attr("text-anchor", "middle").attr("fill", "var(--color-fg-muted)").attr("font-size", 10.5).text(t > 0 ? "+" + t : t));
+  svg.append("text").attr("x", w - m.r).attr("y", h - 4).attr("text-anchor", "end").attr("fill", "var(--color-fg-muted)").attr("font-size", 10.5).text(tr("minutes after the official close"));
+  for (const s of series) svg.append("path").attr("d", d3.line((d) => x(d[0]), (d) => y(d[1])).curve(d3.curveStepAfter)(s.pts)).attr("fill", "none").attr("stroke", s.color).attr("stroke-width", 2).attr("stroke-linejoin", "round");
+  const rule = svg.append("line").attr("y1", m.t).attr("y2", h - m.b).attr("stroke", "var(--cds-chart-axis)").attr("opacity", 0);
+  svg.append("rect").attr("x", m.l).attr("y", m.t).attr("width", w - m.l - m.r).attr("height", h - m.t - m.b).attr("fill", "transparent")
+    .on("mousemove", (ev) => {
+      if (!tipEl) return;
+      const [mx] = d3.pointer(ev), t = Math.floor(x.invert(mx) / 5) * 5; rule.attr("x1", x(t)).attr("x2", x(t)).attr("opacity", 1);
+      tipEl.hidden = false; tipEl.innerHTML = `<div class="bz-t">${t >= 0 ? "+" : ""}${t} ${tr("min after close, still open")}</div>` + series.map((s) => { const p = s.pts.find((q) => q[0] === t); return `<div class="bz-r"><span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${s.color};margin-right:6px"></span>${tr(s.name)}</span><span>${p ? fmtInt(p[2]) : "–"}</span></div>`; }).join("");
+      placeTip(tipEl, svgEl.parentElement, ev);
+    })
+    .on("mouseleave", () => { rule.attr("opacity", 0); if (tipEl) tipEl.hidden = true; });
+  return series;
+}
+function curvesLegend(el, series) {
+  el.replaceChildren(...series.map((s) => { const sp = document.createElement("span"); sp.innerHTML = `<span style="display:inline-block;width:14px;height:2px;background:${s.color};vertical-align:middle;margin-right:6px"></span>`; sp.append(tr(s.name)); return sp; }));
+  if (!series.find((s) => s.name === "2026 runoff")) { const p = document.createElement("span"); p.className = "bz-pending"; p.textContent = tr("2026 runoff line: waiting for the TSE file"); el.appendChild(p); }
+}
+
+function drawLanes(svgEl) {
+  const ex = rows("urna_log_examples"); if (!ex) return;
+  const groups = [...new Set(ex.map((r) => r.example))];
+  const w = Math.max(320, svgEl.parentElement.clientWidth), lh = 62, m = { l: 12, r: 12, t: 8 }, h = m.t + groups.length * lh + 6;
+  const x = d3.scaleLinear([16.5 * 60, 19.25 * 60], [m.l, w - m.r]);
+  const svg = d3.select(svgEl).attr("viewBox", `0 0 ${w} ${h}`).attr("width", "100%").attr("role", "img").attr("aria-label", "Votes over time in one urna, round 1 and runoff");
+  svg.selectAll("*").remove();
+  groups.forEach((gname, i) => {
+    const g = svg.append("g").attr("transform", `translate(0,${m.t + i * lh})`), pts = ex.filter((r) => r.example === gname);
+    g.append("text").attr("x", m.l).attr("y", 10).attr("fill", "var(--color-fg)").attr("font-size", 11.5).text(tr(gname.split(":")[0] === "queue" ? "Round 1, 4 October: queue at 17:00" : "Runoff, 25 October: open, but nobody came"));
+    g.append("line").attr("x1", m.l).attr("x2", w - m.r).attr("y1", 30).attr("y2", 30).attr("stroke", "var(--cds-chart-grid)");
+    for (const [t, lab] of [[17 * 60, "17:00"], [17 * 60 + 49, "17:49"], [19 * 60, "19:00"]]) { g.append("line").attr("x1", x(t)).attr("x2", x(t)).attr("y1", 18).attr("y2", 42).attr("stroke", "var(--cds-chart-reference)").attr("stroke-dasharray", "2 2"); g.append("text").attr("x", x(t)).attr("y", 54).attr("text-anchor", "middle").attr("fill", "var(--color-fg-muted)").attr("font-size", 10).text(lab); }
+    pts.filter((p) => p.kind === "close").forEach((p) => g.append("rect").attr("x", x(N(p.minute_of_day)) - 1.5).attr("y", 18).attr("width", 3).attr("height", 24).attr("fill", S.colors.fg));
+    g.append("g").selectAll("circle").data(pts.filter((p) => p.kind === "vote")).join("circle").attr("cx", (p) => x(N(p.minute_of_day))).attr("cy", 30).attr("r", 4).attr("fill", (p) => (N(p.minute_of_day) > 17 * 60 ? S.colors.warn : S.colors.fgm)).attr("stroke", S.colors.panel).attr("stroke-width", 1.2);
+  });
+}
+
+function extensionPanel(el) {
+  const e = rows("extension_view")?.[0]; if (!e) return;
+  el.replaceChildren();
+  const card = (k, big, txt, src, field) => { const d = document.createElement("div"); d.className = "bz-card"; d.innerHTML = `<span class="bz-cap"></span><span class="bz-big"></span><p class="bz-cap"></p>`; d.children[0].textContent = k; const b = d.children[1]; b.textContent = big; if (src) { b.dataset.source = src; b.dataset.field = field; } d.children[2].textContent = txt; return d; };
+  const wrap = document.createElement("div"); wrap.className = "bz-tiles";
+  wrap.append(card(tr("Runoff margin"), fmtInt(e.margin), tr("Lula minus Flávio, in votes."), "extension_view", "margin"));
+  if (e.status !== "measured") {
+    const p = document.createElement("div"); p.className = "bz-card"; p.innerHTML = `<span class="bz-pending">${tr("Waiting for the TSE file")}</span><p class="bz-cap">${tr("The TSE publishes every runoff urna's close time about one day after the vote. Then this panel shows how many sections stayed open after 17:49, their voters, and the result without them.")}</p>`;
+    wrap.append(p);
+  } else {
+    wrap.append(card(tr("Sections open after 17:49"), fmtInt(e.sections), (LANG === "pt" ? `Com ${fmtInt(e.voters)} eleitores no total, incluindo todos que votaram antes das 17h.` : `With ${fmtInt(e.voters)} voters in total, including all who voted before 17:00.`), "extension_view", "sections"));
+    wrap.append(card(tr("Lula in those sections"), e.lula_pct_in_late.toFixed(2).replace(".", DEC) + "%", tr("Share of the two-candidate vote."), "extension_view", "lula_pct_in_late"));
+    wrap.append(card(tr("Margin without them"), fmtInt(e.margin_without), tr("If every one of those sections is removed, with all its votes."), "extension_view", "margin_without"));
+  }
+  el.appendChild(wrap);
+  const t = document.getElementById("extText");
+  t.textContent = e.status === "measured" ? (LANG === "pt" ? `${fmtInt(e.sections)} seções ainda estavam abertas às 17h49. Mesmo retirando todas, com todos os votos do dia, a vantagem é de ${fmtInt(e.margin_without)} votos.` : `${fmtInt(e.sections)} sections were still open at 17:49. Even if we remove all of them, with every vote cast in them all day, the margin is ${fmtInt(e.margin_without)} votes.`) : tr("The count of sections that stayed open after 17:49 appears here when the TSE publishes the runoff boletim de urna file.");
+}
+
+function storyVisual() {
+  const v = S.storyView, cv = document.getElementById("storyCanvas"), svg = document.getElementById("storySvg"), lg = document.getElementById("storyLegend"), how = document.getElementById("storyHow");
+  const [kind, mode] = v.split(":");
+  const ext = document.getElementById("storyExt"), vis = document.getElementById("storyVis");
+  cv.hidden = kind !== "br"; svg.toggleAttribute("hidden", kind === "br" || kind === "ext"); ext.hidden = kind !== "ext";
+  vis.classList.toggle("bz-fit", kind === "lanes" || kind === "ext");
+  lg.replaceChildren(); how.textContent = "";
+  if (kind === "br") { drawBrazil(cv, mode, null, null); legend(lg, mode); hatchNote(lg, cv); how.textContent = tr("How to read: ") + tr(MODE[mode].how) + tr(" Hover or tap a state for its numbers."); }
+  else if (kind === "world") { drawWorld(svg, mode, "World"); legend(lg, mode, WORLD_MAX); cityBars(lg, mode); how.textContent = tr("How to read: each country is colored by Lula's lead among Brazilians who voted there, all its consulate cities added up. Hover a country for its cities. Explore the map has a zoom for each region."); worldTinyNote(lg, svg); }
+  else if (kind === "bars") { drawSwingBars(svg); how.textContent = tr("How to read: a red bar means the gap moved toward Lula in that state. Longer bar, more votes."); }
+  else if (kind === "curves") { const s = drawCurves(svg, document.getElementById("storyTip")); if (s) curvesLegend(lg, s); how.textContent = tr("How to read: at 0 every urna is still open (100%). The line falls as urnas close. A line far to the right means many urnas stayed open late."); }
+  else if (kind === "lanes") { drawLanes(svg); how.textContent = tr("How to read: orange dots are votes after 17:00. A continuous run of dots is a queue; dots after a gap would be new voters."); }
+  else if (kind === "ext") { extensionPanel(ext); how.textContent = tr("How to read: the margin is fixed; the panel fills in when the TSE publishes every runoff urna's close time."); }
+}
+
+function exploreVisual() {
+  const cv = document.getElementById("exCanvas"), svg = document.getElementById("exSvg"), lg = document.getElementById("exLegend"), how = document.getElementById("exHow");
+  const world = S.exArea === "world";
+  cv.hidden = world; svg.toggleAttribute("hidden", !world);
+  const extOk = rows("extension_view")?.[0]?.status === "measured";
+  document.querySelectorAll("#exMode button").forEach((b) => { b.setAttribute("aria-pressed", String(b.dataset.mode === S.exMode)); b.disabled = (b.dataset.mode === "ext" && (!extOk || world)); b.title = b.disabled ? tr(world ? "Not available for cities abroad" : "Available when the TSE publishes runoff close times") : ""; });
+  document.querySelectorAll("#exArea button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.area === S.exArea)));
+  document.getElementById("exState").hidden = world; document.getElementById("exSearch").hidden = world;
+  const reg = document.getElementById("exRegion"); reg.hidden = !world;
+  reg.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.region === S.exRegion)));
+  if (world) drawWorld(svg, S.exMode, S.exRegion);
+  else { const st = S.states.find((s) => s.uf === S.exState); const box = st ? [st.box[0] - 10, st.box[1] - 10, st.box[2] + 10, st.box[3] + 10] : null; drawBrazil(cv, S.exMode, box, S.exMun); }
+  legend(lg, S.exMode, world ? WORLD_MAX : undefined); if (!world) hatchNote(lg, cv); else worldTinyNote(lg, svg);
+  const loaded = [...S.mun.values()].filter((r) => N(r.r2_lula) != null).length;
+  how.textContent = tr(MODE[S.exMode].how) + (world ? "" : S.exState ? tr(" Hover a municipality for its numbers; click it for its own chart.") : tr(" Click a state to zoom in and see its municipalities.")) + (["r2", "sw", "s22", "s18"].includes(S.exMode) && loaded < S.mun.size ? (LANG === "pt" ? ` Resultados do 2º turno carregados para ${fmtInt(loaded)} de ${fmtInt(S.mun.size)} municípios; o restante chega com os arquivos do TSE.` : ` Runoff results loaded for ${fmtInt(loaded)} of ${fmtInt(S.mun.size)} municipalities; the rest fill in as the TSE files arrive.`) : "");
+  document.getElementById("exClear").hidden = !S.exState && !S.exMun && !S.exCity;
+  detailCard();
+}
+
+function detailCard() {
+  const el = document.getElementById("exDetail");
+  const city = S.exArea === "world" && S.exCity ? (S.abroad.find((a) => a.code === S.exCity) ?? (() => { const c = countryRows().get(S.exCity); return c ? { ...c, city: c.country, country: c.cities.length + tr(c.cities.length === 1 ? " voting city" : " voting cities") } : null; })()) : null;
+  const r = city ?? (S.exMun ? S.mun.get(S.exMun) : null);
+  el.replaceChildren();
+  const h = document.createElement("h2"); el.appendChild(h);
+  const sub = document.createElement("p"); sub.className = "bz-cap"; el.appendChild(sub);
+  let pts;
+  if (r) {
+    if (city) { h.textContent = `${cityName(city)}${city.country && !(LANG === "pt" && city.city_pt) ? ", " + city.country : ""}`; sub.textContent = tr("Votes at this city's consulate. PT candidate's share of the two-candidate vote in each election."); }
+    else { h.textContent = `${r.name} (${String(r.uf).toUpperCase()})`; sub.textContent = (LANG === "pt" ? `${fmtInt(N(r.electorate))} eleitores aptos. Parcela do candidato do PT nos votos dos dois candidatos em cada eleição.` : `${fmtInt(N(r.electorate))} registered voters. PT candidate's share of the two-candidate vote in each election.`); }
+    pts = [["2018", two(N(r.y2018_haddad), N(r.y2018_bolsonaro)), "y2018_haddad"], ["2022", two(N(r.y2022_lula), N(r.y2022_bolsonaro)), "y2022_lula"], ["2026 R1", two(N(r.r1_lula), N(r.r1_flavio)), "r1_lula"], ["2026", two(N(r.r2_lula), N(r.r2_flavio)), "r2_lula"]];
+  } else {
+    const sc = rows("state_change"), ns = rows("national_shares");
+    const s = S.exState && sc ? sc.find((q) => q.uf === S.exState) : null;
+    if (s) { h.textContent = s.state; sub.textContent = tr("PT candidate's share of the two-candidate vote in each election. Select a municipality on the map for its own numbers."); pts = [["2018", s.y2018_pt_pct], ["2022", s.y2022_lula_pct], ["2026 R1", two(s.r1_lula_pct, s.r1_flavio_pct)], ["2026", s.r2_lula_pct]]; }
+    else if (ns) { const g = (k) => ns.find((q) => q.key === k); h.textContent = tr(S.exArea === "world" ? "Brazilians abroad" : "Brazil"); sub.textContent = tr("PT candidate's share of the two-candidate vote in each election. Select a state or a municipality for its own numbers."); const pre = S.exArea === "world" ? "abroad_" : ""; pts = [["2018", g(pre + "y2018")], ["2022", g(pre + "y2022")], ["2026 R1", g(pre + "r1")], ["2026", g(pre + "r2")]].map(([l, q]) => [l, q ? two(q.left, q.right) : null]); }
+    else return;
+  }
+  const svgNS = "http://www.w3.org/2000/svg", svg = document.createElementNS(svgNS, "svg"); el.appendChild(svg);
+  const w = Math.max(240, el.clientWidth - 40), hh = 170, m = { l: 34, r: 16, t: 14, b: 26 };
+  const x = d3.scalePoint(pts.map((p) => p[0]), [m.l, w - m.r]), y = d3.scaleLinear([0, 100], [hh - m.b, m.t]);
+  const s = d3.select(svg).attr("viewBox", `0 0 ${w} ${hh}`).attr("width", "100%").attr("role", "img").attr("aria-label", "PT share across four elections");
+  [0, 25, 50, 75, 100].forEach((v) => { s.append("line").attr("x1", m.l).attr("x2", w - m.r).attr("y1", y(v)).attr("y2", y(v)).attr("stroke", v === 50 ? "var(--cds-chart-reference)" : "var(--cds-chart-grid)").attr("stroke-dasharray", v === 50 ? "3 3" : null); s.append("text").attr("x", m.l - 6).attr("y", y(v) + 4).attr("text-anchor", "end").attr("fill", "var(--color-fg-muted)").attr("font-size", 10).text(v + "%"); });
+  const valid = pts.filter((p) => p[1] != null);
+  s.append("path").attr("d", d3.line((p) => x(p[0]), (p) => y(p[1]))(valid)).attr("fill", "none").attr("stroke", "var(--cds-chart-muted)").attr("stroke-width", 2).attr("stroke-linecap", "round");
+  for (const p of pts) {
+    s.append("text").attr("x", x(p[0])).attr("y", hh - 6).attr("text-anchor", "middle").attr("fill", "var(--color-fg-muted)").attr("font-size", 10.5).text(tr(p[0]));
+    if (p[1] == null) { s.append("text").attr("x", x(p[0])).attr("y", y(50) - 6).attr("text-anchor", "middle").attr("fill", "var(--color-fg-muted)").attr("font-size", 10).text(tr("pending")); continue; }
+    s.append("circle").attr("cx", x(p[0])).attr("cy", y(p[1])).attr("r", 5).attr("fill", p[1] >= 50 ? S.colors.red : S.colors.blue).attr("stroke", S.colors.panel).attr("stroke-width", 1.5);
+    s.append("text").attr("x", x(p[0])).attr("y", y(p[1]) - 9).attr("text-anchor", "middle").attr("fill", "var(--color-fg)").attr("font-size", 11).text(p[1].toFixed(1).replace(".", DEC) + "%");
+  }
+  const key = document.createElement("p"); key.className = "bz-cap"; key.textContent = tr("Above the dashed line the PT candidate won; below it the Bolsonaro candidate won. 2026 R1 here uses only the two runoff candidates' votes."); el.appendChild(key);
+  if (S.exArea === "world" && !city) cityBars(el, S.exMode, (code) => { S.exCity = code; exploreVisual(); });
+}
+
+function stateTable() {
+  const sc = rows("state_change"); const tb = document.querySelector("#stateTable tbody"); if (!sc) { tb.replaceChildren(); return; }
+  const k = S.sortKey, dir = S.sortDir;
+  const data = sc.slice().sort((a, b) => (typeof a[k] === "string" ? a[k].localeCompare(b[k]) : (a[k] ?? -Infinity) - (b[k] ?? -Infinity)) * dir);
+  const f = { state: (v) => v, y2018_pt_pct: (v) => FMT.pct1(v), y2022_lula_pct: (v) => FMT.pct1(v), r1_lula_pct: (v) => FMT.pct1(v), r1_flavio_pct: (v) => FMT.pct1(v), r2_lula_pct: (v) => FMT.pct1(v), shift_vs_r1: (v) => FMT.pp(v), margin_change: fmtSigned, late_2022: fmtInt, late_2026_r2: fmtInt };
+  tb.replaceChildren(...data.map((r) => { const row = document.createElement("tr"); row.dataset.key = r.uf; if (r.uf === S.exState) row.className = "bz-sel"; for (const c of Object.keys(f)) { const td = document.createElement("td"); td.textContent = r[c] == null ? (c === "late_2026_r2" ? tr("pending") : "–") : f[c](r[c]); row.appendChild(td); } return row; }));
+  document.querySelectorAll("#stateTable th").forEach((th) => { th.setAttribute("aria-sort", th.dataset.field === k ? (dir > 0 ? "ascending" : "descending") : "none"); });
+}
+
+function timeline() {
+  const t = rows("timeline"), ol = document.getElementById("timeline"); if (!t) return;
+  let day = ""; ol.replaceChildren();
+  for (const e of t) {
+    if (e.date !== day) { day = e.date; const li = document.createElement("li"); li.className = "bz-day"; li.textContent = new Date(e.date + "T12:00:00Z").toLocaleDateString(LANG === "pt" ? "pt-BR" : "en-GB", { weekday: "long", day: "numeric", month: "long" }); ol.appendChild(li); }
+    const li = document.createElement("li"); if (e.key_moment === true || e.key_moment === "true") li.className = "bz-key";
+    const tm = document.createElement("span"); tm.className = "bz-time"; tm.textContent = e.time ?? "";
+    const dot = document.createElement("span"); dot.className = "bz-dot";
+    const ev = document.createElement("span"); ev.className = "bz-ev"; ev.textContent = (LANG === "pt" && e.event_pt ? e.event_pt : e.event) + " ";
+    if (e.sources_differ) { const n = document.createElement("span"); n.className = "bz-note"; n.textContent = tr("Sources differ: ") + (LANG === "pt" && e.sources_differ_pt ? e.sources_differ_pt : e.sources_differ); ev.appendChild(n); }
+    const a = document.createElement("a"); a.href = e.source; a.target = "_blank"; a.rel = "noopener"; a.textContent = tr("source"); ev.appendChild(a);
+    li.append(tm, dot, ev); ol.appendChild(li);
+  }
+}
+
+function lateTiles() {
+  const lr = rows("late_rates"), el = document.getElementById("lateTiles"); if (!lr) return;
+  el.replaceChildren(...["2018 runoff", "2022 runoff", "2026 round 1", "2026 runoff"].map((n) => {
+    const r = lr.find((q) => q.election === n), d = document.createElement("div"); d.className = "bz-card";
+    const cap = document.createElement("span"); cap.className = "bz-cap"; cap.textContent = tr(n);
+    const big = document.createElement("span"); big.className = "bz-big";
+    const p = document.createElement("p"); p.className = "bz-cap";
+    if (r) { big.textContent = fmtInt(r.very_late); big.dataset.source = "late_rates"; big.dataset.field = "very_late"; big.dataset.where = "election=" + encodeURIComponent(n); p.textContent = (LANG === "pt" ? `de ${fmtInt(r.sections)} seções (${r.very_late_pct.toFixed(2).replace(".", DEC)}%)` : `of ${fmtInt(r.sections)} sections (${r.very_late_pct.toFixed(2).replace(".", DEC)}%)`); }
+    else { big.textContent = "—"; p.innerHTML = '<span class="bz-pending">' + tr("Waiting for the TSE file") + '</span>'; }
+    d.append(cap, big, p); return d;
+  }));
+}
+
+function loadNote() {
+  const loaded = [...S.mun.values()].filter((r) => N(r.r2_lula) != null).length, el = document.getElementById("loadNote");
+  el.textContent = S.mun.size && loaded < S.mun.size ? (LANG === "pt" ? `Resultados do 2º turno carregados para ${fmtInt(loaded)} de ${fmtInt(S.mun.size)} municípios. Áreas esmaecidas mostram o resultado do estado até o delas chegar. Os totais nacional e estaduais estão completos.` : `Runoff results are loaded for ${fmtInt(loaded)} of ${fmtInt(S.mun.size)} municipalities. Faded areas show their state result until theirs arrives. National and state totals are complete.`) : "";
+}
+
+function showPage(p, fromLink) {
+  S.page = p;
+  document.querySelectorAll(".bz-tabs button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.page === p)));
+  document.querySelectorAll(".bz-page").forEach((s) => (s.hidden = s.id !== p));
+  if (!fromLink) dash.setLink(p);
+  redraw();
+}
+document.querySelectorAll(".bz-tabs button").forEach((b) => b.addEventListener("click", () => showPage(b.dataset.page)));
+
+document.querySelectorAll("#exMode button").forEach((b) => b.addEventListener("click", () => { S.exMode = b.dataset.mode; exploreVisual(); }));
+document.querySelectorAll("#exArea button").forEach((b) => b.addEventListener("click", () => { S.exArea = b.dataset.area; if (S.exArea === "world" && S.exMode === "ext") S.exMode = "r2"; S.exMun = null; S.exState = null; S.exCity = null; S.exRegion = "World"; exploreVisual(); stateTable(); }));
+document.getElementById("exState").addEventListener("change", (e) => { S.exState = e.target.value || null; S.exMun = null; exploreVisual(); stateTable(); });
+document.getElementById("exSearch").addEventListener("change", (e) => {
+  const v = e.target.value, m = v.match(/^(.*) \(([A-Z]{2})\)$/); if (!m) return;
+  const r = [...S.mun.values()].find((q) => q.name === m[1] && String(q.uf).toUpperCase() === m[2]); if (!r) return;
+  S.exMun = String(r.ibge); S.exState = r.uf; document.getElementById("exState").value = r.uf; exploreVisual(); stateTable();
+});
+document.getElementById("exClear").addEventListener("click", () => { S.exCity = null; S.exMun = null; S.exState = null; document.getElementById("exState").value = ""; document.getElementById("exSearch").value = ""; exploreVisual(); stateTable(); });
+document.querySelector("#stateTable tbody").addEventListener("click", (e) => { const tr = e.target.closest("tr[data-key]"); if (!tr) return; S.exState = tr.dataset.key; S.exMun = null; document.getElementById("exState").value = tr.dataset.key; exploreVisual(); stateTable(); document.getElementById("exVis").scrollIntoView({ block: "nearest" }); });
+document.querySelectorAll("#stateTable th button").forEach((b) => b.addEventListener("click", () => { const k = b.parentElement.dataset.field; S.sortDir = S.sortKey === k ? -S.sortDir : -1; S.sortKey = k; stateTable(); }));
+
+function hitHtml(hit) {
+  if (!hit) return null;
+  if (hit.kind === "state") return tipHtmlState(hit.id);
+  const r = S.mun.get(hit.id); return r ? tipHtmlMun(r) : null;
+}
+function wireHover(canvas, tip, box, onClick) {
+  const show = (ev) => { const h = hitHtml(pickAt(canvas, ev)); if (!h) { tip.hidden = true; return; } tip.innerHTML = h; tip.hidden = false; placeTip(tip, box, ev); };
+  canvas.addEventListener("mousemove", (ev) => { show(ev); const hit = pickAt(canvas, ev); canvas.style.cursor = onClick && hit ? "pointer" : "default"; });
+  canvas.addEventListener("mouseleave", () => (tip.hidden = true));
+  canvas.addEventListener("click", (ev) => { const hit = pickAt(canvas, ev); if (onClick && hit) { tip.hidden = true; onClick(hit); } else show(ev); });
+}
+function tipHtmlState(uf) {
+  const st = rows("states")?.find((q) => q.uf === uf), sc = rows("state_change")?.find((q) => q.uf === uf);
+  if (!st) return null;
+  const row = (k, v) => `<div class="bz-r"><span>${k}</span><span>${v}</span></div>`;
+  const sh = (a, b) => { const v = two(N(a), N(b)); return v == null ? "–" : `${v.toFixed(1).replace(".", DEC)}% / ${(100 - v).toFixed(1).replace(".", DEC)}%`; };
+  let h = `<div class="bz-t">${st.state} · ${String(uf).toUpperCase()}</div>`;
+  h += row(tr("2018 Haddad / Bolsonaro"), sh(st.y2018_haddad, st.y2018_bolsonaro));
+  h += row(tr("2022 Lula / Bolsonaro"), sh(st.y2022_lula, st.y2022_bolsonaro));
+  h += row(tr("2026 R1 Lula / Flávio"), `${((100 * N(st.r1_lula)) / N(st.r1_valid)).toFixed(1).replace(".", DEC)}% / ${((100 * N(st.r1_flavio)) / N(st.r1_valid)).toFixed(1).replace(".", DEC)}%`);
+  h += row(tr("2026 runoff Lula / Flávio"), sh(st.r2_lula, st.r2_flavio));
+  if (sc?.margin_change != null) h += row(tr("Gap change since round 1"), fmtSigned(sc.margin_change));
+  return h;
+}
+wireHover(document.getElementById("storyCanvas"), document.getElementById("storyTip"), document.getElementById("storyVis"));
+wireHover(document.getElementById("exCanvas"), document.getElementById("exTip"), document.getElementById("exVis"), (hit) => {
+  if (hit.kind === "state") { S.exState = hit.id; S.exMun = null; }
+  else { const r = S.mun.get(hit.id); S.exMun = hit.id; S.exState = r?.uf ?? S.exState; }
+  document.getElementById("exState").value = S.exState ?? ""; exploreVisual(); stateTable();
+});
+function wireWorldHover(svgEl, tip, box, onPick) {
+  const hit = (ev) => { const p = ev.target.closest("path.bz-country"); if (!p) return null; const d = d3.select(p).datum(); return svgEl._byIso?.get(d.iso) ?? null; };
+  if (onPick) svgEl.addEventListener("click", (ev) => { const c = hit(ev); if (c) onPick(c.iso); });
+  svgEl.addEventListener("mousemove", (ev) => { const c = hit(ev); if (!c) { tip.hidden = true; return; } tip.innerHTML = countryTip(c); tip.hidden = false; placeTip(tip, box, ev); });
+  svgEl.addEventListener("mouseleave", () => (tip.hidden = true));
+}
+wireWorldHover(document.getElementById("storySvg"), document.getElementById("storyTip"), document.getElementById("storyVis"));
+wireWorldHover(document.getElementById("exSvg"), document.getElementById("exTip"), document.getElementById("exVis"), (code) => { S.exCity = code; exploreVisual(); });
+document.querySelectorAll("#exRegion button").forEach((b) => b.addEventListener("click", () => { S.exRegion = b.dataset.region; exploreVisual(); }));
+
+function activeStep() {
+  if (S.page !== "story") return;
+  const steps = [...document.querySelectorAll(".bz-step")], mid = window.innerHeight / 2;
+  let best = steps[0], dist = Infinity;
+  for (const st of steps) { const r = st.getBoundingClientRect(); const d = Math.abs((r.top + r.bottom) / 2 - mid); if (r.bottom > 0 && r.top < window.innerHeight && d < dist) { dist = d; best = st; } }
+  steps.forEach((st) => st.classList.toggle("bz-on", st === best));
+  if (S.storyView !== best.dataset.view) { S.storyView = best.dataset.view; if (S.prepared) storyVisual(); }
+}
+let stepQueued = false;
+document.addEventListener("scroll", () => { if (stepQueued) return; stepQueued = true; requestAnimationFrame(() => { stepQueued = false; activeStep(); }); }, { capture: true, passive: true });
+window.addEventListener("resize", activeStep);
+
+function fillStateSelect() {
+  const sc = rows("state_change"), sel = document.getElementById("exState"); if (!sc || sel.dataset.lang === LANG) return; sel.dataset.lang = LANG; const keep = sel.value;
+  sel.replaceChildren(new Option(tr("All states"), ""), ...sc.slice().sort((a, b) => a.state.localeCompare(b.state)).map((s) => new Option(s.state, s.uf))); sel.value = S.exState ?? keep ?? "";
+}
+
+const I18N_EL = [];
+document.querySelectorAll(".bz h1, .bz h2, .bz h3, .bz p, .bz li, .bz button, .bz span.bz-k, .bz .bz-ctrlrow > span").forEach((el) => { const en = el.innerHTML.trim(); if (PT_MARKUP[en] != null) I18N_EL.push([el, en]); });
+function applyLang(l) {
+  LANG = l === "pt" ? "pt" : "en"; DEC = LANG === "pt" ? "," : ".";
+  for (const [el, en] of I18N_EL) el.innerHTML = LANG === "pt" ? PT_MARKUP[en] : en;
+  document.getElementById("exSearch").placeholder = tr("Find a municipality");
+  document.querySelectorAll(".bz-lang button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === LANG)));
+  document.documentElement.lang = LANG === "pt" ? "pt-BR" : "en";
+}
+document.querySelectorAll(".bz-lang button").forEach((b) => b.addEventListener("click", () => {
+  applyLang(b.dataset.lang); dash.setParams({ lang: LANG });
+  bindValues(); fillStateSelect(); loadNote(); extensionPanel(document.getElementById("extCards")); redraw();
+}));
+let langSet = false;
+let linked = false;
+function redraw() {
+  if (!S.prepared) return;
+  if (S.page === "story") storyVisual();
+  if (S.page === "explore") { exploreVisual(); stateTable(); }
+  if (S.page === "day") { timeline(); lateTiles(); const s = drawCurves(document.getElementById("curvesSvg"), document.getElementById("curvesTip")); if (s) curvesLegend(document.getElementById("curvesLegend"), s); drawLanes(document.getElementById("lanesSvg")); extensionPanel(document.getElementById("extCards")); }
+}
+
+dash.onData(() => {
+  if (!langSet) { langSet = true; const p = dash.params().lang; applyLang(p ?? ((navigator.language || "").toLowerCase().startsWith("pt") ? "pt" : "en")); }
+  S.colors = themeColors();
+  bindValues();
+  if (!prepare()) return;
+  indexData(); fillStateSelect(); loadNote(); extensionPanel(document.getElementById("extCards"));
+  if (!linked) { linked = true; const h = location.hash.slice(1); if (["story", "explore", "day", "method"].includes(h)) { showPage(h, true); return; } }
+  redraw();
+});
+</script>
+
+</div>
+<footer class="site-foot">
+  <strong>Data and code / Dados e código</strong>
+  <span>Official TSE data, processed with the open scripts in <a href="https://github.com/leonemendes/brasil-2026-segundo-turno">github.com/leonemendes/brasil-2026-segundo-turno</a>. Per-section files for every election are in the repository's data/sections folder.</span>
+  <ul><li><span>national</span> <a href="data/national.csv" download>CSV</a> <a href="data/national.json" download>JSON</a></li><li><span>states</span> <a href="data/states.csv" download>CSV</a> <a href="data/states.json" download>JSON</a></li><li><span>municipalities</span> <a href="data/municipalities.csv" download>CSV</a> <a href="data/municipalities.json" download>JSON</a></li><li><span>abroad</span> <a href="data/abroad.csv" download>CSV</a> <a href="data/abroad.json" download>JSON</a></li><li><span>close_curves</span> <a href="data/close_curves.csv" download>CSV</a> <a href="data/close_curves.json" download>JSON</a></li><li><span>late_sections</span> <a href="data/late_sections.csv" download>CSV</a> <a href="data/late_sections.json" download>JSON</a></li><li><span>timeline</span> <a href="data/timeline.csv" download>CSV</a> <a href="data/timeline.json" download>JSON</a></li><li><span>extension</span> <a href="data/extension.csv" download>CSV</a> <a href="data/extension.json" download>JSON</a></li></ul>
+</footer>
+</body>
+</html>

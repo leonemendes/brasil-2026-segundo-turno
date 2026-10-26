@@ -1,0 +1,186 @@
+29254|Abidjan|Côte d'Ivoire|384|5.36|-4.01
+29262|Abu Dhabi|United Arab Emirates|784|24.45|54.38
+99198|Abuja|Nigeria|566|9.08|7.40
+29270|Accra|Ghana|288|5.60|-0.19
+99325|Addis Ababa|Ethiopia|231|9.03|38.74
+30457|Amsterdam|Netherlands|528|52.37|4.90
+29289|Amman|Jordan|400|31.95|35.93
+29297|Ankara|Turkey|792|39.93|32.86
+29300|Algiers|Algeria|012|36.75|3.06
+29319|Artigas|Uruguay|858|-30.40|-56.47
+29327|Asunción|Paraguay|600|-25.26|-57.58
+39241|Astana|Kazakhstan|398|51.17|71.45
+29335|Athens|Greece|300|37.98|23.73
+39080|Atlanta|United States|840|33.75|-84.39
+99171|Baghdad|Iraq|368|33.31|44.36
+39128|Baku|Azerbaijan|031|40.41|49.87
+99350|Bamako|Mali|466|12.64|-8.00
+29343|Bangkok|Thailand|764|13.76|100.50
+29351|Barcelona|Spain|724|41.39|2.17
+99473|Manama|Bahrain|048|26.23|50.59
+29360|Beirut|Lebanon|422|33.89|35.50
+29378|Belgrade|Serbia|688|44.79|20.45
+38881|Belmopan|Belize|084|17.25|-88.77
+29386|Berlin|Germany|276|52.52|13.40
+29394|Bissau|Guinea-Bissau|624|11.86|-15.60
+29408|Bogotá|Colombia|170|4.71|-74.07
+29416|Boston|United States|840|42.36|-71.06
+39209|Bratislava|Slovakia|703|48.15|17.11
+39187|Brazzaville|Republic of the Congo|178|-4.26|15.24
+29424|Bridgetown|Barbados|052|13.10|-59.62
+29432|Brussels|Belgium|056|50.85|4.35
+29440|Bucharest|Romania|642|44.43|26.10
+29459|Budapest|Hungary|348|47.50|19.04
+29467|Buenos Aires|Argentina|032|-34.60|-58.38
+29475|Cayenne|French Guiana (France)|250|4.92|-52.33
+29483|Cairo|Egypt|818|30.04|31.24
+29491|Canberra|Australia|036|-35.28|149.13
+30651|Guangzhou|China|156|23.13|113.26
+29505|Caracas|Venezuela|862|10.48|-66.90
+99384|Castries|Saint Lucia|662|14.01|-60.99
+29513|Chicago|United States|840|41.88|-87.63
+29521|Chuy|Uruguay|858|-33.70|-53.46
+29530|Cape Town|South Africa|710|-33.92|18.42
+29556|Ciudad del Este|Paraguay|600|-25.51|-54.61
+29564|Ciudad Guayana|Venezuela|862|8.35|-62.64
+99210|Cobija|Bolivia|068|-11.03|-68.77
+29572|Cochabamba|Bolivia|068|-17.39|-66.16
+30929|Colombo|Sri Lanka|144|6.93|79.86
+38903|Conakry|Guinea|324|9.64|-13.58
+29580|Concepción|Paraguay|600|-23.41|-57.43
+29599|Copenhagen|Denmark|208|55.68|12.57
+38920|Cotonou|Benin|204|6.37|2.39
+29602|Córdoba|Argentina|032|-31.42|-64.18
+29610|Dakar|Senegal|686|14.72|-17.47
+29629|Dhaka|Bangladesh|050|23.81|90.41
+29637|Damascus|Syria|760|33.51|36.28
+38962|Dar es Salaam|Tanzania|834|-6.79|39.21
+29653|Doha|Qatar|634|25.29|51.53
+29661|Dublin|Ireland|372|53.35|-6.26
+29645|Dili|Timor-Leste|626|-8.56|125.57
+99503|Edinburgh|United Kingdom|826|55.95|-3.19
+29670|Encarnación|Paraguay|600|-27.33|-55.87
+29688|Stockholm|Sweden|752|59.33|18.07
+30961|Faro|Portugal|620|37.02|-7.93
+29696|Frankfurt|Germany|276|50.11|8.68
+30669|Gaborone|Botswana|072|-24.65|25.91
+29700|Geneva|Switzerland|756|46.20|6.14
+29718|Georgetown|Guyana|328|6.80|-58.16
+98000|Guatemala City|Guatemala|320|14.63|-90.51
+29742|Hamamatsu|Japan|392|34.71|137.73
+29750|Hanoi|Vietnam|704|21.03|105.85
+29769|Harare|Zimbabwe|716|-17.83|31.05
+30902|Hartford|United States|840|41.76|-72.69
+29777|Havana|Cuba|192|23.11|-82.37
+29785|Helsinki|Finland|246|60.17|24.94
+29793|Hong Kong|China|156|22.32|114.17
+29807|Houston|United States|840|29.76|-95.37
+29815|Yaoundé|Cameroon|120|3.87|11.52
+38989|Yerevan|Armenia|051|40.18|44.51
+29823|Iquitos|Peru|604|-3.75|-73.25
+29831|Islamabad|Pakistan|586|33.68|73.05
+39306|Istanbul|Turkey|792|41.01|28.98
+29840|Jakarta|Indonesia|360|-6.21|106.85
+29173|Kathmandu|Nepal|524|27.72|85.32
+29858|Kyiv|Ukraine|804|50.45|30.52
+99430|Kingston|Jamaica|388|18.02|-76.80
+29874|Kinshasa|DR Congo|180|-4.44|15.27
+29882|Kuwait City|Kuwait|414|29.38|47.99
+29890|Kuala Lumpur|Malaysia|458|3.14|101.69
+29904|La Paz|Bolivia|068|-16.50|-68.15
+29912|Lagos|Nigeria|566|6.52|3.38
+29939|Libreville|Gabon|266|0.42|9.47
+99341|Lilongwe|Malawi|454|-13.96|33.79
+29947|Lima|Peru|604|-12.05|-77.04
+29955|Lisbon|Portugal|620|38.72|-9.14
+39160|Ljubljana|Slovenia|705|46.06|14.51
+29963|Lomé|Togo|768|6.13|1.22
+29971|London|United Kingdom|826|51.51|-0.13
+29980|Los Angeles|United States|840|34.05|-118.24
+29998|Luanda|Angola|024|-8.84|13.23
+99287|Lusaka|Zambia|894|-15.39|28.32
+30066|Madrid|Spain|724|40.42|-3.70
+39263|Malabo|Equatorial Guinea|226|3.75|8.78
+30082|Manila|Philippines|608|14.60|120.98
+30074|Managua|Nicaragua|558|12.11|-86.24
+30090|Maputo|Mozambique|508|-25.97|32.57
+99511|Marseille|France|250|43.30|5.37
+39102|Muscat|Oman|512|23.59|58.41
+39004|Mendoza|Argentina|032|-32.89|-68.83
+30104|Mexico City|Mexico|484|19.43|-99.13
+30112|Miami|United States|840|25.76|-80.19
+30120|Milan|Italy|380|45.46|9.19
+30147|Montevideo|Uruguay|858|-34.90|-56.16
+30155|Montreal|Canada|124|45.50|-73.57
+30163|Moscow|Russia|643|55.76|37.62
+30171|Mumbai|India|356|19.08|72.88
+30180|Munich|Germany|276|48.14|11.58
+30198|Nagoya|Japan|392|35.18|136.91
+30201|Nairobi|Kenya|404|-1.29|36.82
+99180|Nassau|Bahamas|044|25.04|-77.35
+39322|Nicosia|Cyprus|196|35.19|33.38
+30210|New Delhi|India|356|28.61|77.21
+30228|New York|United States|840|40.71|-74.01
+99490|Orlando|United States|840|28.54|-81.38
+30244|Oslo|Norway|578|59.91|10.75
+30252|Ottawa|Canada|124|45.42|-75.70
+30260|Panama City|Panama|591|8.98|-79.52
+30279|Paramaribo|Suriname|740|5.85|-55.20
+30287|Paris|France|250|48.86|2.35
+30295|Paso de los Libres|Argentina|032|-29.71|-57.09
+30309|Pedro Juan Caballero|Paraguay|600|-22.55|-55.73
+30317|Beijing|China|156|39.90|116.41
+30325|Port of Spain|Trinidad and Tobago|780|10.66|-61.51
+30341|Porto|Portugal|620|41.16|-8.63
+30333|Port-au-Prince|Haiti|332|18.59|-72.31
+30350|Prague|Czechia|203|50.08|14.44
+30368|Praia|Cape Verde|132|14.93|-23.51
+30376|Pretoria|South Africa|710|-25.75|28.19
+99155|Puerto Iguazú|Argentina|032|-25.60|-54.57
+99236|Puerto Quijarro|Bolivia|068|-17.78|-57.77
+99295|Pyongyang|North Korea|408|39.04|125.76
+30392|Quito|Ecuador|218|-0.18|-78.47
+30406|Rabat|Morocco|504|34.02|-6.84
+30414|Ramallah|Palestine|275|31.90|35.20
+30422|Riyadh|Saudi Arabia|682|24.71|46.68
+30430|Río Branco|Uruguay|858|-32.60|-53.38
+30449|Rome|Italy|380|41.90|12.50
+99147|St. John's|Antigua and Barbuda|028|17.12|-61.85
+30465|Salto del Guairá|Paraguay|600|-24.06|-54.31
+30473|Santa Cruz de la Sierra|Bolivia|068|-17.78|-63.18
+99279|Santa Elena de Uairén|Venezuela|862|4.60|-61.11
+30481|Santiago|Chile|152|-33.45|-70.67
+30988|Sarajevo|Bosnia and Herzegovina|070|43.86|18.41
+30538|Seoul|South Korea|410|37.57|126.98
+29548|Singapore|Singapore|702|1.35|103.82
+99333|Saint-Georges-de-l'Oyapock|French Guiana (France)|250|3.89|-51.80
+30562|Sydney|Australia|036|-33.87|151.21
+30490|Santo Domingo|Dominican Republic|214|18.49|-69.93
+30503|San Francisco|United States|840|37.77|-122.42
+30511|San José|Costa Rica|188|9.93|-84.08
+30520|San Salvador|El Salvador|222|13.69|-89.22
+39225|São Tomé|São Tomé and Príncipe|678|0.34|6.73
+30546|Sofia|Bulgaria|100|42.70|23.32
+30570|Taipei|Taiwan|158|25.03|121.57
+99317|Tallinn|Estonia|233|59.44|24.75
+99104|Tbilisi|Georgia|268|41.72|44.79
+30597|Tehran|Iran|364|35.69|51.39
+30600|Tegucigalpa|Honduras|340|14.07|-87.19
+30619|Tel Aviv|Israel|376|32.09|34.78
+99139|Tirana|Albania|008|41.33|19.82
+30686|Tripoli|Libya|434|32.89|13.19
+30708|Tunis|Tunisia|788|36.81|10.18
+30627|Tokyo|Japan|392|35.68|139.69
+39284|Ouagadougou|Burkina Faso|854|12.37|-1.52
+39063|Vancouver|Canada|124|49.28|-123.12
+30740|Warsaw|Poland|616|52.23|21.01
+30767|Vienna|Austria|040|48.21|16.37
+30783|Washington|United States|840|38.91|-77.04
+30805|Wellington|New Zealand|554|-41.29|174.78
+30821|Windhoek|Namibia|516|-22.56|17.08
+30848|Shanghai|China|156|31.23|121.47
+99376|Yangon|Myanmar|104|16.87|96.20
+39020|Zagreb|Croatia|191|45.82|15.98
+30864|Zurich|Switzerland|756|47.38|8.54
+30635|Toronto|Canada|124|43.65|-79.38
+99244|Rivera|Uruguay|858|-30.90|-55.55
