@@ -871,7 +871,7 @@ document.getElementById("exState").addEventListener("change", (e) => { S.exState
 document.getElementById("exSearch").addEventListener("change", (e) => {
   const v = e.target.value, m = v.match(/^(.*) \(([A-Z]{2})\)$/); if (!m) return;
   const r = [...S.mun.values()].find((q) => q.name === m[1] && String(q.uf).toUpperCase() === m[2]); if (!r) return;
-  S.exMun = String(r.ibge); S.exState = r.uf; document.getElementById("exState").value = r.uf; track("municipality_selected", { ibge: S.exMun, uf: r.uf, via: "search" }); exploreVisual(); stateTable();
+  S.exMun = String(r.ibge); S.exState = r.uf; document.getElementById("exState").value = r.uf; track("municipality_selected", { ibge: S.exMun, name: r.name, uf: r.uf, via: "search" }); exploreVisual(); stateTable();
 });
 document.getElementById("exClear").addEventListener("click", () => { S.exCity = null; S.exMun = null; S.exState = null; document.getElementById("exState").value = ""; document.getElementById("exSearch").value = ""; exploreVisual(); stateTable(); });
 document.querySelector("#stateTable tbody").addEventListener("click", (e) => { const tr = e.target.closest("tr[data-key]"); if (!tr) return; S.exState = tr.dataset.key; S.exMun = null; track("state_selected", { uf: tr.dataset.key, via: "table" }); document.getElementById("exState").value = tr.dataset.key; exploreVisual(); stateTable(); document.getElementById("exVis").scrollIntoView({ block: "nearest" }); });
@@ -905,7 +905,7 @@ function tipHtmlState(uf) {
 wireHover(document.getElementById("storyCanvas"), document.getElementById("storyTip"), document.getElementById("storyVis"));
 wireHover(document.getElementById("exCanvas"), document.getElementById("exTip"), document.getElementById("exVis"), (hit) => {
   if (hit.kind === "state") { S.exState = hit.id; S.exMun = null; track("state_selected", { uf: hit.id, via: "map" }); }
-  else { const r = S.mun.get(hit.id); S.exMun = hit.id; S.exState = r?.uf ?? S.exState; track("municipality_selected", { ibge: hit.id, uf: r?.uf, via: "map" }); }
+  else { const r = S.mun.get(hit.id); S.exMun = hit.id; S.exState = r?.uf ?? S.exState; track("municipality_selected", { ibge: hit.id, name: r?.name, uf: r?.uf, via: "map" }); }
   document.getElementById("exState").value = S.exState ?? ""; exploreVisual(); stateTable();
 });
 function wireWorldHover(svgEl, tip, box, onPick) {
@@ -915,7 +915,7 @@ function wireWorldHover(svgEl, tip, box, onPick) {
   svgEl.addEventListener("mouseleave", () => (tip.hidden = true));
 }
 wireWorldHover(document.getElementById("storySvg"), document.getElementById("storyTip"), document.getElementById("storyVis"));
-wireWorldHover(document.getElementById("exSvg"), document.getElementById("exTip"), document.getElementById("exVis"), (code) => { S.exCity = code; track("abroad_selected", { code, via: "map" }); exploreVisual(); });
+wireWorldHover(document.getElementById("exSvg"), document.getElementById("exTip"), document.getElementById("exVis"), (code) => { S.exCity = code; track("abroad_selected", { code, name: (S.abroad.find((a) => a.code === code) ?? countryRows().get(code))?.city ?? countryRows().get(code)?.country, via: "map" }); exploreVisual(); });
 document.querySelectorAll("#exRegion button").forEach((b) => b.addEventListener("click", () => { S.exRegion = b.dataset.region; track("world_region_selected", { region: S.exRegion }); exploreVisual(); }));
 
 function activeStep() {
