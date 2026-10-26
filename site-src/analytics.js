@@ -11,6 +11,7 @@
     capture_pageview: true,
     capture_pageleave: true,
   });
+  window.posthog.register({ site: "brasil-2026" });
   window.bzTrack = (event, props) => window.posthog.capture(event, { ...props, lang: document.documentElement.lang });
   document.addEventListener("click", (e) => { const a = e.target.closest(".site-foot a[download]"); if (a) window.bzTrack("data_downloaded", { file: a.getAttribute("href") }); });
 })();
