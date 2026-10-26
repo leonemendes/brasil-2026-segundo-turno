@@ -199,9 +199,18 @@ if (lateRows.length) {
   for (const r of munFile) { const v = lateByIbge.get(r.ibge); r.sections_late = v ? v.urnas : 0; r.voters_late_sections = null; r.late_votes = v ? v.votes : 0; }
   save("municipalities", munFile);
   const stFile = JSON.parse(readFileSync(`${OUT}/states.json`, "utf8"));
-  for (const r of stFile) { const v = st.get(r.uf); r.late_2026_r2 = v ? v.urnas_open_after_1749 : 0; r.sections_2026_r2 = null; }
+  const urnasPerUf: Record<string, number> = JSON.parse(readFileSync("data/r2-sections-per-uf.json", "utf8"));
+  const urnasTotal = Object.values(urnasPerUf).reduce((a, b) => a + b, 0);
+  for (const r of stFile) { const v = st.get(r.uf); r.late_2026_r2 = v ? v.urnas_open_after_1749 : 0; r.sections_2026_r2 = urnasPerUf[r.uf] ?? null; }
   save("states", stFile);
   const ls = JSON.parse(readFileSync(`${OUT}/late_sections.json`, "utf8")).filter((r: any) => r.election !== "2026 runoff");
-  save("late_sections", [...ls, { election: "2026 runoff", sections: null, closed_1_to_49_min_late: null, closed_49_min_or_more_late: tot.urnas_open_after_1749 }]);
+  save("late_sections", [...ls, { election: "2026 runoff", sections: urnasTotal, closed_1_to_49_min_late: null, closed_49_min_or_more_late: tot.urnas_open_after_1749 }]);
+  const closeRel = lateRows.map((r) => r.close_bsb - 17 * 60);
+  const cc = JSON.parse(readFileSync(`${OUT}/close_curves.json`, "utf8")).filter((r: any) => r.election !== "2026 runoff");
+  for (let m = 45; m < 180; m += 5) {
+    const open = closeRel.filter((t) => t >= m).length;
+    cc.push({ election: "2026 runoff", minute: m, still_open: open / urnasTotal, sections_open: open });
+  }
+  save("close_curves", cc);
   console.log("late votes:", JSON.stringify(tot));
 }

@@ -211,6 +211,7 @@ export const PT_JS: Record<string, string> = {
   "17:00 queue": "Fila das 17h",
   "After a pause": "Depois de pausa",
   "Votes after 17:00 in them": "Votos depois das 17h nelas",
+  " (from 17:45)": " (a partir das 17h45)",
   "Where they came from": "De onde vieram",
   "How to read: both bars hold every vote Lula and Flávio gained between the rounds. The top bar splits them by who got them, the bottom bar by where they came from (net). The data cannot say which source went to which candidate.": "Como ler: as duas barras somam todo voto que Lula e Flávio ganharam entre os turnos. A de cima divide por quem recebeu; a de baixo, pela origem (líquida). Os dados não dizem qual origem foi para qual candidato.",
   "How to read: the bar is every vote Lula and Flávio gained between the rounds, split by where it came from (net). Below, the round-1 votes of the candidates who were out of the runoff.": "Como ler: a barra é todo voto que Lula e Flávio ganharam entre os turnos, dividido pela origem (líquida). Embaixo, os votos no 1º turno dos candidatos que ficaram fora do 2º turno.",
