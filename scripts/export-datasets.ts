@@ -134,3 +134,28 @@ save("abroad", readFileSync("data/abroad-geo.txt", "utf8").trim().split("\n").ma
     r2_lula: b?.c13 ?? null, r2_flavio: b?.c22 ?? null,
     y2018_haddad: c?.L ?? null, y2018_bolsonaro: c?.F ?? null, y2022_lula: e?.L ?? null, y2022_bolsonaro: e?.F ?? null };
 }));
+
+const r1br = JSON.parse(readFileSync("data/r1-br.json", "utf8"));
+const r1cands: any[] = [];
+for (const ag of r1br.carg[0].agr) for (const p of ag.par) for (const c of p.cand) r1cands.push({ number: c.n, name: title(c.nmu), party: p.sg, votes: +c.vap });
+r1cands.sort((a, b) => b.votes - a.votes);
+save("r1_candidates", r1cands);
+
+const r2uf = JSON.parse(readFileSync("data/r2-uf.json", "utf8"));
+const r1area = new Map<string, { L: number; F: number; O: number; B: number; N: number; comp: number }>();
+for (const l of readFileSync("data/r1/sec.ndjson", "utf8").split("\n")) {
+  if (!l) continue;
+  const s = JSON.parse(l);
+  for (const k of [s.uf, "br"]) {
+    const a = r1area.get(k) ?? { L: 0, F: 0, O: 0, B: 0, N: 0, comp: 0 };
+    a.L += s.c13; a.F += s.c22; a.O += s.other; a.B += s.branco; a.N += s.nulo; a.comp += s.comp;
+    r1area.set(k, a);
+  }
+}
+const sources = [...r1area.entries()].map(([uf, a]) => {
+  const b = r2uf[uf];
+  const gainL = b.c13 - a.L, gainF = b.c22 - a.F, turnout = b.comp - a.comp, blankNull = a.B + a.N - (b.branco + b.nulo);
+  if (gainL + gainF !== a.O + turnout + blankNull) throw new Error(`accounting does not add up for ${uf}`);
+  return { uf, area: uf === "br" ? "Brazil" : UF_NAMES[uf], gain_lula: gainL, gain_flavio: gainF, gain_total: gainL + gainF, from_other_candidates: a.O, from_turnout: turnout, from_fewer_blank_null: blankNull };
+}).sort((x, y) => (x.uf === "br" ? -1 : y.uf === "br" ? 1 : y.gain_total - x.gain_total));
+save("vote_sources", sources);

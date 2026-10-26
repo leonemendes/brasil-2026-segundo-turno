@@ -1,6 +1,7 @@
 import { appendFileSync } from "node:fs";
 const out = process.argv[2];
 const RIGHT = process.env.RIGHT ?? "22";
+const OFFICIAL = process.env.OFFICIAL ? new Set(process.env.OFFICIAL.split(",")) : null;
 const dec = new TextDecoder("latin1");
 const secs = new Map<string, any>();
 let header: string[] = [];
@@ -18,7 +19,8 @@ const handle = (line: string) => {
     secs.set(key, s);
   }
   const tipo = f[idx.DS_TIPO_VOTAVEL], nr = f[idx.NR_VOTAVEL], q = +f[idx.QT_VOTOS];
-  if (tipo === "Nominal") { if (nr === "13") s.c13 += q; else if (nr === RIGHT) s.c22 += q; else s.other += q; }
+  if (tipo === "Nominal" && OFFICIAL && !OFFICIAL.has(nr)) s.nulo += q;
+  else if (tipo === "Nominal") { if (nr === "13") s.c13 += q; else if (nr === RIGHT) s.c22 += q; else s.other += q; }
   else if (tipo === "Branco") s.branco += q;
   else s.nulo += q;
 };

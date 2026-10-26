@@ -5072,3 +5072,686 @@
 {"uf":"sp","mun":"62898","ibge":"3509403","nm":"CAJURU","c22":7599,"c13":6607,"aptos":18243,"comp":14755,"branco":201,"nulo":348}
 {"uf":"sp","mun":"61506","ibge":"3509452","nm":"CAMPINA DO MONTE ALEGRE","c22":2403,"c13":1435,"aptos":4857,"comp":3985,"branco":55,"nulo":92}
 {"uf":"sp","mun":"62910","ibge":"3509502","nm":"CAMPINAS","c22":360222,"c13":303914,"aptos":873566,"comp":690355,"branco":8851,"nulo":17368}
+{"uf":"sp","mun":"62936","ibge":"3509601","nm":"CAMPO LIMPO PAULISTA","c22":25772,"c13":20188,"aptos":59440,"comp":48196,"branco":765,"nulo":1471}
+{"uf":"sp","mun":"62952","ibge":"3509700","nm":"CAMPOS DO JORDÃO","c22":17850,"c13":11083,"aptos":38112,"comp":30137,"branco":488,"nulo":716}
+{"uf":"sp","mun":"62979","ibge":"3509809","nm":"CAMPOS NOVOS PAULISTA","c22":1948,"c13":1039,"aptos":3805,"comp":3053,"branco":32,"nulo":34}
+{"uf":"sp","mun":"62995","ibge":"3509908","nm":"CANANÉIA","c22":4275,"c13":3423,"aptos":10410,"comp":7928,"branco":84,"nulo":146}
+{"uf":"sp","mun":"62103","ibge":"3509957","nm":"CANAS","c22":1806,"c13":1350,"aptos":3960,"comp":3258,"branco":37,"nulo":65}
+{"uf":"sp","mun":"61344","ibge":"3510153","nm":"CANITAR","c22":1806,"c13":1512,"aptos":4337,"comp":3462,"branco":71,"nulo":73}
+{"uf":"sp","mun":"63070","ibge":"3510302","nm":"CAPELA DO ALTO","c22":7986,"c13":3757,"aptos":14543,"comp":12167,"branco":230,"nulo":194}
+{"uf":"sp","mun":"63096","ibge":"3510401","nm":"CAPIVARI","c22":19819,"c13":10092,"aptos":37608,"comp":31057,"branco":420,"nulo":726}
+{"uf":"sp","mun":"63053","ibge":"3510203","nm":"CAPÃO BONITO","c22":16457,"c13":10408,"aptos":34298,"comp":27909,"branco":514,"nulo":530}
+{"uf":"sp","mun":"63118","ibge":"3510500","nm":"CARAGUATATUBA","c22":46098,"c13":34449,"aptos":106378,"comp":83873,"branco":1255,"nulo":2071}
+{"uf":"sp","mun":"63134","ibge":"3510609","nm":"CARAPICUÍBA","c22":97372,"c13":121023,"aptos":290484,"comp":227450,"branco":3683,"nulo":5372}
+{"uf":"sp","mun":"63150","ibge":"3510708","nm":"CARDOSO","c22":3891,"c13":3148,"aptos":9594,"comp":7238,"branco":58,"nulo":141}
+{"uf":"sp","mun":"63177","ibge":"3510807","nm":"CASA BRANCA","c22":9424,"c13":5061,"aptos":19555,"comp":15067,"branco":247,"nulo":335}
+{"uf":"sp","mun":"63215","ibge":"3511003","nm":"CASTILHO","c22":5678,"c13":6374,"aptos":15382,"comp":12416,"branco":139,"nulo":225}
+{"uf":"sp","mun":"63231","ibge":"3511102","nm":"CATANDUVA","c22":45331,"c13":20897,"aptos":86138,"comp":68823,"branco":807,"nulo":1788}
+{"uf":"sp","mun":"63258","ibge":"3511201","nm":"CATIGUÁ","c22":3017,"c13":1545,"aptos":5689,"comp":4793,"branco":68,"nulo":163}
+{"uf":"sp","mun":"62715","ibge":"3508504","nm":"CAÇAPAVA","c22":35759,"c13":21391,"aptos":72599,"comp":59531,"branco":871,"nulo":1510}
+{"uf":"sp","mun":"63274","ibge":"3511300","nm":"CEDRAL","c22":4758,"c13":2015,"aptos":8583,"comp":6988,"branco":65,"nulo":150}
+{"uf":"sp","mun":"63290","ibge":"3511409","nm":"CERQUEIRA CÉSAR","c22":6948,"c13":4070,"aptos":14965,"comp":11477,"branco":239,"nulo":220}
+{"uf":"sp","mun":"63312","ibge":"3511508","nm":"CERQUILHO","c22":19902,"c13":7998,"aptos":36001,"comp":29241,"branco":429,"nulo":912}
+{"uf":"sp","mun":"63339","ibge":"3511607","nm":"CESÁRIO LANGE","c22":7221,"c13":3139,"aptos":13804,"comp":10985,"branco":256,"nulo":369}
+{"uf":"sp","mun":"63355","ibge":"3511706","nm":"CHARQUEADA","c22":7095,"c13":3169,"aptos":13212,"comp":10642,"branco":146,"nulo":232}
+{"uf":"sp","mun":"63371","ibge":"3557204","nm":"CHAVANTES","c22":4101,"c13":2655,"aptos":8675,"comp":7032,"branco":117,"nulo":159}
+{"uf":"sp","mun":"63398","ibge":"3511904","nm":"CLEMENTINA","c22":2822,"c13":1467,"aptos":5274,"comp":4436,"branco":51,"nulo":96}
+{"uf":"sp","mun":"63410","ibge":"3512001","nm":"COLINA","c22":5964,"c13":4734,"aptos":14048,"comp":11113,"branco":177,"nulo":238}
+{"uf":"sp","mun":"63436","ibge":"3512100","nm":"COLÔMBIA","c22":2291,"c13":2095,"aptos":5799,"comp":4499,"branco":43,"nulo":70}
+{"uf":"sp","mun":"63452","ibge":"3512209","nm":"CONCHAL","c22":12258,"c13":4932,"aptos":20926,"comp":17804,"branco":283,"nulo":331}
+{"uf":"sp","mun":"63479","ibge":"3512308","nm":"CONCHAS","c22":6414,"c13":2816,"aptos":12631,"comp":9519,"branco":117,"nulo":172}
+{"uf":"sp","mun":"63495","ibge":"3512407","nm":"CORDEIRÓPOLIS","c22":10483,"c13":5054,"aptos":19569,"comp":16139,"branco":220,"nulo":382}
+{"uf":"sp","mun":"63517","ibge":"3512506","nm":"COROADOS","c22":2257,"c13":1007,"aptos":4022,"comp":3361,"branco":39,"nulo":58}
+{"uf":"sp","mun":"63533","ibge":"3512605","nm":"CORONEL MACEDO","c22":1303,"c13":1655,"aptos":3794,"comp":3063,"branco":49,"nulo":56}
+{"uf":"sp","mun":"63550","ibge":"3512704","nm":"CORUMBATAÍ","c22":1844,"c13":758,"aptos":3524,"comp":2704,"branco":26,"nulo":76}
+{"uf":"sp","mun":"63592","ibge":"3512902","nm":"COSMORAMA","c22":3565,"c13":2098,"aptos":7032,"comp":5780,"branco":68,"nulo":49}
+{"uf":"sp","mun":"63576","ibge":"3512803","nm":"COSMÓPOLIS","c22":19425,"c13":15204,"aptos":44577,"comp":36204,"branco":543,"nulo":1032}
+{"uf":"sp","mun":"63614","ibge":"3513009","nm":"COTIA","c22":72794,"c13":76363,"aptos":194136,"comp":155264,"branco":2431,"nulo":3676}
+{"uf":"sp","mun":"63630","ibge":"3513108","nm":"CRAVINHOS","c22":13164,"c13":7198,"aptos":27117,"comp":21276,"branco":311,"nulo":603}
+{"uf":"sp","mun":"63657","ibge":"3513207","nm":"CRISTAIS PAULISTA","c22":3393,"c13":2283,"aptos":7311,"comp":5874,"branco":83,"nulo":115}
+{"uf":"sp","mun":"63690","ibge":"3513405","nm":"CRUZEIRO","c22":25253,"c13":18730,"aptos":56197,"comp":45836,"branco":647,"nulo":1206}
+{"uf":"sp","mun":"63673","ibge":"3513306","nm":"CRUZÁLIA","c22":1090,"c13":522,"aptos":1966,"comp":1659,"branco":29,"nulo":18}
+{"uf":"sp","mun":"63711","ibge":"3513504","nm":"CUBATÃO","c22":32303,"c13":39481,"aptos":90324,"comp":74406,"branco":993,"nulo":1629}
+{"uf":"sp","mun":"63738","ibge":"3513603","nm":"CUNHA","c22":8148,"c13":5950,"aptos":18138,"comp":14638,"branco":254,"nulo":286}
+{"uf":"sp","mun":"63193","ibge":"3510906","nm":"CÁSSIA DOS COQUEIROS","c22":1148,"c13":945,"aptos":2668,"comp":2162,"branco":19,"nulo":50}
+{"uf":"sp","mun":"63010","ibge":"3510005","nm":"CÂNDIDO MOTA","c22":12450,"c13":5535,"aptos":22897,"comp":18670,"branco":250,"nulo":435}
+{"uf":"sp","mun":"63037","ibge":"3510104","nm":"CÂNDIDO RODRIGUES","c22":1547,"c13":682,"aptos":2853,"comp":2293,"branco":31,"nulo":33}
+{"uf":"sp","mun":"63754","ibge":"3513702","nm":"DESCALVADO","c22":12335,"c13":5769,"aptos":24907,"comp":19005,"branco":310,"nulo":591}
+{"uf":"sp","mun":"63770","ibge":"3513801","nm":"DIADEMA","c22":100154,"c13":156935,"aptos":331030,"comp":268063,"branco":3667,"nulo":7307}
+{"uf":"sp","mun":"61123","ibge":"3513850","nm":"DIRCE REIS","c22":731,"c13":643,"aptos":1702,"comp":1403,"branco":14,"nulo":15}
+{"uf":"sp","mun":"63797","ibge":"3513900","nm":"DIVINOLÂNDIA","c22":5216,"c13":2301,"aptos":9543,"comp":7803,"branco":91,"nulo":195}
+{"uf":"sp","mun":"63819","ibge":"3514007","nm":"DOBRADA","c22":2462,"c13":2849,"aptos":6728,"comp":5508,"branco":85,"nulo":112}
+{"uf":"sp","mun":"63835","ibge":"3514106","nm":"DOIS CÓRREGOS","c22":9279,"c13":4680,"aptos":18562,"comp":14473,"branco":244,"nulo":270}
+{"uf":"sp","mun":"63851","ibge":"3514205","nm":"DOLCINÓPOLIS","c22":794,"c13":1097,"aptos":2355,"comp":1933,"branco":16,"nulo":26}
+{"uf":"sp","mun":"63878","ibge":"3514304","nm":"DOURADO","c22":3131,"c13":2112,"aptos":6800,"comp":5520,"branco":90,"nulo":187}
+{"uf":"sp","mun":"63894","ibge":"3514403","nm":"DRACENA","c22":18517,"c13":7301,"aptos":33620,"comp":26546,"branco":317,"nulo":411}
+{"uf":"sp","mun":"63916","ibge":"3514502","nm":"DUARTINA","c22":4470,"c13":3062,"aptos":9857,"comp":7807,"branco":112,"nulo":163}
+{"uf":"sp","mun":"63932","ibge":"3514601","nm":"DUMONT","c22":3847,"c13":2015,"aptos":7337,"comp":6057,"branco":83,"nulo":112}
+{"uf":"sp","mun":"63959","ibge":"3514700","nm":"ECHAPORÃ","c22":2498,"c13":1406,"aptos":5071,"comp":4001,"branco":35,"nulo":62}
+{"uf":"sp","mun":"63975","ibge":"3514809","nm":"ELDORADO","c22":4272,"c13":3671,"aptos":10787,"comp":8188,"branco":108,"nulo":137}
+{"uf":"sp","mun":"63991","ibge":"3514908","nm":"ELIAS FAUSTO","c22":7420,"c13":3495,"aptos":13527,"comp":11412,"branco":170,"nulo":327}
+{"uf":"sp","mun":"61760","ibge":"3514924","nm":"ELISIÁRIO","c22":1528,"c13":686,"aptos":2738,"comp":2273,"branco":28,"nulo":31}
+{"uf":"sp","mun":"61182","ibge":"3514957","nm":"EMBAÚBA","c22":1225,"c13":766,"aptos":2448,"comp":2065,"branco":20,"nulo":54}
+{"uf":"sp","mun":"64017","ibge":"3515004","nm":"EMBU DAS ARTES","c22":67200,"c13":94154,"aptos":206401,"comp":167906,"branco":2515,"nulo":4037}
+{"uf":"sp","mun":"64033","ibge":"3515103","nm":"EMBU-GUAÇU","c22":19357,"c13":20568,"aptos":53728,"comp":41767,"branco":737,"nulo":1105}
+{"uf":"sp","mun":"61387","ibge":"3515129","nm":"EMILIANÓPOLIS","c22":1170,"c13":948,"aptos":2716,"comp":2185,"branco":30,"nulo":37}
+{"uf":"sp","mun":"61689","ibge":"3515152","nm":"ENGENHEIRO COELHO","c22":7445,"c13":4071,"aptos":14967,"comp":11923,"branco":157,"nulo":250}
+{"uf":"sp","mun":"68659","ibge":"3515186","nm":"ESPÍRITO SANTO DO PINHAL","c22":14219,"c13":8937,"aptos":30946,"comp":24214,"branco":413,"nulo":645}
+{"uf":"sp","mun":"61140","ibge":"3515194","nm":"ESPÍRITO SANTO DO TURVO","c22":1503,"c13":1134,"aptos":3546,"comp":2707,"branco":25,"nulo":45}
+{"uf":"sp","mun":"61662","ibge":"3557303","nm":"ESTIVA GERBI","c22":5036,"c13":2457,"aptos":9490,"comp":7796,"branco":94,"nulo":209}
+{"uf":"sp","mun":"64050","ibge":"3515202","nm":"ESTRELA D'OESTE","c22":3807,"c13":1751,"aptos":7131,"comp":5749,"branco":81,"nulo":110}
+{"uf":"sp","mun":"64076","ibge":"3515301","nm":"ESTRELA DO NORTE","c22":930,"c13":987,"aptos":2463,"comp":1962,"branco":20,"nulo":25}
+{"uf":"sp","mun":"61000","ibge":"3515350","nm":"EUCLIDES DA CUNHA PAULISTA","c22":1742,"c13":2917,"aptos":6334,"comp":4776,"branco":43,"nulo":74}
+{"uf":"sp","mun":"64092","ibge":"3515400","nm":"FARTURA","c22":5506,"c13":4191,"aptos":12520,"comp":10055,"branco":164,"nulo":194}
+{"uf":"sp","mun":"64130","ibge":"3515608","nm":"FERNANDO PRESTES","c22":2688,"c13":1215,"aptos":5086,"comp":4057,"branco":69,"nulo":85}
+{"uf":"sp","mun":"64114","ibge":"3515509","nm":"FERNANDÓPOLIS","c22":24437,"c13":14177,"aptos":50201,"comp":39836,"branco":507,"nulo":715}
+{"uf":"sp","mun":"62286","ibge":"3515657","nm":"FERNÃO","c22":875,"c13":404,"aptos":1689,"comp":1312,"branco":15,"nulo":18}
+{"uf":"sp","mun":"64157","ibge":"3515707","nm":"FERRAZ DE VASCONCELOS","c22":43254,"c13":58164,"aptos":128913,"comp":106291,"branco":1743,"nulo":3130}
+{"uf":"sp","mun":"64173","ibge":"3515806","nm":"FLORA RICA","c22":585,"c13":506,"aptos":1430,"comp":1105,"branco":3,"nulo":11}
+{"uf":"sp","mun":"64190","ibge":"3515905","nm":"FLOREAL","c22":1202,"c13":849,"aptos":2672,"comp":2106,"branco":21,"nulo":34}
+{"uf":"sp","mun":"64238","ibge":"3516101","nm":"FLORÍNEA","c22":1069,"c13":987,"aptos":2676,"comp":2108,"branco":25,"nulo":27}
+{"uf":"sp","mun":"64211","ibge":"3516002","nm":"FLÓRIDA PAULISTA","c22":3789,"c13":2085,"aptos":7406,"comp":6066,"branco":82,"nulo":110}
+{"uf":"sp","mun":"64254","ibge":"3516200","nm":"FRANCA","c22":117733,"c13":70121,"aptos":241850,"comp":195408,"branco":2805,"nulo":4749}
+{"uf":"sp","mun":"64270","ibge":"3516309","nm":"FRANCISCO MORATO","c22":37139,"c13":58175,"aptos":126793,"comp":99353,"branco":1653,"nulo":2386}
+{"uf":"sp","mun":"64297","ibge":"3516408","nm":"FRANCO DA ROCHA","c22":35081,"c13":44441,"aptos":107860,"comp":83495,"branco":1334,"nulo":2639}
+{"uf":"sp","mun":"64319","ibge":"3516507","nm":"GABRIEL MONTEIRO","c22":1557,"c13":620,"aptos":2682,"comp":2254,"branco":22,"nulo":55}
+{"uf":"sp","mun":"64351","ibge":"3516705","nm":"GARÇA","c22":16134,"c13":8416,"aptos":32372,"comp":25766,"branco":531,"nulo":685}
+{"uf":"sp","mun":"64378","ibge":"3516804","nm":"GASTÃO VIDIGAL","c22":1102,"c13":1227,"aptos":2868,"comp":2382,"branco":31,"nulo":22}
+{"uf":"sp","mun":"62308","ibge":"3516853","nm":"GAVIÃO PEIXOTO","c22":1468,"c13":1726,"aptos":4164,"comp":3317,"branco":59,"nulo":64}
+{"uf":"sp","mun":"64394","ibge":"3516903","nm":"GENERAL SALGADO","c22":3991,"c13":2114,"aptos":7964,"comp":6249,"branco":67,"nulo":77}
+{"uf":"sp","mun":"64416","ibge":"3517000","nm":"GETULINA","c22":2880,"c13":2188,"aptos":7045,"comp":5259,"branco":85,"nulo":106}
+{"uf":"sp","mun":"64432","ibge":"3517109","nm":"GLICÉRIO","c22":1894,"c13":1123,"aptos":3987,"comp":3131,"branco":48,"nulo":66}
+{"uf":"sp","mun":"64475","ibge":"3517307","nm":"GUAIMBÊ","c22":1818,"c13":1477,"aptos":4479,"comp":3430,"branco":61,"nulo":74}
+{"uf":"sp","mun":"64459","ibge":"3517208","nm":"GUAIÇARA","c22":3726,"c13":2385,"aptos":8162,"comp":6334,"branco":99,"nulo":124}
+{"uf":"sp","mun":"64530","ibge":"3517604","nm":"GUAPIARA","c22":4962,"c13":5576,"aptos":13630,"comp":10922,"branco":171,"nulo":213}
+{"uf":"sp","mun":"64513","ibge":"3517505","nm":"GUAPIAÇU","c22":7859,"c13":4515,"aptos":15946,"comp":12832,"branco":167,"nulo":291}
+{"uf":"sp","mun":"64599","ibge":"3517901","nm":"GUARACI","c22":3343,"c13":3108,"aptos":8094,"comp":6648,"branco":77,"nulo":120}
+{"uf":"sp","mun":"64610","ibge":"3518008","nm":"GUARANI D'OESTE","c22":704,"c13":727,"aptos":1783,"comp":1461,"branco":7,"nulo":23}
+{"uf":"sp","mun":"64637","ibge":"3518107","nm":"GUARANTÃ","c22":2218,"c13":1380,"aptos":4764,"comp":3688,"branco":49,"nulo":41}
+{"uf":"sp","mun":"64653","ibge":"3518206","nm":"GUARARAPES","c22":12199,"c13":6064,"aptos":23594,"comp":18832,"branco":212,"nulo":357}
+{"uf":"sp","mun":"64670","ibge":"3518305","nm":"GUARAREMA","c22":12762,"c13":7474,"aptos":26376,"comp":20926,"branco":285,"nulo":405}
+{"uf":"sp","mun":"64696","ibge":"3518404","nm":"GUARATINGUETÁ","c22":44916,"c13":27205,"aptos":90832,"comp":74481,"branco":1061,"nulo":1299}
+{"uf":"sp","mun":"64572","ibge":"3517802","nm":"GUARAÇAÍ","c22":3107,"c13":1711,"aptos":6153,"comp":4970,"branco":70,"nulo":82}
+{"uf":"sp","mun":"64718","ibge":"3518503","nm":"GUAREÍ","c22":4615,"c13":2320,"aptos":8903,"comp":7396,"branco":205,"nulo":256}
+{"uf":"sp","mun":"64734","ibge":"3518602","nm":"GUARIBA","c22":12306,"c13":10258,"aptos":28370,"comp":23387,"branco":411,"nulo":412}
+{"uf":"sp","mun":"64750","ibge":"3518701","nm":"GUARUJÁ","c22":95633,"c13":84901,"aptos":238908,"comp":188117,"branco":2948,"nulo":4635}
+{"uf":"sp","mun":"64777","ibge":"3518800","nm":"GUARULHOS","c22":380962,"c13":364761,"aptos":948903,"comp":782098,"branco":11207,"nulo":25168}
+{"uf":"sp","mun":"64556","ibge":"3517703","nm":"GUARÁ","c22":5871,"c13":5308,"aptos":14161,"comp":11502,"branco":114,"nulo":209}
+{"uf":"sp","mun":"61107","ibge":"3518859","nm":"GUATAPARÁ","c22":2120,"c13":2127,"aptos":5765,"comp":4438,"branco":77,"nulo":114}
+{"uf":"sp","mun":"64491","ibge":"3517406","nm":"GUAÍRA","c22":13520,"c13":7820,"aptos":28551,"comp":22103,"branco":336,"nulo":427}
+{"uf":"sp","mun":"64793","ibge":"3518909","nm":"GUZOLÂNDIA","c22":1373,"c13":1358,"aptos":3558,"comp":2817,"branco":44,"nulo":42}
+{"uf":"sp","mun":"64335","ibge":"3516606","nm":"GÁLIA","c22":1836,"c13":1732,"aptos":4626,"comp":3712,"branco":52,"nulo":92}
+{"uf":"sp","mun":"64815","ibge":"3519006","nm":"HERCULÂNDIA","c22":3448,"c13":1827,"aptos":6940,"comp":5472,"branco":68,"nulo":129}
+{"uf":"sp","mun":"61743","ibge":"3519055","nm":"HOLAMBRA","c22":6973,"c13":3118,"aptos":12568,"comp":10422,"branco":126,"nulo":205}
+{"uf":"sp","mun":"61727","ibge":"3519071","nm":"HORTOLÂNDIA","c22":72018,"c13":59845,"aptos":164473,"comp":137107,"branco":1950,"nulo":3294}
+{"uf":"sp","mun":"64831","ibge":"3519105","nm":"IACANGA","c22":4433,"c13":2042,"aptos":8269,"comp":6658,"branco":71,"nulo":112}
+{"uf":"sp","mun":"64858","ibge":"3519204","nm":"IACRI","c22":2565,"c13":1173,"aptos":4764,"comp":3864,"branco":55,"nulo":71}
+{"uf":"sp","mun":"61085","ibge":"3519253","nm":"IARAS","c22":1509,"c13":1596,"aptos":4404,"comp":3210,"branco":45,"nulo":60}
+{"uf":"sp","mun":"64874","ibge":"3519303","nm":"IBATÉ","c22":10796,"c13":8747,"aptos":26266,"comp":20516,"branco":381,"nulo":592}
+{"uf":"sp","mun":"64912","ibge":"3519501","nm":"IBIRAREMA","c22":2783,"c13":1213,"aptos":5070,"comp":4142,"branco":71,"nulo":75}
+{"uf":"sp","mun":"64890","ibge":"3519402","nm":"IBIRÁ","c22":5117,"c13":2288,"aptos":9094,"comp":7639,"branco":86,"nulo":148}
+{"uf":"sp","mun":"64939","ibge":"3519600","nm":"IBITINGA","c22":21145,"c13":11072,"aptos":41269,"comp":33364,"branco":453,"nulo":694}
+{"uf":"sp","mun":"64955","ibge":"3519709","nm":"IBIÚNA","c22":30818,"c13":16586,"aptos":61954,"comp":49472,"branco":856,"nulo":1212}
+{"uf":"sp","mun":"64971","ibge":"3519808","nm":"ICÉM","c22":2561,"c13":2135,"aptos":6049,"comp":4843,"branco":44,"nulo":103}
+{"uf":"sp","mun":"64998","ibge":"3519907","nm":"IEPÊ","c22":3003,"c13":1774,"aptos":5971,"comp":4916,"branco":69,"nulo":70}
+{"uf":"sp","mun":"65030","ibge":"3520103","nm":"IGARAPAVA","c22":7820,"c13":7193,"aptos":19717,"comp":15458,"branco":190,"nulo":255}
+{"uf":"sp","mun":"65056","ibge":"3520202","nm":"IGARATÁ","c22":4575,"c13":2725,"aptos":9443,"comp":7557,"branco":107,"nulo":150}
+{"uf":"sp","mun":"65013","ibge":"3520004","nm":"IGARAÇU DO TIETÊ","c22":8108,"c13":5498,"aptos":17539,"comp":14444,"branco":355,"nulo":483}
+{"uf":"sp","mun":"65072","ibge":"3520301","nm":"IGUAPE","c22":9200,"c13":7256,"aptos":22105,"comp":17028,"branco":236,"nulo":336}
+{"uf":"sp","mun":"62006","ibge":"3520426","nm":"ILHA COMPRIDA","c22":4773,"c13":4132,"aptos":13300,"comp":9236,"branco":109,"nulo":222}
+{"uf":"sp","mun":"61204","ibge":"3520442","nm":"ILHA SOLTEIRA","c22":7845,"c13":6435,"aptos":20253,"comp":14893,"branco":171,"nulo":442}
+{"uf":"sp","mun":"65099","ibge":"3520400","nm":"ILHABELA","c22":12923,"c13":10708,"aptos":31086,"comp":24424,"branco":321,"nulo":472}
+{"uf":"sp","mun":"65110","ibge":"3520509","nm":"INDAIATUBA","c22":98414,"c13":56436,"aptos":192523,"comp":161570,"branco":2345,"nulo":4375}
+{"uf":"sp","mun":"65137","ibge":"3520608","nm":"INDIANA","c22":2161,"c13":1145,"aptos":4065,"comp":3399,"branco":40,"nulo":53}
+{"uf":"sp","mun":"65153","ibge":"3520707","nm":"INDIAPORÃ","c22":1324,"c13":1156,"aptos":3164,"comp":2545,"branco":20,"nulo":45}
+{"uf":"sp","mun":"65170","ibge":"3520806","nm":"INÚBIA PAULISTA","c22":1854,"c13":715,"aptos":3158,"comp":2651,"branco":34,"nulo":48}
+{"uf":"sp","mun":"65196","ibge":"3520905","nm":"IPAUSSU","c22":5032,"c13":2886,"aptos":9989,"comp":8185,"branco":120,"nulo":147}
+{"uf":"sp","mun":"65218","ibge":"3521002","nm":"IPERÓ","c22":8616,"c13":7728,"aptos":21605,"comp":17149,"branco":298,"nulo":507}
+{"uf":"sp","mun":"65234","ibge":"3521101","nm":"IPEÚNA","c22":3091,"c13":1377,"aptos":5853,"comp":4623,"branco":51,"nulo":104}
+{"uf":"sp","mun":"62243","ibge":"3521150","nm":"IPIGUÁ","c22":2587,"c13":1188,"aptos":4916,"comp":3851,"branco":39,"nulo":37}
+{"uf":"sp","mun":"65250","ibge":"3521200","nm":"IPORANGA","c22":1001,"c13":1472,"aptos":3303,"comp":2556,"branco":41,"nulo":42}
+{"uf":"sp","mun":"65277","ibge":"3521309","nm":"IPUÃ","c22":4402,"c13":4503,"aptos":11210,"comp":9192,"branco":117,"nulo":170}
+{"uf":"sp","mun":"65293","ibge":"3521408","nm":"IRACEMÁPOLIS","c22":9995,"c13":4603,"aptos":17620,"comp":15068,"branco":161,"nulo":309}
+{"uf":"sp","mun":"65331","ibge":"3521606","nm":"IRAPURU","c22":2156,"c13":1311,"aptos":4556,"comp":3620,"branco":55,"nulo":98}
+{"uf":"sp","mun":"65315","ibge":"3521507","nm":"IRAPUÃ","c22":3138,"c13":1184,"aptos":5490,"comp":4441,"branco":58,"nulo":61}
+{"uf":"sp","mun":"65358","ibge":"3521705","nm":"ITABERÁ","c22":6276,"c13":4495,"aptos":13506,"comp":11102,"branco":186,"nulo":145}
+{"uf":"sp","mun":"65390","ibge":"3521903","nm":"ITAJOBI","c22":7444,"c13":2573,"aptos":12327,"comp":10318,"branco":95,"nulo":206}
+{"uf":"sp","mun":"65412","ibge":"3522000","nm":"ITAJU","c22":1472,"c13":907,"aptos":3175,"comp":2444,"branco":27,"nulo":38}
+{"uf":"sp","mun":"65439","ibge":"3522109","nm":"ITANHAÉM","c22":31981,"c13":29646,"aptos":85068,"comp":64091,"branco":930,"nulo":1534}
+{"uf":"sp","mun":"61603","ibge":"3522158","nm":"ITAOCA","c22":1053,"c13":1243,"aptos":3039,"comp":2373,"branco":30,"nulo":47}
+{"uf":"sp","mun":"65455","ibge":"3522208","nm":"ITAPECERICA DA SERRA","c22":40846,"c13":56308,"aptos":124085,"comp":100857,"branco":1513,"nulo":2190}
+{"uf":"sp","mun":"65471","ibge":"3522307","nm":"ITAPETININGA","c22":59460,"c13":29616,"aptos":114444,"comp":92822,"branco":1565,"nulo":2181}
+{"uf":"sp","mun":"65498","ibge":"3522406","nm":"ITAPEVA","c22":32978,"c13":19662,"aptos":68479,"comp":54534,"branco":948,"nulo":946}
+{"uf":"sp","mun":"65510","ibge":"3522505","nm":"ITAPEVI","c22":54371,"c13":71036,"aptos":168601,"comp":130747,"branco":2316,"nulo":3024}
+{"uf":"sp","mun":"65536","ibge":"3522604","nm":"ITAPIRA","c22":27895,"c13":13517,"aptos":53364,"comp":43700,"branco":780,"nulo":1508}
+{"uf":"sp","mun":"61948","ibge":"3522653","nm":"ITAPIRAPUÃ PAULISTA","c22":1427,"c13":1177,"aptos":3305,"comp":2705,"branco":49,"nulo":52}
+{"uf":"sp","mun":"65579","ibge":"3522802","nm":"ITAPORANGA","c22":5242,"c13":3197,"aptos":11006,"comp":8716,"branco":133,"nulo":144}
+{"uf":"sp","mun":"65617","ibge":"3523008","nm":"ITAPURA","c22":844,"c13":1845,"aptos":3647,"comp":2772,"branco":22,"nulo":61}
+{"uf":"sp","mun":"65595","ibge":"3522901","nm":"ITAPUÍ","c22":4580,"c13":2891,"aptos":9475,"comp":7807,"branco":157,"nulo":179}
+{"uf":"sp","mun":"65633","ibge":"3523107","nm":"ITAQUAQUECETUBA","c22":87082,"c13":105827,"aptos":258023,"comp":202068,"branco":3491,"nulo":5668}
+{"uf":"sp","mun":"65650","ibge":"3523206","nm":"ITARARÉ","c22":16287,"c13":9354,"aptos":33776,"comp":26534,"branco":475,"nulo":418}
+{"uf":"sp","mun":"65676","ibge":"3523305","nm":"ITARIRI","c22":4224,"c13":2973,"aptos":9789,"comp":7446,"branco":100,"nulo":149}
+{"uf":"sp","mun":"65692","ibge":"3523404","nm":"ITATIBA","c22":43996,"c13":24036,"aptos":85162,"comp":70628,"branco":964,"nulo":1632}
+{"uf":"sp","mun":"65714","ibge":"3523503","nm":"ITATINGA","c22":6365,"c13":4174,"aptos":14071,"comp":11033,"branco":218,"nulo":276}
+{"uf":"sp","mun":"65374","ibge":"3521804","nm":"ITAÍ","c22":7044,"c13":6190,"aptos":16735,"comp":13690,"branco":223,"nulo":233}
+{"uf":"sp","mun":"65730","ibge":"3523602","nm":"ITIRAPINA","c22":4425,"c13":3207,"aptos":10401,"comp":7953,"branco":125,"nulo":196}
+{"uf":"sp","mun":"65757","ibge":"3523701","nm":"ITIRAPUÃ","c22":1845,"c13":2082,"aptos":5151,"comp":4020,"branco":33,"nulo":60}
+{"uf":"sp","mun":"65773","ibge":"3523800","nm":"ITOBI","c22":2820,"c13":1914,"aptos":6006,"comp":4897,"branco":78,"nulo":85}
+{"uf":"sp","mun":"65790","ibge":"3523909","nm":"ITU","c22":60865,"c13":36047,"aptos":128804,"comp":100904,"branco":1315,"nulo":2677}
+{"uf":"sp","mun":"65811","ibge":"3524006","nm":"ITUPEVA","c22":23278,"c13":13987,"aptos":48394,"comp":38750,"branco":522,"nulo":963}
+{"uf":"sp","mun":"65838","ibge":"3524105","nm":"ITUVERAVA","c22":12667,"c13":8402,"aptos":27372,"comp":21708,"branco":258,"nulo":381}
+{"uf":"sp","mun":"65552","ibge":"3522703","nm":"ITÁPOLIS","c22":15911,"c13":6838,"aptos":28905,"comp":23479,"branco":330,"nulo":400}
+{"uf":"sp","mun":"65854","ibge":"3524204","nm":"JABORANDI","c22":2175,"c13":1856,"aptos":5009,"comp":4167,"branco":50,"nulo":86}
+{"uf":"sp","mun":"65870","ibge":"3524303","nm":"JABOTICABAL","c22":25146,"c13":14435,"aptos":50934,"comp":40883,"branco":581,"nulo":721}
+{"uf":"sp","mun":"65897","ibge":"3524402","nm":"JACAREÍ","c22":81268,"c13":54196,"aptos":171402,"comp":140687,"branco":1898,"nulo":3325}
+{"uf":"sp","mun":"65919","ibge":"3524501","nm":"JACI","c22":2785,"c13":1836,"aptos":5828,"comp":4764,"branco":58,"nulo":85}
+{"uf":"sp","mun":"65935","ibge":"3524600","nm":"JACUPIRANGA","c22":6270,"c13":3075,"aptos":12331,"comp":9626,"branco":127,"nulo":154}
+{"uf":"sp","mun":"65951","ibge":"3524709","nm":"JAGUARIÚNA","c22":22893,"c13":12605,"aptos":45195,"comp":36937,"branco":541,"nulo":898}
+{"uf":"sp","mun":"65978","ibge":"3524808","nm":"JALES","c22":19339,"c13":9054,"aptos":36028,"comp":29445,"branco":391,"nulo":661}
+{"uf":"sp","mun":"65994","ibge":"3524907","nm":"JAMBEIRO","c22":2396,"c13":1516,"aptos":4994,"comp":4045,"branco":57,"nulo":76}
+{"uf":"sp","mun":"66010","ibge":"3525003","nm":"JANDIRA","c22":28452,"c13":31446,"aptos":76020,"comp":62385,"branco":1037,"nulo":1450}
+{"uf":"sp","mun":"66036","ibge":"3525102","nm":"JARDINÓPOLIS","c22":14473,"c13":8235,"aptos":29784,"comp":23610,"branco":374,"nulo":528}
+{"uf":"sp","mun":"66052","ibge":"3525201","nm":"JARINU","c22":12548,"c13":7620,"aptos":26770,"comp":20903,"branco":292,"nulo":443}
+{"uf":"sp","mun":"66079","ibge":"3525300","nm":"JAÚ","c22":54737,"c13":23392,"aptos":98733,"comp":81111,"branco":1194,"nulo":1788}
+{"uf":"sp","mun":"66095","ibge":"3525409","nm":"JERIQUARA","c22":1338,"c13":1320,"aptos":3345,"comp":2733,"branco":31,"nulo":44}
+{"uf":"sp","mun":"66117","ibge":"3525508","nm":"JOANÓPOLIS","c22":5182,"c13":2423,"aptos":9451,"comp":7893,"branco":128,"nulo":160}
+{"uf":"sp","mun":"66150","ibge":"3525706","nm":"JOSÉ BONIFÁCIO","c22":14525,"c13":7160,"aptos":27285,"comp":22310,"branco":279,"nulo":346}
+{"uf":"sp","mun":"66133","ibge":"3525607","nm":"JOÃO RAMALHO","c22":1444,"c13":1177,"aptos":3518,"comp":2742,"branco":35,"nulo":86}
+{"uf":"sp","mun":"62324","ibge":"3525854","nm":"JUMIRIM","c22":1310,"c13":613,"aptos":2457,"comp":1989,"branco":29,"nulo":37}
+{"uf":"sp","mun":"66192","ibge":"3525904","nm":"JUNDIAÍ","c22":161594,"c13":100339,"aptos":337853,"comp":273936,"branco":3488,"nulo":8515}
+{"uf":"sp","mun":"66214","ibge":"3526001","nm":"JUNQUEIRÓPOLIS","c22":7260,"c13":3445,"aptos":14115,"comp":11076,"branco":156,"nulo":215}
+{"uf":"sp","mun":"66257","ibge":"3526209","nm":"JUQUITIBA","c22":8928,"c13":8584,"aptos":22816,"comp":18245,"branco":316,"nulo":417}
+{"uf":"sp","mun":"66230","ibge":"3526100","nm":"JUQUIÁ","c22":6648,"c13":4149,"aptos":15229,"comp":11221,"branco":175,"nulo":249}
+{"uf":"sp","mun":"66176","ibge":"3525805","nm":"JÚLIO MESQUITA","c22":1380,"c13":1425,"aptos":3690,"comp":2925,"branco":51,"nulo":69}
+{"uf":"sp","mun":"66273","ibge":"3526308","nm":"LAGOINHA","c22":2411,"c13":1808,"aptos":5476,"comp":4350,"branco":58,"nulo":73}
+{"uf":"sp","mun":"66290","ibge":"3526407","nm":"LARANJAL PAULISTA","c22":11609,"c13":4248,"aptos":20779,"comp":16423,"branco":213,"nulo":353}
+{"uf":"sp","mun":"66338","ibge":"3526605","nm":"LAVRINHAS","c22":2520,"c13":2301,"aptos":6102,"comp":5045,"branco":84,"nulo":140}
+{"uf":"sp","mun":"66311","ibge":"3526506","nm":"LAVÍNIA","c22":1681,"c13":1317,"aptos":3884,"comp":3126,"branco":47,"nulo":81}
+{"uf":"sp","mun":"66354","ibge":"3526704","nm":"LEME","c22":36355,"c13":20426,"aptos":72903,"comp":59253,"branco":928,"nulo":1544}
+{"uf":"sp","mun":"66370","ibge":"3526803","nm":"LENÇÓIS PAULISTA","c22":28960,"c13":10664,"aptos":50788,"comp":41088,"branco":561,"nulo":903}
+{"uf":"sp","mun":"66397","ibge":"3526902","nm":"LIMEIRA","c22":127463,"c13":50703,"aptos":219432,"comp":184931,"branco":2349,"nulo":4416}
+{"uf":"sp","mun":"66419","ibge":"3527009","nm":"LINDÓIA","c22":3324,"c13":1328,"aptos":5868,"comp":4827,"branco":49,"nulo":126}
+{"uf":"sp","mun":"66435","ibge":"3527108","nm":"LINS","c22":28281,"c13":12142,"aptos":53775,"comp":41887,"branco":584,"nulo":880}
+{"uf":"sp","mun":"66451","ibge":"3527207","nm":"LORENA","c22":30256,"c13":18876,"aptos":61176,"comp":50757,"branco":689,"nulo":936}
+{"uf":"sp","mun":"62022","ibge":"3527256","nm":"LOURDES","c22":944,"c13":546,"aptos":1877,"comp":1531,"branco":15,"nulo":26}
+{"uf":"sp","mun":"66478","ibge":"3527306","nm":"LOUVEIRA","c22":19649,"c13":11522,"aptos":39260,"comp":32241,"branco":407,"nulo":663}
+{"uf":"sp","mun":"66516","ibge":"3527504","nm":"LUCIANÓPOLIS","c22":933,"c13":724,"aptos":2146,"comp":1709,"branco":15,"nulo":37}
+{"uf":"sp","mun":"66494","ibge":"3527405","nm":"LUCÉLIA","c22":6479,"c13":3643,"aptos":13550,"comp":10487,"branco":159,"nulo":206}
+{"uf":"sp","mun":"66559","ibge":"3527702","nm":"LUIZIÂNIA","c22":1831,"c13":1232,"aptos":3792,"comp":3147,"branco":37,"nulo":47}
+{"uf":"sp","mun":"66575","ibge":"3527801","nm":"LUPÉRCIO","c22":1278,"c13":1219,"aptos":3317,"comp":2584,"branco":34,"nulo":53}
+{"uf":"sp","mun":"66591","ibge":"3527900","nm":"LUTÉCIA","c22":1002,"c13":886,"aptos":2379,"comp":1949,"branco":16,"nulo":45}
+{"uf":"sp","mun":"66532","ibge":"3527603","nm":"LUÍS ANTÔNIO","c22":4093,"c13":3489,"aptos":10064,"comp":7909,"branco":117,"nulo":210}
+{"uf":"sp","mun":"66613","ibge":"3528007","nm":"MACATUBA","c22":6698,"c13":3287,"aptos":12403,"comp":10378,"branco":190,"nulo":203}
+{"uf":"sp","mun":"66630","ibge":"3528106","nm":"MACAUBAL","c22":3443,"c13":1483,"aptos":5924,"comp":5090,"branco":75,"nulo":89}
+{"uf":"sp","mun":"66656","ibge":"3528205","nm":"MACEDÔNIA","c22":2061,"c13":1135,"aptos":4110,"comp":3353,"branco":42,"nulo":115}
+{"uf":"sp","mun":"66672","ibge":"3528304","nm":"MAGDA","c22":1285,"c13":981,"aptos":2793,"comp":2316,"branco":15,"nulo":35}
+{"uf":"sp","mun":"66699","ibge":"3528403","nm":"MAIRINQUE","c22":16127,"c13":13333,"aptos":38467,"comp":30893,"branco":529,"nulo":904}
+{"uf":"sp","mun":"66710","ibge":"3528502","nm":"MAIRIPORÃ","c22":29727,"c13":20831,"aptos":65739,"comp":52591,"branco":728,"nulo":1305}
+{"uf":"sp","mun":"66737","ibge":"3528601","nm":"MANDURI","c22":3397,"c13":2141,"aptos":7096,"comp":5768,"branco":90,"nulo":140}
+{"uf":"sp","mun":"66753","ibge":"3528700","nm":"MARABÁ PAULISTA","c22":1118,"c13":1239,"aptos":3188,"comp":2411,"branco":14,"nulo":40}
+{"uf":"sp","mun":"66770","ibge":"3528809","nm":"MARACAÍ","c22":5471,"c13":2915,"aptos":10406,"comp":8643,"branco":122,"nulo":135}
+{"uf":"sp","mun":"61867","ibge":"3528858","nm":"MARAPOAMA","c22":1741,"c13":531,"aptos":2798,"comp":2334,"branco":24,"nulo":38}
+{"uf":"sp","mun":"66834","ibge":"3529104","nm":"MARINÓPOLIS","c22":780,"c13":650,"aptos":1754,"comp":1478,"branco":16,"nulo":32}
+{"uf":"sp","mun":"66796","ibge":"3528908","nm":"MARIÁPOLIS","c22":1389,"c13":960,"aptos":2874,"comp":2432,"branco":40,"nulo":43}
+{"uf":"sp","mun":"66850","ibge":"3529203","nm":"MARTINÓPOLIS","c22":8781,"c13":5261,"aptos":18055,"comp":14686,"branco":191,"nulo":453}
+{"uf":"sp","mun":"66818","ibge":"3529005","nm":"MARÍLIA","c22":89682,"c13":43089,"aptos":172930,"comp":137940,"branco":1933,"nulo":3236}
+{"uf":"sp","mun":"66877","ibge":"3529302","nm":"MATÃO","c22":30293,"c13":19489,"aptos":63731,"comp":51929,"branco":826,"nulo":1321}
+{"uf":"sp","mun":"66893","ibge":"3529401","nm":"MAUÁ","c22":107916,"c13":130276,"aptos":310392,"comp":250011,"branco":3642,"nulo":8177}
+{"uf":"sp","mun":"66915","ibge":"3529500","nm":"MENDONÇA","c22":2580,"c13":1582,"aptos":5264,"comp":4288,"branco":37,"nulo":89}
+{"uf":"sp","mun":"66931","ibge":"3529609","nm":"MERIDIANO","c22":1805,"c13":1151,"aptos":3765,"comp":3056,"branco":41,"nulo":59}
+{"uf":"sp","mun":"61964","ibge":"3529658","nm":"MESÓPOLIS","c22":883,"c13":563,"aptos":1887,"comp":1486,"branco":20,"nulo":20}
+{"uf":"sp","mun":"66958","ibge":"3529708","nm":"MIGUELÓPOLIS","c22":6398,"c13":5204,"aptos":15124,"comp":11930,"branco":132,"nulo":196}
+{"uf":"sp","mun":"66974","ibge":"3529807","nm":"MINEIROS DO TIETÊ","c22":4582,"c13":2114,"aptos":8683,"comp":7000,"branco":145,"nulo":159}
+{"uf":"sp","mun":"67016","ibge":"3530003","nm":"MIRA ESTRELA","c22":1292,"c13":942,"aptos":2892,"comp":2303,"branco":30,"nulo":39}
+{"uf":"sp","mun":"66990","ibge":"3529906","nm":"MIRACATU","c22":6657,"c13":4560,"aptos":15311,"comp":11569,"branco":148,"nulo":204}
+{"uf":"sp","mun":"67032","ibge":"3530102","nm":"MIRANDÓPOLIS","c22":9310,"c13":4315,"aptos":18005,"comp":14133,"branco":173,"nulo":335}
+{"uf":"sp","mun":"67059","ibge":"3530201","nm":"MIRANTE DO PARANAPANEMA","c22":4257,"c13":5178,"aptos":12713,"comp":9700,"branco":95,"nulo":170}
+{"uf":"sp","mun":"67075","ibge":"3530300","nm":"MIRASSOL","c22":22947,"c13":11665,"aptos":43661,"comp":35839,"branco":484,"nulo":743}
+{"uf":"sp","mun":"67091","ibge":"3530409","nm":"MIRASSOLÂNDIA","c22":2031,"c13":1193,"aptos":4130,"comp":3326,"branco":53,"nulo":49}
+{"uf":"sp","mun":"67113","ibge":"3530508","nm":"MOCOCA","c22":23864,"c13":13193,"aptos":49138,"comp":38729,"branco":641,"nulo":1031}
+{"uf":"sp","mun":"67130","ibge":"3530607","nm":"MOGI DAS CRUZES","c22":136895,"c13":115339,"aptos":334004,"comp":264154,"branco":4556,"nulo":7364}
+{"uf":"sp","mun":"67156","ibge":"3530706","nm":"MOGI GUAÇU","c22":61849,"c13":28453,"aptos":114331,"comp":94288,"branco":1348,"nulo":2638}
+{"uf":"sp","mun":"67172","ibge":"3530805","nm":"MOGI MIRIM","c22":36397,"c13":16714,"aptos":67645,"comp":55357,"branco":812,"nulo":1434}
+{"uf":"sp","mun":"67199","ibge":"3530904","nm":"MOMBUCA","c22":1711,"c13":763,"aptos":3151,"comp":2568,"branco":31,"nulo":63}
+{"uf":"sp","mun":"67237","ibge":"3531100","nm":"MONGAGUÁ","c22":17139,"c13":17806,"aptos":50503,"comp":36322,"branco":516,"nulo":861}
+{"uf":"sp","mun":"67253","ibge":"3531209","nm":"MONTE ALEGRE DO SUL","c22":3305,"c13":1613,"aptos":6340,"comp":5196,"branco":75,"nulo":203}
+{"uf":"sp","mun":"67270","ibge":"3531308","nm":"MONTE ALTO","c22":19037,"c13":8650,"aptos":36024,"comp":28759,"branco":450,"nulo":622}
+{"uf":"sp","mun":"67296","ibge":"3531407","nm":"MONTE APRAZÍVEL","c22":8383,"c13":4853,"aptos":16980,"comp":13730,"branco":202,"nulo":292}
+{"uf":"sp","mun":"67318","ibge":"3531506","nm":"MONTE AZUL PAULISTA","c22":7540,"c13":3567,"aptos":14241,"comp":11468,"branco":161,"nulo":200}
+{"uf":"sp","mun":"67334","ibge":"3531605","nm":"MONTE CASTELO","c22":1520,"c13":1144,"aptos":3327,"comp":2733,"branco":26,"nulo":43}
+{"uf":"sp","mun":"67377","ibge":"3531803","nm":"MONTE MOR","c22":19844,"c13":16406,"aptos":47318,"comp":37867,"branco":641,"nulo":976}
+{"uf":"sp","mun":"67350","ibge":"3531704","nm":"MONTEIRO LOBATO","c22":1668,"c13":1380,"aptos":3833,"comp":3148,"branco":39,"nulo":61}
+{"uf":"sp","mun":"67210","ibge":"3531001","nm":"MONÇÕES","c22":1066,"c13":633,"aptos":2121,"comp":1746,"branco":9,"nulo":38}
+{"uf":"sp","mun":"67393","ibge":"3531902","nm":"MORRO AGUDO","c22":9257,"c13":6641,"aptos":20181,"comp":16517,"branco":206,"nulo":413}
+{"uf":"sp","mun":"67415","ibge":"3532009","nm":"MORUNGABA","c22":5805,"c13":2719,"aptos":10613,"comp":8859,"branco":107,"nulo":228}
+{"uf":"sp","mun":"61069","ibge":"3532058","nm":"MOTUCA","c22":1326,"c13":1336,"aptos":3384,"comp":2758,"branco":47,"nulo":49}
+{"uf":"sp","mun":"67431","ibge":"3532108","nm":"MURUTINGA DO SUL","c22":1707,"c13":943,"aptos":3341,"comp":2748,"branco":30,"nulo":68}
+{"uf":"sp","mun":"62340","ibge":"3532157","nm":"NANTES","c22":973,"c13":786,"aptos":2206,"comp":1783,"branco":7,"nulo":17}
+{"uf":"sp","mun":"67458","ibge":"3532207","nm":"NARANDIBA","c22":1938,"c13":1841,"aptos":4459,"comp":3936,"branco":38,"nulo":119}
+{"uf":"sp","mun":"67474","ibge":"3532306","nm":"NATIVIDADE DA SERRA","c22":2633,"c13":1607,"aptos":5671,"comp":4360,"branco":49,"nulo":71}
+{"uf":"sp","mun":"67490","ibge":"3532405","nm":"NAZARÉ PAULISTA","c22":7157,"c13":4092,"aptos":14474,"comp":11736,"branco":184,"nulo":303}
+{"uf":"sp","mun":"67512","ibge":"3532504","nm":"NEVES PAULISTA","c22":3496,"c13":2178,"aptos":7059,"comp":5894,"branco":102,"nulo":118}
+{"uf":"sp","mun":"67539","ibge":"3532603","nm":"NHANDEARA","c22":4182,"c13":1774,"aptos":7745,"comp":6139,"branco":79,"nulo":104}
+{"uf":"sp","mun":"67555","ibge":"3532702","nm":"NIPOÃ","c22":1846,"c13":1225,"aptos":3881,"comp":3160,"branco":38,"nulo":51}
+{"uf":"sp","mun":"67571","ibge":"3532801","nm":"NOVA ALIANÇA","c22":2791,"c13":1409,"aptos":5433,"comp":4359,"branco":55,"nulo":104}
+{"uf":"sp","mun":"61980","ibge":"3532827","nm":"NOVA CAMPINA","c22":3216,"c13":2271,"aptos":6960,"comp":5625,"branco":82,"nulo":56}
+{"uf":"sp","mun":"61425","ibge":"3532843","nm":"NOVA CANAÃ PAULISTA","c22":898,"c13":755,"aptos":2275,"comp":1704,"branco":15,"nulo":36}
+{"uf":"sp","mun":"62367","ibge":"3532868","nm":"NOVA CASTILHO","c22":680,"c13":377,"aptos":1375,"comp":1077,"branco":5,"nulo":15}
+{"uf":"sp","mun":"67598","ibge":"3532900","nm":"NOVA EUROPA","c22":2678,"c13":2897,"aptos":7174,"comp":5811,"branco":105,"nulo":131}
+{"uf":"sp","mun":"67610","ibge":"3533007","nm":"NOVA GRANADA","c22":6396,"c13":5115,"aptos":14794,"comp":11936,"branco":135,"nulo":290}
+{"uf":"sp","mun":"67636","ibge":"3533106","nm":"NOVA GUATAPORANGA","c22":845,"c13":736,"aptos":2018,"comp":1643,"branco":22,"nulo":40}
+{"uf":"sp","mun":"67652","ibge":"3533205","nm":"NOVA INDEPENDÊNCIA","c22":1546,"c13":1186,"aptos":3504,"comp":2832,"branco":39,"nulo":61}
+{"uf":"sp","mun":"67679","ibge":"3533304","nm":"NOVA LUZITÂNIA","c22":1039,"c13":1038,"aptos":2635,"comp":2160,"branco":35,"nulo":48}
+{"uf":"sp","mun":"67695","ibge":"3533403","nm":"NOVA ODESSA","c22":23854,"c13":14604,"aptos":47409,"comp":39956,"branco":540,"nulo":958}
+{"uf":"sp","mun":"61409","ibge":"3533254","nm":"NOVAIS","c22":1909,"c13":1174,"aptos":3921,"comp":3220,"branco":47,"nulo":90}
+{"uf":"sp","mun":"67717","ibge":"3533502","nm":"NOVO HORIZONTE","c22":15244,"c13":6759,"aptos":28610,"comp":22643,"branco":280,"nulo":360}
+{"uf":"sp","mun":"67733","ibge":"3533601","nm":"NUPORANGA","c22":2977,"c13":1657,"aptos":6023,"comp":4809,"branco":61,"nulo":114}
+{"uf":"sp","mun":"67750","ibge":"3533700","nm":"OCAUÇU","c22":1585,"c13":1114,"aptos":3442,"comp":2777,"branco":27,"nulo":51}
+{"uf":"sp","mun":"67792","ibge":"3533908","nm":"OLÍMPIA","c22":21351,"c13":11085,"aptos":41874,"comp":33550,"branco":475,"nulo":639}
+{"uf":"sp","mun":"67814","ibge":"3534005","nm":"ONDA VERDE","c22":1912,"c13":1462,"aptos":4388,"comp":3479,"branco":40,"nulo":65}
+{"uf":"sp","mun":"67830","ibge":"3534104","nm":"ORIENTE","c22":2561,"c13":1458,"aptos":5160,"comp":4175,"branco":51,"nulo":105}
+{"uf":"sp","mun":"67857","ibge":"3534203","nm":"ORINDIÚVA","c22":2202,"c13":1730,"aptos":5002,"comp":4086,"branco":49,"nulo":105}
+{"uf":"sp","mun":"67873","ibge":"3534302","nm":"ORLÂNDIA","c22":13894,"c13":9021,"aptos":29489,"comp":23981,"branco":379,"nulo":687}
+{"uf":"sp","mun":"67890","ibge":"3534401","nm":"OSASCO","c22":213187,"c13":234320,"aptos":583999,"comp":465712,"branco":6517,"nulo":11688}
+{"uf":"sp","mun":"67911","ibge":"3534500","nm":"OSCAR BRESSANE","c22":1390,"c13":511,"aptos":2450,"comp":1949,"branco":23,"nulo":25}
+{"uf":"sp","mun":"67938","ibge":"3534609","nm":"OSVALDO CRUZ","c22":12534,"c13":5072,"aptos":22809,"comp":18186,"branco":252,"nulo":328}
+{"uf":"sp","mun":"67954","ibge":"3534708","nm":"OURINHOS","c22":36410,"c13":22487,"aptos":76490,"comp":61001,"branco":889,"nulo":1215}
+{"uf":"sp","mun":"67970","ibge":"3534807","nm":"OURO VERDE","c22":2529,"c13":2249,"aptos":6098,"comp":4919,"branco":57,"nulo":84}
+{"uf":"sp","mun":"62383","ibge":"3534757","nm":"OUROESTE","c22":3762,"c13":2419,"aptos":7995,"comp":6394,"branco":72,"nulo":141}
+{"uf":"sp","mun":"67997","ibge":"3534906","nm":"PACAEMBU","c22":3861,"c13":1973,"aptos":7524,"comp":6032,"branco":79,"nulo":119}
+{"uf":"sp","mun":"68012","ibge":"3535002","nm":"PALESTINA","c22":4199,"c13":2728,"aptos":8996,"comp":7165,"branco":110,"nulo":128}
+{"uf":"sp","mun":"68039","ibge":"3535101","nm":"PALMARES PAULISTA","c22":3372,"c13":2675,"aptos":7352,"comp":6313,"branco":100,"nulo":166}
+{"uf":"sp","mun":"68055","ibge":"3535200","nm":"PALMEIRA D'OESTE","c22":3525,"c13":2193,"aptos":7437,"comp":5900,"branco":86,"nulo":96}
+{"uf":"sp","mun":"68071","ibge":"3535309","nm":"PALMITAL","c22":8415,"c13":4235,"aptos":16110,"comp":13054,"branco":169,"nulo":235}
+{"uf":"sp","mun":"68098","ibge":"3535408","nm":"PANORAMA","c22":4769,"c13":3037,"aptos":9923,"comp":8088,"branco":118,"nulo":164}
+{"uf":"sp","mun":"68110","ibge":"3535507","nm":"PARAGUAÇU PAULISTA","c22":13532,"c13":9464,"aptos":29960,"comp":23780,"branco":343,"nulo":441}
+{"uf":"sp","mun":"68136","ibge":"3535606","nm":"PARAIBUNA","c22":5855,"c13":5151,"aptos":13836,"comp":11301,"branco":114,"nulo":181}
+{"uf":"sp","mun":"68179","ibge":"3535804","nm":"PARANAPANEMA","c22":6717,"c13":4235,"aptos":13588,"comp":11317,"branco":136,"nulo":229}
+{"uf":"sp","mun":"68195","ibge":"3535903","nm":"PARANAPUÃ","c22":1678,"c13":1109,"aptos":3392,"comp":2873,"branco":45,"nulo":41}
+{"uf":"sp","mun":"68217","ibge":"3536000","nm":"PARAPUÃ","c22":3900,"c13":2066,"aptos":7605,"comp":6189,"branco":89,"nulo":134}
+{"uf":"sp","mun":"68152","ibge":"3535705","nm":"PARAÍSO","c22":2471,"c13":1216,"aptos":4547,"comp":3828,"branco":45,"nulo":96}
+{"uf":"sp","mun":"68233","ibge":"3536109","nm":"PARDINHO","c22":2911,"c13":1612,"aptos":6140,"comp":4699,"branco":70,"nulo":106}
+{"uf":"sp","mun":"68250","ibge":"3536208","nm":"PARIQUERA-AÇU","c22":7397,"c13":3698,"aptos":14302,"comp":11526,"branco":202,"nulo":229}
+{"uf":"sp","mun":"61824","ibge":"3536257","nm":"PARISI","c22":1535,"c13":861,"aptos":3085,"comp":2466,"branco":25,"nulo":45}
+{"uf":"sp","mun":"68276","ibge":"3536307","nm":"PATROCÍNIO PAULISTA","c22":5026,"c13":3127,"aptos":10547,"comp":8386,"branco":109,"nulo":124}
+{"uf":"sp","mun":"68292","ibge":"3536406","nm":"PAULICÉIA","c22":2976,"c13":1724,"aptos":5956,"comp":4825,"branco":40,"nulo":85}
+{"uf":"sp","mun":"62405","ibge":"3536570","nm":"PAULISTÂNIA","c22":956,"c13":548,"aptos":1993,"comp":1546,"branco":19,"nulo":23}
+{"uf":"sp","mun":"68330","ibge":"3536604","nm":"PAULO DE FARIA","c22":2252,"c13":2237,"aptos":6113,"comp":4678,"branco":57,"nulo":132}
+{"uf":"sp","mun":"68314","ibge":"3536505","nm":"PAULÍNIA","c22":42459,"c13":29857,"aptos":89908,"comp":74823,"branco":948,"nulo":1559}
+{"uf":"sp","mun":"68357","ibge":"3536703","nm":"PEDERNEIRAS","c22":17673,"c13":8233,"aptos":32590,"comp":26832,"branco":377,"nulo":549}
+{"uf":"sp","mun":"68373","ibge":"3536802","nm":"PEDRA BELA","c22":2393,"c13":1397,"aptos":4810,"comp":3945,"branco":66,"nulo":89}
+{"uf":"sp","mun":"68390","ibge":"3536901","nm":"PEDRANÓPOLIS","c22":1226,"c13":824,"aptos":2682,"comp":2110,"branco":22,"nulo":38}
+{"uf":"sp","mun":"68411","ibge":"3537008","nm":"PEDREGULHO","c22":4656,"c13":4859,"aptos":12299,"comp":9858,"branco":132,"nulo":211}
+{"uf":"sp","mun":"68438","ibge":"3537107","nm":"PEDREIRA","c22":18665,"c13":7702,"aptos":33382,"comp":27474,"branco":344,"nulo":763}
+{"uf":"sp","mun":"61247","ibge":"3537156","nm":"PEDRINHAS PAULISTA","c22":1527,"c13":640,"aptos":2728,"comp":2232,"branco":15,"nulo":50}
+{"uf":"sp","mun":"68454","ibge":"3537206","nm":"PEDRO DE TOLEDO","c22":2950,"c13":2531,"aptos":7892,"comp":5648,"branco":58,"nulo":109}
+{"uf":"sp","mun":"68470","ibge":"3537305","nm":"PENÁPOLIS","c22":22514,"c13":11871,"aptos":43749,"comp":35658,"branco":461,"nulo":812}
+{"uf":"sp","mun":"68497","ibge":"3537404","nm":"PEREIRA BARRETO","c22":8103,"c13":6008,"aptos":19127,"comp":14567,"branco":192,"nulo":264}
+{"uf":"sp","mun":"68519","ibge":"3537503","nm":"PEREIRAS","c22":3059,"c13":1777,"aptos":6469,"comp":5022,"branco":81,"nulo":105}
+{"uf":"sp","mun":"68535","ibge":"3537602","nm":"PERUÍBE","c22":23832,"c13":19652,"aptos":59849,"comp":45128,"branco":628,"nulo":1016}
+{"uf":"sp","mun":"68551","ibge":"3537701","nm":"PIACATU","c22":2273,"c13":1329,"aptos":4487,"comp":3674,"branco":23,"nulo":49}
+{"uf":"sp","mun":"68578","ibge":"3537800","nm":"PIEDADE","c22":20091,"c13":11615,"aptos":42011,"comp":33005,"branco":585,"nulo":714}
+{"uf":"sp","mun":"68594","ibge":"3537909","nm":"PILAR DO SUL","c22":11361,"c13":5958,"aptos":22435,"comp":17969,"branco":288,"nulo":362}
+{"uf":"sp","mun":"68616","ibge":"3538006","nm":"PINDAMONHANGABA","c22":56921,"c13":36001,"aptos":119294,"comp":96954,"branco":1524,"nulo":2508}
+{"uf":"sp","mun":"68632","ibge":"3538105","nm":"PINDORAMA","c22":5691,"c13":2838,"aptos":10499,"comp":8819,"branco":118,"nulo":172}
+{"uf":"sp","mun":"68675","ibge":"3538204","nm":"PINHALZINHO","c22":5863,"c13":2994,"aptos":11386,"comp":9244,"branco":136,"nulo":251}
+{"uf":"sp","mun":"68691","ibge":"3538303","nm":"PIQUEROBI","c22":1316,"c13":1071,"aptos":3117,"comp":2478,"branco":29,"nulo":62}
+{"uf":"sp","mun":"68713","ibge":"3538501","nm":"PIQUETE","c22":4587,"c13":2934,"aptos":10046,"comp":7770,"branco":96,"nulo":153}
+{"uf":"sp","mun":"68730","ibge":"3538600","nm":"PIRACAIA","c22":11341,"c13":5734,"aptos":21551,"comp":17731,"branco":264,"nulo":392}
+{"uf":"sp","mun":"68756","ibge":"3538709","nm":"PIRACICABA","c22":155469,"c13":82345,"aptos":311167,"comp":247106,"branco":3425,"nulo":5867}
+{"uf":"sp","mun":"68772","ibge":"3538808","nm":"PIRAJU","c22":9877,"c13":6674,"aptos":21986,"comp":17266,"branco":251,"nulo":464}
+{"uf":"sp","mun":"68799","ibge":"3538907","nm":"PIRAJUÍ","c22":7192,"c13":4077,"aptos":14821,"comp":11672,"branco":185,"nulo":218}
+{"uf":"sp","mun":"68810","ibge":"3539004","nm":"PIRANGI","c22":4507,"c13":1763,"aptos":7895,"comp":6456,"branco":91,"nulo":95}
+{"uf":"sp","mun":"68837","ibge":"3539103","nm":"PIRAPORA DO BOM JESUS","c22":4888,"c13":5826,"aptos":14158,"comp":11065,"branco":141,"nulo":210}
+{"uf":"sp","mun":"68853","ibge":"3539202","nm":"PIRAPOZINHO","c22":9259,"c13":6196,"aptos":19387,"comp":15903,"branco":209,"nulo":239}
+{"uf":"sp","mun":"68870","ibge":"3539301","nm":"PIRASSUNUNGA","c22":28514,"c13":13728,"aptos":55169,"comp":44030,"branco":659,"nulo":1129}
+{"uf":"sp","mun":"68896","ibge":"3539400","nm":"PIRATININGA","c22":5473,"c13":2556,"aptos":10138,"comp":8286,"branco":103,"nulo":154}
+{"uf":"sp","mun":"68918","ibge":"3539509","nm":"PITANGUEIRAS","c22":10903,"c13":8624,"aptos":24980,"comp":20332,"branco":316,"nulo":489}
+{"uf":"sp","mun":"68934","ibge":"3539608","nm":"PLANALTO","c22":1722,"c13":1374,"aptos":3962,"comp":3178,"branco":19,"nulo":63}
+{"uf":"sp","mun":"68950","ibge":"3539707","nm":"PLATINA","c22":1437,"c13":710,"aptos":2775,"comp":2209,"branco":27,"nulo":35}
+{"uf":"sp","mun":"68993","ibge":"3539905","nm":"POLONI","c22":2248,"c13":1353,"aptos":4511,"comp":3709,"branco":38,"nulo":70}
+{"uf":"sp","mun":"69019","ibge":"3540002","nm":"POMPÉIA","c22":9435,"c13":3344,"aptos":16142,"comp":13198,"branco":138,"nulo":281}
+{"uf":"sp","mun":"69035","ibge":"3540101","nm":"PONGAÍ","c22":1616,"c13":690,"aptos":2952,"comp":2376,"branco":25,"nulo":45}
+{"uf":"sp","mun":"69051","ibge":"3540200","nm":"PONTAL","c22":12243,"c13":10245,"aptos":28279,"comp":23587,"branco":389,"nulo":710}
+{"uf":"sp","mun":"61808","ibge":"3540259","nm":"PONTALINDA","c22":1290,"c13":1229,"aptos":3157,"comp":2573,"branco":23,"nulo":31}
+{"uf":"sp","mun":"69078","ibge":"3540309","nm":"PONTES GESTAL","c22":1114,"c13":707,"aptos":2369,"comp":1866,"branco":19,"nulo":26}
+{"uf":"sp","mun":"69094","ibge":"3540408","nm":"POPULINA","c22":1358,"c13":1520,"aptos":3681,"comp":2973,"branco":36,"nulo":59}
+{"uf":"sp","mun":"69116","ibge":"3540507","nm":"PORANGABA","c22":3424,"c13":2293,"aptos":7484,"comp":5911,"branco":69,"nulo":125}
+{"uf":"sp","mun":"69132","ibge":"3540606","nm":"PORTO FELIZ","c22":21824,"c13":10781,"aptos":41168,"comp":33753,"branco":490,"nulo":658}
+{"uf":"sp","mun":"69159","ibge":"3540705","nm":"PORTO FERREIRA","c22":20505,"c13":9766,"aptos":39958,"comp":31601,"branco":520,"nulo":810}
+{"uf":"sp","mun":"61565","ibge":"3540754","nm":"POTIM","c22":5871,"c13":4333,"aptos":12544,"comp":10517,"branco":154,"nulo":159}
+{"uf":"sp","mun":"69175","ibge":"3540804","nm":"POTIRENDABA","c22":7202,"c13":3705,"aptos":13861,"comp":11269,"branco":148,"nulo":214}
+{"uf":"sp","mun":"68977","ibge":"3539806","nm":"POÁ","c22":34665,"c13":37133,"aptos":89804,"comp":74861,"branco":1093,"nulo":1970}
+{"uf":"sp","mun":"62120","ibge":"3540853","nm":"PRACINHA","c22":673,"c13":485,"aptos":1476,"comp":1190,"branco":17,"nulo":15}
+{"uf":"sp","mun":"69191","ibge":"3540903","nm":"PRADÓPOLIS","c22":6544,"c13":4496,"aptos":13603,"comp":11482,"branco":165,"nulo":277}
+{"uf":"sp","mun":"69213","ibge":"3541000","nm":"PRAIA GRANDE","c22":107412,"c13":86051,"aptos":265287,"comp":201116,"branco":2939,"nulo":4714}
+{"uf":"sp","mun":"62146","ibge":"3541059","nm":"PRATÂNIA","c22":2082,"c13":1498,"aptos":4725,"comp":3702,"branco":64,"nulo":58}
+{"uf":"sp","mun":"69230","ibge":"3541109","nm":"PRESIDENTE ALVES","c22":1519,"c13":1080,"aptos":3391,"comp":2686,"branco":28,"nulo":59}
+{"uf":"sp","mun":"69256","ibge":"3541208","nm":"PRESIDENTE BERNARDES","c22":4943,"c13":2950,"aptos":10212,"comp":8101,"branco":93,"nulo":115}
+{"uf":"sp","mun":"69272","ibge":"3541307","nm":"PRESIDENTE EPITÁCIO","c22":12791,"c13":9461,"aptos":29816,"comp":22999,"branco":314,"nulo":433}
+{"uf":"sp","mun":"69299","ibge":"3541406","nm":"PRESIDENTE PRUDENTE","c22":86470,"c13":43495,"aptos":165509,"comp":133944,"branco":1655,"nulo":2324}
+{"uf":"sp","mun":"69310","ibge":"3541505","nm":"PRESIDENTE VENCESLAU","c22":13793,"c13":6375,"aptos":26385,"comp":20855,"branco":290,"nulo":397}
+{"uf":"sp","mun":"69337","ibge":"3541604","nm":"PROMISSÃO","c22":11773,"c13":7876,"aptos":26511,"comp":20327,"branco":292,"nulo":386}
+{"uf":"sp","mun":"62162","ibge":"3541653","nm":"QUADRA","c22":1822,"c13":1053,"aptos":4031,"comp":2957,"branco":38,"nulo":44}
+{"uf":"sp","mun":"69353","ibge":"3541703","nm":"QUATÁ","c22":5135,"c13":2750,"aptos":10122,"comp":8111,"branco":95,"nulo":131}
+{"uf":"sp","mun":"69370","ibge":"3541802","nm":"QUEIROZ","c22":1441,"c13":976,"aptos":3300,"comp":2497,"branco":36,"nulo":44}
+{"uf":"sp","mun":"69396","ibge":"3541901","nm":"QUELUZ","c22":2595,"c13":2872,"aptos":7116,"comp":5627,"branco":81,"nulo":79}
+{"uf":"sp","mun":"69418","ibge":"3542008","nm":"QUINTANA","c22":2702,"c13":1401,"aptos":5214,"comp":4234,"branco":53,"nulo":78}
+{"uf":"sp","mun":"69434","ibge":"3542107","nm":"RAFARD","c22":4067,"c13":1873,"aptos":7253,"comp":6158,"branco":87,"nulo":131}
+{"uf":"sp","mun":"69450","ibge":"3542206","nm":"RANCHARIA","c22":10089,"c13":7303,"aptos":22892,"comp":17973,"branco":240,"nulo":341}
+{"uf":"sp","mun":"69477","ibge":"3542305","nm":"REDENÇÃO DA SERRA","c22":1813,"c13":1433,"aptos":4304,"comp":3341,"branco":49,"nulo":46}
+{"uf":"sp","mun":"69493","ibge":"3542404","nm":"REGENTE FEIJÓ","c22":7828,"c13":4644,"aptos":15711,"comp":12852,"branco":154,"nulo":226}
+{"uf":"sp","mun":"69515","ibge":"3542503","nm":"REGINÓPOLIS","c22":2656,"c13":1042,"aptos":4735,"comp":3841,"branco":51,"nulo":92}
+{"uf":"sp","mun":"69531","ibge":"3542602","nm":"REGISTRO","c22":20936,"c13":13611,"aptos":45222,"comp":35566,"branco":465,"nulo":554}
+{"uf":"sp","mun":"69558","ibge":"3542701","nm":"RESTINGA","c22":2887,"c13":2321,"aptos":6820,"comp":5361,"branco":72,"nulo":81}
+{"uf":"sp","mun":"69574","ibge":"3542800","nm":"RIBEIRA","c22":933,"c13":1068,"aptos":2889,"comp":2045,"branco":19,"nulo":25}
+{"uf":"sp","mun":"69590","ibge":"3542909","nm":"RIBEIRÃO BONITO","c22":3389,"c13":2922,"aptos":8615,"comp":6561,"branco":82,"nulo":168}
+{"uf":"sp","mun":"69612","ibge":"3543006","nm":"RIBEIRÃO BRANCO","c22":5970,"c13":5103,"aptos":14334,"comp":11431,"branco":163,"nulo":195}
+{"uf":"sp","mun":"69639","ibge":"3543105","nm":"RIBEIRÃO CORRENTE","c22":1810,"c13":1574,"aptos":4388,"comp":3477,"branco":35,"nulo":58}
+{"uf":"sp","mun":"69655","ibge":"3543204","nm":"RIBEIRÃO DO SUL","c22":1779,"c13":1393,"aptos":3926,"comp":3273,"branco":39,"nulo":62}
+{"uf":"sp","mun":"62421","ibge":"3543238","nm":"RIBEIRÃO DOS ÍNDIOS","c22":807,"c13":732,"aptos":1919,"comp":1575,"branco":12,"nulo":24}
+{"uf":"sp","mun":"61700","ibge":"3543253","nm":"RIBEIRÃO GRANDE","c22":2381,"c13":2724,"aptos":6413,"comp":5297,"branco":111,"nulo":81}
+{"uf":"sp","mun":"69671","ibge":"3543303","nm":"RIBEIRÃO PIRES","c22":33994,"c13":34096,"aptos":85766,"comp":71256,"branco":1018,"nulo":2148}
+{"uf":"sp","mun":"69698","ibge":"3543402","nm":"RIBEIRÃO PRETO","c22":207485,"c13":151381,"aptos":473067,"comp":373648,"branco":4372,"nulo":10410}
+{"uf":"sp","mun":"69736","ibge":"3543600","nm":"RIFAINA","c22":2257,"c13":1538,"aptos":5129,"comp":3875,"branco":41,"nulo":39}
+{"uf":"sp","mun":"69752","ibge":"3543709","nm":"RINCÃO","c22":2653,"c13":2810,"aptos":7171,"comp":5691,"branco":84,"nulo":144}
+{"uf":"sp","mun":"69779","ibge":"3543808","nm":"RINÓPOLIS","c22":3926,"c13":1684,"aptos":7451,"comp":5773,"branco":63,"nulo":100}
+{"uf":"sp","mun":"69795","ibge":"3543907","nm":"RIO CLARO","c22":76395,"c13":41252,"aptos":151281,"comp":123018,"branco":1617,"nulo":3754}
+{"uf":"sp","mun":"69817","ibge":"3544004","nm":"RIO DAS PEDRAS","c22":13225,"c13":6749,"aptos":25297,"comp":20651,"branco":293,"nulo":384}
+{"uf":"sp","mun":"69833","ibge":"3544103","nm":"RIO GRANDE DA SERRA","c22":11040,"c13":15250,"aptos":33724,"comp":27558,"branco":480,"nulo":788}
+{"uf":"sp","mun":"69850","ibge":"3544202","nm":"RIOLÂNDIA","c22":2891,"c13":2653,"aptos":7103,"comp":5689,"branco":57,"nulo":88}
+{"uf":"sp","mun":"69710","ibge":"3543501","nm":"RIVERSUL","c22":2064,"c13":1557,"aptos":4558,"comp":3751,"branco":49,"nulo":81}
+{"uf":"sp","mun":"61166","ibge":"3544251","nm":"ROSANA","c22":4554,"c13":5566,"aptos":14265,"comp":10428,"branco":124,"nulo":184}
+{"uf":"sp","mun":"69876","ibge":"3544301","nm":"ROSEIRA","c22":4163,"c13":2661,"aptos":8328,"comp":7017,"branco":90,"nulo":103}
+{"uf":"sp","mun":"69914","ibge":"3544509","nm":"RUBINÉIA","c22":1890,"c13":1052,"aptos":3917,"comp":3045,"branco":35,"nulo":68}
+{"uf":"sp","mun":"69892","ibge":"3544400","nm":"RUBIÁCEA","c22":1207,"c13":693,"aptos":2391,"comp":1947,"branco":17,"nulo":30}
+{"uf":"sp","mun":"69930","ibge":"3544608","nm":"SABINO","c22":1933,"c13":1231,"aptos":4352,"comp":3293,"branco":44,"nulo":85}
+{"uf":"sp","mun":"69957","ibge":"3544707","nm":"SAGRES","c22":858,"c13":734,"aptos":2092,"comp":1638,"branco":19,"nulo":27}
+{"uf":"sp","mun":"69973","ibge":"3544806","nm":"SALES","c22":3042,"c13":1180,"aptos":5354,"comp":4337,"branco":45,"nulo":70}
+{"uf":"sp","mun":"69990","ibge":"3544905","nm":"SALES OLIVEIRA","c22":4412,"c13":2286,"aptos":8529,"comp":6957,"branco":98,"nulo":161}
+{"uf":"sp","mun":"70017","ibge":"3545001","nm":"SALESÓPOLIS","c22":6926,"c13":4764,"aptos":14723,"comp":12124,"branco":190,"nulo":244}
+{"uf":"sp","mun":"70033","ibge":"3545100","nm":"SALMOURÃO","c22":1868,"c13":1139,"aptos":3876,"comp":3105,"branco":48,"nulo":50}
+{"uf":"sp","mun":"61441","ibge":"3545159","nm":"SALTINHO","c22":4718,"c13":1163,"aptos":7145,"comp":6029,"branco":70,"nulo":78}
+{"uf":"sp","mun":"70050","ibge":"3545209","nm":"SALTO","c22":45926,"c13":29788,"aptos":95316,"comp":79035,"branco":1153,"nulo":2168}
+{"uf":"sp","mun":"70076","ibge":"3545308","nm":"SALTO DE PIRAPORA","c22":14078,"c13":9595,"aptos":31402,"comp":24861,"branco":492,"nulo":696}
+{"uf":"sp","mun":"70092","ibge":"3545407","nm":"SALTO GRANDE","c22":3102,"c13":1992,"aptos":6580,"comp":5306,"branco":86,"nulo":126}
+{"uf":"sp","mun":"70114","ibge":"3545506","nm":"SANDOVALINA","c22":1309,"c13":2223,"aptos":4876,"comp":3601,"branco":33,"nulo":36}
+{"uf":"sp","mun":"70130","ibge":"3545605","nm":"SANTA ADÉLIA","c22":5338,"c13":3070,"aptos":10829,"comp":8679,"branco":115,"nulo":156}
+{"uf":"sp","mun":"70157","ibge":"3545704","nm":"SANTA ALBERTINA","c22":2672,"c13":1434,"aptos":5093,"comp":4209,"branco":40,"nulo":63}
+{"uf":"sp","mun":"70211","ibge":"3546009","nm":"SANTA BRANCA","c22":5468,"c13":3578,"aptos":11889,"comp":9376,"branco":150,"nulo":180}
+{"uf":"sp","mun":"70173","ibge":"3545803","nm":"SANTA BÁRBARA D'OESTE","c22":73089,"c13":38758,"aptos":138488,"comp":116624,"branco":1720,"nulo":3057}
+{"uf":"sp","mun":"70238","ibge":"3546108","nm":"SANTA CLARA D'OESTE","c22":1150,"c13":754,"aptos":2441,"comp":1945,"branco":13,"nulo":28}
+{"uf":"sp","mun":"70254","ibge":"3546207","nm":"SANTA CRUZ DA CONCEIÇÃO","c22":2340,"c13":931,"aptos":4145,"comp":3368,"branco":29,"nulo":68}
+{"uf":"sp","mun":"62189","ibge":"3546256","nm":"SANTA CRUZ DA ESPERANÇA","c22":1022,"c13":724,"aptos":2342,"comp":1818,"branco":15,"nulo":57}
+{"uf":"sp","mun":"70270","ibge":"3546306","nm":"SANTA CRUZ DAS PALMEIRAS","c22":10155,"c13":6203,"aptos":21447,"comp":17018,"branco":260,"nulo":400}
+{"uf":"sp","mun":"70297","ibge":"3546405","nm":"SANTA CRUZ DO RIO PARDO","c22":18791,"c13":7462,"aptos":34044,"comp":27096,"branco":350,"nulo":493}
+{"uf":"sp","mun":"70319","ibge":"3546504","nm":"SANTA ERNESTINA","c22":2341,"c13":1740,"aptos":5042,"comp":4218,"branco":52,"nulo":85}
+{"uf":"sp","mun":"70335","ibge":"3546603","nm":"SANTA FÉ DO SUL","c22":13482,"c13":6031,"aptos":25811,"comp":20221,"branco":271,"nulo":437}
+{"uf":"sp","mun":"70351","ibge":"3546702","nm":"SANTA GERTRUDES","c22":10116,"c13":5119,"aptos":19154,"comp":15777,"branco":185,"nulo":357}
+{"uf":"sp","mun":"70378","ibge":"3546801","nm":"SANTA ISABEL","c22":19429,"c13":12800,"aptos":41696,"comp":33605,"branco":509,"nulo":867}
+{"uf":"sp","mun":"70394","ibge":"3546900","nm":"SANTA LÚCIA","c22":2169,"c13":2734,"aptos":6327,"comp":5177,"branco":94,"nulo":180}
+{"uf":"sp","mun":"70416","ibge":"3547007","nm":"SANTA MARIA DA SERRA","c22":2065,"c13":1118,"aptos":4225,"comp":3268,"branco":36,"nulo":49}
+{"uf":"sp","mun":"70432","ibge":"3547106","nm":"SANTA MERCEDES","c22":1142,"c13":892,"aptos":2680,"comp":2086,"branco":26,"nulo":26}
+{"uf":"sp","mun":"70491","ibge":"3547403","nm":"SANTA RITA D'OESTE","c22":1172,"c13":800,"aptos":2471,"comp":2036,"branco":33,"nulo":31}
+{"uf":"sp","mun":"70513","ibge":"3547502","nm":"SANTA RITA DO PASSA QUATRO","c22":10465,"c13":4598,"aptos":19997,"comp":15547,"branco":176,"nulo":308}
+{"uf":"sp","mun":"70530","ibge":"3547601","nm":"SANTA ROSA DE VITERBO","c22":7776,"c13":5908,"aptos":18031,"comp":14385,"branco":222,"nulo":479}
+{"uf":"sp","mun":"62200","ibge":"3547650","nm":"SANTA SALETE","c22":1088,"c13":453,"aptos":1836,"comp":1579,"branco":12,"nulo":26}
+{"uf":"sp","mun":"70459","ibge":"3547205","nm":"SANTANA DA PONTE PENSA","c22":880,"c13":574,"aptos":1925,"comp":1506,"branco":24,"nulo":28}
+{"uf":"sp","mun":"70475","ibge":"3547304","nm":"SANTANA DE PARNAÍBA","c22":47920,"c13":38704,"aptos":111623,"comp":89898,"branco":1280,"nulo":1994}
+{"uf":"sp","mun":"70556","ibge":"3547700","nm":"SANTO ANASTÁCIO","c22":6941,"c13":4502,"aptos":15064,"comp":11891,"branco":180,"nulo":268}
+{"uf":"sp","mun":"70572","ibge":"3547809","nm":"SANTO ANDRÉ","c22":219136,"c13":216589,"aptos":573493,"comp":456367,"branco":5916,"nulo":14726}
+{"uf":"sp","mun":"70599","ibge":"3547908","nm":"SANTO ANTÔNIO DA ALEGRIA","c22":2571,"c13":1974,"aptos":5701,"comp":4710,"branco":57,"nulo":108}
+{"uf":"sp","mun":"70610","ibge":"3548005","nm":"SANTO ANTÔNIO DE POSSE","c22":8702,"c13":4337,"aptos":16287,"comp":13471,"branco":195,"nulo":237}
+{"uf":"sp","mun":"61328","ibge":"3548054","nm":"SANTO ANTÔNIO DO ARACANGUÁ","c22":3469,"c13":2311,"aptos":7292,"comp":5897,"branco":46,"nulo":71}
+{"uf":"sp","mun":"70637","ibge":"3548104","nm":"SANTO ANTÔNIO DO JARDIM","c22":2608,"c13":1393,"aptos":5173,"comp":4163,"branco":61,"nulo":101}
+{"uf":"sp","mun":"70653","ibge":"3548203","nm":"SANTO ANTÔNIO DO PINHAL","c22":2965,"c13":1962,"aptos":6114,"comp":5142,"branco":99,"nulo":116}
+{"uf":"sp","mun":"70670","ibge":"3548302","nm":"SANTO EXPEDITO","c22":1194,"c13":927,"aptos":2682,"comp":2202,"branco":28,"nulo":53}
+{"uf":"sp","mun":"70718","ibge":"3548500","nm":"SANTOS","c22":137805,"c13":126438,"aptos":348828,"comp":273933,"branco":3210,"nulo":6480}
+{"uf":"sp","mun":"70696","ibge":"3548401","nm":"SANTÓPOLIS DO AGUAPEÍ","c22":1659,"c13":1010,"aptos":3232,"comp":2745,"branco":24,"nulo":52}
+{"uf":"sp","mun":"71234","ibge":"3551108","nm":"SARAPUÍ","c22":3400,"c13":2521,"aptos":7395,"comp":6193,"branco":94,"nulo":178}
+{"uf":"sp","mun":"71250","ibge":"3551207","nm":"SARUTAIÁ","c22":1164,"c13":1250,"aptos":3203,"comp":2486,"branco":19,"nulo":53}
+{"uf":"sp","mun":"71277","ibge":"3551306","nm":"SEBASTIANÓPOLIS DO SUL","c22":1616,"c13":811,"aptos":3007,"comp":2506,"branco":37,"nulo":42}
+{"uf":"sp","mun":"71293","ibge":"3551405","nm":"SERRA AZUL","c22":2884,"c13":2878,"aptos":7366,"comp":5943,"branco":57,"nulo":124}
+{"uf":"sp","mun":"71331","ibge":"3551603","nm":"SERRA NEGRA","c22":11522,"c13":5645,"aptos":22280,"comp":17789,"branco":244,"nulo":378}
+{"uf":"sp","mun":"71315","ibge":"3551504","nm":"SERRANA","c22":14545,"c13":12049,"aptos":33571,"comp":27573,"branco":363,"nulo":616}
+{"uf":"sp","mun":"71358","ibge":"3551702","nm":"SERTÃOZINHO","c22":41737,"c13":32050,"aptos":93306,"comp":77092,"branco":1165,"nulo":2140}
+{"uf":"sp","mun":"71374","ibge":"3551801","nm":"SETE BARRAS","c22":4665,"c13":2957,"aptos":10261,"comp":7859,"branco":102,"nulo":135}
+{"uf":"sp","mun":"71390","ibge":"3551900","nm":"SEVERÍNIA","c22":5691,"c13":3878,"aptos":11642,"comp":9815,"branco":110,"nulo":136}
+{"uf":"sp","mun":"71412","ibge":"3552007","nm":"SILVEIRAS","c22":2335,"c13":1953,"aptos":5404,"comp":4416,"branco":62,"nulo":66}
+{"uf":"sp","mun":"71439","ibge":"3552106","nm":"SOCORRO","c22":18155,"c13":6416,"aptos":30486,"comp":25432,"branco":274,"nulo":587}
+{"uf":"sp","mun":"71455","ibge":"3552205","nm":"SOROCABA","c22":246097,"c13":168314,"aptos":531295,"comp":434186,"branco":6310,"nulo":13465}
+{"uf":"sp","mun":"71471","ibge":"3552304","nm":"SUD MENNUCCI","c22":2515,"c13":2125,"aptos":6041,"comp":4783,"branco":64,"nulo":79}
+{"uf":"sp","mun":"71498","ibge":"3552403","nm":"SUMARÉ","c22":87028,"c13":66658,"aptos":199962,"comp":159487,"branco":2194,"nulo":3607}
+{"uf":"sp","mun":"71510","ibge":"3552502","nm":"SUZANO","c22":91006,"c13":87723,"aptos":235579,"comp":187335,"branco":3358,"nulo":5248}
+{"uf":"sp","mun":"61301","ibge":"3552551","nm":"SUZANÁPOLIS","c22":1179,"c13":1160,"aptos":2988,"comp":2414,"branco":24,"nulo":51}
+{"uf":"sp","mun":"70734","ibge":"3548609","nm":"SÃO BENTO DO SAPUCAÍ","c22":4431,"c13":2769,"aptos":9073,"comp":7464,"branco":108,"nulo":156}
+{"uf":"sp","mun":"70750","ibge":"3548708","nm":"SÃO BERNARDO DO CAMPO","c22":216777,"c13":268963,"aptos":626614,"comp":507988,"branco":6578,"nulo":15670}
+{"uf":"sp","mun":"70777","ibge":"3548807","nm":"SÃO CAETANO DO SUL","c22":70741,"c13":50544,"aptos":147795,"comp":126104,"branco":1478,"nulo":3341}
+{"uf":"sp","mun":"70793","ibge":"3548906","nm":"SÃO CARLOS","c22":75264,"c13":72161,"aptos":196990,"comp":154336,"branco":2204,"nulo":4707}
+{"uf":"sp","mun":"70815","ibge":"3549003","nm":"SÃO FRANCISCO","c22":1142,"c13":850,"aptos":2505,"comp":2053,"branco":31,"nulo":30}
+{"uf":"sp","mun":"70890","ibge":"3549409","nm":"SÃO JOAQUIM DA BARRA","c22":15095,"c13":12812,"aptos":35832,"comp":29031,"branco":441,"nulo":683}
+{"uf":"sp","mun":"70912","ibge":"3549508","nm":"SÃO JOSÉ DA BELA VISTA","c22":2400,"c13":2482,"aptos":6916,"comp":5073,"branco":82,"nulo":109}
+{"uf":"sp","mun":"70939","ibge":"3549607","nm":"SÃO JOSÉ DO BARREIRO","c22":1301,"c13":1473,"aptos":3581,"comp":2865,"branco":31,"nulo":60}
+{"uf":"sp","mun":"70955","ibge":"3549706","nm":"SÃO JOSÉ DO RIO PARDO","c22":18932,"c13":10883,"aptos":39199,"comp":30942,"branco":472,"nulo":655}
+{"uf":"sp","mun":"70971","ibge":"3549805","nm":"SÃO JOSÉ DO RIO PRETO","c22":171594,"c13":91206,"aptos":344652,"comp":272521,"branco":3364,"nulo":6357}
+{"uf":"sp","mun":"70998","ibge":"3549904","nm":"SÃO JOSÉ DOS CAMPOS","c22":260425,"c13":175087,"aptos":540171,"comp":450985,"branco":6020,"nulo":9453}
+{"uf":"sp","mun":"70831","ibge":"3549102","nm":"SÃO JOÃO DA BOA VISTA","c22":33316,"c13":18690,"aptos":67130,"comp":54162,"branco":749,"nulo":1407}
+{"uf":"sp","mun":"70858","ibge":"3549201","nm":"SÃO JOÃO DAS DUAS PONTES","c22":869,"c13":927,"aptos":2242,"comp":1845,"branco":22,"nulo":27}
+{"uf":"sp","mun":"61883","ibge":"3549250","nm":"SÃO JOÃO DE IRACEMA","c22":648,"c13":729,"aptos":1809,"comp":1409,"branco":10,"nulo":22}
+{"uf":"sp","mun":"70874","ibge":"3549300","nm":"SÃO JOÃO DO PAU D'ALHO","c22":768,"c13":769,"aptos":1907,"comp":1584,"branco":22,"nulo":25}
+{"uf":"sp","mun":"61905","ibge":"3549953","nm":"SÃO LOURENÇO DA SERRA","c22":4677,"c13":4488,"aptos":11945,"comp":9576,"branco":181,"nulo":230}
+{"uf":"sp","mun":"71013","ibge":"3550001","nm":"SÃO LUÍS DO PARAITINGA","c22":4189,"c13":3794,"aptos":10207,"comp":8270,"branco":112,"nulo":175}
+{"uf":"sp","mun":"71030","ibge":"3550100","nm":"SÃO MANUEL","c22":14108,"c13":8618,"aptos":29307,"comp":23787,"branco":422,"nulo":639}
+{"uf":"sp","mun":"71056","ibge":"3550209","nm":"SÃO MIGUEL ARCANJO","c22":11993,"c13":6872,"aptos":24442,"comp":19709,"branco":342,"nulo":502}
+{"uf":"sp","mun":"71072","ibge":"3550308","nm":"SÃO PAULO","c22":3097923,"c13":3864354,"aptos":9145969,"comp":7284071,"branco":104890,"nulo":216904}
+{"uf":"sp","mun":"71099","ibge":"3550407","nm":"SÃO PEDRO","c22":14866,"c13":6532,"aptos":28547,"comp":22094,"branco":245,"nulo":451}
+{"uf":"sp","mun":"71110","ibge":"3550506","nm":"SÃO PEDRO DO TURVO","c22":2751,"c13":1783,"aptos":5675,"comp":4643,"branco":54,"nulo":55}
+{"uf":"sp","mun":"71137","ibge":"3550605","nm":"SÃO ROQUE","c22":25751,"c13":20646,"aptos":60255,"comp":48499,"branco":853,"nulo":1249}
+{"uf":"sp","mun":"71153","ibge":"3550704","nm":"SÃO SEBASTIÃO","c22":26335,"c13":25868,"aptos":68042,"comp":53912,"branco":721,"nulo":988}
+{"uf":"sp","mun":"71170","ibge":"3550803","nm":"SÃO SEBASTIÃO DA GRAMA","c22":3953,"c13":2429,"aptos":8398,"comp":6646,"branco":90,"nulo":174}
+{"uf":"sp","mun":"71196","ibge":"3550902","nm":"SÃO SIMÃO","c22":4956,"c13":3576,"aptos":11159,"comp":8857,"branco":115,"nulo":210}
+{"uf":"sp","mun":"71218","ibge":"3551009","nm":"SÃO VICENTE","c22":93907,"c13":95326,"aptos":256038,"comp":197030,"branco":2977,"nulo":4820}
+{"uf":"sp","mun":"71536","ibge":"3552601","nm":"TABAPUÃ","c22":4863,"c13":2212,"aptos":8767,"comp":7347,"branco":95,"nulo":177}
+{"uf":"sp","mun":"71552","ibge":"3552700","nm":"TABATINGA","c22":5174,"c13":3243,"aptos":10715,"comp":8733,"branco":128,"nulo":188}
+{"uf":"sp","mun":"71579","ibge":"3552809","nm":"TABOÃO DA SERRA","c22":69764,"c13":100912,"aptos":212010,"comp":177718,"branco":2507,"nulo":4535}
+{"uf":"sp","mun":"71595","ibge":"3552908","nm":"TACIBA","c22":2214,"c13":1981,"aptos":5069,"comp":4276,"branco":23,"nulo":58}
+{"uf":"sp","mun":"71617","ibge":"3553005","nm":"TAGUAÍ","c22":4582,"c13":2918,"aptos":9252,"comp":7721,"branco":117,"nulo":104}
+{"uf":"sp","mun":"71633","ibge":"3553104","nm":"TAIAÇU","c22":2019,"c13":1568,"aptos":4509,"comp":3709,"branco":53,"nulo":69}
+{"uf":"sp","mun":"71650","ibge":"3553203","nm":"TAIÚVA","c22":2401,"c13":1093,"aptos":4397,"comp":3570,"branco":35,"nulo":41}
+{"uf":"sp","mun":"71676","ibge":"3553302","nm":"TAMBAÚ","c22":6904,"c13":5270,"aptos":15899,"comp":12675,"branco":204,"nulo":297}
+{"uf":"sp","mun":"71692","ibge":"3553401","nm":"TANABI","c22":10293,"c13":5598,"aptos":19930,"comp":16348,"branco":175,"nulo":282}
+{"uf":"sp","mun":"71730","ibge":"3553609","nm":"TAPIRATIBA","c22":3883,"c13":3415,"aptos":9228,"comp":7579,"branco":104,"nulo":177}
+{"uf":"sp","mun":"71714","ibge":"3553500","nm":"TAPIRAÍ","c22":2706,"c13":1925,"aptos":6268,"comp":4825,"branco":100,"nulo":94}
+{"uf":"sp","mun":"62260","ibge":"3553658","nm":"TAQUARAL","c22":1136,"c13":753,"aptos":2276,"comp":1927,"branco":18,"nulo":20}
+{"uf":"sp","mun":"71757","ibge":"3553708","nm":"TAQUARITINGA","c22":17958,"c13":11377,"aptos":38622,"comp":30527,"branco":534,"nulo":658}
+{"uf":"sp","mun":"71773","ibge":"3553807","nm":"TAQUARITUBA","c22":8408,"c13":5893,"aptos":18081,"comp":14842,"branco":275,"nulo":266}
+{"uf":"sp","mun":"61840","ibge":"3553856","nm":"TAQUARIVAÍ","c22":2292,"c13":1724,"aptos":5122,"comp":4148,"branco":59,"nulo":73}
+{"uf":"sp","mun":"71790","ibge":"3553906","nm":"TARABAI","c22":2025,"c13":2149,"aptos":5176,"comp":4278,"branco":32,"nulo":72}
+{"uf":"sp","mun":"61042","ibge":"3553955","nm":"TARUMÃ","c22":5699,"c13":3497,"aptos":11525,"comp":9452,"branco":122,"nulo":134}
+{"uf":"sp","mun":"71811","ibge":"3554003","nm":"TATUÍ","c22":44255,"c13":22324,"aptos":88769,"comp":70101,"branco":1213,"nulo":2309}
+{"uf":"sp","mun":"71838","ibge":"3554102","nm":"TAUBATÉ","c22":115175,"c13":66531,"aptos":239953,"comp":189385,"branco":2874,"nulo":4805}
+{"uf":"sp","mun":"71854","ibge":"3554201","nm":"TEJUPÁ","c22":1410,"c13":1306,"aptos":3458,"comp":2794,"branco":32,"nulo":46}
+{"uf":"sp","mun":"71870","ibge":"3554300","nm":"TEODORO SAMPAIO","c22":5980,"c13":6872,"aptos":17020,"comp":13170,"branco":118,"nulo":200}
+{"uf":"sp","mun":"71897","ibge":"3554409","nm":"TERRA ROXA","c22":3053,"c13":2040,"aptos":6363,"comp":5287,"branco":74,"nulo":120}
+{"uf":"sp","mun":"71919","ibge":"3554508","nm":"TIETÊ","c22":15757,"c13":7114,"aptos":29074,"comp":23843,"branco":358,"nulo":614}
+{"uf":"sp","mun":"71935","ibge":"3554607","nm":"TIMBURI","c22":1060,"c13":784,"aptos":2428,"comp":1928,"branco":25,"nulo":59}
+{"uf":"sp","mun":"62049","ibge":"3554656","nm":"TORRE DE PEDRA","c22":1294,"c13":626,"aptos":2545,"comp":2000,"branco":26,"nulo":54}
+{"uf":"sp","mun":"71951","ibge":"3554706","nm":"TORRINHA","c22":3782,"c13":1495,"aptos":6691,"comp":5455,"branco":91,"nulo":87}
+{"uf":"sp","mun":"62448","ibge":"3554755","nm":"TRABIJU","c22":612,"c13":664,"aptos":1649,"comp":1326,"branco":22,"nulo":28}
+{"uf":"sp","mun":"71978","ibge":"3554805","nm":"TREMEMBÉ","c22":14736,"c13":8570,"aptos":29634,"comp":24239,"branco":351,"nulo":582}
+{"uf":"sp","mun":"71994","ibge":"3554904","nm":"TRÊS FRONTEIRAS","c22":2430,"c13":1580,"aptos":5256,"comp":4163,"branco":67,"nulo":86}
+{"uf":"sp","mun":"61620","ibge":"3554953","nm":"TUIUTI","c22":3001,"c13":1402,"aptos":5543,"comp":4542,"branco":48,"nulo":91}
+{"uf":"sp","mun":"72036","ibge":"3555109","nm":"TUPI PAULISTA","c22":5639,"c13":2857,"aptos":10821,"comp":8768,"branco":110,"nulo":162}
+{"uf":"sp","mun":"72010","ibge":"3555000","nm":"TUPÃ","c22":25342,"c13":11003,"aptos":47270,"comp":37493,"branco":419,"nulo":729}
+{"uf":"sp","mun":"72052","ibge":"3555208","nm":"TURIÚBA","c22":866,"c13":446,"aptos":1662,"comp":1340,"branco":12,"nulo":16}
+{"uf":"sp","mun":"72079","ibge":"3555307","nm":"TURMALINA","c22":738,"c13":776,"aptos":1954,"comp":1571,"branco":14,"nulo":43}
+{"uf":"sp","mun":"61468","ibge":"3555356","nm":"UBARANA","c22":1995,"c13":1497,"aptos":4496,"comp":3611,"branco":51,"nulo":68}
+{"uf":"sp","mun":"72095","ibge":"3555406","nm":"UBATUBA","c22":34778,"c13":23207,"aptos":77907,"comp":59878,"branco":709,"nulo":1184}
+{"uf":"sp","mun":"72117","ibge":"3555505","nm":"UBIRAJARA","c22":1813,"c13":1228,"aptos":3995,"comp":3107,"branco":27,"nulo":39}
+{"uf":"sp","mun":"72133","ibge":"3555604","nm":"UCHOA","c22":3945,"c13":2401,"aptos":8308,"comp":6598,"branco":97,"nulo":155}
+{"uf":"sp","mun":"72150","ibge":"3555703","nm":"UNIÃO PAULISTA","c22":734,"c13":572,"aptos":1702,"comp":1330,"branco":12,"nulo":12}
+{"uf":"sp","mun":"72192","ibge":"3555901","nm":"URU","c22":812,"c13":396,"aptos":1622,"comp":1242,"branco":18,"nulo":16}
+{"uf":"sp","mun":"72214","ibge":"3556008","nm":"URUPÊS","c22":5993,"c13":2427,"aptos":10625,"comp":8665,"branco":103,"nulo":142}
+{"uf":"sp","mun":"72176","ibge":"3555802","nm":"URÂNIA","c22":3602,"c13":1978,"aptos":6900,"comp":5783,"branco":87,"nulo":116}
+{"uf":"sp","mun":"72230","ibge":"3556107","nm":"VALENTIM GENTIL","c22":5291,"c13":2984,"aptos":10146,"comp":8529,"branco":108,"nulo":146}
+{"uf":"sp","mun":"72257","ibge":"3556206","nm":"VALINHOS","c22":48131,"c13":27669,"aptos":94685,"comp":78979,"branco":1080,"nulo":2099}
+{"uf":"sp","mun":"72273","ibge":"3556305","nm":"VALPARAÍSO","c22":7435,"c13":4407,"aptos":15952,"comp":12169,"branco":145,"nulo":182}
+{"uf":"sp","mun":"61549","ibge":"3556354","nm":"VARGEM","c22":3343,"c13":1758,"aptos":6582,"comp":5314,"branco":77,"nulo":136}
+{"uf":"sp","mun":"72311","ibge":"3556404","nm":"VARGEM GRANDE DO SUL","c22":15273,"c13":8052,"aptos":30434,"comp":24276,"branco":485,"nulo":466}
+{"uf":"sp","mun":"72737","ibge":"3556453","nm":"VARGEM GRANDE PAULISTA","c22":17930,"c13":15032,"aptos":42998,"comp":34375,"branco":583,"nulo":830}
+{"uf":"sp","mun":"72354","ibge":"3556602","nm":"VERA CRUZ","c22":3832,"c13":2339,"aptos":7887,"comp":6401,"branco":65,"nulo":165}
+{"uf":"sp","mun":"72370","ibge":"3556701","nm":"VINHEDO","c22":33601,"c13":17861,"aptos":65676,"comp":53363,"branco":684,"nulo":1217}
+{"uf":"sp","mun":"72397","ibge":"3556800","nm":"VIRADOURO","c22":7217,"c13":3432,"aptos":13102,"comp":10965,"branco":134,"nulo":182}
+{"uf":"sp","mun":"72419","ibge":"3556909","nm":"VISTA ALEGRE DO ALTO","c22":2965,"c13":1744,"aptos":5991,"comp":4873,"branco":71,"nulo":93}
+{"uf":"sp","mun":"62227","ibge":"3556958","nm":"VITÓRIA BRASIL","c22":851,"c13":576,"aptos":1673,"comp":1470,"branco":14,"nulo":29}
+{"uf":"sp","mun":"72435","ibge":"3557006","nm":"VOTORANTIM","c22":42516,"c13":28567,"aptos":92599,"comp":74238,"branco":1187,"nulo":1968}
+{"uf":"sp","mun":"72451","ibge":"3557105","nm":"VOTUPORANGA","c22":36779,"c13":17613,"aptos":68939,"comp":56413,"branco":714,"nulo":1307}
+{"uf":"sp","mun":"72338","ibge":"3556503","nm":"VÁRZEA PAULISTA","c22":37947,"c13":27573,"aptos":84730,"comp":68487,"branco":1041,"nulo":1926}
+{"uf":"sp","mun":"61921","ibge":"3557154","nm":"ZACARIAS","c22":1213,"c13":765,"aptos":2571,"comp":2042,"branco":13,"nulo":51}
+{"uf":"sp","mun":"61077","ibge":"3500402","nm":"ÁGUAS DA PRATA","c22":2917,"c13":1756,"aptos":5911,"comp":4842,"branco":57,"nulo":112}
+{"uf":"sp","mun":"61093","ibge":"3500501","nm":"ÁGUAS DE LINDÓIA","c22":7999,"c13":3353,"aptos":14060,"comp":11814,"branco":147,"nulo":315}
+{"uf":"sp","mun":"70190","ibge":"3500550","nm":"ÁGUAS DE SANTA BÁRBARA","c22":2705,"c13":1324,"aptos":5392,"comp":4177,"branco":41,"nulo":107}
+{"uf":"sp","mun":"61115","ibge":"3500600","nm":"ÁGUAS DE SÃO PEDRO","c22":2204,"c13":1160,"aptos":4336,"comp":3462,"branco":31,"nulo":67}
+{"uf":"sp","mun":"61239","ibge":"3501202","nm":"ÁLVARES FLORENCE","c22":1964,"c13":899,"aptos":3612,"comp":2957,"branco":38,"nulo":56}
+{"uf":"sp","mun":"61255","ibge":"3501301","nm":"ÁLVARES MACHADO","c22":8869,"c13":5600,"aptos":17959,"comp":14911,"branco":182,"nulo":260}
+{"uf":"sp","mun":"61271","ibge":"3501400","nm":"ÁLVARO DE CARVALHO","c22":1061,"c13":934,"aptos":2756,"comp":2107,"branco":33,"nulo":79}
+{"uf":"sp","mun":"67776","ibge":"3533809","nm":"ÓLEO","c22":1212,"c13":702,"aptos":2420,"comp":1983,"branco":32,"nulo":37}
+{"uf":"to","mun":"73008","ibge":"1700251","nm":"ABREULÂNDIA","c22":942,"c13":949,"aptos":2525,"comp":1978,"branco":10,"nulo":77}
+{"uf":"to","mun":"73512","ibge":"1700301","nm":"AGUIARNÓPOLIS","c22":1222,"c13":1762,"aptos":3952,"comp":3111,"branco":21,"nulo":106}
+{"uf":"to","mun":"96954","ibge":"1700350","nm":"ALIANÇA DO TOCANTINS","c22":1669,"c13":1447,"aptos":4305,"comp":3305,"branco":39,"nulo":150}
+{"uf":"to","mun":"92070","ibge":"1700400","nm":"ALMAS","c22":1519,"c13":2661,"aptos":5593,"comp":4460,"branco":35,"nulo":245}
+{"uf":"to","mun":"92134","ibge":"1700707","nm":"ALVORADA","c22":3517,"c13":2376,"aptos":8052,"comp":6174,"branco":48,"nulo":233}
+{"uf":"to","mun":"92193","ibge":"1701002","nm":"ANANÁS","c22":2465,"c13":3451,"aptos":7595,"comp":6184,"branco":33,"nulo":235}
+{"uf":"to","mun":"73075","ibge":"1701051","nm":"ANGICO","c22":940,"c13":1119,"aptos":2804,"comp":2152,"branco":19,"nulo":74}
+{"uf":"to","mun":"96970","ibge":"1701101","nm":"APARECIDA DO RIO NEGRO","c22":1960,"c13":1758,"aptos":4669,"comp":3934,"branco":31,"nulo":185}
+{"uf":"to","mun":"73334","ibge":"1701309","nm":"ARAGOMINAS","c22":1458,"c13":1876,"aptos":4450,"comp":3514,"branco":24,"nulo":156}
+{"uf":"to","mun":"92371","ibge":"1701903","nm":"ARAGUACEMA","c22":1572,"c13":2126,"aptos":5135,"comp":3903,"branco":28,"nulo":177}
+{"uf":"to","mun":"73318","ibge":"1702158","nm":"ARAGUANÃ","c22":1355,"c13":1338,"aptos":3552,"comp":2812,"branco":14,"nulo":105}
+{"uf":"to","mun":"92436","ibge":"1702208","nm":"ARAGUATINS","c22":7244,"c13":9259,"aptos":22360,"comp":17428,"branco":155,"nulo":770}
+{"uf":"to","mun":"92398","ibge":"1702000","nm":"ARAGUAÇU","c22":3589,"c13":1355,"aptos":6647,"comp":5171,"branco":39,"nulo":188}
+{"uf":"to","mun":"92410","ibge":"1702109","nm":"ARAGUAÍNA","c22":57758,"c13":40692,"aptos":124184,"comp":103249,"branco":1035,"nulo":3764}
+{"uf":"to","mun":"92452","ibge":"1702307","nm":"ARAPOEMA","c22":1553,"c13":1794,"aptos":4629,"comp":3545,"branco":31,"nulo":167}
+{"uf":"to","mun":"92479","ibge":"1702406","nm":"ARRAIAS","c22":1668,"c13":4183,"aptos":8200,"comp":6231,"branco":61,"nulo":319}
+{"uf":"to","mun":"96857","ibge":"1702554","nm":"AUGUSTINÓPOLIS","c22":4294,"c13":6170,"aptos":13633,"comp":11005,"branco":106,"nulo":435}
+{"uf":"to","mun":"92533","ibge":"1702703","nm":"AURORA DO TOCANTINS","c22":967,"c13":1413,"aptos":3315,"comp":2522,"branco":26,"nulo":116}
+{"uf":"to","mun":"92576","ibge":"1702901","nm":"AXIXÁ DO TOCANTINS","c22":2837,"c13":4174,"aptos":9184,"comp":7395,"branco":57,"nulo":327}
+{"uf":"to","mun":"92592","ibge":"1703008","nm":"BABAÇULÂNDIA","c22":1891,"c13":3365,"aptos":6652,"comp":5545,"branco":52,"nulo":237}
+{"uf":"to","mun":"73580","ibge":"1703057","nm":"BANDEIRANTES DO TOCANTINS","c22":1259,"c13":965,"aptos":2798,"comp":2294,"branco":10,"nulo":60}
+{"uf":"to","mun":"73610","ibge":"1703073","nm":"BARRA DO OURO","c22":1213,"c13":1775,"aptos":4021,"comp":3132,"branco":18,"nulo":126}
+{"uf":"to","mun":"96997","ibge":"1703107","nm":"BARROLÂNDIA","c22":1971,"c13":1849,"aptos":4904,"comp":4010,"branco":35,"nulo":155}
+{"uf":"to","mun":"92002","ibge":"1703206","nm":"BERNARDO SAYÃO","c22":1601,"c13":1163,"aptos":3604,"comp":2890,"branco":19,"nulo":107}
+{"uf":"to","mun":"73121","ibge":"1703305","nm":"BOM JESUS DO TOCANTINS","c22":1403,"c13":1485,"aptos":3671,"comp":3053,"branco":22,"nulo":143}
+{"uf":"to","mun":"73245","ibge":"1703602","nm":"BRASILÂNDIA DO TOCANTINS","c22":732,"c13":827,"aptos":1994,"comp":1622,"branco":12,"nulo":51}
+{"uf":"to","mun":"92738","ibge":"1703701","nm":"BREJINHO DE NAZARÉ","c22":1528,"c13":1704,"aptos":4228,"comp":3412,"branco":26,"nulo":154}
+{"uf":"to","mun":"92045","ibge":"1703800","nm":"BURITI DO TOCANTINS","c22":2226,"c13":3005,"aptos":6689,"comp":5488,"branco":28,"nulo":229}
+{"uf":"to","mun":"73067","ibge":"1703826","nm":"CACHOEIRINHA","c22":532,"c13":994,"aptos":2029,"comp":1594,"branco":20,"nulo":48}
+{"uf":"to","mun":"73091","ibge":"1703842","nm":"CAMPOS LINDOS","c22":2243,"c13":3006,"aptos":6886,"comp":5526,"branco":51,"nulo":226}
+{"uf":"to","mun":"73300","ibge":"1703867","nm":"CARIRI DO TOCANTINS","c22":1600,"c13":1272,"aptos":3798,"comp":3015,"branco":24,"nulo":119}
+{"uf":"to","mun":"73326","ibge":"1703883","nm":"CARMOLÂNDIA","c22":817,"c13":1045,"aptos":2413,"comp":1965,"branco":8,"nulo":95}
+{"uf":"to","mun":"73423","ibge":"1703891","nm":"CARRASCO BONITO","c22":932,"c13":1596,"aptos":3569,"comp":2664,"branco":19,"nulo":117}
+{"uf":"to","mun":"92088","ibge":"1703909","nm":"CASEARA","c22":1466,"c13":1593,"aptos":3951,"comp":3177,"branco":11,"nulo":107}
+{"uf":"to","mun":"73210","ibge":"1704105","nm":"CENTENÁRIO","c22":556,"c13":880,"aptos":1930,"comp":1519,"branco":16,"nulo":67}
+{"uf":"to","mun":"73482","ibge":"1705102","nm":"CHAPADA DA NATIVIDADE","c22":630,"c13":1611,"aptos":3103,"comp":2358,"branco":13,"nulo":104}
+{"uf":"to","mun":"73474","ibge":"1704600","nm":"CHAPADA DE AREIA","c22":1028,"c13":784,"aptos":2545,"comp":1894,"branco":16,"nulo":66}
+{"uf":"to","mun":"93114","ibge":"1705508","nm":"COLINAS DO TOCANTINS","c22":11530,"c13":7722,"aptos":25357,"comp":20162,"branco":177,"nulo":733}
+{"uf":"to","mun":"95290","ibge":"1716703","nm":"COLMÉIA","c22":3143,"c13":1909,"aptos":6525,"comp":5273,"branco":39,"nulo":182}
+{"uf":"to","mun":"92142","ibge":"1705557","nm":"COMBINADO","c22":1564,"c13":1476,"aptos":3892,"comp":3220,"branco":27,"nulo":153}
+{"uf":"to","mun":"93130","ibge":"1705607","nm":"CONCEIÇÃO DO TOCANTINS","c22":723,"c13":1639,"aptos":3640,"comp":2540,"branco":25,"nulo":153}
+{"uf":"to","mun":"93211","ibge":"1706001","nm":"COUTO MAGALHÃES","c22":1553,"c13":2097,"aptos":4816,"comp":3793,"branco":26,"nulo":117}
+{"uf":"to","mun":"93238","ibge":"1706100","nm":"CRISTALÂNDIA","c22":2266,"c13":2054,"aptos":5529,"comp":4488,"branco":25,"nulo":143}
+{"uf":"to","mun":"73555","ibge":"1706258","nm":"CRIXÁS DO TOCANTINS","c22":668,"c13":699,"aptos":1827,"comp":1424,"branco":11,"nulo":46}
+{"uf":"to","mun":"73032","ibge":"1706506","nm":"DARCINÓPOLIS","c22":1524,"c13":2022,"aptos":4741,"comp":3732,"branco":33,"nulo":153}
+{"uf":"to","mun":"93416","ibge":"1707009","nm":"DIANÓPOLIS","c22":3911,"c13":5968,"aptos":13185,"comp":10468,"branco":111,"nulo":478}
+{"uf":"to","mun":"92185","ibge":"1707108","nm":"DIVINÓPOLIS DO TOCANTINS","c22":2111,"c13":2256,"aptos":5781,"comp":4602,"branco":24,"nulo":211}
+{"uf":"to","mun":"93459","ibge":"1707207","nm":"DOIS IRMÃOS DO TOCANTINS","c22":1692,"c13":2171,"aptos":5082,"comp":4072,"branco":25,"nulo":184}
+{"uf":"to","mun":"93475","ibge":"1707306","nm":"DUERÉ","c22":1314,"c13":1464,"aptos":3669,"comp":2922,"branco":17,"nulo":127}
+{"uf":"to","mun":"73296","ibge":"1707405","nm":"ESPERANTINA","c22":1459,"c13":3396,"aptos":6625,"comp":5093,"branco":37,"nulo":201}
+{"uf":"to","mun":"96679","ibge":"1707652","nm":"FIGUEIRÓPOLIS","c22":1967,"c13":1468,"aptos":4675,"comp":3613,"branco":29,"nulo":149}
+{"uf":"to","mun":"93556","ibge":"1707702","nm":"FILADÉLFIA","c22":1921,"c13":2704,"aptos":6245,"comp":4864,"branco":46,"nulo":193}
+{"uf":"to","mun":"93653","ibge":"1708205","nm":"FORMOSO DO ARAGUAIA","c22":6115,"c13":4353,"aptos":14145,"comp":10987,"branco":82,"nulo":437}
+{"uf":"to","mun":"96830","ibge":"1707553","nm":"FÁTIMA","c22":1481,"c13":1099,"aptos":3389,"comp":2686,"branco":19,"nulo":87}
+{"uf":"to","mun":"92240","ibge":"1708304","nm":"GOIANORTE","c22":1871,"c13":1621,"aptos":4496,"comp":3644,"branco":30,"nulo":122}
+{"uf":"to","mun":"95338","ibge":"1709005","nm":"GOIATINS","c22":2246,"c13":4839,"aptos":8812,"comp":7704,"branco":44,"nulo":575}
+{"uf":"to","mun":"96270","ibge":"1709302","nm":"GUARAÍ","c22":7837,"c13":5967,"aptos":17592,"comp":14462,"branco":108,"nulo":550}
+{"uf":"to","mun":"93858","ibge":"1709500","nm":"GURUPI","c22":28947,"c13":17972,"aptos":61242,"comp":49226,"branco":476,"nulo":1831}
+{"uf":"to","mun":"73598","ibge":"1709807","nm":"IPUEIRAS","c22":512,"c13":1017,"aptos":1997,"comp":1586,"branco":11,"nulo":46}
+{"uf":"to","mun":"94056","ibge":"1710508","nm":"ITACAJÁ","c22":1736,"c13":2584,"aptos":5447,"comp":4534,"branco":27,"nulo":187}
+{"uf":"to","mun":"94099","ibge":"1710706","nm":"ITAGUATINS","c22":1272,"c13":2339,"aptos":4717,"comp":3793,"branco":33,"nulo":149}
+{"uf":"to","mun":"73202","ibge":"1710904","nm":"ITAPIRATINS","c22":1079,"c13":1539,"aptos":3403,"comp":2802,"branco":31,"nulo":153}
+{"uf":"to","mun":"94170","ibge":"1711100","nm":"ITAPORÃ DO TOCANTINS","c22":1031,"c13":1064,"aptos":2703,"comp":2178,"branco":18,"nulo":65}
+{"uf":"to","mun":"73369","ibge":"1711506","nm":"JAÚ DO TOCANTINS","c22":1147,"c13":1083,"aptos":3092,"comp":2337,"branco":21,"nulo":86}
+{"uf":"to","mun":"73253","ibge":"1711803","nm":"JUARINA","c22":812,"c13":912,"aptos":2277,"comp":1802,"branco":15,"nulo":63}
+{"uf":"to","mun":"73385","ibge":"1711902","nm":"LAGOA DA CONFUSÃO","c22":4335,"c13":3451,"aptos":10222,"comp":8116,"branco":42,"nulo":288}
+{"uf":"to","mun":"73113","ibge":"1711951","nm":"LAGOA DO TOCANTINS","c22":1038,"c13":1503,"aptos":3309,"comp":2711,"branco":20,"nulo":150}
+{"uf":"to","mun":"73407","ibge":"1712009","nm":"LAJEADO","c22":1419,"c13":1264,"aptos":3505,"comp":2783,"branco":22,"nulo":78}
+{"uf":"to","mun":"73601","ibge":"1712157","nm":"LAVANDEIRA","c22":598,"c13":826,"aptos":2001,"comp":1518,"branco":11,"nulo":83}
+{"uf":"to","mun":"95699","ibge":"1712405","nm":"LIZARDA","c22":621,"c13":1457,"aptos":3098,"comp":2209,"branco":11,"nulo":120}
+{"uf":"to","mun":"73520","ibge":"1712454","nm":"LUZINÓPOLIS","c22":799,"c13":1185,"aptos":2601,"comp":2082,"branco":20,"nulo":78}
+{"uf":"to","mun":"92304","ibge":"1712504","nm":"MARIANÓPOLIS DO TOCANTINS","c22":1497,"c13":1377,"aptos":3803,"comp":3018,"branco":20,"nulo":124}
+{"uf":"to","mun":"73270","ibge":"1712702","nm":"MATEIROS","c22":504,"c13":991,"aptos":2001,"comp":1577,"branco":13,"nulo":69}
+{"uf":"to","mun":"73059","ibge":"1712801","nm":"MAURILÂNDIA DO TOCANTINS","c22":769,"c13":1940,"aptos":3586,"comp":2868,"branco":23,"nulo":136}
+{"uf":"to","mun":"94617","ibge":"1713205","nm":"MIRACEMA DO TOCANTINS","c22":4594,"c13":6311,"aptos":14422,"comp":11497,"branco":113,"nulo":479}
+{"uf":"to","mun":"94633","ibge":"1713304","nm":"MIRANORTE","c22":4331,"c13":3488,"aptos":10079,"comp":8195,"branco":61,"nulo":315}
+{"uf":"to","mun":"94692","ibge":"1713601","nm":"MONTE DO CARMO","c22":1674,"c13":2145,"aptos":5126,"comp":4025,"branco":26,"nulo":180}
+{"uf":"to","mun":"73563","ibge":"1713700","nm":"MONTE SANTO DO TOCANTINS","c22":1167,"c13":735,"aptos":2559,"comp":1999,"branco":16,"nulo":81}
+{"uf":"to","mun":"73342","ibge":"1713957","nm":"MURICILÂNDIA","c22":880,"c13":1271,"aptos":2874,"comp":2254,"branco":13,"nulo":90}
+{"uf":"to","mun":"94811","ibge":"1714203","nm":"NATIVIDADE","c22":2111,"c13":2757,"aptos":6805,"comp":5198,"branco":52,"nulo":278}
+{"uf":"to","mun":"94838","ibge":"1714302","nm":"NAZARÉ","c22":965,"c13":2324,"aptos":4125,"comp":3422,"branco":31,"nulo":102}
+{"uf":"to","mun":"96636","ibge":"1714880","nm":"NOVA OLINDA","c22":3112,"c13":3306,"aptos":8132,"comp":6741,"branco":47,"nulo":276}
+{"uf":"to","mun":"92401","ibge":"1715002","nm":"NOVA ROSALÂNDIA","c22":1300,"c13":951,"aptos":2880,"comp":2352,"branco":17,"nulo":84}
+{"uf":"to","mun":"94994","ibge":"1715101","nm":"NOVO ACORDO","c22":1530,"c13":1583,"aptos":4119,"comp":3281,"branco":22,"nulo":146}
+{"uf":"to","mun":"73148","ibge":"1715150","nm":"NOVO ALEGRE","c22":568,"c13":938,"aptos":2103,"comp":1583,"branco":19,"nulo":58}
+{"uf":"to","mun":"73172","ibge":"1715259","nm":"NOVO JARDIM","c22":574,"c13":1122,"aptos":2343,"comp":1787,"branco":12,"nulo":79}
+{"uf":"to","mun":"73466","ibge":"1715507","nm":"OLIVEIRA DE FÁTIMA","c22":618,"c13":653,"aptos":1692,"comp":1319,"branco":7,"nulo":41}
+{"uf":"to","mun":"73440","ibge":"1721000","nm":"PALMAS","c22":106514,"c13":69981,"aptos":219771,"comp":183158,"branco":1734,"nulo":4929}
+{"uf":"to","mun":"73083","ibge":"1715705","nm":"PALMEIRANTE","c22":1328,"c13":1930,"aptos":4317,"comp":3430,"branco":31,"nulo":141}
+{"uf":"to","mun":"73040","ibge":"1713809","nm":"PALMEIRAS DO TOCANTINS","c22":1306,"c13":1945,"aptos":4232,"comp":3392,"branco":29,"nulo":112}
+{"uf":"to","mun":"96490","ibge":"1715754","nm":"PALMEIRÓPOLIS","c22":2779,"c13":1842,"aptos":6162,"comp":4841,"branco":38,"nulo":182}
+{"uf":"to","mun":"95214","ibge":"1716208","nm":"PARANÃ","c22":1502,"c13":4323,"aptos":8577,"comp":6264,"branco":29,"nulo":410}
+{"uf":"to","mun":"95192","ibge":"1716109","nm":"PARAÍSO DO TOCANTINS","c22":19303,"c13":8474,"aptos":36057,"comp":29018,"branco":269,"nulo":972}
+{"uf":"to","mun":"73261","ibge":"1716307","nm":"PAU D'ARCO","c22":1283,"c13":1349,"aptos":3551,"comp":2755,"branco":25,"nulo":98}
+{"uf":"to","mun":"95257","ibge":"1716505","nm":"PEDRO AFONSO","c22":4487,"c13":3792,"aptos":10800,"comp":8687,"branco":65,"nulo":343}
+{"uf":"to","mun":"95273","ibge":"1716604","nm":"PEIXE","c22":2025,"c13":3366,"aptos":7282,"comp":5667,"branco":36,"nulo":240}
+{"uf":"to","mun":"92487","ibge":"1716653","nm":"PEQUIZEIRO","c22":1566,"c13":1816,"aptos":4372,"comp":3517,"branco":22,"nulo":113}
+{"uf":"to","mun":"95370","ibge":"1717008","nm":"PINDORAMA DO TOCANTINS","c22":1285,"c13":1493,"aptos":3711,"comp":2946,"branco":21,"nulo":147}
+{"uf":"to","mun":"73016","ibge":"1717206","nm":"PIRAQUÊ","c22":774,"c13":1019,"aptos":2394,"comp":1883,"branco":11,"nulo":79}
+{"uf":"to","mun":"95478","ibge":"1717503","nm":"PIUM","c22":2445,"c13":1889,"aptos":5965,"comp":4524,"branco":25,"nulo":165}
+{"uf":"to","mun":"95516","ibge":"1717800","nm":"PONTE ALTA DO BOM JESUS","c22":990,"c13":1726,"aptos":3642,"comp":2885,"branco":26,"nulo":143}
+{"uf":"to","mun":"95532","ibge":"1717909","nm":"PONTE ALTA DO TOCANTINS","c22":2215,"c13":1969,"aptos":5630,"comp":4480,"branco":44,"nulo":252}
+{"uf":"to","mun":"92509","ibge":"1718006","nm":"PORTO ALEGRE DO TOCANTINS","c22":661,"c13":1236,"aptos":2638,"comp":2008,"branco":17,"nulo":94}
+{"uf":"to","mun":"95591","ibge":"1718204","nm":"PORTO NACIONAL","c22":18811,"c13":18449,"aptos":47076,"comp":39028,"branco":316,"nulo":1452}
+{"uf":"to","mun":"92525","ibge":"1718303","nm":"PRAIA NORTE","c22":1417,"c13":2917,"aptos":5874,"comp":4561,"branco":36,"nulo":191}
+{"uf":"to","mun":"96296","ibge":"1718402","nm":"PRESIDENTE KENNEDY","c22":1042,"c13":1115,"aptos":2825,"comp":2259,"branco":17,"nulo":85}
+{"uf":"to","mun":"73571","ibge":"1718451","nm":"PUGMIL","c22":1009,"c13":790,"aptos":2329,"comp":1875,"branco":7,"nulo":69}
+{"uf":"to","mun":"73229","ibge":"1718501","nm":"RECURSOLÂNDIA","c22":710,"c13":1534,"aptos":2938,"comp":2359,"branco":13,"nulo":102}
+{"uf":"to","mun":"73024","ibge":"1718550","nm":"RIACHINHO","c22":1180,"c13":1560,"aptos":3503,"comp":2849,"branco":16,"nulo":93}
+{"uf":"to","mun":"73431","ibge":"1718659","nm":"RIO DA CONCEIÇÃO","c22":511,"c13":969,"aptos":2140,"comp":1552,"branco":8,"nulo":64}
+{"uf":"to","mun":"73415","ibge":"1718709","nm":"RIO DOS BOIS","c22":813,"c13":1202,"aptos":2668,"comp":2116,"branco":18,"nulo":83}
+{"uf":"to","mun":"96792","ibge":"1718758","nm":"RIO SONO","c22":1613,"c13":1779,"aptos":4295,"comp":3531,"branco":25,"nulo":114}
+{"uf":"to","mun":"92541","ibge":"1718808","nm":"SAMPAIO","c22":907,"c13":2011,"aptos":4158,"comp":3085,"branco":31,"nulo":136}
+{"uf":"to","mun":"73156","ibge":"1718840","nm":"SANDOLÂNDIA","c22":1534,"c13":1072,"aptos":3566,"comp":2742,"branco":22,"nulo":114}
+{"uf":"to","mun":"73350","ibge":"1718865","nm":"SANTA FÉ DO ARAGUAIA","c22":1928,"c13":2220,"aptos":5526,"comp":4348,"branco":19,"nulo":181}
+{"uf":"to","mun":"73130","ibge":"1718881","nm":"SANTA MARIA DO TOCANTINS","c22":1021,"c13":932,"aptos":2545,"comp":2029,"branco":9,"nulo":67}
+{"uf":"to","mun":"73547","ibge":"1718899","nm":"SANTA RITA DO TOCANTINS","c22":873,"c13":676,"aptos":2128,"comp":1616,"branco":6,"nulo":61}
+{"uf":"to","mun":"92584","ibge":"1718907","nm":"SANTA ROSA DO TOCANTINS","c22":1168,"c13":2038,"aptos":4257,"comp":3387,"branco":32,"nulo":149}
+{"uf":"to","mun":"92606","ibge":"1719004","nm":"SANTA TEREZA DO TOCANTINS","c22":1300,"c13":1101,"aptos":3061,"comp":2538,"branco":25,"nulo":112}
+{"uf":"to","mun":"73539","ibge":"1720002","nm":"SANTA TEREZINHA DO TOCANTINS","c22":618,"c13":970,"aptos":2106,"comp":1651,"branco":8,"nulo":55}
+{"uf":"to","mun":"96598","ibge":"1720655","nm":"SILVANÓPOLIS","c22":1757,"c13":1993,"aptos":4866,"comp":3940,"branco":27,"nulo":163}
+{"uf":"to","mun":"73377","ibge":"1720853","nm":"SUCUPIRA","c22":695,"c13":654,"aptos":1762,"comp":1419,"branco":16,"nulo":54}
+{"uf":"to","mun":"73288","ibge":"1720101","nm":"SÃO BENTO DO TOCANTINS","c22":1402,"c13":2586,"aptos":5456,"comp":4183,"branco":35,"nulo":160}
+{"uf":"to","mun":"73105","ibge":"1720150","nm":"SÃO FÉLIX DO TOCANTINS","c22":497,"c13":891,"aptos":1853,"comp":1469,"branco":14,"nulo":67}
+{"uf":"to","mun":"73180","ibge":"1720200","nm":"SÃO MIGUEL DO TOCANTINS","c22":3167,"c13":4795,"aptos":9833,"comp":8284,"branco":68,"nulo":254}
+{"uf":"to","mun":"73393","ibge":"1720259","nm":"SÃO SALVADOR DO TOCANTINS","c22":602,"c13":1185,"aptos":2701,"comp":1888,"branco":8,"nulo":93}
+{"uf":"to","mun":"96032","ibge":"1720309","nm":"SÃO SEBASTIÃO DO TOCANTINS","c22":754,"c13":1767,"aptos":3364,"comp":2646,"branco":20,"nulo":105}
+{"uf":"to","mun":"92681","ibge":"1720499","nm":"SÃO VALÉRIO","c22":1039,"c13":1903,"aptos":4076,"comp":3086,"branco":21,"nulo":123}
+{"uf":"to","mun":"96130","ibge":"1720804","nm":"SÍTIO NOVO DO TOCANTINS","c22":2170,"c13":4226,"aptos":8077,"comp":6679,"branco":58,"nulo":225}
+{"uf":"to","mun":"73199","ibge":"1708254","nm":"TABOCÃO","c22":1102,"c13":1166,"aptos":3073,"comp":2380,"branco":12,"nulo":100}
+{"uf":"to","mun":"96156","ibge":"1720903","nm":"TAGUATINGA","c22":3420,"c13":4965,"aptos":11230,"comp":8890,"branco":69,"nulo":436}
+{"uf":"to","mun":"73164","ibge":"1720937","nm":"TAIPAS DO TOCANTINS","c22":365,"c13":1008,"aptos":2033,"comp":1471,"branco":14,"nulo":84}
+{"uf":"to","mun":"73504","ibge":"1720978","nm":"TALISMÃ","c22":979,"c13":795,"aptos":2561,"comp":1864,"branco":11,"nulo":79}
+{"uf":"to","mun":"96210","ibge":"1721208","nm":"TOCANTINÓPOLIS","c22":4189,"c13":8513,"aptos":16074,"comp":13386,"branco":122,"nulo":562}
+{"uf":"to","mun":"96199","ibge":"1721109","nm":"TOCANTÍNIA","c22":1155,"c13":3284,"aptos":5452,"comp":4642,"branco":30,"nulo":173}
+{"uf":"to","mun":"73458","ibge":"1721257","nm":"TUPIRAMA","c22":585,"c13":815,"aptos":1851,"comp":1471,"branco":16,"nulo":55}
+{"uf":"to","mun":"73237","ibge":"1721307","nm":"TUPIRATINS","c22":507,"c13":866,"aptos":1797,"comp":1439,"branco":8,"nulo":58}
+{"uf":"to","mun":"96652","ibge":"1722081","nm":"WANDERLÂNDIA","c22":2468,"c13":3090,"aptos":7391,"comp":5881,"branco":37,"nulo":286}
+{"uf":"to","mun":"96431","ibge":"1722107","nm":"XAMBIOÁ","c22":3552,"c13":3141,"aptos":8640,"comp":6991,"branco":46,"nulo":252}
