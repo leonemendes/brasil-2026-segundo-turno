@@ -55,7 +55,8 @@
 .bz-pending { display: inline-flex; align-items: center; gap: var(--cds-gap-xs); font-size: var(--cds-font-size-caption); color: var(--color-warn) }
 .bz-pending::before { content: ""; width: .375rem; height: .375rem; border-radius: 50%; background: var(--color-warn) }
 .bz-explore { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: var(--cds-gap-md); align-items: start }
-.bz-ctrl { display: grid; gap: var(--cds-gap-sm) }
+.bz-ctrl { display: grid; gap: var(--cds-gap-sm); grid-template-columns: minmax(0, 1fr); min-width: 0 }
+.bz-ctrlrow { min-width: 0 }
 .bz-ctrlrow { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); align-items: center }
 .bz-ctrlrow > span { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); min-width: 4.5rem }
 .bz select, .bz input[type="search"] { font: inherit; font-size: var(--cds-font-size-caption); color: var(--color-fg); background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-xs) var(--cds-pad-sm); min-width: 0 }
@@ -84,7 +85,26 @@
 .bz-method ul { margin: 0; padding-left: 1.1rem; display: grid; gap: var(--cds-gap-xs); max-width: 76ch; line-height: 1.5 }
 .bz-method a { color: inherit }
 [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow) }
-@media (max-width: 860px) { .bz-story { grid-template-columns: minmax(0, 1fr) } .bz-stick { top: 0; z-index: 3; background: var(--color-bg); padding-bottom: var(--cds-pad-sm) } .bz-step { min-height: 55vh } .bz-explore { grid-template-columns: minmax(0, 1fr) } }
+@media (max-width: 860px) {
+  .bz-story { grid-template-columns: minmax(0, 1fr); gap: 0 }
+  .bz-stick { order: -1; top: 0; z-index: 3; background: var(--color-bg); padding-block: var(--cds-pad-sm); gap: var(--cds-gap-xs); box-shadow: 0 10px 12px -10px rgba(0,0,0,.25) }
+  .bz-stick .bz-vis { max-height: 42vh; min-height: 0; overflow: auto }
+  .bz-stick .bz-howto { display: none }
+  .bz-stick .bz-legend { font-size: 0.72rem }
+  .bz-stick .bz-ramp { min-width: 150px }
+  .bz-stick .bz-cities { display: none }
+  .bz-stick .bz-legend > span { display: none }
+  .bz-step { min-height: 46vh; padding-block: var(--cds-pad-md) }
+  .bz-step:last-child { min-height: 50vh }
+  .bz-explore { grid-template-columns: minmax(0, 1fr) }
+  .bz-tabs button { padding: var(--cds-pad-sm) var(--cds-pad-sm) }
+  .bz-tabs, #exMode, #exRegion { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; max-width: 100% }
+  .bz-tabs::-webkit-scrollbar, #exMode::-webkit-scrollbar, #exRegion::-webkit-scrollbar { display: none }
+  .bz-tabs button, .bz-seg button { white-space: nowrap; flex: 0 0 auto }
+  .bz-ctrlrow { flex-wrap: wrap }
+  .bz-ctrlrow > span { min-width: 0; flex-basis: 100% }
+  .bz-ctrlrow > .bz-seg { min-width: 0; max-width: 100% }
+}
 @media (prefers-reduced-motion: reduce) { .bz-step { transition: none } }
 </style>
 
@@ -417,7 +437,8 @@ function legend(el, mode, maxOverride) {
 
 function drawBrazil(canvas, mode, box, highlight) {
   const w = canvas.clientWidth || canvas.parentElement.clientWidth, dpr = window.devicePixelRatio || 1;
-  const [x0, y0, x1, y1] = box ?? [0, 0, 1000, 1000], bw = x1 - x0, bh = y1 - y0, h = Math.round(Math.min(w * (bh / bw), 640));
+  const [x0, y0, x1, y1] = box ?? [0, 0, 1000, 1000], bw = x1 - x0, bh = y1 - y0, inStick = !!canvas.closest(".bz-stick") && matchMedia("(max-width: 860px)").matches;
+  const h = Math.round(Math.min(w * (bh / bw), inStick ? window.innerHeight * 0.38 : 640));
   canvas.style.height = h + "px"; canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
   const k = Math.min(w / bw, h / bh) * dpr, tx = (canvas.width - bw * k) / 2 - x0 * k, ty = (canvas.height - bh * k) / 2 - y0 * k;
   const g = canvas.getContext("2d"); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, canvas.width, canvas.height); g.setTransform(k, 0, 0, k, tx, ty);
@@ -824,7 +845,9 @@ document.querySelectorAll("#exRegion button").forEach((b) => b.addEventListener(
 
 function activeStep() {
   if (S.page !== "story") return;
-  const steps = [...document.querySelectorAll(".bz-step")], mid = window.innerHeight / 2;
+  const steps = [...document.querySelectorAll(".bz-step")], stick = document.querySelector(".bz-stick");
+  const narrow = matchMedia("(max-width: 860px)").matches, top = narrow && stick ? Math.max(0, stick.getBoundingClientRect().bottom) : 0;
+  const mid = top + (window.innerHeight - top) / 2;
   let best = steps[0], dist = Infinity;
   for (const st of steps) { const r = st.getBoundingClientRect(); const d = Math.abs((r.top + r.bottom) / 2 - mid); if (r.bottom > 0 && r.top < window.innerHeight && d < dist) { dist = d; best = st; } }
   steps.forEach((st) => st.classList.toggle("bz-on", st === best));
