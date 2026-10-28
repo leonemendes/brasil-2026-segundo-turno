@@ -187,6 +187,8 @@ const corr = (pairs: [number, number][]) => {
   return +(sxy / Math.sqrt(sxx * syy)).toFixed(4);
 };
 
+const corrShape = (a: [number, number][], b: [number, number][]) => corr(a.filter((p) => p[0] >= 2).map((p, i) => [p[1], b.filter((q) => q[0] >= 2)[i]?.[1]] as [number, number]).filter((p) => p[1] !== undefined));
+
 const samples = Array.from({ length: SAMPLES }, () => {
   const pick = shuffle(r26).slice(0, SAMPLE);
   let l = 0, r = 0;
@@ -220,6 +222,39 @@ const out = {
   samples472: samples,
 };
 writeFileSync(process.argv[2] ?? "ds/count_order.json", JSON.stringify(out));
+
+const pt = (v: number) => +(100 - v).toFixed(2);
+const ELECTION: Record<string, string> = { y2018: "2018 runoff", y2022: "2022 runoff", y2026: "2026 runoff" };
+const curveRows: Record<string, unknown>[] = [];
+for (const k of ["y2018", "y2022", "y2026"] as const) {
+  const Y = out[k];
+  const push = (order: string, pts: [number, number][]) => { for (const [p, v] of pts) curveRows.push({ election: ELECTION[k], order, pct_counted: p, pt_share: pt(v), pt_share_lo: null, pt_share_hi: null }); };
+  if (Y.recv) push("receive", Y.recv);
+  push("2026 order", out.sameOrder[k]);
+  push("random", Y.random);
+  for (const [p, lo, hi] of Y.band) curveRows.push({ election: ELECTION[k], order: "random band", pct_counted: p, pt_share: null, pt_share_lo: pt(hi), pt_share_hi: pt(lo) });
+}
+const sawRows = (["y2022", "y2026"] as const).flatMap((k) => {
+  const f = out.fileOrder[k];
+  return f.pts.map(([votes, run, urna, town]) => ({ election: ELECTION[k], uf: "AC", votes_counted: votes, pt_running_share: pt(run), municipality: f.towns[town], pt_urna_share: pt(urna) }));
+});
+const sampleRows = out.samples472.flatMap((s, i) => s.map((v, j) => ({ sample: i + 1, urnas_counted: j + 1, pt_share: pt(v) })));
+writeFileSync("ds/count_curves.json", JSON.stringify(curveRows));
+writeFileSync("ds/count_sawtooth.json", JSON.stringify(sawRows));
+writeFileSync("ds/count_samples.json", JSON.stringify(sampleRows));
+writeFileSync("ds/count_summary.json", JSON.stringify([{
+  matched_sections: out.sameOrder.matched, runoff_2026_sections: out.sameOrder.of2026,
+  shape_corr_2022_2026: corrShape(out.sameOrder.y2022, out.sameOrder.y2026),
+  shape_corr_2018_2026: corrShape(out.sameOrder.y2018, out.sameOrder.y2026),
+  mun_corr_2022_2026: out.corr.r22_26, mun_corr_2018_2022: out.corr.r18_22,
+  pt_share_2022_at_1pct: pt(out.y2022.recv!.find((p) => p[0] >= 1)![1]), pt_share_2022_final: pt(out.y2022.total.share),
+  lead_change_2022_pct: out.y2022.recv!.find((p) => p[0] >= 5 && p[1] < 50)![0],
+  random_halfwidth_2026_at_10pct: +((out.y2026.band.find((b) => b[0] >= 10)![2] - out.y2026.band.find((b) => b[0] >= 10)![1]) / 2).toFixed(2),
+  flavio_share_2026: +out.y2026.total.share.toFixed(2),
+  mun_within_5pts_2022_2026: +((100 * scatter.filter((p) => p[1] !== null && p[2] !== null && Math.abs(p[2]! - p[1]!) <= 5).length) / scatter.filter((p) => p[1] !== null && p[2] !== null).length).toFixed(1),
+  votes_to_reach_65: Math.round(0.65 * (out.y2026.total.left + out.y2026.total.right) - out.y2026.total.right),
+  sample_min: pt(Math.max(...out.samples472.map((s) => s[s.length - 1]))), sample_max: pt(Math.min(...out.samples472.map((s) => s[s.length - 1]))),
+}]));
 console.log(JSON.stringify({
   totals: [out.y2018.total, out.y2022.total, out.y2026.total],
   closeCoverage: [out.y2018.closeCoverage, out.y2022.closeCoverage, out.y2026.closeCoverage],
