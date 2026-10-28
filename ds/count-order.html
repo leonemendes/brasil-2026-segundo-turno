@@ -132,7 +132,7 @@ code { font-family: var(--f-data); font-size: 0.86em; }
     <div class="fighead">
       <div class="prose">
         <h2>What arrives when</h2>
-        <p class="note">Each point is one 15-minute window of received urnas (Brasília time). Top: the right-wing candidate's share among the urnas of that window. Bottom: which regions those urnas came from. The South, where the right is strongest, arrives early. The Southeast fills the late windows.</p>
+        <p class="note">Each point is one 15-minute window of received urnas (Brasília time). Top: the right-wing candidate's share among the urnas of that window. Bottom: which regions those urnas came from. The mix changes through the evening: the South, where the right is strongest, is a large part of the early windows and almost gone at the end. Inside the Southeast and the North, the last urnas also lean more to the left than those from the middle of the evening, in both years. Hover a window to see the share by region. In 2026 no urna arrived between 17:15 and 19:00, because voting was extended to 19:00; 42% of the 17:00 window came from abroad.</p>
       </div>
       <div class="seg" role="group" aria-label="Election">
         <button type="button" id="win-26" aria-pressed="true">2026</button>
@@ -152,6 +152,20 @@ code { font-family: var(--f-data); font-size: 0.86em; }
       </div>
     </div>
     <div class="chart" id="chart-472"></div>
+  </figure>
+
+  <figure id="fig-saw">
+    <div class="fighead">
+      <div class="prose">
+        <h2>His sawtooth, rebuilt from the TSE file</h2>
+        <p class="note">His charts put votes counted on the x-axis and show slow rises cut by sharp drops. We do not know which urnas he used, so here is Acre, the first state in the TSE file, in plain file order (municipality, zone, section). Nothing is changed. Each urna moves the running share by about (urna share − running share) × its votes ÷ votes so far. A town that votes close to the running share moves the line slowly, so the rise is long and gentle. A town that votes far from it moves the line fast, so the drop is sharp. Hover to see the town and the urna's own share.</p>
+      </div>
+      <div class="seg" role="group" aria-label="Range">
+        <button type="button" id="saw-full" aria-pressed="true">All votes</button>
+        <button type="button" id="saw-zoom" aria-pressed="false">60k–80k votes</button>
+      </div>
+    </div>
+    <div class="multi" id="chart-saw" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr))"></div>
   </figure>
 
   <figure id="fig-scatter">
@@ -297,7 +311,7 @@ function seg(ids, on) {
   ids.forEach((id) => document.getElementById(id).addEventListener("click", () => { ids.forEach((j) => document.getElementById(j).setAttribute("aria-pressed", String(j === id))); on(id); }));
 }
 
-let D, state = { same: "same-gap", win: "win-26", sc: "sc-2226" };
+let D, state = { same: "same-gap", win: "win-26", sc: "sc-2226", saw: "saw-full" };
 
 function drawFindings() {
   const r22 = D.y2022.recv, r26 = D.y2026.recv, at = (c, p) => c.find((q) => q[0] >= p)[1];
@@ -371,9 +385,19 @@ function drawWin() {
   const xt = []; for (let v = Math.ceil(x0 / 60) * 60; v <= x1; v += 60) xt.push(v);
   const yc = state.win === "win-26" ? "--y2026" : "--y2022";
   const byX = new Map(bins.map((b) => [b.x, b]));
-  const extra = (x) => { const b = byX.get(x); return b ? `<div class="k" style="margin-top:4px">${b.n.toLocaleString("en-US")} urnas in this window</div>` : ""; };
+  const RS = [["S", "South"], ["SE", "Southeast"], ["NE", "Northeast"]];
+  const extra = (x) => {
+    const b = byX.get(x);
+    if (!b) return "";
+    const rs = RS.filter(([k]) => b.regionShare?.[k] !== undefined && (b.regions[k] ?? 0) >= 100).map(([k, n]) => `<div><span class="k">${n}</span> <span class="v">${pct(b.regionShare[k])}</span></div>`).join("");
+    return `<div class="k" style="margin-top:4px">${b.n.toLocaleString("en-US")} urnas in this window</div>${rs}`;
+  };
+  const runs = [];
+  for (const b of bins) { const r = runs[runs.length - 1]; if (r && b.x - r[r.length - 1].x <= 15) r.push(b); else runs.push([b]); }
+  const shareSeries = runs.map((r, i) => ({ pts: r.map((b) => [b.x, b.share]), c: yc, dots: true, label: i === runs.length - 1 ? (state.win === "win-26" ? "Flávio" : "Bolsonaro") : undefined }));
+  shareSeries.push({ pts: bins.map((b) => [b.x, b.share]), c: yc, w: 0, tipName: "right-wing share in window" });
   lineChart(document.getElementById("chart-win-share"), {
-    x: [x0, x1], y: [40, 60], h: 230, series: [{ pts: bins.map((b) => [b.x, b.share]), c: yc, dots: true, tipName: "right-wing share in window", label: state.win === "win-26" ? "Flávio" : "Bolsonaro" }],
+    x: [x0, x1], y: [40, 60], h: 230, series: shareSeries,
     ref: Y.total.share, refLabel: "final " + pct(Y.total.share), xTicks: xt, xFmt: tfmt, yFmt: (v) => v + "%",
     tip: (x) => `${tfmt(x - 7.5)}–${tfmt(x + 7.5)}`, tipExtra: extra, aria: "Right-wing share per 15-minute window of received urnas",
   });
@@ -381,7 +405,8 @@ function drawWin() {
   legend(document.getElementById("win-legend"), R.map((r) => ({ c: r.c, label: r.label + " (% of the window's urnas)" })));
   lineChart(document.getElementById("chart-win-mix"), {
     x: [x0, x1], y: [0, 80], h: 210, xTicks: xt, xFmt: tfmt, yFmt: (v) => v + "%", xTitle: "Time the TSE received the urna result (Brasília)",
-    series: R.map((r) => ({ pts: bins.map((b) => [b.x, (100 * (b.regions[r.k] ?? 0)) / b.n]), c: r.c, label: r.label, tipName: r.label })),
+    series: R.flatMap((r) => runs.map((run, i) => ({ pts: run.map((b) => [b.x, (100 * (b.regions[r.k] ?? 0)) / b.n]), c: r.c, label: i === runs.length - 1 ? r.label : undefined, dots: run.length === 1 }))).concat(R.map((r) => ({ pts: bins.map((b) => [b.x, (100 * (b.regions[r.k] ?? 0)) / b.n]), c: r.c, w: 0, tipName: r.label }))),
+    tipFmt: (v) => pct(v, 0),
     tip: (x) => `${tfmt(x - 7.5)}–${tfmt(x + 7.5)}`, aria: "Regional mix of urnas per window",
   });
 }
@@ -395,6 +420,32 @@ function draw472() {
     yFmt: (v) => v + "%", xTitle: "Urnas added, in random order",
     tip: (x) => `${Math.round(x)} urnas`, tipFmt: (v) => pct(v), aria: "Running share for 20 random samples of 472 urnas",
   });
+}
+
+function drawSaw() {
+  const host = document.getElementById("chart-saw");
+  host.innerHTML = "";
+  const zoom = state.saw === "saw-zoom";
+  const panels = [["y2022", "Acre 2022 · Bolsonaro", "--y2022"], ["y2026", "Acre 2026 · Flávio Bolsonaro", "--y2026"]].map(([k, label, c]) => {
+    const box = document.createElement("div"); box.className = "chart";
+    box.innerHTML = `<h3>${label}</h3>`;
+    const inner = document.createElement("div"); box.appendChild(inner); host.appendChild(box);
+    return { k, c, inner };
+  });
+  for (const { k, c, inner } of panels) {
+    const F = D.fileOrder[k];
+    const [x0, x1] = zoom ? [60000, 80000] : [0, F.pts[F.pts.length - 1][0]];
+    const pts = F.pts.filter((p) => p[0] >= x0 && p[0] <= x1);
+    const ys = pts.filter((p) => p[0] >= (zoom ? x0 : 15000)).map((p) => p[1]);
+    const lo = Math.floor(Math.min(...ys) - 0.5), hi = Math.ceil(Math.max(...ys) + 0.5);
+    lineChart(inner, {
+      x: [x0, x1], y: [lo, hi], h: 250, mr: 14, mrNarrow: 14, series: [{ pts, c, w: 2, tipName: "running share" }],
+      xFmt: (v) => (v / 1000).toFixed(0) + "k", yFmt: (v) => v + "%", xTitle: "Valid votes counted, TSE file order",
+      tip: (x) => `${Math.round(x).toLocaleString("en-US")} votes`,
+      tipFmt: (v, p) => `${pct(v, 2)}</span><div class="k">${F.towns[p[3]]}, this urna ${pct(p[2], 0)}</div><span>`,
+      aria: `Running share in Acre, ${k.slice(1)}, in TSE file order`,
+    });
+  }
 }
 
 function drawScatter() {
@@ -452,7 +503,7 @@ function drawTable() {
     rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("") + "</tbody>";
 }
 
-function drawAll() { drawSame(); drawReal(); drawWin(); draw472(); drawScatter(); }
+function drawAll() { drawSame(); drawReal(); drawWin(); draw472(); drawSaw(); drawScatter(); }
 
 fetch("count_order.json").then((r) => r.json()).then((d) => {
   D = d;
@@ -460,6 +511,7 @@ fetch("count_order.json").then((r) => r.json()).then((d) => {
   seg(["same-gap", "same-share"], (id) => { state.same = id; drawSame(); });
   seg(["win-26", "win-22"], (id) => { state.win = id; drawWin(); });
   seg(["sc-2226", "sc-1822"], (id) => { state.sc = id; drawScatter(); });
+  seg(["saw-full", "saw-zoom"], (id) => { state.saw = id; drawSaw(); });
   let t; new ResizeObserver(() => { clearTimeout(t); t = setTimeout(drawAll, 120); }).observe(document.querySelector(".page"));
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawAll);
   new MutationObserver(drawAll).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });

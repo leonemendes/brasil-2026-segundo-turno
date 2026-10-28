@@ -117,6 +117,7 @@ const bins = (rs: Row[], f: "recv" | "close", width = 15) => {
       day: Math.floor(b / 1440),
       n: tot.n, share: +((100 * tot.r) / (tot.l + tot.r || 1)).toFixed(2),
       regions: Object.fromEntries(REGIONS.filter((k) => rec[k]).map((k) => [k, rec[k].n])),
+      regionShare: Object.fromEntries(REGIONS.filter((k) => rec[k]).map((k) => [k, +((100 * rec[k].r) / (rec[k].l + rec[k].r || 1)).toFixed(1)])),
     };
   });
 };
@@ -192,7 +193,21 @@ const samples = Array.from({ length: SAMPLES }, () => {
   return pick.map((x) => { l += x.l; r += x.r; return +((100 * r) / (l + r || 1)).toFixed(2); });
 });
 
+const fileOrder = (secs: Sec[], uf: string) => {
+  const rs = secs.filter((s) => s.uf === uf).sort((a, b) => (a.mun + a.zon + a.sec < b.mun + b.zon + b.sec ? -1 : 1));
+  const towns: string[] = [];
+  let l = 0, r = 0;
+  const pts = rs.map((s) => {
+    l += s.c13; r += s.c22;
+    const nm = (s as Sec & { nm: string }).nm;
+    if (towns[towns.length - 1] !== nm) towns.push(nm);
+    return [l + r, +((100 * r) / (l + r)).toFixed(3), +((100 * s.c22) / (s.c13 + s.c22 || 1)).toFixed(1), towns.length - 1];
+  });
+  return { towns, pts };
+};
+
 const out = {
+  fileOrder: { y2022: fileOrder(s22, "ac"), y2026: fileOrder(s26, "ac") },
   y2018: year(r18, false),
   y2022: year(r22, true),
   y2026: year(r26, true),

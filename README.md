@@ -12,7 +12,8 @@ All numbers come from the Tribunal Superior Eleitoral (TSE). Nothing on the site
 | --- | --- |
 | `public/` | The website: one page, the datasets as JSON and CSV. Deployed on Vercel. |
 | `ds/index.html` | The page source (English text and the code). `scripts/build-i18n.ts` injects the Portuguese text from `scripts/i18n-pt.ts`. |
-| `data/sections/*.ndjson.gz` | One row per polling section for the presidential race: 2018 runoff, 2022 runoff and 2026 round 1. Votes per candidate, turnout, and the urna's open and close times. |
+| `data/sections/*.ndjson.gz` | One row per polling section for the presidential race: 2018 runoff, 2022 runoff, 2026 round 1 and 2026 runoff. Votes per candidate, turnout, the urna's open and close times, and for the 2022 and 2026 runoffs the time the TSE received the result (`recv`). |
+| `ds/count-order.html`, `ds/count_order.json` | A page that replays the 2018, 2022 and 2026 runoffs urna by urna: in real receive order, in random orders, and all three in the 2026 order. Built by `scripts/count-order.ts`. |
 | `data/r2-mun.ndjson`, `data/r2-uf.json` | 2026 runoff results per municipality and per state, from the TSE results service. |
 | `data/abroad-geo.txt` | Country and approximate map position of each overseas voting city (added by hand; the TSE gives only a code and a name). |
 | `geo/` | Simplified IBGE municipal boundaries and Natural Earth countries. |
@@ -22,12 +23,12 @@ All numbers come from the Tribunal Superior Eleitoral (TSE). Nothing on the site
 ## Sources and checks
 
 - **2018 and 2022 runoffs, 2026 round 1:** TSE open data, "Boletim de urna" files (`dadosabertos.tse.jus.br`). Totals match the official results exactly: 2018 Bolsonaro 57,797,847 and Haddad 47,040,906; 2022 Lula 60,345,999 and Bolsonaro 58,206,354; 2026 round 1 Flávio Bolsonaro 56,104,503 and Lula 53,879,538.
-- **2026 runoff:** TSE results service (`resultados.tse.jus.br`). National total Lula 64,256,232 and Flávio Bolsonaro 59,826,041. The 186 overseas cities add up exactly to the official total abroad.
+- **2026 runoff:** TSE results service (`resultados.tse.jus.br`). National total Lula 64,256,232 and Flávio Bolsonaro 59,826,041. The 186 overseas cities add up exactly to the official total abroad. The runoff "Boletim de urna" file (`data/sections/2026-runoff.ndjson.gz`, 499,205 sections) gives the same national total.
 - **Close times:** urnas record local time. A municipality's official close is its usual opening hour plus 9 hours, so the same rule works for 2018 (17:00 local) and for 2022 and 2026 (17:00 Brasília).
 
 ## Pending
 
-- **Sections open after 17:49 in the 2026 runoff.** This needs the TSE runoff "Boletim de urna" file, which has every urna's close time. The TSE usually publishes it one day after the vote.
+- **Sections open after 17:49 in the 2026 runoff.** The TSE runoff "Boletim de urna" file, with every urna's close time, is now in `data/sections/2026-runoff.ndjson.gz`. The site does not use it yet.
 - **Votes cast after 17:49.** The urna logs give a time for every vote (not the candidate). The TSE usually publishes them about three days after the vote.
 
 When these files are out, the site shows how many sections stayed open, how many votes were cast after 17:49, and exact bounds on the result without them.
@@ -41,6 +42,7 @@ gunzip -c data/sections/2026-round1.ndjson.gz > data/r1/sec.ndjson
 gunzip -c data/sections/2022-runoff.ndjson.gz > data/b22/sec.ndjson
 gunzip -c data/sections/2018-runoff.ndjson.gz > data/b18/sec.ndjson
 bun scripts/analyze.ts
+bun scripts/count-order.ts ds/count_order.json
 bun run build:data
 bun run build
 ```
