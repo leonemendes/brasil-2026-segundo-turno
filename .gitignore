@@ -15,3 +15,5 @@ ds/i18n-keys.json
 .vercel
 .DS_Store
 .claude/
+data/r2bu/
+data/b22zip/

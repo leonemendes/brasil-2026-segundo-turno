@@ -1,0 +1,604 @@
+{
+ "generated": {
+  "2022": [
+   "31/10/2022 15:35:43",
+   "31/10/2022 15:36:48",
+   "31/10/2022 15:39:19",
+   "31/10/2022 15:40:59",
+   "31/10/2022 15:48:51",
+   "31/10/2022 15:49:18",
+   "31/10/2022 15:49:23",
+   "31/10/2022 15:49:29",
+   "31/10/2022 15:49:35",
+   "31/10/2022 15:49:41",
+   "31/10/2022 15:49:55",
+   "31/10/2022 15:50:08",
+   "31/10/2022 15:50:12",
+   "31/10/2022 15:50:18",
+   "31/10/2022 15:50:25",
+   "31/10/2022 15:50:39",
+   "31/10/2022 15:50:48",
+   "31/10/2022 15:50:55",
+   "31/10/2022 15:51:07",
+   "31/10/2022 15:51:14",
+   "31/10/2022 15:51:17",
+   "31/10/2022 15:51:19",
+   "31/10/2022 15:51:32",
+   "31/10/2022 15:51:48",
+   "31/10/2022 15:51:56",
+   "31/10/2022 15:52:42",
+   "31/10/2022 15:53:15"
+  ],
+  "2026": [
+   "26/10/2026 07:42:38"
+  ]
+ },
+ "y2022": {
+  "year": "2022",
+  "total": {
+   "sections": 472028,
+   "voters": 124252796,
+   "lula": 60345999,
+   "right": 58206354,
+   "lula_pct": 50.9,
+   "lula_lead": 2139645
+  },
+  "byLocalClock": {
+   "by_1700_local": {
+    "sections": 195800,
+    "voters": 49922221,
+    "lula": 23372702,
+    "right": 24413007,
+    "lula_pct": 48.91,
+    "lula_lead": -1040305
+   },
+   "after_1700_local": {
+    "sections": 275200,
+    "voters": 74018194,
+    "lula": 36819411,
+    "right": 33646905,
+    "lula_pct": 52.25,
+    "lula_lead": 3172506
+   },
+   "w_1701_1715": {
+    "sections": 273726,
+    "voters": 73626911,
+    "lula": 36608610,
+    "right": 33484700,
+    "lula_pct": 52.23,
+    "lula_lead": 3123910
+   },
+   "w_1716_1859": {
+    "sections": 1454,
+    "voters": 387352,
+    "lula": 208442,
+    "right": 160795,
+    "lula_pct": 56.45,
+    "lula_lead": 47647
+   },
+   "w_after_1900": {
+    "sections": 20,
+    "voters": 3931,
+    "lula": 2359,
+    "right": 1410,
+    "lula_pct": 62.59,
+    "lula_lead": 949
+   }
+  },
+  "byLocalClockStates": {
+   "ac": {
+    "all": 2124,
+    "closed_by_1700_local": 2124,
+    "mode_open_hour": 6
+   },
+   "am": {
+    "all": 7453,
+    "closed_by_1700_local": 7453,
+    "mode_open_hour": 7
+   },
+   "mt": {
+    "all": 7652,
+    "closed_by_1700_local": 7651,
+    "mode_open_hour": 7
+   },
+   "ms": {
+    "all": 6912,
+    "closed_by_1700_local": 6912,
+    "mode_open_hour": 7
+   },
+   "ro": {
+    "all": 4198,
+    "closed_by_1700_local": 4197,
+    "mode_open_hour": 7
+   },
+   "rr": {
+    "all": 1268,
+    "closed_by_1700_local": 1268,
+    "mode_open_hour": 7
+   },
+   "ba": {
+    "all": 34423,
+    "closed_by_1700_local": 11095,
+    "mode_open_hour": 8
+   },
+   "pe": {
+    "all": 20571,
+    "closed_by_1700_local": 4378,
+    "mode_open_hour": 8
+   },
+   "ma": {
+    "all": 16423,
+    "closed_by_1700_local": 4812,
+    "mode_open_hour": 8
+   },
+   "sp": {
+    "all": 101073,
+    "closed_by_1700_local": 29235,
+    "mode_open_hour": 8
+   }
+  },
+  "byBrasilia": {
+   "by_1700_brt": {
+    "sections": 175554,
+    "voters": 44908571,
+    "lula": 21502437,
+    "right": 21452573,
+    "lula_pct": 50.06,
+    "lula_lead": 49864
+   },
+   "after_1700_brt": {
+    "sections": 295446,
+    "voters": 79031844,
+    "lula": 38689676,
+    "right": 36607339,
+    "lula_pct": 51.38,
+    "lula_lead": 2082337
+   },
+   "after_1749_brt": {
+    "sections": 158,
+    "voters": 38491,
+    "lula": 21255,
+    "right": 15467,
+    "lula_pct": 57.88,
+    "lula_lead": 5788
+   }
+  },
+  "lateStates": {
+   "ba": {
+    "after_1900_local": {
+     "sections": 0,
+     "voters": 0,
+     "lula": 0,
+     "right": 0,
+     "lula_pct": null,
+     "lula_lead": 0
+    },
+    "whole_state": {
+     "sections": 34423,
+     "voters": 8971625,
+     "lula": 6097737,
+     "right": 2357013,
+     "lula_pct": 72.12,
+     "lula_lead": 3740724
+    }
+   },
+   "pe": {
+    "after_1900_local": {
+     "sections": 1,
+     "voters": 253,
+     "lula": 134,
+     "right": 85,
+     "lula_pct": 61.19,
+     "lula_lead": 49
+    },
+    "whole_state": {
+     "sections": 20571,
+     "voters": 5800527,
+     "lula": 3640769,
+     "right": 1798797,
+     "lula_pct": 66.93,
+     "lula_lead": 1841972
+    }
+   },
+   "ma": {
+    "after_1900_local": {
+     "sections": 4,
+     "voters": 537,
+     "lula": 418,
+     "right": 110,
+     "lula_pct": 79.17,
+     "lula_lead": 308
+    },
+    "whole_state": {
+     "sections": 16423,
+     "voters": 3854804,
+     "lula": 2668425,
+     "right": 1082749,
+     "lula_pct": 71.14,
+     "lula_lead": 1585676
+    }
+   },
+   "sp": {
+    "after_1900_local": {
+     "sections": 2,
+     "voters": 527,
+     "lula": 297,
+     "right": 198,
+     "lula_pct": 60,
+     "lula_lead": 99
+    },
+    "whole_state": {
+     "sections": 101073,
+     "voters": 27380491,
+     "lula": 11519882,
+     "right": 14216587,
+     "lula_pct": 44.76,
+     "lula_lead": -2696705
+    }
+   }
+  },
+  "biometrics": {
+   "total": 10011346,
+   "pct_of_voters": 8.06,
+   "bands": [
+    {
+     "band": "0-2%",
+     "sections": 35671,
+     "voters": 9677588,
+     "lula": 4633952,
+     "right": 4583428,
+     "lula_pct": 50.27,
+     "lula_lead": 50524
+    },
+    {
+     "band": "2-5%",
+     "sections": 138947,
+     "voters": 38886885,
+     "lula": 18328074,
+     "right": 18701350,
+     "lula_pct": 49.5,
+     "lula_lead": -373276
+    },
+    {
+     "band": "5-10%",
+     "sections": 153613,
+     "voters": 40461496,
+     "lula": 19189102,
+     "right": 19412131,
+     "lula_pct": 49.71,
+     "lula_lead": -223029
+    },
+    {
+     "band": "10-20%",
+     "sections": 114899,
+     "voters": 28615237,
+     "lula": 14347448,
+     "right": 13030105,
+     "lula_pct": 52.41,
+     "lula_lead": 1317343
+    },
+    {
+     "band": "20-100%",
+     "sections": 28897,
+     "voters": 6611590,
+     "lula": 3847423,
+     "right": 2479340,
+     "lula_pct": 60.81,
+     "lula_lead": 1368083
+    }
+   ],
+   "byRegion": {
+    "N": {
+     "biom_pct": 6.91,
+     "lula_pct": 48.97
+    },
+    "NE": {
+     "biom_pct": 9.38,
+     "lula_pct": 69.34
+    },
+    "CO": {
+     "biom_pct": 8.21,
+     "lula_pct": 39.79
+    },
+    "SE": {
+     "biom_pct": 7.12,
+     "lula_pct": 45.74
+    },
+    "S": {
+     "biom_pct": 8.93,
+     "lula_pct": 38.16
+    }
+   }
+  },
+  "unanimity": {
+   "lula_100": 143,
+   "right_100": 4,
+   "lula_over_90": 9433,
+   "right_over_90": 213
+  }
+ },
+ "y2026": {
+  "year": "2026",
+  "total": {
+   "sections": 499205,
+   "voters": 128236074,
+   "lula": 64256232,
+   "right": 59826041,
+   "lula_pct": 51.79,
+   "lula_lead": 4430191
+  },
+  "byLocalClock": {
+   "by_1700_local": {
+    "sections": 150742,
+    "voters": 37621884,
+    "lula": 17364595,
+    "right": 19113063,
+    "lula_pct": 47.6,
+    "lula_lead": -1748468
+   },
+   "after_1700_local": {
+    "sections": 347155,
+    "voters": 90232747,
+    "lula": 46691483,
+    "right": 40541481,
+    "lula_pct": 53.53,
+    "lula_lead": 6150002
+   },
+   "w_1701_1715": {
+    "sections": 338394,
+    "voters": 87716928,
+    "lula": 45339344,
+    "right": 39467923,
+    "lula_pct": 53.46,
+    "lula_lead": 5871421
+   },
+   "w_1716_1859": {
+    "sections": 2419,
+    "voters": 657545,
+    "lula": 363169,
+    "right": 271542,
+    "lula_pct": 57.22,
+    "lula_lead": 91627
+   },
+   "w_after_1900": {
+    "sections": 6342,
+    "voters": 1858274,
+    "lula": 988970,
+    "right": 802016,
+    "lula_pct": 55.22,
+    "lula_lead": 186954
+   }
+  },
+  "byLocalClockStates": {
+   "ac": {
+    "all": 2270,
+    "closed_by_1700_local": 2270,
+    "mode_open_hour": 6
+   },
+   "am": {
+    "all": 8157,
+    "closed_by_1700_local": 8156,
+    "mode_open_hour": 7
+   },
+   "mt": {
+    "all": 8287,
+    "closed_by_1700_local": 8278,
+    "mode_open_hour": 7
+   },
+   "ms": {
+    "all": 7106,
+    "closed_by_1700_local": 7106,
+    "mode_open_hour": 7
+   },
+   "ro": {
+    "all": 4698,
+    "closed_by_1700_local": 4697,
+    "mode_open_hour": 7
+   },
+   "rr": {
+    "all": 1519,
+    "closed_by_1700_local": 1519,
+    "mode_open_hour": 7
+   },
+   "ba": {
+    "all": 35476,
+    "closed_by_1700_local": 6437,
+    "mode_open_hour": 8
+   },
+   "pe": {
+    "all": 21418,
+    "closed_by_1700_local": 2988,
+    "mode_open_hour": 8
+   },
+   "ma": {
+    "all": 18093,
+    "closed_by_1700_local": 3461,
+    "mode_open_hour": 8
+   },
+   "sp": {
+    "all": 103656,
+    "closed_by_1700_local": 19726,
+    "mode_open_hour": 8
+   }
+  },
+  "byBrasilia": {
+   "by_1700_brt": {
+    "sections": 125624,
+    "voters": 31599960,
+    "lula": 15001166,
+    "right": 15608268,
+    "lula_pct": 49.01,
+    "lula_lead": -607102
+   },
+   "after_1700_brt": {
+    "sections": 372273,
+    "voters": 96254671,
+    "lula": 49054912,
+    "right": 44046276,
+    "lula_pct": 52.69,
+    "lula_lead": 5008636
+   },
+   "after_1749_brt": {
+    "sections": 7294,
+    "voters": 2126217,
+    "lula": 1132088,
+    "right": 917696,
+    "lula_pct": 55.23,
+    "lula_lead": 214392
+   }
+  },
+  "lateStates": {
+   "ba": {
+    "after_1900_local": {
+     "sections": 936,
+     "voters": 290085,
+     "lula": 201695,
+     "right": 77225,
+     "lula_pct": 72.31,
+     "lula_lead": 124470
+    },
+    "whole_state": {
+     "sections": 35476,
+     "voters": 9422047,
+     "lula": 6485258,
+     "right": 2608761,
+     "lula_pct": 71.31,
+     "lula_lead": 3876497
+    }
+   },
+   "pe": {
+    "after_1900_local": {
+     "sections": 657,
+     "voters": 197323,
+     "lula": 125972,
+     "right": 65779,
+     "lula_pct": 65.7,
+     "lula_lead": 60193
+    },
+    "whole_state": {
+     "sections": 21418,
+     "voters": 6126467,
+     "lula": 4117513,
+     "right": 1832554,
+     "lula_pct": 69.2,
+     "lula_lead": 2284959
+    }
+   },
+   "ma": {
+    "after_1900_local": {
+     "sections": 3,
+     "voters": 634,
+     "lula": 519,
+     "right": 104,
+     "lula_pct": 83.31,
+     "lula_lead": 415
+    },
+    "whole_state": {
+     "sections": 18093,
+     "voters": 4127771,
+     "lula": 2808231,
+     "right": 1229971,
+     "lula_pct": 69.54,
+     "lula_lead": 1578260
+    }
+   },
+   "sp": {
+    "after_1900_local": {
+     "sections": 1571,
+     "voters": 424443,
+     "lula": 233402,
+     "right": 172816,
+     "lula_pct": 57.46,
+     "lula_lead": 60586
+    },
+    "whole_state": {
+     "sections": 103656,
+     "voters": 27364389,
+     "lula": 12119274,
+     "right": 14139178,
+     "lula_pct": 46.15,
+     "lula_lead": -2019904
+    }
+   }
+  },
+  "biometrics": {
+   "total": 8632488,
+   "pct_of_voters": 6.73,
+   "bands": [
+    {
+     "band": "0-2%",
+     "sections": 18914,
+     "voters": 4837707,
+     "lula": 2444759,
+     "right": 2239647,
+     "lula_pct": 52.19,
+     "lula_lead": 205112
+    },
+    {
+     "band": "2-5%",
+     "sections": 156696,
+     "voters": 41706664,
+     "lula": 20578861,
+     "right": 19737748,
+     "lula_pct": 51.04,
+     "lula_lead": 841113
+    },
+    {
+     "band": "5-10%",
+     "sections": 238213,
+     "voters": 61377011,
+     "lula": 30574356,
+     "right": 28816228,
+     "lula_pct": 51.48,
+     "lula_lead": 1758128
+    },
+    {
+     "band": "10-20%",
+     "sections": 81228,
+     "voters": 19449645,
+     "lula": 10169714,
+     "right": 8681788,
+     "lula_pct": 53.95,
+     "lula_lead": 1487926
+    },
+    {
+     "band": "20-100%",
+     "sections": 4154,
+     "voters": 865047,
+     "lula": 488542,
+     "right": 350630,
+     "lula_pct": 58.22,
+     "lula_lead": 137912
+    }
+   ],
+   "byRegion": {
+    "N": {
+     "biom_pct": 5.43,
+     "lula_pct": 50.01
+    },
+    "NE": {
+     "biom_pct": 7.19,
+     "lula_pct": 69.37
+    },
+    "CO": {
+     "biom_pct": 6.31,
+     "lula_pct": 39.99
+    },
+    "SE": {
+     "biom_pct": 6.47,
+     "lula_pct": 47.24
+    },
+    "S": {
+     "biom_pct": 7.66,
+     "lula_pct": 37.42
+    }
+   }
+  },
+  "unanimity": {
+   "lula_100": 106,
+   "right_100": 4,
+   "lula_over_90": 6816,
+   "right_over_90": 378
+  }
+ }
+}

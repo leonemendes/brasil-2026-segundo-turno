@@ -16,6 +16,7 @@ const handle = (line: string) => {
   let s = secs.get(key);
   if (!s) {
     s = { uf: f[idx.SG_UF].toLowerCase(), mun: f[idx.CD_MUNICIPIO].padStart(5, "0"), zon: f[idx.NR_ZONA].padStart(4, "0"), sec: f[idx.NR_SECAO].padStart(4, "0"), nm: f[idx.NM_MUNICIPIO], open: f[idx.DT_ABERTURA], close: f[idx.DT_ENCERRAMENTO], aptos: +f[idx.QT_APTOS], comp: +f[idx.QT_COMPARECIMENTO], urna: f[idx.DS_TIPO_URNA], c13: 0, c22: 0, other: 0, branco: 0, nulo: 0 };
+    if (idx.DT_BU_RECEBIDO !== undefined) s.recv = f[idx.DT_BU_RECEBIDO];
     secs.set(key, s);
   }
   const tipo = f[idx.DS_TIPO_VOTAVEL], nr = f[idx.NR_VOTAVEL], q = +f[idx.QT_VOTOS];

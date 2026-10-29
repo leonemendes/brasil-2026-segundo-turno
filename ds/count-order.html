@@ -1,0 +1,519 @@
+<title>Runoff Count Order</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column; charts break out wider; every chart is a figure with its own question as heading. */
+:root {
+  --bg: #f6f7f9; --surface: #ffffff; --ink: #13161b; --ink2: #4a515e; --muted: #747b89;
+  --rule: #e1e4ea; --grid: #eceef2; --band: #dde2ea; --ghost: #b9c0cc;
+  --y2026: #2a78d6; --y2022: #eb6834; --y2018: #1baf7a;
+  --rS: #6250d6; --rSE: #eda100; --rNE: #e87ba4;
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101216; --surface: #171a20; --ink: #eef0f3; --ink2: #b6bcc7; --muted: #8b92a0;
+    --rule: #2a2f38; --grid: #22262d; --band: #2c323c; --ghost: #4a515d;
+    --y2026: #3987e5; --y2022: #d95926; --y2018: #199e70;
+    --rS: #9085e9; --rSE: #c98500; --rNE: #d55181;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101216; --surface: #171a20; --ink: #eef0f3; --ink2: #b6bcc7; --muted: #8b92a0;
+  --rule: #2a2f38; --grid: #22262d; --band: #2c323c; --ghost: #4a515d;
+  --y2026: #3987e5; --y2022: #d95926; --y2018: #199e70;
+  --rS: #9085e9; --rSE: #c98500; --rNE: #d55181;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; }
+.page { max-width: 1000px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 72px; display: grid; gap: 56px; }
+.prose { max-width: 66ch; display: grid; gap: 14px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.05; font-weight: 800; }
+h2 { font-size: 1.45rem; line-height: 1.2; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-family: var(--f-data); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.12rem; color: var(--ink2); }
+a { color: var(--y2026); text-underline-offset: 2px; }
+.claim { border-left: 3px solid var(--ink); padding: 4px 0 4px 18px; display: grid; gap: 8px; max-width: 66ch; }
+.claim p { color: var(--ink2); }
+.findings { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.finding { background: var(--surface); padding: 18px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.finding b { font-family: var(--f-data); font-size: 1.5rem; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.finding span { color: var(--ink2); font-size: 0.93rem; line-height: 1.45; }
+figure { margin: 0; display: grid; gap: 14px; min-width: 0; }
+.fighead { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: end; justify-content: space-between; }
+.fighead .prose { gap: 6px; }
+.note { color: var(--ink2); font-size: 0.95rem; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; background: var(--surface); }
+.seg button { font: 600 0.8rem var(--f-body); padding: 7px 12px; border: 0; background: transparent; color: var(--ink2); cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--rule); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.seg button:focus-visible { outline: 2px solid var(--y2026); outline-offset: -2px; }
+.chart { position: relative; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 10px 6px 4px; min-width: 0; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.multi { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.multi .chart h3 { font: 700 0.95rem var(--f-display); padding: 2px 8px 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.85rem; color: var(--ink2); }
+.legend i { display: inline-block; width: 18px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+.legend i.box { height: 10px; }
+svg text { font-family: var(--f-data); font-size: 11px; fill: var(--muted); }
+svg .lab { font-family: var(--f-body); font-size: 12px; font-weight: 600; fill: var(--ink); }
+svg .axis-title { font-family: var(--f-body); font-size: 11.5px; fill: var(--ink2); }
+svg .grid line { stroke: var(--grid); stroke-width: 1; }
+svg .base { stroke: var(--rule); stroke-width: 1; }
+svg .ref { stroke: var(--ink2); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+svg .xhair { stroke: var(--ink2); stroke-width: 1; }
+.tip { position: absolute; pointer-events: none; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: 6px; padding: 8px 10px; font-size: 0.8rem; line-height: 1.45; box-shadow: 0 4px 16px rgba(0,0,0,0.12); white-space: nowrap; z-index: 2; }
+.tip .k { color: var(--ink2); }
+.tip .v { font-family: var(--f-data); font-variant-numeric: tabular-nums; }
+.tip i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; min-width: 640px; }
+th, td { padding: 9px 12px; text-align: right; border-bottom: 1px solid var(--rule); font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child { text-align: left; }
+thead th { font: 600 0.74rem var(--f-data); letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+td { font-family: var(--f-data); white-space: nowrap; }
+td:first-child { font-family: var(--f-body); }
+tbody tr:last-child td { border-bottom: 0; }
+.method { display: grid; gap: 10px; max-width: 70ch; font-size: 0.93rem; color: var(--ink2); }
+.method ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+code { font-family: var(--f-data); font-size: 0.86em; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<main class="page">
+  <header class="prose">
+    <div class="eyebrow">Brazil presidential runoffs 2018 · 2022 · 2026 · TSE boletins de urna</div>
+    <h1>Is there a pattern in the order of the count?</h1>
+    <p class="lede">Every urna result has a time stamp for when the TSE received it. We replay the three runoffs urna by urna, in the real order and in random orders, and compare them.</p>
+  </header>
+
+  <section class="claim" aria-label="The claim">
+    <div class="eyebrow">The claim</div>
+    <p>In a video, Prof. Marcelo Trindade says he took 472 urnas from the TSE site and plotted the running vote share. He says parts of the curve rise in a straight line and then drop again and again, and that this cannot happen when the order of arrival is random. He says an algorithm caused the drops and that Flávio Bolsonaro would have about 65%. <a href="https://www.aliadosbrasiloficial.com.br/noticia/professor-de-matematica-aponta-supostos-padroes-algoritmicos-na-apuracao-e-estima-que-flavio-bolsonaro-teria-vencido-com-65-dos-votos" target="_blank" rel="noopener">Report of the video</a>.</p>
+  </section>
+
+  <section class="findings" id="findings" aria-label="Findings"></section>
+
+  <figure id="fig-same">
+    <div class="fighead">
+      <div class="prose">
+        <h2>Same order, three elections, same shape</h2>
+        <p class="note">We take the order in which the 2026 urnas arrived. Then we replay the 2018 and 2022 votes of the same sections in that same order. The 2018 and 2022 votes were counted and published years ago, so a 2026 algorithm cannot change them. If the curve shape came from an algorithm in 2026, the old elections would not follow it.</p>
+      </div>
+      <div class="seg" role="group" aria-label="Scale">
+        <button type="button" id="same-gap" aria-pressed="true">Gap to final</button>
+        <button type="button" id="same-share" aria-pressed="false">Vote share</button>
+      </div>
+    </div>
+    <div class="legend" id="same-legend"></div>
+    <div class="chart" id="chart-same"></div>
+  </figure>
+
+  <figure id="fig-real">
+    <div class="fighead">
+      <div class="prose">
+        <h2>Real order against random order</h2>
+        <p class="note">The grey band is where the running share stays in 95% of 200 random orders. The dashed line is the final result. In a random order the curve is flat after the first 1% or so. The real count is not random: urnas arrive by place, and places vote differently. 2018 has no receive time in the TSE file, so its panel shows only the random band and the replay in 2026 order.</p>
+      </div>
+    </div>
+    <div class="legend" id="real-legend"></div>
+    <div class="multi" id="chart-real"></div>
+  </figure>
+
+  <figure id="fig-win">
+    <div class="fighead">
+      <div class="prose">
+        <h2>What arrives when</h2>
+        <p class="note">Each point is one 15-minute window of received urnas (Brasília time). Top: the right-wing candidate's share among the urnas of that window. Bottom: which regions those urnas came from. The mix changes through the evening: the South, where the right is strongest, is a large part of the early windows and almost gone at the end. Inside the Southeast and the North, the last urnas also lean more to the left than those from the middle of the evening, in both years. Hover a window to see the share by region. In 2026 no urna arrived between 17:15 and 19:00, because voting was extended to 19:00; 42% of the 17:00 window came from abroad.</p>
+      </div>
+      <div class="seg" role="group" aria-label="Election">
+        <button type="button" id="win-26" aria-pressed="true">2026</button>
+        <button type="button" id="win-22" aria-pressed="false">2022</button>
+      </div>
+    </div>
+    <div class="chart" id="chart-win-share"></div>
+    <div class="legend" id="win-legend"></div>
+    <div class="chart" id="chart-win-mix"></div>
+  </figure>
+
+  <figure id="fig-472">
+    <div class="fighead">
+      <div class="prose">
+        <h2>472 urnas, in a truly random order</h2>
+        <p class="note">Twenty random samples of 472 urnas from the 2026 runoff, each added in a random order. No algorithm acts here. Every line still has runs that rise and then fall, because each urna holds only about 250 votes and urnas differ a lot. After 472 urnas the share still lands anywhere from <span id="s472-lo"></span> to <span id="s472-hi"></span>.</p>
+      </div>
+    </div>
+    <div class="chart" id="chart-472"></div>
+  </figure>
+
+  <figure id="fig-saw">
+    <div class="fighead">
+      <div class="prose">
+        <h2>His sawtooth, rebuilt from the TSE file</h2>
+        <p class="note">His charts put votes counted on the x-axis and show slow rises cut by sharp drops. We do not know which urnas he used, so here is Acre, the first state in the TSE file, in plain file order (municipality, zone, section). Nothing is changed. Each urna moves the running share by about (urna share − running share) × its votes ÷ votes so far. A town that votes close to the running share moves the line slowly, so the rise is long and gentle. A town that votes far from it moves the line fast, so the drop is sharp. Hover to see the town and the urna's own share.</p>
+      </div>
+      <div class="seg" role="group" aria-label="Range">
+        <button type="button" id="saw-full" aria-pressed="true">All votes</button>
+        <button type="button" id="saw-zoom" aria-pressed="false">60k–80k votes</button>
+      </div>
+    </div>
+    <div class="multi" id="chart-saw" style="grid-template-columns:repeat(auto-fit,minmax(340px,1fr))"></div>
+  </figure>
+
+  <figure id="fig-scatter">
+    <div class="fighead">
+      <div class="prose">
+        <h2>Same places, same lean</h2>
+        <p class="note">One dot per municipality. Places where the right was strong before were strong again. A large change by an algorithm would push dots off this tight line.</p>
+      </div>
+      <div class="seg" role="group" aria-label="Pair">
+        <button type="button" id="sc-2226" aria-pressed="true">2022 → 2026</button>
+        <button type="button" id="sc-1822" aria-pressed="false">2018 → 2022</button>
+      </div>
+    </div>
+    <div class="chart" id="chart-scatter"></div>
+  </figure>
+
+  <section class="prose" style="max-width:none">
+    <h2>The numbers</h2>
+    <p class="note">Right-wing candidate share of valid votes (Bolsonaro 2018 and 2022, Flávio Bolsonaro 2026) after a given percentage of urnas, in the real receive order.</p>
+    <div class="tablewrap"><table id="tbl"></table></div>
+  </section>
+
+  <section class="method">
+    <h2 style="color:var(--ink)">Method and sources</h2>
+    <ul>
+      <li>Data: TSE open data, "Boletim de urna" files for each runoff (<a href="https://dadosabertos.tse.jus.br/dataset/resultados-2026-boletim-de-urna" target="_blank" rel="noopener">2026</a>, <a href="https://dadosabertos.tse.jus.br/dataset/resultados-2022-boletim-de-urna" target="_blank" rel="noopener">2022</a>, 2018). Section totals match the official national results exactly in all three years.</li>
+      <li>Order: the column <code>DT_BU_RECEBIDO</code> (time the TSE received the urna result) in 2022 and 2026. The 2018 file has no such column.</li>
+      <li>Same-order replay: sections with the same state, municipality, zone and section number in all three years (<span id="m-matched"></span> of the 2026 sections).</li>
+      <li>Random band: 200 random orders of all sections, 2.5th to 97.5th percentile. Random samples use a fixed seed, so a rerun gives the same lines.</li>
+      <li>Share = right-wing candidate votes ÷ (both candidates' votes). Blank and null votes are left out, as in the official result.</li>
+      <li>We did not watch the video itself. The claim above comes from the linked report. On 25 October the TSE <a href="https://www.tse.jus.br/comunicacao/noticias/2026/Outubro/teste-de-integridade-do-2o-turno-no-tse-confirma-correspondencia-entre-cedulas-e-votos-nas-urnas" target="_blank" rel="noopener">integrity test</a> compared paper ballots with urna records and found no difference.</li>
+      <li>Code: <code>scripts/count-order.ts</code> in the brasil-2026-segundo-turno repository.</li>
+    </ul>
+  </section>
+</main>
+
+<script>
+const NS = "http://www.w3.org/2000/svg";
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const YEARS = [
+  { k: "y2026", label: "2026 · Flávio Bolsonaro", short: "2026", c: "--y2026" },
+  { k: "y2022", label: "2022 · Bolsonaro", short: "2022", c: "--y2022" },
+  { k: "y2018", label: "2018 · Bolsonaro", short: "2018", c: "--y2018" },
+];
+const fmt = (v, d = 1) => v.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+const pct = (v, d = 1) => fmt(v, d) + "%";
+const signed = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + fmt(Math.abs(v), 2);
+
+function el(tag, attrs = {}, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function ticks(lo, hi, n = 5) {
+  const raw = (hi - lo) / n, p = 10 ** Math.floor(Math.log10(raw));
+  const step = [1, 2, 2.5, 5, 10].map((m) => m * p).find((s) => s >= raw);
+  const out = [];
+  for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-9; v += step) out.push(+v.toFixed(6));
+  return out;
+}
+function nearest(pts, x) {
+  let lo = 0, hi = pts.length - 1;
+  while (hi - lo > 1) { const m = (lo + hi) >> 1; if (pts[m][0] < x) lo = m; else hi = m; }
+  return Math.abs(pts[lo][0] - x) < Math.abs(pts[hi][0] - x) ? pts[lo] : pts[hi];
+}
+function pathOf(pts, X, Y) {
+  return pts.map((p, i) => (i ? "L" : "M") + X(p[0]).toFixed(1) + " " + Y(p[1]).toFixed(1)).join("");
+}
+
+function lineChart(host, o) {
+  host.innerHTML = "";
+  const W = Math.max(300, host.clientWidth - 12), H = o.h ?? Math.round(Math.min(420, Math.max(260, W * 0.46)));
+  const m = { l: 44, r: o.mr ?? 96, t: 14, b: o.xTitle ? 42 : 26 };
+  if (W < 480) m.r = o.mrNarrow ?? 64;
+  const [x0, x1] = o.x, [y0, y1] = o.y;
+  const X = (v) => m.l + ((v - x0) / (x1 - x0)) * (W - m.l - m.r);
+  const Y = (v) => m.t + (1 - (v - y0) / (y1 - y0)) * (H - m.t - m.b);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": o.aria ?? "" }, host);
+  const id = "c" + Math.random().toString(36).slice(2);
+  el("rect", { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b }, el("clipPath", { id }, el("defs", {}, svg)));
+  const g = el("g", { class: "grid" }, svg);
+  for (const t of o.yTicks ?? ticks(y0, y1, 5)) {
+    el("line", { x1: m.l, x2: W - m.r, y1: Y(t), y2: Y(t) }, g);
+    el("text", { x: m.l - 8, y: Y(t) + 4, "text-anchor": "end" }, svg).textContent = (o.yFmt ?? ((v) => v))(t);
+  }
+  for (const t of o.xTicks ?? ticks(x0, x1, W < 480 ? 4 : 6)) {
+    el("text", { x: X(t), y: H - m.b + 16, "text-anchor": "middle" }, svg).textContent = (o.xFmt ?? ((v) => v))(t);
+  }
+  el("line", { class: "base", x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b }, svg);
+  if (o.xTitle) el("text", { class: "axis-title", x: m.l + (W - m.l - m.r) / 2, y: H - 6, "text-anchor": "middle" }, svg).textContent = o.xTitle;
+  const plot = el("g", { "clip-path": `url(#${id})` }, svg);
+  if (o.band) {
+    const b = o.band;
+    const d = b.map((p, i) => (i ? "L" : "M") + X(p[0]).toFixed(1) + " " + Y(p[2]).toFixed(1)).join("") +
+      b.slice().reverse().map((p) => "L" + X(p[0]).toFixed(1) + " " + Y(p[1]).toFixed(1)).join("") + "Z";
+    el("path", { d, fill: css("--band") }, plot);
+  }
+  if (o.ref !== undefined) el("line", { class: "ref", x1: m.l, x2: W - m.r, y1: Y(o.ref), y2: Y(o.ref) }, svg);
+  for (const s of o.series) {
+    el("path", { d: pathOf(s.pts, X, Y), fill: "none", stroke: css(s.c), "stroke-width": s.w ?? 2, "stroke-linejoin": "round", "stroke-linecap": "round", "stroke-dasharray": s.dash ?? "", opacity: s.op ?? 1 }, plot);
+    if (s.dots) for (const p of s.pts) el("circle", { cx: X(p[0]), cy: Y(p[1]), r: 4, fill: css(s.c), stroke: css("--surface"), "stroke-width": 2 }, plot);
+  }
+  const labs = o.series.filter((s) => s.label).map((s) => { const p = s.pts[s.pts.length - 1]; return { s, y: Y(p[1]) }; }).sort((a, b) => a.y - b.y);
+  for (let i = 1; i < labs.length; i++) labs[i].y = Math.max(labs[i].y, labs[i - 1].y + 15);
+  for (const l of labs) {
+    const last = l.s.pts[l.s.pts.length - 1];
+    el("circle", { cx: X(last[0]), cy: Y(last[1]), r: 4, fill: css(l.s.c), stroke: css("--surface"), "stroke-width": 2 }, svg);
+    el("text", { class: "lab", x: X(last[0]) + 9, y: Math.min(H - m.b, Math.max(m.t + 8, l.y)) + 4 }, svg).textContent = l.s.label;
+  }
+  if (o.refLabel !== undefined) el("text", { x: m.l + 6, y: Y(o.ref) - 6 }, svg).textContent = o.refLabel;
+  if (!o.tip) return;
+  const hair = el("line", { class: "xhair", y1: m.t, y2: H - m.b, visibility: "hidden" }, svg);
+  const marks = o.series.filter((s) => s.tipName).map((s) => ({ s, c: el("circle", { r: 4, fill: css(s.c), stroke: css("--surface"), "stroke-width": 2, visibility: "hidden" }, svg) }));
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; host.appendChild(tip);
+  const hit = el("rect", { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, fill: "transparent" }, svg);
+  const move = (ev) => {
+    const r = svg.getBoundingClientRect(), sx = ((ev.clientX - r.left) / r.width) * W;
+    const xv = x0 + ((sx - m.l) / (W - m.l - m.r)) * (x1 - x0);
+    if (xv < x0 || xv > x1) return;
+    const rows = [];
+    let xs = xv;
+    for (const mk of marks) {
+      const p = nearest(mk.s.pts, xv); xs = p[0];
+      mk.c.setAttribute("cx", X(p[0])); mk.c.setAttribute("cy", Y(p[1])); mk.c.setAttribute("visibility", "visible");
+      rows.push(`<div><i style="background:${css(mk.s.c)}"></i><span class="k">${mk.s.tipName}</span> <span class="v">${(o.tipFmt ?? pct)(p[1], p)}</span></div>`);
+    }
+    hair.setAttribute("x1", X(xs)); hair.setAttribute("x2", X(xs)); hair.setAttribute("visibility", "visible");
+    tip.innerHTML = `<div class="v" style="margin-bottom:4px">${o.tip(xs)}</div>` + rows.join("") + (o.tipExtra ? o.tipExtra(xs) : "");
+    tip.hidden = false;
+    const px = (X(xs) / W) * r.width, hr = host.getBoundingClientRect();
+    const left = px + 18 + tip.offsetWidth > hr.width ? px - tip.offsetWidth - 12 : px + 18;
+    tip.style.left = Math.max(4, left) + "px"; tip.style.top = "12px";
+  };
+  hit.addEventListener("pointermove", move);
+  hit.addEventListener("pointerleave", () => { tip.hidden = true; hair.setAttribute("visibility", "hidden"); marks.forEach((mk) => mk.c.setAttribute("visibility", "hidden")); });
+}
+
+function legend(host, items) {
+  host.innerHTML = items.map((it) => `<span><i class="${it.box ? "box" : ""}" style="background:${css(it.c)}${it.dash ? ";background:repeating-linear-gradient(90deg," + css(it.c) + " 0 5px,transparent 5px 8px)" : ""}"></i>${it.label}</span>`).join("");
+}
+function seg(ids, on) {
+  ids.forEach((id) => document.getElementById(id).addEventListener("click", () => { ids.forEach((j) => document.getElementById(j).setAttribute("aria-pressed", String(j === id))); on(id); }));
+}
+
+let D, state = { same: "same-gap", win: "win-26", sc: "sc-2226", saw: "saw-full" };
+
+function drawFindings() {
+  const r22 = D.y2022.recv, r26 = D.y2026.recv, at = (c, p) => c.find((q) => q[0] >= p)[1];
+  const valid = D.y2026.total.left + D.y2026.total.right, need = 0.65 * valid - D.y2026.total.right;
+  const fin = D.samples472.map((s) => s[s.length - 1]);
+  const items = [
+    [pct(at(r22, 1)) + " → " + pct(D.y2022.total.share), `Bolsonaro's share in 2022 after the first 1% of urnas, and at the end. The lead changed at ${fmt(r22.find((q) => q[0] >= 5 && q[1] < 50)[0], 1)}% of urnas received. The real order is far from random.`],
+    [`±${fmt(D.y2026.band.find((q) => q[0] >= 10)[2] / 2 - D.y2026.band.find((q) => q[0] >= 10)[1] / 2, 2)} pp`, `How far a random order moves the 2026 share after 10% of urnas. A random order gives a flat line. The real count moves because the order of arrival is not random.`],
+    [fmt(D.corr.r22_26, 3), `Correlation of municipality results, 2022 against 2026 (5,570 municipalities). The same places lean the same way.`],
+    [(need / 1e6).toFixed(1) + " million", `Votes that would have to move from Lula to Flávio for 65%. Flávio got ${pct(D.y2026.total.share)} of valid votes.`],
+  ];
+  document.getElementById("findings").innerHTML = items.map(([b, s]) => `<div class="finding"><b>${b}</b><span>${s}</span></div>`).join("");
+  document.getElementById("s472-lo").textContent = pct(Math.min(...fin));
+  document.getElementById("s472-hi").textContent = pct(Math.max(...fin));
+  document.getElementById("m-matched").textContent = `${D.sameOrder.matched.toLocaleString("en-US")} (${pct((100 * D.sameOrder.matched) / D.sameOrder.of2026)})`;
+}
+
+function drawSame() {
+  const gap = state.same === "same-gap";
+  const series = YEARS.map((y) => {
+    const c = D.sameOrder[y.k], fin = c[c.length - 1][1];
+    const pts = c.filter((p) => p[0] >= 0.6).map((p) => [p[0], gap ? p[1] - fin : p[1]]);
+    return { pts, c: y.c, label: y.short, tipName: y.label, w: y.k === "y2026" ? 2.5 : 2 };
+  });
+  legend(document.getElementById("same-legend"), YEARS.map((y) => ({ c: y.c, label: y.label })));
+  lineChart(document.getElementById("chart-same"), {
+    x: [0, 100], y: gap ? [-1, 3] : [46, 58], series, ref: gap ? 0 : undefined, refLabel: gap ? "final result of these sections" : undefined,
+    xFmt: (v) => v + "%", yFmt: gap ? (v) => (v > 0 ? "+" : "") + v + " pp" : (v) => v + "%",
+    xTitle: "Share of urnas counted, in the order they arrived in 2026",
+    tip: (x) => `${fmt(x, 1)}% of urnas`, tipFmt: gap ? (v) => signed(v) + " pp" : pct,
+    aria: "Running right-wing share for 2018, 2022 and 2026, replayed in the 2026 arrival order",
+  });
+}
+
+function drawReal() {
+  const host = document.getElementById("chart-real");
+  host.innerHTML = "";
+  legend(document.getElementById("real-legend"), [
+    { c: "--y2026", label: "real receive order (year colour)" },
+    { c: "--band", label: "95% of random orders", box: true },
+    { c: "--ghost", label: "one random order" },
+    { c: "--ink2", label: "replay in 2026 order (2018 only)", dash: true },
+  ]);
+  const panels = YEARS.slice().reverse().map((y) => {
+    const box = document.createElement("div"); box.className = "chart";
+    box.innerHTML = `<h3>${y.label}</h3>`;
+    const inner = document.createElement("div"); box.appendChild(inner); host.appendChild(box);
+    return { y, inner };
+  });
+  for (const { y, inner } of panels) {
+    const Y = D[y.k], fin = Y.total.share;
+    const series = [{ pts: Y.random.filter((p) => p[0] >= 0.2), c: "--ghost", w: 1.5, tipName: "random order" }];
+    if (Y.recv) series.push({ pts: Y.recv.filter((p) => p[0] >= 0.2), c: y.c, w: 2.5, tipName: "real order" });
+    else series.push({ pts: D.sameOrder.y2018.filter((p) => p[0] >= 0.2), c: "--ink2", w: 2, dash: "5 3", tipName: "2026 order" });
+    lineChart(inner, {
+      x: [0, 100], y: [fin - 4, fin + 8], series, band: Y.band, ref: fin, mr: 14, mrNarrow: 14, h: 230,
+      xFmt: (v) => v + "%", yFmt: (v) => v + "%", xTicks: [0, 25, 50, 75, 100],
+      tip: (x) => `${fmt(x, 1)}% of urnas`, aria: `Running share in ${y.short}, real order against random orders`,
+    });
+  }
+}
+
+function drawWin() {
+  const Y = state.win === "win-26" ? D.y2026 : D.y2022;
+  const bins = Y.bins.filter((b) => b.n >= 1000).map((b) => {
+    const [h, mm] = b.t.split(":").map(Number);
+    return { ...b, x: (b.day - Y.bins[0].day) * 1440 + h * 60 + mm + 7.5 };
+  });
+  const x0 = bins[0].x - 15, x1 = bins[bins.length - 1].x + 15;
+  const tfmt = (v) => { const m = ((Math.round(v) % 1440) + 1440) % 1440; return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); };
+  const xt = []; for (let v = Math.ceil(x0 / 60) * 60; v <= x1; v += 60) xt.push(v);
+  const yc = state.win === "win-26" ? "--y2026" : "--y2022";
+  const byX = new Map(bins.map((b) => [b.x, b]));
+  const RS = [["S", "South"], ["SE", "Southeast"], ["NE", "Northeast"]];
+  const extra = (x) => {
+    const b = byX.get(x);
+    if (!b) return "";
+    const rs = RS.filter(([k]) => b.regionShare?.[k] !== undefined && (b.regions[k] ?? 0) >= 100).map(([k, n]) => `<div><span class="k">${n}</span> <span class="v">${pct(b.regionShare[k])}</span></div>`).join("");
+    return `<div class="k" style="margin-top:4px">${b.n.toLocaleString("en-US")} urnas in this window</div>${rs}`;
+  };
+  const runs = [];
+  for (const b of bins) { const r = runs[runs.length - 1]; if (r && b.x - r[r.length - 1].x <= 15) r.push(b); else runs.push([b]); }
+  const shareSeries = runs.map((r, i) => ({ pts: r.map((b) => [b.x, b.share]), c: yc, dots: true, label: i === runs.length - 1 ? (state.win === "win-26" ? "Flávio" : "Bolsonaro") : undefined }));
+  shareSeries.push({ pts: bins.map((b) => [b.x, b.share]), c: yc, w: 0, tipName: "right-wing share in window" });
+  lineChart(document.getElementById("chart-win-share"), {
+    x: [x0, x1], y: [40, 60], h: 230, series: shareSeries,
+    ref: Y.total.share, refLabel: "final " + pct(Y.total.share), xTicks: xt, xFmt: tfmt, yFmt: (v) => v + "%",
+    tip: (x) => `${tfmt(x - 7.5)}–${tfmt(x + 7.5)}`, tipExtra: extra, aria: "Right-wing share per 15-minute window of received urnas",
+  });
+  const R = [{ k: "S", label: "South", c: "--rS" }, { k: "SE", label: "Southeast", c: "--rSE" }, { k: "NE", label: "Northeast", c: "--rNE" }];
+  legend(document.getElementById("win-legend"), R.map((r) => ({ c: r.c, label: r.label + " (% of the window's urnas)" })));
+  lineChart(document.getElementById("chart-win-mix"), {
+    x: [x0, x1], y: [0, 80], h: 210, xTicks: xt, xFmt: tfmt, yFmt: (v) => v + "%", xTitle: "Time the TSE received the urna result (Brasília)",
+    series: R.flatMap((r) => runs.map((run, i) => ({ pts: run.map((b) => [b.x, (100 * (b.regions[r.k] ?? 0)) / b.n]), c: r.c, label: i === runs.length - 1 ? r.label : undefined, dots: run.length === 1 }))).concat(R.map((r) => ({ pts: bins.map((b) => [b.x, (100 * (b.regions[r.k] ?? 0)) / b.n]), c: r.c, w: 0, tipName: r.label }))),
+    tipFmt: (v) => pct(v, 0),
+    tip: (x) => `${tfmt(x - 7.5)}–${tfmt(x + 7.5)}`, aria: "Regional mix of urnas per window",
+  });
+}
+
+function draw472() {
+  const fin = D.y2026.total.share;
+  const series = D.samples472.slice(1).map((s) => ({ pts: s.map((v, i) => [i + 1, v]), c: "--ghost", w: 1.2 }));
+  series.push({ pts: D.samples472[0].map((v, i) => [i + 1, v]), c: "--y2026", w: 2.5, label: "one sample", tipName: "highlighted sample" });
+  lineChart(document.getElementById("chart-472"), {
+    x: [1, 472], y: [36, 60], series, ref: fin, refLabel: "national result " + pct(fin), xTicks: [1, 100, 200, 300, 400, 472],
+    yFmt: (v) => v + "%", xTitle: "Urnas added, in random order",
+    tip: (x) => `${Math.round(x)} urnas`, tipFmt: (v) => pct(v), aria: "Running share for 20 random samples of 472 urnas",
+  });
+}
+
+function drawSaw() {
+  const host = document.getElementById("chart-saw");
+  host.innerHTML = "";
+  const zoom = state.saw === "saw-zoom";
+  const panels = [["y2022", "Acre 2022 · Bolsonaro", "--y2022"], ["y2026", "Acre 2026 · Flávio Bolsonaro", "--y2026"]].map(([k, label, c]) => {
+    const box = document.createElement("div"); box.className = "chart";
+    box.innerHTML = `<h3>${label}</h3>`;
+    const inner = document.createElement("div"); box.appendChild(inner); host.appendChild(box);
+    return { k, c, inner };
+  });
+  for (const { k, c, inner } of panels) {
+    const F = D.fileOrder[k];
+    const [x0, x1] = zoom ? [60000, 80000] : [0, F.pts[F.pts.length - 1][0]];
+    const pts = F.pts.filter((p) => p[0] >= x0 && p[0] <= x1);
+    const ys = pts.filter((p) => p[0] >= (zoom ? x0 : 15000)).map((p) => p[1]);
+    const lo = Math.floor(Math.min(...ys) - 0.5), hi = Math.ceil(Math.max(...ys) + 0.5);
+    lineChart(inner, {
+      x: [x0, x1], y: [lo, hi], h: 250, mr: 14, mrNarrow: 14, series: [{ pts, c, w: 2, tipName: "running share" }],
+      xFmt: (v) => (v / 1000).toFixed(0) + "k", yFmt: (v) => v + "%", xTitle: "Valid votes counted, TSE file order",
+      tip: (x) => `${Math.round(x).toLocaleString("en-US")} votes`,
+      tipFmt: (v, p) => `${pct(v, 2)}</span><div class="k">${F.towns[p[3]]}, this urna ${pct(p[2], 0)}</div><span>`,
+      aria: `Running share in Acre, ${k.slice(1)}, in TSE file order`,
+    });
+  }
+}
+
+function drawScatter() {
+  const host = document.getElementById("chart-scatter");
+  host.innerHTML = "";
+  const pair = state.sc === "sc-2226" ? [1, 2, "2022 Bolsonaro", "2026 Flávio", D.corr.r22_26] : [0, 1, "2018 Bolsonaro", "2022 Bolsonaro", D.corr.r18_22];
+  const pts = D.scatter.filter((p) => p[pair[0]] !== null && p[pair[1]] !== null);
+  const W = Math.max(300, host.clientWidth - 12), H = Math.min(560, Math.max(300, W * 0.62));
+  const m = { l: 44, r: 16, t: 14, b: 42 };
+  const X = (v) => m.l + (v / 100) * (W - m.l - m.r), Y = (v) => m.t + (1 - v / 100) * (H - m.t - m.b);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `Municipality share ${pair[2]} against ${pair[3]}` }, host);
+  const g = el("g", { class: "grid" }, svg);
+  for (const t of [0, 20, 40, 60, 80, 100]) {
+    el("line", { x1: m.l, x2: W - m.r, y1: Y(t), y2: Y(t) }, g);
+    el("text", { x: m.l - 8, y: Y(t) + 4, "text-anchor": "end" }, svg).textContent = t + "%";
+    el("text", { x: X(t), y: H - m.b + 16, "text-anchor": "middle" }, svg).textContent = t + "%";
+  }
+  el("line", { class: "base", x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b }, svg);
+  el("text", { class: "axis-title", x: m.l + (W - m.l - m.r) / 2, y: H - 6, "text-anchor": "middle" }, svg).textContent = pair[2] + " share per municipality";
+  el("text", { class: "axis-title", x: m.l + 6, y: m.t + 12 }, svg).textContent = "↑ " + pair[3] + " share";
+  el("line", { class: "ref", x1: X(0), y1: Y(0), x2: X(100), y2: Y(100) }, svg);
+  const col = css(state.sc === "sc-2226" ? "--y2026" : "--y2022");
+  const gp = el("g", {}, svg);
+  for (const p of pts) el("circle", { cx: X(p[pair[0]]).toFixed(1), cy: Y(p[pair[1]]).toFixed(1), r: Math.min(7, 1.6 + Math.sqrt(p[3]) / 220).toFixed(1), fill: col, "fill-opacity": 0.4 }, gp);
+  el("text", { class: "lab", x: X(97), y: Y(97) + 18, "text-anchor": "end" }, svg).textContent = "r = " + fmt(pair[4], 3);
+  const ring = el("circle", { r: 6, fill: "none", stroke: css("--ink"), "stroke-width": 2, visibility: "hidden" }, svg);
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; host.appendChild(tip);
+  const hit = el("rect", { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, fill: "transparent" }, svg);
+  hit.addEventListener("pointermove", (ev) => {
+    const r = svg.getBoundingClientRect(), sx = ((ev.clientX - r.left) / r.width) * W, sy = ((ev.clientY - r.top) / r.height) * H;
+    let best = null, bd = 196;
+    for (const p of pts) { const dx = X(p[pair[0]]) - sx, dy = Y(p[pair[1]]) - sy, d = dx * dx + dy * dy; if (d < bd) { bd = d; best = p; } }
+    if (!best) { tip.hidden = true; ring.setAttribute("visibility", "hidden"); return; }
+    ring.setAttribute("cx", X(best[pair[0]])); ring.setAttribute("cy", Y(best[pair[1]])); ring.setAttribute("visibility", "visible");
+    tip.innerHTML = `<div style="font-weight:600;margin-bottom:4px">${best[4]}</div><div><span class="k">${pair[2]}</span> <span class="v">${pct(best[pair[0]])}</span></div><div><span class="k">${pair[3]}</span> <span class="v">${pct(best[pair[1]])}</span></div><div class="k">${best[3].toLocaleString("en-US")} valid votes in 2022</div>`;
+    tip.hidden = false;
+    const px = (X(best[pair[0]]) / W) * r.width, py = (Y(best[pair[1]]) / H) * r.height;
+    tip.style.left = Math.max(4, px + 16 + tip.offsetWidth > r.width ? px - tip.offsetWidth - 12 : px + 16) + "px";
+    tip.style.top = Math.max(4, py - 30) + "px";
+  });
+  hit.addEventListener("pointerleave", () => { tip.hidden = true; ring.setAttribute("visibility", "hidden"); });
+}
+
+function drawTable() {
+  const P = [1, 10, 25, 50, 75, 90];
+  const at = (c, p) => c.find((q) => q[0] >= p)[1];
+  const rows = [];
+  for (const y of YEARS) {
+    const Y = D[y.k];
+    if (Y.recv) rows.push([`${y.label}, real order`, ...P.map((p) => pct(at(Y.recv, p), 2)), pct(Y.total.share, 2)]);
+    rows.push([`${y.label}, 2026 order (matched sections)`, ...P.map((p) => pct(at(D.sameOrder[y.k], p), 2)), pct(D.sameOrder[y.k].at(-1)[1], 2)]);
+    rows.push([`${y.label}, random order: width of 95% band`, ...P.map((p) => { const b = Y.band.find((q) => q[0] >= p); return fmt(b[2] - b[1], 2) + " pp"; }), "–"]);
+  }
+  document.getElementById("tbl").innerHTML = `<thead><tr><th>Series</th>${P.map((p) => `<th>${p}%</th>`).join("")}<th>Final</th></tr></thead><tbody>` +
+    rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("") + "</tbody>";
+}
+
+function drawAll() { drawSame(); drawReal(); drawWin(); draw472(); drawSaw(); drawScatter(); }
+
+fetch("count_order.json").then((r) => r.json()).then((d) => {
+  D = d;
+  drawFindings(); drawTable(); drawAll();
+  seg(["same-gap", "same-share"], (id) => { state.same = id; drawSame(); });
+  seg(["win-26", "win-22"], (id) => { state.win = id; drawWin(); });
+  seg(["sc-2226", "sc-1822"], (id) => { state.sc = id; drawScatter(); });
+  seg(["saw-full", "saw-zoom"], (id) => { state.saw = id; drawSaw(); });
+  let t; new ResizeObserver(() => { clearTimeout(t); t = setTimeout(drawAll, 120); }).observe(document.querySelector(".page"));
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawAll);
+  new MutationObserver(drawAll).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+});
+</script>
