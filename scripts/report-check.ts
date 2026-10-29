@@ -3,6 +3,7 @@ import { readdirSync, writeFileSync } from "node:fs";
 type S = { uf: string; mun: string; open: number | null; close: number | null; biom: number; comp: number; lula: number; right: number };
 
 const RIGHT = { "2022": "22", "2026": "22" } as const;
+const TSE_AFTER_17 = { total: 34393, h17_18: 32399, h18_19: 1981, after_19: 13, source: "https://www.cnnbrasil.com.br/eleicoes/eleicoes-2026-tse-confirma-34-mil-votos-apos-as-17h-no-2o-turno/" };
 const dec = new TextDecoder("latin1");
 const clock = (t: string) => {
   const m = t.match(/(\d{2}):(\d{2}):(\d{2})$/);
@@ -136,6 +137,7 @@ const rowsOut = [
   { key: "biom_2022", total: c22.biometrics.total, pct: c22.biometrics.pct_of_voters, south_pct: c22.biometrics.byRegion.S.biom_pct },
   { key: "unan_2026", lula_100: c26.unanimity.lula_100, right_100: c26.unanimity.right_100, lula_over_90: c26.unanimity.lula_over_90, right_over_90: c26.unanimity.right_over_90 },
   { key: "unan_2022", lula_100: c22.unanimity.lula_100, right_100: c22.unanimity.right_100, lula_over_90: c22.unanimity.lula_over_90, right_over_90: c22.unanimity.right_over_90 },
+  { key: "tse_after_17", total: TSE_AFTER_17.total, h17_18: TSE_AFTER_17.h17_18, h18_19: TSE_AFTER_17.h18_19, after_19: TSE_AFTER_17.after_19, margin_if_all_lula: c26.total.lula_lead - TSE_AFTER_17.total, source: TSE_AFTER_17.source },
   { key: "file_2026", generated: gen(result.generated["2026"]) },
   { key: "file_2022", generated: gen(result.generated["2022"]) },
 ];
