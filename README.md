@@ -10,15 +10,29 @@ All numbers come from the Tribunal Superior Eleitoral (TSE). Nothing on the site
 
 | Path | What it is |
 | --- | --- |
-| `public/` | The website: one page, the datasets as JSON and CSV. Deployed on Vercel. |
-| `web/` | The page source: `pages/` (one HTML file per tab, English text), `styles/`, `js/` and `i18n/pt.ts` (the Portuguese text). `scripts/site/build.ts` joins them into `public/index.html` and injects the Portuguese text. |
+| `public/` | The built website: one page, the datasets as JSON and CSV. Deployed on Vercel. Do not edit by hand; `bun run build` writes it. |
+| `web/pages/` | One HTML file per tab (`story`, `explore`, `day`, `fake-news`, `method`) plus `header.html`. English text. |
+| `web/js/` | The page script, one file per concern: `core` (shared state, formats, i18n), `data` (derived datasets), `maps`, one file per tab (`story`, `explore`, `day`, `fake-news`), and `boot` (startup, runs last). |
+| `web/styles/site.css`, `web/i18n/pt.ts`, `web/vendor/` | The styles, the Portuguese text for every block, and the small data loader and analytics helpers. |
+| `ds/` | The datasets the page reads, one JSON file each. |
+| `docs/count-order.html` | A standalone page that replays the 2018, 2022 and 2026 runoffs urna by urna (reads `ds/count_order.json`). |
 | `data/sections/*.ndjson.gz` | One row per polling section for the presidential race: 2018 runoff, 2022 runoff, 2026 round 1 and 2026 runoff. Votes per candidate, turnout, the urna's open and close times, and for the 2022 and 2026 runoffs the time the TSE received the result (`recv`). |
-| `ds/count-order.html`, `ds/count_order.json` | A page that replays the 2018, 2022 and 2026 runoffs urna by urna: in real receive order, in random orders, and all three in the 2026 order. Built by `scripts/count-order.ts`. |
 | `data/r2-mun.ndjson`, `data/r2-uf.json` | 2026 runoff results per municipality and per state, from the TSE results service. |
 | `data/abroad-geo.txt` | Country and approximate map position of each overseas voting city (added by hand; the TSE gives only a code and a name). |
 | `geo/` | Simplified IBGE municipal boundaries and Natural Earth countries. |
 | `timeline.json` | Events of election day with sources, in English and Portuguese. |
-| `scripts/` | The pipeline (TypeScript, run with [bun](https://bun.sh)). |
+| `scripts/fetch/` | Downloads from the TSE: municipal and state results, urna logs. |
+| `scripts/pipeline/` | Builds the section files and the datasets in `ds/`. |
+| `scripts/analysis/` | The fake-news checks: `count-order.ts` (count order and patterns) and `report-check.ts` (the "forensic report"). |
+| `scripts/site/` | The site build: joins `web/` into `public/index.html`, injects the Portuguese text, and writes the security headers in `vercel.json`. |
+
+All scripts are TypeScript, run with [bun](https://bun.sh) from the repository root.
+
+### Adding to the site
+
+- **Text:** edit the English in `web/pages/<tab>.html` and add the Portuguese for every changed block in `web/i18n/pt.ts`. `bun run build` fails and lists the missing blocks if one has no translation.
+- **A new tab:** add `web/pages/<tab>.html`, its JS in `web/js/<tab>.js`, list both in `scripts/site/assemble.ts`, add the tab button in `header.html`, and add a branch in `redraw()` in `web/js/boot.js`.
+- **A new dataset:** write it to `ds/<id>.json` and add the id to `DATASETS` (and `TABLES` for a CSV download) in `scripts/site/build.ts`.
 
 ## Sources and checks
 
@@ -41,13 +55,13 @@ mkdir -p data/r1 data/b22 data/b18
 gunzip -c data/sections/2026-round1.ndjson.gz > data/r1/sec.ndjson
 gunzip -c data/sections/2022-runoff.ndjson.gz > data/b22/sec.ndjson
 gunzip -c data/sections/2018-runoff.ndjson.gz > data/b18/sec.ndjson
-bun scripts/analyze.ts
-bun scripts/count-order.ts ds/count_order.json
+bun scripts/pipeline/analyze.ts
+bun scripts/analysis/count-order.ts ds/count_order.json
 bun run build:data
 bun run build
 ```
 
-`scripts/r1-reduce.ts` builds the section files from the original TSE zips (`bsdtar -xOf <zip> "*.csv" | bun scripts/r1-reduce.ts <out>`; set `RIGHT=17` for 2018). `scripts/fetch-mun.ts` downloads the runoff results per municipality; it waits when the TSE asks it to slow down.
+`scripts/pipeline/r1-reduce.ts` builds the section files from the original TSE zips (`bsdtar -xOf <zip> "*.csv" | bun scripts/pipeline/r1-reduce.ts <out>`; set `RIGHT=17` for 2018). `scripts/fetch/fetch-mun.ts` downloads the runoff results per municipality; it waits when the TSE asks it to slow down. `scripts/analysis/report-check.ts <2022 BU zip dir> <2026 BU zip dir> ds/report_check.json` rechecks the "forensic report" and writes `ds/report_rows.json`.
 
 ## Limits
 

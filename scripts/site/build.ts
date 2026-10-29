@@ -18,8 +18,8 @@ for (const id of TABLES) {
 }
 
 const page = translate(assemblePage());
-const shim = readFileSync("site-src/dash-shim.js", "utf8");
-const analytics = readFileSync("site-src/analytics.js", "utf8");
+const shim = readFileSync("web/vendor/dash-shim.js", "utf8");
+const analytics = readFileSync("web/vendor/analytics.js", "utf8");
 const links = TABLES.map((id) => `<li><span>${id}</span> <a href="data/${id}.csv" download>CSV</a> <a href="data/${id}.json" download>JSON</a></li>`).join("");
 
 const html = `<!doctype html>

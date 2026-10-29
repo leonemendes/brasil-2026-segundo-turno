@@ -6,9 +6,9 @@
   "name": "brasil-2026-segundo-turno",
   "private": true,
   "scripts": {
-    "fetch:municipal": "bun scripts/fetch-mun.ts",
-    "fetch:states": "bun scripts/fetch-uf.ts",
-    "build:data": "bun scripts/build-data.ts && bun scripts/export-datasets.ts",
+    "fetch:municipal": "bun scripts/fetch/fetch-mun.ts",
+    "fetch:states": "bun scripts/fetch/fetch-uf.ts",
+    "build:data": "bun scripts/pipeline/build-data.ts && bun scripts/pipeline/export-datasets.ts",
     "build": "bun scripts/site/build.ts public"
   }
 }
