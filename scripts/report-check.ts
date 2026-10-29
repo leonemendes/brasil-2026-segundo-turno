@@ -106,6 +106,9 @@ function check(secs: S[], year: string) {
     lula_over_90: valid.filter((s) => pctLula(s)! > 90).length, right_over_90: valid.filter((s) => pctLula(s)! < 10).length,
   };
 
+  const spCity = secs.filter((s) => s.uf === "sp" && s.mun === "71072" && s.close !== null);
+  lateStates.sp_city = { after_1900_local: sum(spCity.filter((s) => s.close! >= H19)), whole_state: sum(spCity) };
+
   return { year, total: sum(secs), byLocalClock, byLocalClockStates, byBrasilia, lateStates, biometrics: { total: biomTotal, pct_of_voters: +((100 * biomTotal) / voters).toFixed(2), bands: biomBands, byRegion: biomByRegion }, unanimity };
 }
 
@@ -113,4 +116,28 @@ const [dir22, dir26, out] = process.argv.slice(2);
 const d22 = await load(dir22, "2022"), d26 = await load(dir26, "2026");
 const result = { generated: { "2022": d22.generated, "2026": d26.generated }, y2022: check(d22.secs, "2022"), y2026: check(d26.secs, "2026") };
 writeFileSync(out, JSON.stringify(result, null, 1));
-console.log(JSON.stringify(result, null, 1));
+
+const lead = (g: ReturnType<typeof sum>, right: string) => ({ lula_pct: g.lula_pct, right_pct: +(100 - g.lula_pct).toFixed(2), leader: g.lula_lead >= 0 ? "Lula" : right, lead_abs: Math.abs(g.lula_lead), sections: g.sections });
+const [c22, c26] = [result.y2022, result.y2026];
+const late = (uf: string) => ({ late_sections: c26.lateStates[uf].after_1900_local.sections, late_lula_pct: c26.lateStates[uf].after_1900_local.lula_pct, place_lula_pct: c26.lateStates[uf].whole_state.lula_pct });
+const gen = (g: string[]) => g[0].replace(/:\d{2}$/, "");
+const rowsOut = [
+  { key: "split_2026_before", ...lead(c26.byLocalClock.by_1700_local, "Flávio") },
+  { key: "split_2026_after", ...lead(c26.byLocalClock.after_1700_local, "Flávio") },
+  { key: "split_2022_before", ...lead(c22.byLocalClock.by_1700_local, "Bolsonaro") },
+  { key: "split_2022_after", ...lead(c22.byLocalClock.after_1700_local, "Bolsonaro") },
+  { key: "normal_close_2026", sections: c26.byLocalClock.w_1701_1715.sections, share_pct: +((100 * c26.byLocalClock.w_1701_1715.sections) / c26.total.sections).toFixed(0) },
+  { key: "late_sp_city", ...late("sp_city") },
+  { key: "late_ba", ...late("ba") },
+  { key: "late_pe", ...late("pe") },
+  { key: "late_ma", ...late("ma") },
+  { key: "late_sp_state", late_sections: c26.lateStates.sp.after_1900_local.sections, sp_city_sections: c26.lateStates.sp_city.after_1900_local.sections, place_lula_pct: c26.lateStates.sp.whole_state.lula_pct },
+  { key: "biom_2026", total: c26.biometrics.total, pct: c26.biometrics.pct_of_voters, south_pct: c26.biometrics.byRegion.S.biom_pct, low_band_lula_pct: c26.biometrics.bands[0].lula_pct, high_band_sections: c26.biometrics.bands[4].sections },
+  { key: "biom_2022", total: c22.biometrics.total, pct: c22.biometrics.pct_of_voters, south_pct: c22.biometrics.byRegion.S.biom_pct },
+  { key: "unan_2026", lula_100: c26.unanimity.lula_100, right_100: c26.unanimity.right_100, lula_over_90: c26.unanimity.lula_over_90, right_over_90: c26.unanimity.right_over_90 },
+  { key: "unan_2022", lula_100: c22.unanimity.lula_100, right_100: c22.unanimity.right_100, lula_over_90: c22.unanimity.lula_over_90, right_over_90: c22.unanimity.right_over_90 },
+  { key: "file_2026", generated: gen(result.generated["2026"]) },
+  { key: "file_2022", generated: gen(result.generated["2022"]) },
+];
+writeFileSync("ds/report_rows.json", JSON.stringify(rowsOut));
+console.log(JSON.stringify(rowsOut, null, 1));

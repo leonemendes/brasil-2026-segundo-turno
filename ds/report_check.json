@@ -235,6 +235,24 @@
      "lula_pct": 44.76,
      "lula_lead": -2696705
     }
+   },
+   "sp_city": {
+    "after_1900_local": {
+     "sections": 1,
+     "voters": 290,
+     "lula": 166,
+     "right": 104,
+     "lula_pct": 61.48,
+     "lula_lead": 62
+    },
+    "whole_state": {
+     "sections": 26288,
+     "voters": 7372124,
+     "lula": 3677921,
+     "right": 3191484,
+     "lula_pct": 53.54,
+     "lula_lead": 486437
+    }
    }
   },
   "biometrics": {
@@ -518,6 +536,24 @@
      "right": 14139178,
      "lula_pct": 46.15,
      "lula_lead": -2019904
+    }
+   },
+   "sp_city": {
+    "after_1900_local": {
+     "sections": 1481,
+     "voters": 398691,
+     "lula": 220748,
+     "right": 160749,
+     "lula_pct": 57.86,
+     "lula_lead": 59999
+    },
+    "whole_state": {
+     "sections": 26683,
+     "voters": 7284071,
+     "lula": 3864354,
+     "right": 3097923,
+     "lula_pct": 55.5,
+     "lula_lead": 766431
     }
    }
   },
