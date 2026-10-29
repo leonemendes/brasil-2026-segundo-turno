@@ -11,7 +11,7 @@ All numbers come from the Tribunal Superior Eleitoral (TSE). Nothing on the site
 | Path | What it is |
 | --- | --- |
 | `public/` | The website: one page, the datasets as JSON and CSV. Deployed on Vercel. |
-| `ds/index.html` | The page source (English text and the code). `scripts/build-i18n.ts` injects the Portuguese text from `scripts/i18n-pt.ts`. |
+| `web/` | The page source: `pages/` (one HTML file per tab, English text), `styles/`, `js/` and `i18n/pt.ts` (the Portuguese text). `scripts/site/build.ts` joins them into `public/index.html` and injects the Portuguese text. |
 | `data/sections/*.ndjson.gz` | One row per polling section for the presidential race: 2018 runoff, 2022 runoff, 2026 round 1 and 2026 runoff. Votes per candidate, turnout, the urna's open and close times, and for the 2022 and 2026 runoffs the time the TSE received the result (`recv`). |
 | `ds/count-order.html`, `ds/count_order.json` | A page that replays the 2018, 2022 and 2026 runoffs urna by urna: in real receive order, in random orders, and all three in the 2026 order. Built by `scripts/count-order.ts`. |
 | `data/r2-mun.ndjson`, `data/r2-uf.json` | 2026 runoff results per municipality and per state, from the TSE results service. |

@@ -1,0 +1,80 @@
+  <section id="story" class="bz-page">
+    <div class="bz-story">
+      <div class="bz-read" data-read>
+        <div class="bz-step bz-on" data-read-step data-view="br:r1" id="ch-round1">
+          <span class="bz-k">1 · Round 1, 4 October</span>
+          <h2>Flávio Bolsonaro finished first</h2>
+          <p><span class="bz-v" data-source="national_shares" data-field="right_name" data-where="key=r1">—</span> had <span class="bz-v" data-source="national_shares" data-field="right_pct" data-where="key=r1" data-fmt="pct">—</span> of valid votes. Lula had <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=r1" data-fmt="pct">—</span>. The gap was <span class="bz-v" data-source="national_shares" data-field="margin_abs" data-where="key=r1" data-fmt="int">—</span> votes.</p>
+          <p>The map shows every municipality in Brazil. Red means Lula was ahead there, blue means Flávio was ahead. The darker the color, the bigger the lead.</p>
+          <p class="bz-def">A <b>valid vote</b> is a vote for a candidate. Blank and null votes do not count toward the percentages.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="br:r2" id="ch-runoff">
+          <span class="bz-k">2 · Runoff, 25 October</span>
+          <h2>Lula won the runoff</h2>
+          <p>Lula had <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=r2" data-fmt="pct">—</span> and Flávio <span class="bz-v" data-source="national_shares" data-field="right_pct" data-where="key=r2" data-fmt="pct">—</span>. Lula won by <span class="bz-v" data-source="national_shares" data-field="margin_abs" data-where="key=r2" data-fmt="int">—</span> votes. This is the first time since 1989 that the candidate who came second in round 1 won the runoff.</p>
+          <p>The pattern is familiar: the North-East is red, the South and the Centre-West are blue. The difference is in how deep the colors are.</p>
+          <p class="bz-cap" id="loadNote"></p>
+        </div>
+        <div class="bz-step" data-read-step data-view="br:sw" id="ch-moved">
+          <span class="bz-k">3 · What moved</span>
+          <h2>Almost every municipality moved toward Lula</h2>
+          <p>This map shows the change between the two rounds. Red means Lula's share went up, blue means Flávio's went up. Most of the country is red: Lula gained more votes than Flávio almost everywhere.</p>
+          <p>Lula gained <span class="bz-v" data-source="swing_summary" data-field="lula_gain" data-fmt="int">—</span> votes from round 1. Flávio gained <span class="bz-v" data-source="swing_summary" data-field="flavio_gain" data-fmt="int">—</span>. These votes came from people who chose other candidates in round 1, and from changes in turnout.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="sources" id="ch-sources">
+          <span class="bz-k">4 · Where the new votes came from</span>
+          <h2><span class="bz-v" data-source="sources_summary" data-field="pct_other" data-fmt="pct0">—</span> of the new votes were round-1 votes for other candidates</h2>
+          <p>Between the rounds, Lula and Flávio together gained <span class="bz-v" data-source="sources_summary" data-field="gain_total" data-fmt="int">—</span> votes. Each one came from one of three places: votes for the other round-1 candidates (<span class="bz-v" data-source="sources_summary" data-field="from_other" data-fmt="int">—</span>), more people voting (<span class="bz-v" data-source="sources_summary" data-field="from_turnout" data-fmt="int">—</span>), and fewer blank and null votes (<span class="bz-v" data-source="sources_summary" data-field="from_blank_null" data-fmt="int">—</span>).</p>
+          <p>Where they went: Lula took <span class="bz-v" data-source="sources_summary" data-field="gain_lula" data-fmt="int">—</span> of them (<span class="bz-v" data-source="sources_summary" data-field="pct_lula" data-fmt="pct0">—</span>) and Flávio <span class="bz-v" data-source="sources_summary" data-field="gain_flavio" data-fmt="int">—</span> (<span class="bz-v" data-source="sources_summary" data-field="pct_flavio" data-fmt="pct0">—</span>).</p>
+          <p>In round 1, Augusto Cury, Renan Santos and Ronaldo Caiado had <span class="bz-v" data-source="sources_summary" data-field="big3" data-fmt="int">—</span> votes together.</p>
+          <p class="bz-def">These are net changes. The ballot is secret, so no data says which voter moved where. Some people who voted in round 1 stayed home in the runoff, and others came out for the first time.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="bars" id="ch-states">
+          <span class="bz-k">5 · State by state</span>
+          <h2>Where the <span class="bz-v" data-source="swing_summary" data-field="total_change" data-fmt="int">—</span> vote turnaround came from</h2>
+          <p>Each bar is the change in the gap between the two candidates, from round 1 to the runoff. <span class="bz-v" data-source="swing_summary" data-field="top4">—</span> gave <span class="bz-v" data-source="swing_summary" data-field="top4_pct" data-fmt="pct0">—</span> of it. Big states move the total the most, even with small changes in share.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="br:s22" id="ch-2022">
+          <span class="bz-k">6 · Compared with 2022</span>
+          <h2>Close to 2022 nationally, with local shifts</h2>
+          <p>In the 2022 runoff Lula beat Jair Bolsonaro with <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=y2022" data-fmt="pct">—</span>. In 2026 he had <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=r2" data-fmt="pct">—</span> against Jair's son. The map shows where the PT share went up (red) or down (blue) since 2022.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="br:s18" id="ch-2018">
+          <span class="bz-k">7 · Compared with 2018</span>
+          <h2>A very different map from 2018</h2>
+          <p>In 2018 Jair Bolsonaro beat Fernando Haddad (PT) with <span class="bz-v" data-source="national_shares" data-field="right_pct" data-where="key=y2018" data-fmt="pct">—</span>. Haddad had <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=y2018" data-fmt="pct">—</span>. Since then the PT gained ground in most of the country, mostly in the South-East and North.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="world:r2" id="ch-abroad">
+          <span class="bz-k">8 · Brazilians abroad</span>
+          <h2>Abroad, the biggest change of all</h2>
+          <p>Brazilians abroad vote at consulates and embassies in cities around the world. In 2018 Haddad had only <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=abroad_y2018" data-fmt="pct">—</span> there. In this runoff Lula had <span class="bz-v" data-source="national_shares" data-field="left_pct" data-where="key=abroad_r2" data-fmt="pct">—</span> of <span class="bz-v" data-source="national_shares" data-field="valid" data-where="key=abroad_r2" data-fmt="int">—</span> valid votes.</p>
+          <p>Each country is colored by the result of the Brazilians who voted there. The list shows the biggest voting cities.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="curves" id="ch-close">
+          <span class="bz-k">9 · The extension</span>
+          <h2>In a normal runoff, nearly every urna closes on time</h2>
+          <p>Brazil votes in <b class="bz-term">sections</b>: one room, one electronic voting machine (<b class="bz-term">urna</b>), a few hundred voters. When a section closes, its urna prints a <b class="bz-term">boletim de urna</b> with the result and the exact open and close times.</p>
+          <p class="bz-def">The law lets every voter who is <b>in line at 17:00</b> vote, so many urnas close a few minutes late. In the 2022 runoff only <span class="bz-v" data-source="late_rates" data-field="very_late" data-where="election=2022 runoff" data-fmt="int">—</span> of <span class="bz-v" data-source="late_rates" data-field="sections" data-where="election=2022 runoff" data-fmt="int">—</span> sections were still open 49 minutes after the close.</p>
+          <p>On 25 October an STF order at 17:03 extended voting to 19:00. The TSE told the sections still open at 17:49. Sections that had closed did not reopen.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="lanes" id="ch-lanes">
+          <span class="bz-k">10 · Queue or court order</span>
+          <h2>A late close does not mean late votes</h2>
+          <p>The urna also keeps a log with the time of every vote. Each dot here is one real vote from one urna in Cruzeiro do Sul, Acre. The bar is the moment it closed.</p>
+          <p>Top: round 1. People in line at 17:00 kept voting with no break, then the urna closed. That is a <b>queue</b>, and it is legal in every election.</p>
+          <p>Bottom: the same urna in the runoff. The last vote was before 17:00. The urna stayed open until 19:00, and <b>nobody came</b>. Its close time says "late", but it had no late votes. Only votes after a pause are votes the court order made possible.</p>
+        </div>
+        <div class="bz-step" data-read-step data-view="ext" id="ch-without">
+          <span class="bz-k">11 · Without the late sections</span>
+          <h2>Could the extension change the result?</h2>
+          <p>Lula's margin was <span class="bz-v" data-source="extension_view" data-field="margin" data-fmt="int">—</span> votes, <span class="bz-v" data-source="extension_view" data-field="margin_pct_of_turnout" data-fmt="pct">—</span> of everyone who voted. To reverse it, the extension would have to add millions of votes, all for Lula.</p>
+          <p id="extText"></p>
+        </div>
+      </div>
+      <div class="bz-stick">
+        <div class="bz-vis" id="storyVis" data-source="municipalities map_municipalities map_states map_world abroad state_change close_curves urna_log_examples extension_view vote_sources r1_candidates"><canvas id="storyCanvas" aria-label="Map"></canvas><svg id="storySvg" hidden></svg><div id="storyExt" class="bz-ext" hidden></div><div class="bz-tip" id="storyTip" hidden></div></div>
+        <div class="bz-legend" id="storyLegend"></div>
+        <p class="bz-howto" id="storyHow"></p>
+      </div>
+    </div>
+  </section>

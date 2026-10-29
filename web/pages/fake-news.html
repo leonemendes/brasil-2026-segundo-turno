@@ -1,0 +1,109 @@
+  <section id="patterns" class="bz-page" hidden>
+    <div class="bz-pat">
+      <div class="bz-card" id="card-pat-intro">
+        <h2>Fighting fake news: election claims checked with the official data</h2>
+        <p>Two pieces going around social media say the 2026 runoff was rigged: a video with charts of the vote count, and a "forensic report" with tables. Below, each of their claims is checked with the official result of every urna, in files that anyone can download from the TSE.</p>
+        <p class="bz-cap">In the charts, the line is Lula's share of the votes (Haddad's in 2018). When Lula's line goes up, Bolsonaro's goes down by the same amount.</p>
+      </div>
+      <div class="bz-part" id="part-video">
+        <h2>1 · The video about "patterns" in the count</h2>
+        <p>The video adds urnas one by one, plots the running vote share, and makes four claims.</p>
+      </div>
+      <div class="bz-card" id="card-pat-real">
+        <span class="bz-k">Claim 1 · "The urnas arrive in random order"</span>
+        <h2>False: the urnas arrive place by place</h2>
+        <p class="bz-cap">If the urnas arrived in random order, the line would stay inside the gray band: flat and close to the final result almost from the start. The real line, in color, starts far away and moves slowly to the result. In 2022 Lula had <span class="bz-v" data-source="count_summary" data-field="pt_share_2022_at_1pct" data-fmt="pct1">—</span> after the first 1% of urnas and ended with <span class="bz-v" data-source="count_summary" data-field="pt_share_2022_final" data-fmt="pct1">—</span>. Some regions send their results first, and regions vote differently. The 2018 file does not say when each urna arrived, so its dashed line uses the 2026 order.</p>
+        <div class="bz-multi" id="patReal"></div>
+        <div class="bz-legend" id="patRealLegend"></div>
+      </div>
+      <div class="bz-card" id="card-pat-same">
+        <span class="bz-k">Claim 2 · "An algorithm made this curve in 2026"</span>
+        <h2>False: the old elections make the same curve</h2>
+        <p class="bz-cap">We took the order in which the 2026 urnas arrived. Then we added up the 2018 and 2022 votes of the same <span class="bz-v" data-source="count_summary" data-field="matched_sections" data-fmt="int">—</span> polling sections in that same order. The three lines have the same shape. The 2018 and 2022 votes were counted years ago, so no program in 2026 could change them. The order of the places makes the curve, not an algorithm.</p>
+        <div class="bz-vis bz-fit" id="patSameVis"><svg id="patSameSvg"></svg><div class="bz-tip" id="patSameTip" hidden></div></div>
+        <div class="bz-legend" id="patSameLegend"></div>
+      </div>
+      <div class="bz-card" id="card-pat-saw">
+        <span class="bz-k">Claim 3 · "Slow rises followed by sharp drops cannot happen by chance"</span>
+        <div class="bz-ctrlrow"><h2>False: the official file makes the same zigzag</h2><div class="bz-seg" id="patSawMode"><button data-mode="all" aria-pressed="true">Whole state</button><button data-mode="zoom" aria-pressed="false">Zoom: 60k to 80k votes</button></div></div>
+        <p class="bz-cap">This is Acre, in the plain order of the TSE file, with nothing changed. The line moves slowly while it adds towns that vote close to the total so far. It jumps when it reaches a town that votes very differently. That is all the zigzag is. Hover over the line to see the town.</p>
+        <div class="bz-multi" id="patSaw"></div>
+      </div>
+      <div class="bz-card" id="card-pat-samples">
+        <h2>Even pure chance makes rises and drops</h2>
+        <p class="bz-cap">Each gray line is 472 urnas picked at random and added in random order, the same number of urnas the video uses. Nobody changed anything, and every line still goes up and down. With only 472 urnas, the final share lands anywhere from <span class="bz-v" data-source="count_summary" data-field="sample_min" data-fmt="pct1">—</span> to <span class="bz-v" data-source="count_summary" data-field="sample_max" data-fmt="pct1">—</span>.</p>
+        <div class="bz-vis bz-fit" id="patSampleVis"><svg id="patSampleSvg"></svg><div class="bz-tip" id="patSampleTip" hidden></div></div>
+      </div>
+      <div class="bz-card" id="card-pat-65">
+        <span class="bz-k">Claim 4 · "Flávio Bolsonaro would have had about 65%"</span>
+        <h2>False: the urnas say <span class="bz-v" data-source="count_summary" data-field="flavio_share_2026" data-fmt="pct1">—</span></h2>
+        <div class="bz-tiles">
+          <div><div class="bz-big"><span class="bz-v" data-source="count_summary" data-field="flavio_share_2026" data-fmt="pct1">—</span></div><p class="bz-cap">Flávio's share in the sum of all <span class="bz-v" data-source="count_summary" data-field="runoff_2026_sections" data-fmt="int">—</span> urna bulletins.</p></div>
+          <div><div class="bz-big"><span class="bz-v" data-source="count_summary" data-field="votes_to_reach_65" data-fmt="int">—</span></div><p class="bz-cap">Votes that would have to switch from Lula to Flávio to reach 65%.</p></div>
+          <div><div class="bz-big"><span class="bz-v" data-source="count_summary" data-field="mun_within_5pts_2022_2026" data-fmt="pct0">—</span></div><p class="bz-cap">Municipalities that voted within 5 points of how they voted in 2022. A hidden change of millions of votes would show up here.</p></div>
+        </div>
+        <p class="bz-cap">Every urna prints a signed bulletin at the polling place before it sends its result. Anyone can photograph one and compare it with the TSE file. On election day, the TSE <a href="https://www.tse.jus.br/comunicacao/noticias/2026/Outubro/teste-de-integridade-do-2o-turno-no-tse-confirma-correspondencia-entre-cedulas-e-votos-nas-urnas">integrity test</a> checked paper ballots against the urna records and found no difference.</p>
+      </div>
+      <div class="bz-part" id="part-report">
+        <h2>2 · The "forensic report"</h2>
+        <p>A document called "Relatório Pericial Independente" uses the real TSE urna files, so most of its numbers are correct. Its conclusions come from reading those numbers the wrong way. The simplest test is to run its own method on 2022, when there was no voting extension.</p>
+      </div>
+      <div class="bz-card" id="card-rep-split">
+        <span class="bz-k">Report · "Until 17:00 Flávio won, and Lula's win came only from urnas closed after 17:00"</span>
+        <h2>False: the same split gives the same result in 2022, with no extension</h2>
+        <p class="bz-cap">The report splits the urnas by the close time each urna records, and that time is local time. So "closed by 17:00" holds every urna in Acre, Amazonas, Mato Grosso, Mato Grosso do Sul, Rondônia and Roraima, which close at 15:00 or 16:00 local time (17:00 in Brasília). These states lean to the right. "Closed after 17:00" holds <span class="bz-v" data-source="report_rows" data-where="key=normal_close_2026" data-field="sections" data-fmt="int">—</span> sections that closed a minute or two after 17:00, as urnas always do.</p>
+        <div class="bz-tbl"><table><thead><tr><th>Election</th><th>Urnas closed by 17:00 (local time)</th><th>Urnas closed after 17:00</th></tr></thead><tbody>
+          <tr><th scope="row">2026</th><td><span class="bz-v" data-source="report_rows" data-where="key=split_2026_before" data-field="leader">—</span> +<span class="bz-v" data-source="report_rows" data-where="key=split_2026_before" data-field="lead_abs" data-fmt="int">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=split_2026_after" data-field="leader">—</span> +<span class="bz-v" data-source="report_rows" data-where="key=split_2026_after" data-field="lead_abs" data-fmt="int">—</span></td></tr>
+          <tr><th scope="row">2022, no extension</th><td><span class="bz-v" data-source="report_rows" data-where="key=split_2022_before" data-field="leader">—</span> +<span class="bz-v" data-source="report_rows" data-where="key=split_2022_before" data-field="lead_abs" data-fmt="int">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=split_2022_after" data-field="leader">—</span> +<span class="bz-v" data-source="report_rows" data-where="key=split_2022_after" data-field="lead_abs" data-fmt="int">—</span></td></tr>
+        </tbody></table></div>
+        <p class="bz-cap">In 2022 nobody voted after the normal time, and the split still shows Bolsonaro ahead "until 17:00" and Lula ahead "after". The split measures time zones, not fraud.</p>
+      </div>
+      <div class="bz-card" id="card-rep-late">
+        <span class="bz-k">Report · "More than 2.5 million voters voted after the deadline"</span>
+        <h2>False: closing late is not voting late</h2>
+        <p class="bz-cap">The report counts every voter in the sections that closed late. Almost all of them voted during the day: a section closes late when the last person in line votes. The urna log records the time of every vote.</p>
+        <div class="bz-tiles">
+          <div><div class="bz-big"><span class="bz-v" data-source="report_rows" data-where="key=tse_after_17" data-field="total" data-fmt="int">—</span></div><p class="bz-cap">Votes after 17:00 in all urnas of the country, according to the TSE. Almost all of them were the normal line: people already in line at 17:00 can always vote.</p></div>
+          <div><div class="bz-big"><span class="bz-v" data-source="extension" data-field="after_pause" data-fmt="int">—</span></div><p class="bz-cap">Votes that came after a pause, in the urnas still open after 17:45. These are new voters that only the extension allowed.</p></div>
+          <div><div class="bz-big"><span class="bz-v" data-source="report_rows" data-where="key=tse_after_17" data-field="margin_if_all_lula" data-fmt="int">—</span></div><p class="bz-cap">Lula's margin if every one of the TSE's votes after 17:00 had gone to him and were taken away.</p></div>
+        </div>
+        <p class="bz-cap">The TSE counts every urna, so its number includes the normal line in urnas that closed between 17:00 and 17:45. Our count covers only the <span class="bz-v" data-source="extension" data-field="urnas_open_after_1745" data-fmt="int">—</span> urnas still open after 17:45, where it found <span class="bz-v" data-source="extension" data-field="votes_after_17" data-fmt="int">—</span> votes after 17:00. The report's 2.5 million is not close to either number. <a href="https://www.cnnbrasil.com.br/eleicoes/eleicoes-2026-tse-confirma-34-mil-votos-apos-as-17h-no-2o-turno/">TSE figure</a>.</p>
+      </div>
+      <div class="bz-card" id="card-rep-places">
+        <span class="bz-k">Report · "Sections open after 19:00 gave Lula far more votes"</span>
+        <h2>False: they vote like the place they are in</h2>
+        <p class="bz-cap">The report compares the late sections with the whole state. The right comparison is the place where they are. In São Paulo, <span class="bz-v" data-source="report_rows" data-where="key=late_sp_state" data-field="sp_city_sections" data-fmt="int">—</span> of the <span class="bz-v" data-source="report_rows" data-where="key=late_sp_state" data-field="late_sections" data-fmt="int">—</span> late sections are in São Paulo city, where Lula is much stronger than in the rest of the state.</p>
+        <div class="bz-tbl"><table><thead><tr><th>Place</th><th>Sections open after 19:00</th><th>Lula in those sections</th><th>Lula in the whole place</th></tr></thead><tbody>
+          <tr><th scope="row">São Paulo city</th><td><span class="bz-v" data-source="report_rows" data-where="key=late_sp_city" data-field="late_sections" data-fmt="int">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=late_sp_city" data-field="late_lula_pct" data-fmt="pct1">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=late_sp_city" data-field="place_lula_pct" data-fmt="pct1">—</span></td></tr>
+          <tr><th scope="row">Bahia</th><td><span class="bz-v" data-source="report_rows" data-where="key=late_ba" data-field="late_sections" data-fmt="int">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=late_ba" data-field="late_lula_pct" data-fmt="pct1">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=late_ba" data-field="place_lula_pct" data-fmt="pct1">—</span></td></tr>
+          <tr><th scope="row">Pernambuco</th><td><span class="bz-v" data-source="report_rows" data-where="key=late_pe" data-field="late_sections" data-fmt="int">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=late_pe" data-field="late_lula_pct" data-fmt="pct1">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=late_pe" data-field="place_lula_pct" data-fmt="pct1">—</span></td></tr>
+          <tr><th scope="row">Maranhão</th><td><span class="bz-v" data-source="report_rows" data-where="key=late_ma" data-field="late_sections" data-fmt="int">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=late_ma" data-field="late_lula_pct" data-fmt="pct1">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=late_ma" data-field="place_lula_pct" data-fmt="pct1">—</span></td></tr>
+        </tbody></table></div>
+        <p class="bz-cap">In Bahia and São Paulo city the late sections vote close to their place. In Pernambuco they gave Lula less than the state. Maranhão had only <span class="bz-v" data-source="report_rows" data-where="key=late_ma" data-field="late_sections" data-fmt="int">—</span> late sections, which the report hides behind a dash.</p>
+      </div>
+      <div class="bz-card" id="card-rep-biom">
+        <span class="bz-k">Report · "8.6 million voters were released without biometrics, double the margin"</span>
+        <h2>False: this is a normal procedure, and it was higher in 2022</h2>
+        <div class="bz-tiles">
+          <div><div class="bz-big"><span class="bz-v" data-source="report_rows" data-where="key=biom_2026" data-field="total" data-fmt="int">—</span></div><p class="bz-cap">Voters released by the poll worker in 2026 (<span class="bz-v" data-source="report_rows" data-where="key=biom_2026" data-field="pct" data-fmt="pct1">—</span> of voters).</p></div>
+          <div><div class="bz-big"><span class="bz-v" data-source="report_rows" data-where="key=biom_2022" data-field="total" data-fmt="int">—</span></div><p class="bz-cap">Voters released by the poll worker in 2022 (<span class="bz-v" data-source="report_rows" data-where="key=biom_2022" data-field="pct" data-fmt="pct1">—</span> of voters).</p></div>
+          <div><div class="bz-big"><span class="bz-v" data-source="report_rows" data-where="key=biom_2026" data-field="south_pct" data-fmt="pct1">—</span></div><p class="bz-cap">Release rate in the South, Flávio's strongest region. It is the highest of all regions.</p></div>
+        </div>
+        <p class="bz-cap">When a fingerprint fails, the poll worker checks the voter's photo ID and releases the urna. These voters do not all vote for one candidate, so comparing them with the margin means nothing. In the sections with almost no releases, Lula had <span class="bz-v" data-source="report_rows" data-where="key=biom_2026" data-field="low_band_lula_pct" data-fmt="pct1">—</span>, close to his national result.</p>
+      </div>
+      <div class="bz-card" id="card-rep-unan">
+        <span class="bz-k">Report · "Near-unanimous sections show fraud"</span>
+        <h2>False: 2022 had more of them</h2>
+        <div class="bz-tbl"><table><thead><tr><th>Election</th><th>100% for Lula</th><th>100% for the right-wing candidate</th><th>Over 90% for Lula</th><th>Over 90% for the right-wing candidate</th></tr></thead><tbody>
+          <tr><th scope="row">2026</th><td><span class="bz-v" data-source="report_rows" data-where="key=unan_2026" data-field="lula_100" data-fmt="int">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=unan_2026" data-field="right_100" data-fmt="int">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=unan_2026" data-field="lula_over_90" data-fmt="int">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=unan_2026" data-field="right_over_90" data-fmt="int">—</span></td></tr>
+          <tr><th scope="row">2022</th><td><span class="bz-v" data-source="report_rows" data-where="key=unan_2022" data-field="lula_100" data-fmt="int">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=unan_2022" data-field="right_100" data-fmt="int">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=unan_2022" data-field="lula_over_90" data-fmt="int">—</span></td><td><span class="bz-v" data-source="report_rows" data-where="key=unan_2022" data-field="right_over_90" data-fmt="int">—</span></td></tr>
+        </tbody></table></div>
+        <p class="bz-cap">Lula's strongest places, in the rural Northeast, are more one-sided than the right's strongest places. That was already true in 2022, with even more such sections. Election results do not have to follow a bell curve.</p>
+      </div>
+      <div class="bz-card" id="card-rep-file">
+        <span class="bz-k">Report · "The urna files were hidden for 72 hours"</span>
+        <h2>False: the file is dated the morning after the vote</h2>
+        <p class="bz-cap">Every TSE bulletin file records when it was generated. The 2026 runoff file says <span class="bz-v" data-source="report_rows" data-where="key=file_2026" data-field="generated">—</span>, about 13 hours after the polls closed. In 2022 it said <span class="bz-v" data-source="report_rows" data-where="key=file_2022" data-field="generated">—</span>, the day after that vote.</p>
+      </div>
+    </div>
+  </section>

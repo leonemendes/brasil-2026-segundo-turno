@@ -1,4 +1,6 @@
 import { readFileSync, writeFileSync, mkdirSync, copyFileSync, existsSync } from "node:fs";
+import { assemblePage } from "./assemble.ts";
+import { translate } from "./i18n.ts";
 
 const REPO = "https://github.com/leonemendes/brasil-2026-segundo-turno";
 const DATASETS = ["national", "states", "municipalities", "abroad", "close_curves", "late_sections", "timeline", "extension", "urna_log_examples", "vote_sources", "r1_candidates", "late_votes_states", "late_votes_minutes", "count_summary", "count_curves", "count_sawtooth", "count_samples", "report_rows", "map_municipalities", "map_states", "map_world"];
@@ -15,7 +17,7 @@ for (const id of TABLES) {
   writeFileSync(`${OUT}/data/${id}.csv`, [cols.join(","), ...rows.map((r) => cols.map((c) => csvCell(r[c])).join(","))].join("\n") + "\n");
 }
 
-const page = readFileSync("ds/index.html", "utf8");
+const page = translate(assemblePage());
 const shim = readFileSync("site-src/dash-shim.js", "utf8");
 const analytics = readFileSync("site-src/analytics.js", "utf8");
 const links = TABLES.map((id) => `<li><span>${id}</span> <a href="data/${id}.csv" download>CSV</a> <a href="data/${id}.json" download>JSON</a></li>`).join("");

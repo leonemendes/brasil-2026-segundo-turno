@@ -1,0 +1,48 @@
+  <section id="explore" class="bz-page" hidden>
+    <div class="bz-ctrl">
+      <div class="bz-ctrlrow"><span>Area</span><div class="bz-seg" id="exArea"><button data-area="br" aria-pressed="true">Brazil</button><button data-area="world" aria-pressed="false">Rest of the world</button></div>
+        <div class="bz-seg" id="exRegion" hidden><button data-region="World" aria-pressed="true">World</button><button data-region="Europe" aria-pressed="false">Europe</button><button data-region="Americas" aria-pressed="false">Americas</button><button data-region="Africa" aria-pressed="false">Africa</button><button data-region="Asia" aria-pressed="false">Middle East and Asia</button><button data-region="Oceania" aria-pressed="false">Oceania</button></div>
+        <select id="exState" aria-label="State" data-source="state_change"></select>
+        <input id="exSearch" type="search" list="exMunList" placeholder="Find a municipality" aria-label="Find a municipality" data-source="municipalities"><datalist id="exMunList"></datalist>
+        <button class="bz-chip" id="exClear" hidden>Clear selection ×</button></div>
+      <div class="bz-ctrlrow"><span>Show</span><div class="bz-seg" id="exMode">
+        <button data-mode="r2" aria-pressed="true">2026 runoff</button><button data-mode="r1" aria-pressed="false">2026 round 1</button><button data-mode="y22" aria-pressed="false">2022 runoff</button><button data-mode="y18" aria-pressed="false">2018 runoff</button>
+        <button data-mode="sw" aria-pressed="false">Change since round 1</button><button data-mode="s22" aria-pressed="false">Change since 2022</button><button data-mode="s18" aria-pressed="false">Change since 2018</button><button data-mode="ext" aria-pressed="false">Open after 17:49</button></div></div>
+    </div>
+    <div class="bz-explore">
+      <div class="bz-ctrl">
+        <div class="bz-vis" id="exVis" data-source="municipalities map_municipalities map_states map_world abroad"><canvas id="exCanvas" aria-label="Map"></canvas><svg id="exSvg" hidden></svg><div class="bz-tip" id="exTip" hidden></div></div>
+        <div class="bz-legend" id="exLegend"></div>
+        <p class="bz-howto" id="exHow"></p>
+      </div>
+      <div class="bz-card" id="exDetail" data-source="municipalities abroad state_change national_shares"></div>
+    </div>
+    <div class="bz-card">
+      <h2 id="tbl-states">States, all elections</h2>
+      <p class="bz-cap">Select a row to zoom the map to that state. Select a header to sort. Shares are of the two candidates' votes, except round 1, which is of all valid votes.</p>
+      <div class="bz-tbl"><table id="stateTable" data-source="state_change" data-row-key="uf"><thead><tr>
+        <th data-field="state" aria-sort="none"><button>State</button></th>
+        <th data-field="y2018_pt_pct" aria-sort="none"><button>2018 Haddad</button></th>
+        <th data-field="y2022_lula_pct" aria-sort="none"><button>2022 Lula</button></th>
+        <th data-field="r1_lula_pct" aria-sort="none"><button>2026 R1 Lula</button></th>
+        <th data-field="r1_flavio_pct" aria-sort="none"><button>2026 R1 Flávio</button></th>
+        <th data-field="r2_lula_pct" aria-sort="none"><button>2026 runoff Lula</button></th>
+        <th data-field="shift_vs_r1" aria-sort="none"><button>Shift since R1</button></th>
+        <th data-field="margin_change" aria-sort="descending"><button>Gap change (votes)</button></th>
+        <th data-field="late_2022" aria-sort="none"><button>Open 49+ min, 2022</button></th>
+        <th data-field="late_2026_r2" aria-sort="none"><button>Open 49+ min, 2026</button></th>
+      </tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="bz-card">
+      <h2 id="tbl-sources">Where the new votes came from, by state</h2>
+      <p class="bz-cap">Net change from round 1 to the runoff, in votes. Each row adds up exactly: Lula's gain plus Flávio's gain equals the three sources.</p>
+      <div class="bz-tbl"><table id="sourcesTable" data-source="vote_sources" data-row-key="uf"><thead><tr>
+        <th data-field="area" aria-sort="none"><button>Area</button></th>
+        <th data-field="gain_lula" aria-sort="none"><button>Lula gained</button></th>
+        <th data-field="gain_flavio" aria-sort="none"><button>Flávio gained</button></th>
+        <th data-field="from_other_candidates" aria-sort="descending"><button>From other candidates</button></th>
+        <th data-field="from_turnout" aria-sort="none"><button>From more voters</button></th>
+        <th data-field="from_fewer_blank_null" aria-sort="none"><button>From fewer blank/null</button></th>
+      </tr></thead><tbody></tbody></table></div>
+    </div>
+  </section>

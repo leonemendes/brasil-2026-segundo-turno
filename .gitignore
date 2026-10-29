@@ -6,11 +6,8 @@ data/r2/
 data/r2sec/
 data/logs/
 geo/mun.geo.json
-site/
+/site/
 out/
-ds/index.before-i18n.html
-ds/page.doc.json
-ds/i18n-keys.json
 *.log
 .vercel
 .DS_Store

@@ -9,8 +9,6 @@
     "fetch:municipal": "bun scripts/fetch-mun.ts",
     "fetch:states": "bun scripts/fetch-uf.ts",
     "build:data": "bun scripts/build-data.ts && bun scripts/export-datasets.ts",
-    "build:i18n": "bun scripts/build-i18n.ts ds/index.html",
-    "build:site": "bun scripts/build-site.ts public",
-    "build": "bun run build:i18n && bun run build:site"
+    "build": "bun scripts/site/build.ts public"
   }
 }
