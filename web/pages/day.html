@@ -1,0 +1,42 @@
+  <section id="day" class="bz-page" hidden>
+    <div class="bz-grid">
+      <div class="bz-card" id="card-timeline">
+        <h2>Timeline, Brasília time</h2>
+        <p class="bz-cap">Filled dots are the moments that decided which urnas could stay open.</p>
+        <ol class="bz-tl" id="timeline" data-source="timeline"></ol>
+      </div>
+      <div class="bz-ctrl" style="align-content:start">
+        <div class="bz-card" id="card-curves">
+          <h2>Share of sections still open after the official close</h2>
+          <p class="bz-cap">One line per election. Log scale: each grid line is ten times smaller than the one above.</p>
+          <div class="bz-vis" id="curvesVis" data-source="close_curves" style="min-height:300px"><svg id="curvesSvg"></svg><div class="bz-tip" id="curvesTip" hidden></div></div>
+          <div class="bz-legend" id="curvesLegend"></div>
+        </div>
+        <div class="bz-card" id="card-late">
+          <h2>Sections open 49 minutes or more after the close</h2>
+          <div class="bz-tiles" id="lateTiles" data-source="late_rates"></div>
+        </div>
+        <div class="bz-card" id="card-lanes">
+          <h2>One urna, two elections</h2>
+          <p class="bz-cap">Real urna log, Cruzeiro do Sul (AC), zone 4, section 479. Each dot is a vote, the bar is the close.</p>
+          <div class="bz-vis" id="lanesVis" data-source="urna_log_examples" style="min-height:160px"><svg id="lanesSvg"></svg></div>
+        </div>
+        <div class="bz-card" id="card-late-minutes">
+          <h2>Votes after 17:00, minute by minute</h2>
+          <p class="bz-cap">Votes in the urnas still open at 17:45, in 5-minute steps. Gray: people already in line at 17:00. Orange: new voters after a pause, possible only because of the extension.</p>
+          <div class="bz-vis" id="lateMinutesVis" data-source="late_votes_minutes" style="min-height:220px"><svg id="lateMinutesSvg"></svg><div class="bz-tip" id="lateMinutesTip" hidden></div></div>
+        </div>
+        <div class="bz-card" id="card-late-states">
+          <h2>Late votes by state</h2>
+          <p class="bz-cap">Counted from the log of every urna still open at 17:45.</p>
+          <div class="bz-tbl"><table id="lateStatesTable" data-source="late_votes_states" data-row-key="uf"><thead><tr>
+            <th data-field="state">State</th><th data-field="urnas_open_after_1749">Open at 17:49</th><th data-field="urnas_with_late_vote">Got a late vote</th><th data-field="votes_after_17">Votes after 17:00</th><th data-field="queue">17:00 queue</th><th data-field="after_pause">After a pause</th><th data-field="votes_after_1749">After 17:49</th>
+          </tr></thead><tbody></tbody></table></div>
+        </div>
+        <div class="bz-card" id="card-extension">
+          <h2>The result without the sections that stayed open</h2>
+          <div id="extCards" data-source="extension_view"></div>
+        </div>
+      </div>
+    </div>
+  </section>
